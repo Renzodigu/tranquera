@@ -1,0 +1,106 @@
+"""User-facing strings in Spanish (default) and English."""
+
+from __future__ import annotations
+
+MESSAGES: dict[str, dict[str, str]] = {
+    # --- labels ---
+    "met": {"es": "Cumple", "en": "Met"},
+    "partial": {"es": "Parcial", "en": "Partial"},
+    "not_met": {"es": "No cumple", "en": "Not met"},
+    "undetermined": {"es": "Requiere revisión", "en": "Needs review"},
+    "excluded": {"es": "Excluido (SoA)", "en": "Excluded (SoA)"},
+    "out_of_scope": {"es": "Fuera del mapeo", "en": "Not mapped"},
+    "high": {"es": "Alta", "en": "High"},
+    "medium": {"es": "Media", "en": "Medium"},
+    "low": {"es": "Baja", "en": "Low"},
+    "add": {"es": "Añadir", "en": "Add"},
+    "fix": {"es": "Corregir", "en": "Fix"},
+    "remove": {"es": "Eliminar", "en": "Remove"},
+    "open": {"es": "Abierto", "en": "Open"},
+    "unassigned": {"es": "Por asignar", "en": "Unassigned"},
+    "organizational": {"es": "Organizacionales", "en": "Organizational"},
+    "people": {"es": "Personas", "en": "People"},
+    "physical": {"es": "Físicos", "en": "Physical"},
+    "technological": {"es": "Tecnológicos", "en": "Technological"},
+    "src_assessment": {"es": "Evaluación de control", "en": "Control assessment"},
+    "src_hygiene": {"es": "Higiene documental", "en": "Document hygiene"},
+    "src_reconciliation": {"es": "Conciliación compromiso/evidencia", "en": "Commitment reconciliation"},
+    "src_soa": {"es": "Declaración de aplicabilidad", "en": "Statement of Applicability"},
+    "src_pattern": {"es": "Patrón sistémico", "en": "Systemic pattern"},
+    # --- root causes (used to detect systemic patterns) ---
+    "rc_missing_control": {"es": "Control sin documentar", "en": "Undocumented control"},
+    "rc_no_operating_evidence": {"es": "Política sin evidencia de operación", "en": "Policy without operating evidence"},
+    "rc_no_policy": {"es": "Práctica sin política aprobada", "en": "Practice without an approved policy"},
+    "rc_commitment_missed": {"es": "Compromiso periódico incumplido", "en": "Periodic commitment missed"},
+    "rc_document_expired": {"es": "Documento con revisión vencida", "en": "Document past its review date"},
+    "rc_no_owner": {"es": "Documento sin responsable", "en": "Document without an owner"},
+    "rc_not_approved": {"es": "Documento sin aprobar", "en": "Unapproved document"},
+    "rc_obsolete_document": {"es": "Documento obsoleto vigente", "en": "Obsolete document still in force"},
+    "rc_soa_unjustified": {"es": "Exclusión sin justificar", "en": "Unjustified exclusion"},
+    "rc_contradiction": {"es": "Contradicción entre documentos", "en": "Contradiction between documents"},
+    "rc_insufficient_evidence": {"es": "Evidencia insuficiente", "en": "Insufficient evidence"},
+    # --- finding templates ---
+    "f_expired_title": {"es": "Revisión vencida: {doc}", "en": "Review overdue: {doc}"},
+    "f_expired_detail": {
+        "es": "La próxima revisión era el {date} ({days} días de atraso). Un documento sin revisar no es evidencia válida de los controles que cubre.",
+        "en": "The next review was due on {date} ({days} days overdue). An unreviewed document is not valid evidence for the controls it covers.",
+    },
+    "f_expired_action": {"es": "Revisar, actualizar y volver a aprobar el documento.", "en": "Review, update and re-approve the document."},
+    "f_owner_title": {"es": "Documento sin responsable: {doc}", "en": "Document without an owner: {doc}"},
+    "f_owner_detail": {"es": "El documento no tiene un responsable asignado que lo mantenga y responda por los controles que cubre.", "en": "The document has no owner accountable for maintaining it and the controls it covers."},
+    "f_owner_action": {"es": "Asignar un responsable nominal y registrarlo en el documento.", "en": "Assign a named owner and record it in the document."},
+    "f_draft_title": {"es": "Documento en borrador: {doc}", "en": "Draft document: {doc}"},
+    "f_draft_detail": {"es": "El documento está en estado «{status}» y no fue aprobado. Las prácticas que describe no están formalizadas.", "en": "The document is in '{status}' status and was never approved. The practices it describes are not formalized."},
+    "f_draft_action": {"es": "Completar el documento y obtener la aprobación formal.", "en": "Complete the document and obtain formal approval."},
+    "f_obsolete_title": {"es": "Documento reemplazado sigue vigente: {doc}", "en": "Superseded document still in force: {doc}"},
+    "f_obsolete_detail": {"es": "{by} declara que reemplaza a este documento, pero sigue publicado con estado «{status}». Dos documentos vigentes con reglas distintas generan confusión e incumplimiento.", "en": "{by} states that it supersedes this document, yet it is still published with status '{status}'. Two documents in force with different rules cause confusion and non-compliance."},
+    "f_obsolete_action": {"es": "Retirar el documento obsoleto y archivarlo como histórico.", "en": "Withdraw the obsolete document and archive it."},
+    "f_noevidence_doc_title": {"es": "Compromiso sin registro de evidencia: {activity}", "en": "Commitment without an evidence record: {activity}"},
+    "f_noevidence_doc_detail": {"es": "{doc} compromete la actividad ({freq}) pero no existe el registro de evidencia {ref}.", "en": "{doc} commits to this activity ({freq}) but evidence record {ref} does not exist."},
+    "f_noevidence_doc_action": {"es": "Crear el registro de evidencia y cargar las ejecuciones realizadas.", "en": "Create the evidence record and log the executions performed."},
+    "f_missed_title": {"es": "Compromiso incumplido: {activity}", "en": "Commitment missed: {activity}"},
+    "f_missed_detail": {
+        "es": "{doc} compromete una ejecución {freq}. En los períodos evaluados se esperaban {expected} ejecuciones y {ref} registra {found}. Períodos sin ejecución: {gaps}. Última ejecución: {last}.",
+        "en": "{doc} commits to a {freq} execution. {expected} executions were expected in the periods assessed and {ref} records {found}. Periods without execution: {gaps}. Last execution: {last}.",
+    },
+    "f_missed_action": {"es": "Ejecutar la actividad pendiente, registrar la evidencia y fijar un recordatorio por período.", "en": "Perform the pending activity, record the evidence and set a per-period reminder."},
+    "f_never": {"es": "nunca", "en": "never"},
+    "f_soa_title": {"es": "Exclusión sin justificar en la SoA: {control}", "en": "Unjustified SoA exclusion: {control}"},
+    "f_soa_detail": {"es": "El control {control} figura como excluido en la declaración de aplicabilidad sin una justificación.", "en": "Control {control} is excluded in the Statement of Applicability without a justification."},
+    "f_soa_action": {"es": "Documentar la justificación de la exclusión o volver a incluir el control.", "en": "Document the justification for the exclusion or bring the control back into scope."},
+    "f_soa_unknown_title": {"es": "Exclusión de un control inexistente: {control}", "en": "Exclusion of an unknown control: {control}"},
+    "f_soa_unknown_detail": {"es": "{control} no es un control del Anexo A de ISO/IEC 27001:2022.", "en": "{control} is not an ISO/IEC 27001:2022 Annex A control."},
+    "f_soa_unknown_action": {"es": "Corregir el identificador en la SoA.", "en": "Correct the identifier in the SoA."},
+    "f_assess_title": {"es": "{verdict}: {control} {title}", "en": "{verdict}: {control} {title}"},
+    "f_pattern_title": {"es": "Patrón sistémico: {cause}", "en": "Systemic pattern: {cause}"},
+    "f_pattern_detail": {
+        "es": "La misma causa aparece en {n} hallazgos ({ids}). No es un error aislado: indica una falla del proceso que hay que corregir en origen.",
+        "en": "The same root cause appears in {n} findings ({ids}). It is not an isolated error: it points to a process failure that must be fixed at the source.",
+    },
+    "f_pattern_action": {"es": "Analizar la causa raíz y corregir el proceso, no solo cada caso.", "en": "Analyze the root cause and fix the process, not just each case."},
+    # --- heuristic assessor ---
+    "h_none": {"es": "No se encontró ningún documento que trate este control.", "en": "No document addressing this control was found."},
+    "h_policy_only": {"es": "El control aparece en {docs}, pero no hay evidencia de que se opere.", "en": "The control is covered by {docs}, but there is no evidence that it operates."},
+    "h_evidence_only": {"es": "Hay evidencia de operación ({docs}), pero ninguna política o procedimiento aprobado la respalda.", "en": "There is operating evidence ({docs}), but no approved policy or procedure behind it."},
+    "h_both": {"es": "Cubierto por {policies} con evidencia de operación en {evidence}.", "en": "Covered by {policies} with operating evidence in {evidence}."},
+    "h_action_add": {"es": "Documentar el control en una política o procedimiento y generar evidencia de su operación.", "en": "Document the control in a policy or procedure and produce evidence that it operates."},
+    "h_action_evidence": {"es": "Generar y conservar evidencia periódica de la operación del control.", "en": "Produce and retain periodic evidence that the control operates."},
+    "h_action_policy": {"es": "Formalizar la práctica en una política o procedimiento aprobado.", "en": "Formalize the practice in an approved policy or procedure."},
+    "cap_draft": {"es": "Se apoya en un documento sin aprobar ({doc}).", "en": "Relies on an unapproved document ({doc})."},
+    "cap_expired": {"es": "Se apoya en un documento con revisión vencida ({doc}).", "en": "Relies on a document past its review date ({doc})."},
+    "cap_missed": {"es": "Compromiso periódico incumplido ({commitment}).", "en": "Periodic commitment missed ({commitment})."},
+    "unverified_citation": {"es": "Se descartó una cita que no coincide con el texto del documento ({chunk}).", "en": "Discarded a citation that does not match the document text ({chunk})."},
+    "no_valid_citations": {"es": "El veredicto no tenía citas verificables; requiere revisión humana.", "en": "The verdict had no verifiable citations; it needs human review."},
+    "freq_monthly": {"es": "mensual", "en": "monthly"},
+    "freq_quarterly": {"es": "trimestral", "en": "quarterly"},
+    "freq_semiannual": {"es": "semestral", "en": "semiannual"},
+    "freq_annual": {"es": "anual", "en": "annual"},
+}
+
+
+def t(lang: str, key: str, **kwargs) -> str:
+    entry = MESSAGES.get(key)
+    if entry is None:
+        return key
+    text = entry.get(lang) or entry["en"]
+    return text.format(**kwargs) if kwargs else text

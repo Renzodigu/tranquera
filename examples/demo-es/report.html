@@ -1,0 +1,1992 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Análisis de brechas de seguridad · Ñandú Pagos S.A.</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#16202e;--muted:#5b6676;--line:#e2e6ec;--navy:#1d3557;
+--met:#2f855a;--partial:#c48a12;--not_met:#c0392b;--undetermined:#6b46c1;--out:#a0aab8;--excluded:#a0aab8;
+--high:#c0392b;--medium:#c48a12;--low:#4a6fa5}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--card:#161d27;--ink:#e6ebf2;--muted:#9aa6b6;--line:#273242;--navy:#8fb3e8;--out:#4b5666;--excluded:#4b5666}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 16px 64px}
+header{border-bottom:3px solid var(--navy);padding-bottom:16px;margin-bottom:24px}
+h1{font-size:28px;margin:0;color:var(--navy);letter-spacing:-.3px}
+h2{font-size:19px;margin:36px 0 12px;color:var(--navy)}
+.sub{color:var(--muted);margin-top:4px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:12px;font-size:13px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600}
+.badge{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:600;color:#fff;white-space:nowrap}
+.b-met{background:var(--met)}.b-partial{background:var(--partial)}.b-not_met{background:var(--not_met)}
+.b-undetermined{background:var(--undetermined)}.b-excluded,.b-out_of_scope{background:var(--out)}
+.b-high{background:var(--high)}.b-medium{background:var(--medium)}.b-low{background:var(--low)}
+.note{background:var(--card);border-left:4px solid var(--navy);padding:10px 14px;border-radius:6px;font-size:13.5px;color:var(--muted);margin:12px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.kpi .v{font-size:30px;font-weight:700;line-height:1.1}
+.kpi .l{font-size:13px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+.bar-row{display:grid;grid-template-columns:130px 1fr 40px;gap:10px;align-items:center;margin:7px 0;font-size:13.5px}
+.bar{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--line)}
+.bar span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.table-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);background:var(--card);position:sticky;top:0}
+tr:last-child td{border-bottom:none}
+td.small,.small{font-size:12.5px;color:var(--muted)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;white-space:nowrap}
+.pattern{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--high);border-radius:8px;padding:12px 14px;margin:10px 0}
+.pattern.medium{border-left-color:var(--medium)}.pattern.low{border-left-color:var(--low)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px}
+.filters button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:5px 12px;border-radius:999px;cursor:pointer;font:inherit;font-size:13px}
+.filters button[aria-pressed=true]{background:var(--navy);color:var(--bg);border-color:var(--navy)}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin:6px 0}
+summary{cursor:pointer;padding:9px 12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+details .body{padding:0 14px 12px}
+blockquote{margin:6px 0;padding:6px 10px;border-left:3px solid var(--line);color:var(--muted);font-size:13px}
+.ok{color:var(--met);font-weight:600}.ko{color:var(--not_met);font-weight:600}
+footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Análisis de brechas de seguridad: Ñandú Pagos S.A.</h1>
+  <div class="sub">ISO/IEC 27001:2022 Anexo A · NIST CSF 2.0 · Billetera virtual y procesador de pagos ficticio con sede en Buenos Aires. 100 % en la nube (AWS), 140 empleados.</div>
+  <div class="meta">
+    <span>Fecha de corte: <b>2026-10-20</b></span>
+    <span>Evaluador: <b>heuristic</b></span>
+    <span>Generado por: <b>Tranquera 0.1.0</b></span>
+<span><b>Datos ficticios para demostración.</b></span>  </div>
+</header>
+
+<div class="note">Evaluación heurística: decide solo por la cobertura documental (¿hay política?, ¿hay evidencia vinculada?). No lee el contenido como un auditor. Usá el evaluador con Claude para un análisis semántico y verificá siempre manualmente.</div>
+
+<h2>Resumen ejecutivo</h2>
+<div class="kpis">
+  <div class="kpi"><div class="v">36%</div><div class="l">Cumplimiento (Cumple = 1, Parcial = ½)</div></div>
+  <div class="kpi"><div class="v">88</div><div class="l">Controles aplicables · 5 excluidos en la SoA</div></div>
+  <div class="kpi"><div class="v" style="color:var(--met)">7</div><div class="l">Cumple</div></div>
+  <div class="kpi"><div class="v" style="color:var(--partial)">50</div><div class="l">Parcial</div></div>
+  <div class="kpi"><div class="v" style="color:var(--not_met)">31</div><div class="l">No cumple</div></div>
+  <div class="kpi"><div class="v" style="color:var(--high)">6</div><div class="l">Hallazgos de severidad alta · 83 hallazgos</div></div>
+</div>
+
+<div class="grid2" style="margin-top:12px">
+  <div class="card">
+    <b>Cobertura por tema (Anexo A)</b>
+    <div class="bar-row"><span>Organizacionales</span>
+      <div class="bar" role="img" aria-label="Organizacionales: 5 Cumple, 23 Parcial, 9 No cumple">
+<span style="width:13.513513513513514%;background:var(--met)"></span><span style="width:62.16216216216216%;background:var(--partial)"></span><span style="width:24.324324324324323%;background:var(--not_met)"></span>      </div><span class="small">37</span></div>
+    <div class="bar-row"><span>Personas</span>
+      <div class="bar" role="img" aria-label="Personas: 1 Cumple, 4 Parcial, 3 No cumple">
+<span style="width:12.5%;background:var(--met)"></span><span style="width:50.0%;background:var(--partial)"></span><span style="width:37.5%;background:var(--not_met)"></span>      </div><span class="small">8</span></div>
+    <div class="bar-row"><span>Físicos</span>
+      <div class="bar" role="img" aria-label="Físicos: 0 Cumple, 2 Parcial, 9 No cumple">
+<span style="width:18.181818181818183%;background:var(--partial)"></span><span style="width:81.81818181818181%;background:var(--not_met)"></span>      </div><span class="small">11</span></div>
+    <div class="bar-row"><span>Tecnológicos</span>
+      <div class="bar" role="img" aria-label="Tecnológicos: 1 Cumple, 21 Parcial, 10 No cumple">
+<span style="width:3.125%;background:var(--met)"></span><span style="width:65.625%;background:var(--partial)"></span><span style="width:31.25%;background:var(--not_met)"></span>      </div><span class="small">32</span></div>
+    <div class="legend"><span><i style="background:var(--met)"></i>Cumple</span><span><i style="background:var(--partial)"></i>Parcial</span><span><i style="background:var(--undetermined)"></i>Requiere revisión</span><span><i style="background:var(--not_met)"></i>No cumple</span></div>
+  </div>
+  <div class="card">
+    <b>Cobertura NIST CSF 2.0 por función</b>
+    <div class="bar-row"><span>GV · Gobernar</span>
+      <div class="bar">
+<span style="width:6.451612903225806%;background:var(--met)"></span><span style="width:25.806451612903224%;background:var(--partial)"></span><span style="width:3.225806451612903%;background:var(--not_met)"></span><span style="width:64.51612903225806%;background:var(--out)"></span>      </div><span class="small">31</span></div>
+    <div class="bar-row"><span>ID · Identificar</span>
+      <div class="bar">
+<span style="width:14.285714285714286%;background:var(--met)"></span><span style="width:33.333333333333336%;background:var(--partial)"></span><span style="width:9.523809523809524%;background:var(--not_met)"></span><span style="width:42.857142857142854%;background:var(--out)"></span>      </div><span class="small">21</span></div>
+    <div class="bar-row"><span>PR · Proteger</span>
+      <div class="bar">
+<span style="width:9.090909090909092%;background:var(--met)"></span><span style="width:59.09090909090909%;background:var(--partial)"></span><span style="width:13.636363636363637%;background:var(--not_met)"></span><span style="width:18.181818181818183%;background:var(--out)"></span>      </div><span class="small">22</span></div>
+    <div class="bar-row"><span>DE · Detectar</span>
+      <div class="bar">
+<span style="width:54.54545454545455%;background:var(--partial)"></span><span style="width:9.090909090909092%;background:var(--not_met)"></span><span style="width:36.36363636363637%;background:var(--out)"></span>      </div><span class="small">11</span></div>
+    <div class="bar-row"><span>RS · Responder</span>
+      <div class="bar">
+<span style="width:38.46153846153846%;background:var(--partial)"></span><span style="width:61.53846153846154%;background:var(--out)"></span>      </div><span class="small">13</span></div>
+    <div class="bar-row"><span>RC · Recuperar</span>
+      <div class="bar">
+<span style="width:12.5%;background:var(--partial)"></span><span style="width:87.5%;background:var(--out)"></span>      </div><span class="small">8</span></div>
+    <div class="legend"><span><i style="background:var(--out)"></i>Fuera del mapeo</span></div>
+    <div class="small" style="margin-top:6px">Las subcategorías de gobierno y gestión de riesgos se apoyan en las cláusulas 4 a 10 de la norma, que esta herramienta todavía no evalúa; por eso figuran como «fuera del mapeo».</div>
+  </div>
+</div>
+
+<h2>Patrones sistémicos</h2>
+<p class="small">Causas que se repiten en tres o más hallazgos. Corregir el proceso resuelve varios hallazgos a la vez.</p>
+<div class="pattern high">
+  <span class="badge b-high">Alta</span>
+  <b>TQ-P01 · Patrón sistémico: Control sin documentar</b>
+  <div class="small" style="margin-top:4px">La misma causa aparece en 31 hallazgos (TQ-005, TQ-006, TQ-013, TQ-014, TQ-015, TQ-016, TQ-023, TQ-024, TQ-025, TQ-026, TQ-027, TQ-028, TQ-032, TQ-036, TQ-037, TQ-039, TQ-042, TQ-043, TQ-048, TQ-055, TQ-058, TQ-063, TQ-064, TQ-065, TQ-066, TQ-067, TQ-068, TQ-071, TQ-076, TQ-078, TQ-083). No es un error aislado: indica una falla del proceso que hay que corregir en origen.</div>
+</div>
+<div class="pattern high">
+  <span class="badge b-high">Alta</span>
+  <b>TQ-P02 · Patrón sistémico: Compromiso periódico incumplido</b>
+  <div class="small" style="margin-top:4px">La misma causa aparece en 4 hallazgos (TQ-001, TQ-002, TQ-003, TQ-007). No es un error aislado: indica una falla del proceso que hay que corregir en origen.</div>
+</div>
+<div class="pattern medium">
+  <span class="badge b-medium">Media</span>
+  <b>TQ-P03 · Patrón sistémico: Política sin evidencia de operación</b>
+  <div class="small" style="margin-top:4px">La misma causa aparece en 43 hallazgos (TQ-012, TQ-017, TQ-018, TQ-019, TQ-020, TQ-021, TQ-022, TQ-029, TQ-030, TQ-031, TQ-033, TQ-034, TQ-035, TQ-038, TQ-040, TQ-041, TQ-044, TQ-045, TQ-046, TQ-047, TQ-049, TQ-050, TQ-051, TQ-052, TQ-053, TQ-054, TQ-056, TQ-057, TQ-059, TQ-060, TQ-061, TQ-062, TQ-069, TQ-070, TQ-072, TQ-073, TQ-074, TQ-075, TQ-077, TQ-079, TQ-080, TQ-081, TQ-082). No es un error aislado: indica una falla del proceso que hay que corregir en origen.</div>
+</div>
+
+<h2>Conciliación: compromisos de las políticas contra la evidencia</h2>
+<p class="small">Cada actividad periódica que promete una política se concilia período por período con su registro de evidencia.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Compromiso</th><th>Controles</th><th>Frecuencia</th><th>Esperadas</th><th>Registradas</th><th>Períodos sin ejecución</th><th>Última</th><th>Resultado</th></tr></thead>
+<tbody>
+<tr><td><span class="mono">COM-01</span> Capacitación anual de concientización en seguridad para todo el personal<div class="small">POL-01 → EVD-04</div></td>
+<td class="mono">6.3</td><td>anual</td><td>1</td><td>1</td>
+<td class="small">—</td><td class="mono">2026-04-22</td>
+<td><span class="ok">✓ Conciliado</span></td></tr>
+<tr><td><span class="mono">COM-02</span> Revisión trimestral de los derechos de acceso a sistemas críticos<div class="small">POL-02 → EVD-01</div></td>
+<td class="mono">5.18</td><td>trimestral</td><td>4</td><td>1</td>
+<td class="small">T4 2025, T2 2026, T3 2026</td><td class="mono">2026-02-12</td>
+<td><span class="ko">✗ No cumple</span></td></tr>
+<tr><td><span class="mono">COM-03</span> Simulacro anual de respuesta a incidentes (ejercicio de mesa)<div class="small">POL-03 → EVD-05</div></td>
+<td class="mono">5.24</td><td>anual</td><td>1</td><td>0</td>
+<td class="small">2025-10-20 → 2026-10-20</td><td class="mono">2024-09-10</td>
+<td><span class="ko">✗ No cumple</span></td></tr>
+<tr><td><span class="mono">COM-04</span> Prueba trimestral de restauración de la base de datos transaccional<div class="small">POL-04 → EVD-02</div></td>
+<td class="mono">8.13</td><td>trimestral</td><td>4</td><td>1</td>
+<td class="small">T1 2026, T2 2026, T3 2026</td><td class="mono">2025-11-18</td>
+<td><span class="ko">✗ No cumple</span></td></tr>
+<tr><td><span class="mono">COM-05</span> Revisión anual de seguridad de proveedores críticos<div class="small">POL-05 → EVD-06</div></td>
+<td class="mono">5.22</td><td>anual</td><td>1</td><td>1</td>
+<td class="small">—</td><td class="mono">2026-03-09</td>
+<td><span class="ok">✓ Conciliado</span></td></tr>
+<tr><td><span class="mono">COM-06</span> Escaneo mensual de vulnerabilidades de la infraestructura productiva<div class="small">POL-08 → EVD-03</div></td>
+<td class="mono">8.8</td><td>mensual</td><td>12</td><td>10</td>
+<td class="small">jul 2026, ago 2026</td><td class="mono">2026-10-07</td>
+<td><span class="ko">✗ No cumple</span></td></tr>
+</tbody></table></div>
+
+<h2>Registro de hallazgos</h2>
+<div class="filters" role="group">
+  <button type="button" data-sev="all" aria-pressed="true">Todos (83)</button>
+<button type="button" data-sev="high" aria-pressed="false">Alta (6)</button><button type="button" data-sev="medium" aria-pressed="false">Media (38)</button><button type="button" data-sev="low" aria-pressed="false">Baja (39)</button></div>
+<div class="table-wrap"><table id="register">
+<thead><tr><th>ID</th><th>Severidad</th><th>Hallazgo</th><th>Controles</th><th>Acción</th><th>Responsable</th><th>Plazo</th></tr></thead>
+<tbody>
+<tr data-sev="high">
+<td class="mono">TQ-001</td>
+<td><span class="badge b-high">Alta</span></td>
+<td><b>Compromiso incumplido: Revisión trimestral de los derechos de acceso a sistemas críticos</b><div class="small">POL-02 compromete una ejecución trimestral. En los períodos evaluados se esperaban 4 ejecuciones y EVD-01 registra 1. Períodos sin ejecución: T4 2025, T2 2026, T3 2026. Última ejecución: 2026-02-12.</div><div class="small">Conciliación compromiso/evidencia · Compromiso periódico incumplido</div></td>
+<td class="mono">5.18</td>
+<td><b>Corregir</b><div class="small">Ejecutar la actividad pendiente, registrar la evidencia y fijar un recordatorio por período.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2026-11-19</td>
+</tr>
+<tr data-sev="high">
+<td class="mono">TQ-002</td>
+<td><span class="badge b-high">Alta</span></td>
+<td><b>Compromiso incumplido: Simulacro anual de respuesta a incidentes (ejercicio de mesa)</b><div class="small">POL-03 compromete una ejecución anual. En los períodos evaluados se esperaban 1 ejecuciones y EVD-05 registra 0. Períodos sin ejecución: 2025-10-20 → 2026-10-20. Última ejecución: 2024-09-10.</div><div class="small">Conciliación compromiso/evidencia · Compromiso periódico incumplido</div></td>
+<td class="mono">5.24</td>
+<td><b>Corregir</b><div class="small">Ejecutar la actividad pendiente, registrar la evidencia y fijar un recordatorio por período.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2026-11-19</td>
+</tr>
+<tr data-sev="high">
+<td class="mono">TQ-003</td>
+<td><span class="badge b-high">Alta</span></td>
+<td><b>Compromiso incumplido: Prueba trimestral de restauración de la base de datos transaccional</b><div class="small">POL-04 compromete una ejecución trimestral. En los períodos evaluados se esperaban 4 ejecuciones y EVD-02 registra 1. Períodos sin ejecución: T1 2026, T2 2026, T3 2026. Última ejecución: 2025-11-18.</div><div class="small">Conciliación compromiso/evidencia · Compromiso periódico incumplido</div></td>
+<td class="mono">8.13</td>
+<td><b>Corregir</b><div class="small">Ejecutar la actividad pendiente, registrar la evidencia y fijar un recordatorio por período.</div></td>
+<td class="small">Diego Albornoz (CTO)</td>
+<td class="mono">2026-11-19</td>
+</tr>
+<tr data-sev="high">
+<td class="mono">TQ-004</td>
+<td><span class="badge b-high">Alta</span></td>
+<td><b>Revisión vencida: POL-03 Política de Gestión de Incidentes de Seguridad</b><div class="small">La próxima revisión era el 2025-03-01 (598 días de atraso). Un documento sin revisar no es evidencia válida de los controles que cubre.</div><div class="small">Higiene documental · Documento con revisión vencida</div></td>
+<td class="mono">5.5 5.24 5.25 5.26 5.27 5.28 6.8</td>
+<td><b>Corregir</b><div class="small">Revisar, actualizar y volver a aprobar el documento.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2026-11-19</td>
+</tr>
+<tr data-sev="high">
+<td class="mono">TQ-005</td>
+<td><span class="badge b-high">Alta</span></td>
+<td><b>No cumple: 5.29 Seguridad durante interrupciones</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">5.29</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2026-11-19</td>
+</tr>
+<tr data-sev="high">
+<td class="mono">TQ-006</td>
+<td><span class="badge b-high">Alta</span></td>
+<td><b>No cumple: 8.12 Prevención de fuga de datos</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">8.12</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2026-11-19</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-007</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Compromiso incumplido: Escaneo mensual de vulnerabilidades de la infraestructura productiva</b><div class="small">POL-08 compromete una ejecución mensual. En los períodos evaluados se esperaban 12 ejecuciones y EVD-03 registra 10. Períodos sin ejecución: jul 2026, ago 2026. Última ejecución: 2026-10-07.</div><div class="small">Conciliación compromiso/evidencia · Compromiso periódico incumplido</div></td>
+<td class="mono">8.8</td>
+<td><b>Corregir</b><div class="small">Ejecutar la actividad pendiente, registrar la evidencia y fijar un recordatorio por período.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-008</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Exclusión sin justificar en la SoA: 8.11</b><div class="small">El control 8.11 figura como excluido en la declaración de aplicabilidad sin una justificación.</div><div class="small">Declaración de aplicabilidad · Exclusión sin justificar</div></td>
+<td class="mono">8.11</td>
+<td><b>Corregir</b><div class="small">Documentar la justificación de la exclusión o volver a incluir el control.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-009</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Documento reemplazado sigue vigente: POL-09 Política de Contraseñas</b><div class="small">POL-02 declara que reemplaza a este documento, pero sigue publicado con estado «aprobado». Dos documentos vigentes con reglas distintas generan confusión e incumplimiento.</div><div class="small">Higiene documental · Documento obsoleto vigente</div></td>
+<td class="mono">5.17</td>
+<td><b>Eliminar</b><div class="small">Retirar el documento obsoleto y archivarlo como histórico.</div></td>
+<td class="small">Sistemas</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-010</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Documento sin responsable: POL-05 Política de Seguridad con Proveedores</b><div class="small">El documento no tiene un responsable asignado que lo mantenga y responda por los controles que cubre.</div><div class="small">Higiene documental · Documento sin responsable</div></td>
+<td class="mono">5.19 5.20 5.21 5.22 5.23</td>
+<td><b>Corregir</b><div class="small">Asignar un responsable nominal y registrarlo en el documento.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-011</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Documento en borrador: POL-06 Política de Desarrollo Seguro</b><div class="small">El documento está en estado «borrador» y no fue aprobado. Las prácticas que describe no están formalizadas.</div><div class="small">Higiene documental · Documento sin aprobar</div></td>
+<td class="mono">8.4 8.25 8.26 8.28 8.29 8.31 8.32 8.33</td>
+<td><b>Corregir</b><div class="small">Completar el documento y obtener la aprobación formal.</div></td>
+<td class="small">Diego Albornoz (CTO)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-012</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 5.1 Políticas de seguridad</b><div class="small">El control aparece en POL-01, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.1</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-013</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 5.3 Separación de funciones incompatibles</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">5.3</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-014</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 5.7 Inteligencia de amenazas</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">5.7</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-015</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 5.8 Seguridad en la gestión de proyectos</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">5.8</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-016</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 5.10 Uso aceptable de activos</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">5.10</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-017</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 5.15 Control de acceso</b><div class="small">El control aparece en POL-01, POL-02, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.15</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-018</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 5.16 Gestión de identidades</b><div class="small">El control aparece en POL-02, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.16</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-019</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 5.17 Información de autenticación</b><div class="small">El control aparece en POL-02, POL-07, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.17</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-020</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 5.30 Preparación TIC para la continuidad</b><div class="small">El control aparece en POL-04, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.30</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Diego Albornoz (CTO)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-021</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 5.31 Requisitos legales, regulatorios y contractuales</b><div class="small">El control aparece en POL-01, POL-07, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.31</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-022</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 5.34 Privacidad y datos personales</b><div class="small">El control aparece en POL-01, POL-03, POL-07, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.34</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Carla Medina (Legales y Privacidad)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-023</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 5.35 Revisión independiente de la seguridad</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">5.35</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-024</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 6.1 Verificación de antecedentes</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">6.1</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-025</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 6.2 Condiciones de contratación</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">6.2</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-026</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 6.7 Trabajo remoto</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">6.7</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-027</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 7.10 Medios de almacenamiento</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">7.10</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-028</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 7.14 Eliminación o reutilización segura de equipos</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">7.14</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-029</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 8.1 Dispositivos de usuario</b><div class="small">El control aparece en POL-08, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.1</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-030</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 8.3 Restricción de acceso a la información</b><div class="small">El control aparece en POL-01, POL-02, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.3</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-031</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 8.5 Autenticación segura</b><div class="small">El control aparece en POL-02, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.5</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-032</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 8.6 Gestión de la capacidad</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">8.6</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-033</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 8.7 Protección contra malware</b><div class="small">El control aparece en POL-08, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.7</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-034</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 8.15 Registro de eventos (logs)</b><div class="small">El control aparece en POL-08, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.15</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-035</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 8.16 Monitoreo de actividades</b><div class="small">El control aparece en POL-08, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.16</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-036</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 8.18 Uso de utilidades privilegiadas</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">8.18</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-037</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 8.19 Instalación de software en producción</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">8.19</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-038</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 8.20 Seguridad de redes</b><div class="small">El control aparece en POL-08, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.20</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-039</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 8.21 Seguridad de servicios de red</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">8.21</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-040</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 8.24 Uso de criptografía</b><div class="small">El control aparece en POL-04, POL-07, POL-08, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.24</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-041</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 8.25 Ciclo de desarrollo seguro</b><div class="small">El control aparece en POL-01, POL-06, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.25</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Diego Albornoz (CTO)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-042</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 8.26 Requisitos de seguridad de aplicaciones</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">8.26</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-043</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>No cumple: 8.27 Principios de arquitectura segura</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">8.27</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="medium">
+<td class="mono">TQ-044</td>
+<td><span class="badge b-medium">Media</span></td>
+<td><b>Parcial: 8.32 Gestión de cambios</b><div class="small">El control aparece en POL-01, POL-06, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.32</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Diego Albornoz (CTO)</td>
+<td class="mono">2027-01-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-045</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 5.2 Roles y responsabilidades de seguridad</b><div class="small">El control aparece en POL-01, POL-03, POL-05, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.2</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-046</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 5.4 Compromiso de la dirección</b><div class="small">El control aparece en POL-01, POL-02, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.4</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-047</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 5.5 Contacto con autoridades</b><div class="small">El control aparece en POL-03, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.5</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-048</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 5.6 Contacto con grupos de interés</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">5.6</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-049</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 5.11 Devolución de activos</b><div class="small">El control aparece en POL-02, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.11</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-050</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 5.13 Etiquetado de la información</b><div class="small">El control aparece en POL-07, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.13</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Carla Medina (Legales y Privacidad)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-051</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 5.14 Transferencia de información</b><div class="small">El control aparece en POL-07, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.14</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Carla Medina (Legales y Privacidad)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-052</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 5.20 Seguridad en contratos con proveedores</b><div class="small">El control aparece en POL-05, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.20</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-053</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 5.21 Seguridad en la cadena de suministro TIC</b><div class="small">El control aparece en POL-05, POL-06, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.21</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Diego Albornoz (CTO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-054</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 5.28 Recolección de evidencia</b><div class="small">El control aparece en POL-03, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.28</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-055</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 5.32 Propiedad intelectual</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">5.32</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-056</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 5.33 Protección de registros</b><div class="small">El control aparece en POL-07, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.33</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Carla Medina (Legales y Privacidad)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-057</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 5.36 Cumplimiento de políticas y normas</b><div class="small">El control aparece en POL-01, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">5.36</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-058</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 5.37 Procedimientos operativos documentados</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">5.37</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-059</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 6.4 Proceso disciplinario</b><div class="small">El control aparece en POL-01, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">6.4</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-060</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 6.5 Responsabilidades tras la desvinculación</b><div class="small">El control aparece en POL-02, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">6.5</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-061</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 6.6 Acuerdos de confidencialidad</b><div class="small">El control aparece en POL-01, POL-05, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">6.6</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Lucía Ferreyra (CISO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-062</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 6.8 Reporte de eventos de seguridad</b><div class="small">El control aparece en POL-03, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">6.8</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-063</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 7.1 Perímetros de seguridad física</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">7.1</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-064</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 7.2 Control de ingreso físico</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">7.2</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-065</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 7.3 Seguridad de oficinas e instalaciones</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">7.3</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-066</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 7.4 Monitoreo de seguridad física</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">7.4</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-067</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 7.5 Protección ante amenazas físicas y ambientales</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">7.5</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-068</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 7.6 Trabajo en áreas seguras</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">7.6</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-069</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 7.7 Escritorio y pantalla limpios</b><div class="small">El control aparece en POL-08, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">7.7</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-070</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 7.9 Seguridad de activos fuera de las instalaciones</b><div class="small">El control aparece en POL-08, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">7.9</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-071</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 7.13 Mantenimiento de equipos</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">7.13</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-072</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 8.4 Acceso al código fuente</b><div class="small">El control aparece en POL-06, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.4</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Diego Albornoz (CTO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-073</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 8.9 Gestión de la configuración</b><div class="small">El control aparece en POL-05, POL-08, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.9</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-074</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 8.10 Eliminación de información</b><div class="small">El control aparece en POL-07, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.10</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Carla Medina (Legales y Privacidad)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-075</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 8.14 Redundancia de instalaciones</b><div class="small">El control aparece en POL-04, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.14</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Diego Albornoz (CTO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-076</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 8.17 Sincronización de relojes</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">8.17</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-077</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 8.22 Segregación de redes</b><div class="small">El control aparece en POL-08, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.22</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Martín Quiroga (Líder de Operaciones de Seguridad)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-078</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 8.23 Filtrado web</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">8.23</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-079</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 8.28 Codificación segura</b><div class="small">El control aparece en POL-06, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.28</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Diego Albornoz (CTO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-080</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 8.29 Pruebas de seguridad</b><div class="small">El control aparece en POL-06, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.29</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Diego Albornoz (CTO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-081</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 8.31 Separación de entornos</b><div class="small">El control aparece en POL-04, POL-06, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.31</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Diego Albornoz (CTO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-082</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>Parcial: 8.33 Información de prueba</b><div class="small">El control aparece en POL-06, pero no hay evidencia de que se opere.</div><div class="small">Evaluación de control · Política sin evidencia de operación</div></td>
+<td class="mono">8.33</td>
+<td><b>Añadir</b><div class="small">Generar y conservar evidencia periódica de la operación del control.</div></td>
+<td class="small">Diego Albornoz (CTO)</td>
+<td class="mono">2027-04-18</td>
+</tr>
+<tr data-sev="low">
+<td class="mono">TQ-083</td>
+<td><span class="badge b-low">Baja</span></td>
+<td><b>No cumple: 8.34 Protección durante pruebas de auditoría</b><div class="small">No se encontró ningún documento que trate este control.</div><div class="small">Evaluación de control · Control sin documentar</div></td>
+<td class="mono">8.34</td>
+<td><b>Añadir</b><div class="small">Documentar el control en una política o procedimiento y generar evidencia de su operación.</div></td>
+<td class="small">Por asignar</td>
+<td class="mono">2027-04-18</td>
+</tr>
+</tbody></table></div>
+
+<h2>Detalle por control</h2>
+<details>
+  <summary><span class="mono">5.1</span> <b>Políticas de seguridad</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-01, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-01#5</span> — Todo el personal realiza una capacitación anual de concientización en seguridad</blockquote><blockquote><span class="mono">POL-01#1</span> — Ñandú Pagos S.A</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.PO-01, GV.PO-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.2</span> <b>Roles y responsabilidades de seguridad</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-01, POL-03, POL-05, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-01#3</span> — Directorio:** aprueba esta política y asigna los recursos para el programa de seguridad</blockquote><blockquote><span class="mono">POL-01#6</span> — El CISO verifica el cumplimiento de las políticas mediante revisiones periódicas</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.3</span> <b>Separación de funciones incompatibles</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.4</span> <b>Compromiso de la dirección</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-01, POL-02, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-01#1</span> — Ñandú Pagos S.A</blockquote><blockquote><span class="mono">POL-01#3</span> — Directorio:** aprueba esta política y asigna los recursos para el programa de seguridad</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.5</span> <b>Contacto con autoridades</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-03, pero no hay evidencia de que se opere.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento con revisión vencida (POL-03).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-03#4</span> — Legales evalúa la obligación de notificar a reguladores, a la autoridad de protección de datos y a los clientes afectados.</blockquote><blockquote><span class="mono">POL-03#1</span> — Cualquier persona que detecte un evento de seguridad lo reporta en el canal #seguridad o por correo a seguridad@nandupagos.example</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03, RS.CO-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.6</span> <b>Contacto con grupos de interés</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">ID.RA-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.7</span> <b>Inteligencia de amenazas</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">ID.RA-02, ID.RA-03</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.8</span> <b>Seguridad en la gestión de proyectos</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">ID.RA-07</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.9</span> <b>Inventario de activos</b> <span class="badge b-met">Cumple</span>
+</summary>
+  <div class="body">
+    <p>Cubierto por POL-01 con evidencia de operación en EVD-08.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-01#3</span> — Directorio:** aprueba esta política y asigna los recursos para el programa de seguridad</blockquote><blockquote><span class="mono">EVD-08#1</span> — Activo | Tipo | Responsable | Clasificación  Base de datos transaccional | Base de datos | Plataforma | Restringida Backoffice de pagos | Aplicación | Operaciones | Confidencial…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-01, ID.AM-02, ID.AM-05</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.10</span> <b>Uso aceptable de activos</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">GV.PO-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.11</span> <b>Devolución de activos</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-02, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-02#2</span> — Cada persona tiene un identificador único; no se permiten cuentas compartidas</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-08</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.12</span> <b>Clasificación de la información</b> <span class="badge b-met">Cumple</span>
+</summary>
+  <div class="body">
+    <p>Cubierto por POL-01, POL-03, POL-05, POL-07 con evidencia de operación en EVD-08.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-07#1</span> — La información se clasifica en cuatro niveles: pública, uso interno, confidencial y restringida</blockquote><blockquote><span class="mono">POL-07#4</span> — La información confidencial o restringida solo se envía por canales cifrados (SFTP o enlaces con caducidad del almacenamiento corporativo)</blockquote><blockquote><span class="mono">EVD-08#1</span> — Activo | Tipo | Responsable | Clasificación  Base de datos transaccional | Base de datos | Plataforma | Restringida Backoffice de pagos | Aplicación | Operaciones | Confidencial…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-05, ID.AM-07</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.13</span> <b>Etiquetado de la información</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-07, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-07#2</span> — Los documentos confidenciales y restringidos llevan la clasificación en el encabezado.</blockquote><blockquote><span class="mono">POL-07#1</span> — La información se clasifica en cuatro niveles: pública, uso interno, confidencial y restringida</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-07</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.14</span> <b>Transferencia de información</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-07, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-07#4</span> — La información confidencial o restringida solo se envía por canales cifrados (SFTP o enlaces con caducidad del almacenamiento corporativo)</blockquote><blockquote><span class="mono">POL-07#1</span> — La información se clasifica en cuatro niveles: pública, uso interno, confidencial y restringida</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.15</span> <b>Control de acceso</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-01, POL-02, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-02#1</span> — El acceso a la información se otorga según el mínimo privilegio y la necesidad de saber</blockquote><blockquote><span class="mono">POL-02#5</span> — Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.16</span> <b>Gestión de identidades</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-02, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-02#2</span> — Cada persona tiene un identificador único; no se permiten cuentas compartidas</blockquote><blockquote><span class="mono">POL-02#3</span> — Se usa inicio de sesión único (SSO) con autenticación multifactor (MFA) obligatoria para todo el personal y para todos los accesos a la consola de AWS</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.17</span> <b>Información de autenticación</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-02, POL-07, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-02#3</span> — Se usa inicio de sesión único (SSO) con autenticación multifactor (MFA) obligatoria para todo el personal y para todos los accesos a la consola de AWS</blockquote><blockquote><span class="mono">POL-02#6</span> — Esta política reemplaza a la Política de Contraseñas de 2019 (POL-09).</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-01, PR.AA-03</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.18</span> <b>Derechos de acceso</b> <span class="badge b-partial">Parcial</span>
+<span class="small">(Cumple → Parcial)</span></summary>
+  <div class="body">
+    <p>Cubierto por POL-02 con evidencia de operación en EVD-01.</p>
+<p class="small"><b>Veredicto limitado por:</b> Compromiso periódico incumplido (COM-02).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-02#5</span> — Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre</blockquote><blockquote><span class="mono">POL-02#1</span> — El acceso a la información se otorga según el mínimo privilegio y la necesidad de saber</blockquote><blockquote><span class="mono">EVD-01#1</span> — Fecha | Sistema | Revisor | Cuentas revisadas | Observaciones  2026-02-12 | Consola AWS (producción) | D</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.19</span> <b>Seguridad con proveedores</b> <span class="badge b-met">Cumple</span>
+</summary>
+  <div class="body">
+    <p>Cubierto por POL-01, POL-05 con evidencia de operación en EVD-06.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-05#2</span> — Antes de contratar un proveedor crítico se completa un cuestionario de seguridad y se solicita su informe SOC 2 tipo II o certificación ISO 27001 vigente.</blockquote><blockquote><span class="mono">POL-05#1</span> — Los proveedores se clasifican como críticos, importantes o estándar según el acceso a datos de clientes y su impacto en la operación.</blockquote><blockquote><span class="mono">EVD-06#1</span> — Proveedor (ficticio) | Servicio | Evidencia revisada | Resultado  AWS | Infraestructura en la nube | Informe SOC 2 tipo II 2025 | Sin observaciones Tarjetera Andina S.A</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.SC-01, GV.SC-06</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.20</span> <b>Seguridad en contratos con proveedores</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-05, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-05#3</span> — Los contratos con proveedores críticos incluyen cláusulas de confidencialidad, notificación de incidentes en 48 horas, derecho de auditoría y devolución o destrucción de datos al…</blockquote><blockquote><span class="mono">POL-05#4</span> — AWS es el proveedor de nube principal</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.SC-05</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.21</span> <b>Seguridad en la cadena de suministro TIC</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-05, POL-06, pero no hay evidencia de que se opere.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento sin aprobar (POL-06).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-05#2</span> — Antes de contratar un proveedor crítico se completa un cuestionario de seguridad y se solicita su informe SOC 2 tipo II o certificación ISO 27001 vigente.</blockquote><blockquote><span class="mono">POL-06#2</span> — El pipeline de integración continua ejecuta análisis estático (SAST) y análisis de dependencias</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.SC-05, GV.SC-07</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.22</span> <b>Seguimiento de servicios de proveedores</b> <span class="badge b-met">Cumple</span>
+</summary>
+  <div class="body">
+    <p>Cubierto por POL-05 con evidencia de operación en EVD-06.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-05#5</span> — Los proveedores críticos se revisan una vez por año.</blockquote><blockquote><span class="mono">POL-05#2</span> — Antes de contratar un proveedor crítico se completa un cuestionario de seguridad y se solicita su informe SOC 2 tipo II o certificación ISO 27001 vigente.</blockquote><blockquote><span class="mono">EVD-06#1</span> — Proveedor (ficticio) | Servicio | Evidencia revisada | Resultado  AWS | Infraestructura en la nube | Informe SOC 2 tipo II 2025 | Sin observaciones Tarjetera Andina S.A</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.SC-07</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.23</span> <b>Seguridad en servicios en la nube</b> <span class="badge b-met">Cumple</span>
+</summary>
+  <div class="body">
+    <p>Cubierto por POL-01, POL-05 con evidencia de operación en EVD-06.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-05#4</span> — AWS es el proveedor de nube principal</blockquote><blockquote><span class="mono">POL-05#2</span> — Antes de contratar un proveedor crítico se completa un cuestionario de seguridad y se solicita su informe SOC 2 tipo II o certificación ISO 27001 vigente.</blockquote><blockquote><span class="mono">EVD-06#1</span> — Proveedor (ficticio) | Servicio | Evidencia revisada | Resultado  AWS | Infraestructura en la nube | Informe SOC 2 tipo II 2025 | Sin observaciones Tarjetera Andina S.A</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.SC-05, GV.SC-07</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.24</span> <b>Planificación de la gestión de incidentes</b> <span class="badge b-partial">Parcial</span>
+<span class="small">(Cumple → Parcial)</span></summary>
+  <div class="body">
+    <p>Cubierto por POL-01, POL-03 con evidencia de operación en EVD-05.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento con revisión vencida (POL-03). Compromiso periódico incumplido (COM-03).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-03#6</span> — Cada incidente de severidad alta o crítica termina con un análisis post mortem dentro de los 10 días hábiles, con causa raíz y acciones de mejora.</blockquote><blockquote><span class="mono">POL-03#3</span> — El líder de Operaciones de Seguridad coordina la contención, erradicación y recuperación</blockquote><blockquote><span class="mono">EVD-05#1</span> — Ejercicio de mesa con escenario de ransomware en el backoffice</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">RS.MA-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.25</span> <b>Evaluación de eventos de seguridad</b> <span class="badge b-partial">Parcial</span>
+<span class="small">(Cumple → Parcial)</span></summary>
+  <div class="body">
+    <p>Cubierto por POL-01, POL-03 con evidencia de operación en EVD-07.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento con revisión vencida (POL-03).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-03#2</span> — Los eventos se evalúan y, si corresponde, se declaran incidentes con severidad baja, media, alta o crítica según el impacto en clientes, datos personales y disponibilidad de la…</blockquote><blockquote><span class="mono">POL-03#3</span> — El líder de Operaciones de Seguridad coordina la contención, erradicación y recuperación</blockquote><blockquote><span class="mono">EVD-07#1</span> — ID | Fecha | Severidad | Descripción | Estado | Post mortem  INC-2026-01 | 2026-01-18 | Media | Campaña de phishing dirigida a Atención al Cliente; 2 credenciales comprometidas,…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">DE.AE-02, DE.AE-08</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.26</span> <b>Respuesta a incidentes</b> <span class="badge b-partial">Parcial</span>
+<span class="small">(Cumple → Parcial)</span></summary>
+  <div class="body">
+    <p>Cubierto por POL-03 con evidencia de operación en EVD-05, EVD-07.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento con revisión vencida (POL-03).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-03#3</span> — El líder de Operaciones de Seguridad coordina la contención, erradicación y recuperación</blockquote><blockquote><span class="mono">POL-03#5</span> — Durante la respuesta se preservan los registros y la evidencia relevante, documentando quién accedió a ella.</blockquote><blockquote><span class="mono">EVD-05#1</span> — Ejercicio de mesa con escenario de ransomware en el backoffice</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">RS.MA-01, RS.MI-01, RS.MI-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.27</span> <b>Aprendizaje de incidentes</b> <span class="badge b-partial">Parcial</span>
+<span class="small">(Cumple → Parcial)</span></summary>
+  <div class="body">
+    <p>Cubierto por POL-03 con evidencia de operación en EVD-07.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento con revisión vencida (POL-03).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-03#6</span> — Cada incidente de severidad alta o crítica termina con un análisis post mortem dentro de los 10 días hábiles, con causa raíz y acciones de mejora.</blockquote><blockquote><span class="mono">POL-03#3</span> — El líder de Operaciones de Seguridad coordina la contención, erradicación y recuperación</blockquote><blockquote><span class="mono">EVD-07#1</span> — ID | Fecha | Severidad | Descripción | Estado | Post mortem  INC-2026-01 | 2026-01-18 | Media | Campaña de phishing dirigida a Atención al Cliente; 2 credenciales comprometidas,…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.IM-02, ID.IM-03</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.28</span> <b>Recolección de evidencia</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-03, pero no hay evidencia de que se opere.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento con revisión vencida (POL-03).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-03#5</span> — Durante la respuesta se preservan los registros y la evidencia relevante, documentando quién accedió a ella.</blockquote><blockquote><span class="mono">POL-03#1</span> — Cualquier persona que detecte un evento de seguridad lo reporta en el canal #seguridad o por correo a seguridad@nandupagos.example</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">RS.AN-07</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.29</span> <b>Seguridad durante interrupciones</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">ID.IM-04, RC.RP-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.30</span> <b>Preparación TIC para la continuidad</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-04, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-04#3</span> — Cada trimestre se restaura la base de datos transaccional en un entorno aislado para verificar la integridad de los datos y el tiempo de recuperación</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.IM-04, PR.IR-03, RC.RP-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.31</span> <b>Requisitos legales, regulatorios y contractuales</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-01, POL-07, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-01#4</span> — La compañía identifica y cumple los requisitos aplicables a un proveedor de servicios de pago, la normativa de protección de datos personales (Ley 25.326) y las obligaciones…</blockquote><blockquote><span class="mono">POL-01#6</span> — El CISO verifica el cumplimiento de las políticas mediante revisiones periódicas</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.32</span> <b>Propiedad intelectual</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.33</span> <b>Protección de registros</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-07, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-07#5</span> — Los registros de transacciones se conservan 10 años</blockquote><blockquote><span class="mono">POL-07#3</span> — El tratamiento de datos personales cumple la Ley 25.326</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.34</span> <b>Privacidad y datos personales</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-01, POL-03, POL-07, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-07#3</span> — El tratamiento de datos personales cumple la Ley 25.326</blockquote><blockquote><span class="mono">POL-01#4</span> — La compañía identifica y cumple los requisitos aplicables a un proveedor de servicios de pago, la normativa de protección de datos personales (Ley 25.326) y las obligaciones…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03, PR.DS-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.35</span> <b>Revisión independiente de la seguridad</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">GV.OV-02, ID.IM-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.36</span> <b>Cumplimiento de políticas y normas</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-01, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-01#6</span> — El CISO verifica el cumplimiento de las políticas mediante revisiones periódicas</blockquote><blockquote><span class="mono">POL-01#7</span> — Esta política se complementa con las políticas específicas de control de acceso, gestión de incidentes, respaldos, proveedores, desarrollo seguro, clasificación de la información…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.IM-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">5.37</span> <b>Procedimientos operativos documentados</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">GV.PO-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">6.1</span> <b>Verificación de antecedentes</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-04</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">6.2</span> <b>Condiciones de contratación</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-04</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">6.3</span> <b>Concientización y capacitación</b> <span class="badge b-met">Cumple</span>
+</summary>
+  <div class="body">
+    <p>Cubierto por POL-01 con evidencia de operación en EVD-04.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-01#5</span> — Todo el personal realiza una capacitación anual de concientización en seguridad</blockquote><blockquote><span class="mono">POL-01#1</span> — Ñandú Pagos S.A</blockquote><blockquote><span class="mono">EVD-04#1</span> — Fecha:** 22/04/2026 (sesión virtual de 90 minutos, con grabación disponible)</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AT-01, PR.AT-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">6.4</span> <b>Proceso disciplinario</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-01, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-01#6</span> — El CISO verifica el cumplimiento de las políticas mediante revisiones periódicas</blockquote><blockquote><span class="mono">POL-01#7</span> — Esta política se complementa con las políticas específicas de control de acceso, gestión de incidentes, respaldos, proveedores, desarrollo seguro, clasificación de la información…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-04</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">6.5</span> <b>Responsabilidades tras la desvinculación</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-02, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-02#2</span> — Cada persona tiene un identificador único; no se permiten cuentas compartidas</blockquote><blockquote><span class="mono">POL-02#5</span> — Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-04, PR.AA-05</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">6.6</span> <b>Acuerdos de confidencialidad</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-01, POL-05, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-05#3</span> — Los contratos con proveedores críticos incluyen cláusulas de confidencialidad, notificación de incidentes en 48 horas, derecho de auditoría y devolución o destrucción de datos al…</blockquote><blockquote><span class="mono">POL-01#1</span> — Ñandú Pagos S.A</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-04</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">6.7</span> <b>Trabajo remoto</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">6.8</span> <b>Reporte de eventos de seguridad</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-03, pero no hay evidencia de que se opere.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento con revisión vencida (POL-03).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-03#1</span> — Cualquier persona que detecte un evento de seguridad lo reporta en el canal #seguridad o por correo a seguridad@nandupagos.example</blockquote><blockquote><span class="mono">POL-03#2</span> — Los eventos se evalúan y, si corresponde, se declaran incidentes con severidad baja, media, alta o crítica según el impacto en clientes, datos personales y disponibilidad de la…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">DE.AE-06</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">7.1</span> <b>Perímetros de seguridad física</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-06</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">7.2</span> <b>Control de ingreso físico</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-06</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">7.3</span> <b>Seguridad de oficinas e instalaciones</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-06</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">7.4</span> <b>Monitoreo de seguridad física</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">DE.CM-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">7.5</span> <b>Protección ante amenazas físicas y ambientales</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">7.6</span> <b>Trabajo en áreas seguras</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-06</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">7.7</span> <b>Escritorio y pantalla limpios</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-08, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">7.9</span> <b>Seguridad de activos fuera de las instalaciones</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-08, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">7.10</span> <b>Medios de almacenamiento</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01, ID.AM-08</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">7.13</span> <b>Mantenimiento de equipos</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-08</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">7.14</span> <b>Eliminación o reutilización segura de equipos</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-08</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.1</span> <b>Dispositivos de usuario</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-08, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote><blockquote><span class="mono">POL-08#6</span> — Los datos en tránsito usan TLS 1.2 o superior</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-01, PR.DS-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.2</span> <b>Accesos privilegiados</b> <span class="badge b-met">Cumple</span>
+</summary>
+  <div class="body">
+    <p>Cubierto por POL-02 con evidencia de operación en EVD-01.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-02#4</span> — Las cuentas de administrador son nominales, se usan solo para tareas administrativas y requieren MFA con llave física</blockquote><blockquote><span class="mono">POL-02#5</span> — Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre</blockquote><blockquote><span class="mono">EVD-01#1</span> — Fecha | Sistema | Revisor | Cuentas revisadas | Observaciones  2026-02-12 | Consola AWS (producción) | D</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.3</span> <b>Restricción de acceso a la información</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-01, POL-02, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-02#1</span> — El acceso a la información se otorga según el mínimo privilegio y la necesidad de saber</blockquote><blockquote><span class="mono">POL-02#5</span> — Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.4</span> <b>Acceso al código fuente</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-06, pero no hay evidencia de que se opere.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento sin aprobar (POL-06).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-06#1</span> — Todo cambio de código pasa por un pull request con al menos una revisión aprobada antes de fusionarse en la rama principal, que está protegida.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05, PR.PS-06</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.5</span> <b>Autenticación segura</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-02, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-02#3</span> — Se usa inicio de sesión único (SSO) con autenticación multifactor (MFA) obligatoria para todo el personal y para todos los accesos a la consola de AWS</blockquote><blockquote><span class="mono">POL-02#4</span> — Las cuentas de administrador son nominales, se usan solo para tareas administrativas y requieren MFA con llave física</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-03</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.6</span> <b>Gestión de la capacidad</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-04</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.7</span> <b>Protección contra malware</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-08, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote><blockquote><span class="mono">POL-08#3</span> — La infraestructura se define como código (Terraform) y se valida contra una línea base de configuración segura.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-05, DE.CM-09</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.8</span> <b>Gestión de vulnerabilidades técnicas</b> <span class="badge b-partial">Parcial</span>
+<span class="small">(Cumple → Parcial)</span></summary>
+  <div class="body">
+    <p>Cubierto por POL-08 con evidencia de operación en EVD-03.</p>
+<p class="small"><b>Veredicto limitado por:</b> Compromiso periódico incumplido (COM-06).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-08#2</span> — La infraestructura productiva se escanea todos los meses</blockquote><blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote><blockquote><span class="mono">EVD-03#1</span> — Mes | Fecha | Críticas | Altas | Medias | Observaciones  Oct 2025 | 2025-10-08 | 0 | 5 | 13 Nov 2025 | 2025-11-05 | 0 | 4 | 12 Dic 2025 | 2025-12-03 | 0 | 3 | 10 Ene 2026 |…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.RA-01, PR.PS-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.9</span> <b>Gestión de la configuración</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-05, POL-08, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-08#3</span> — La infraestructura se define como código (Terraform) y se valida contra una línea base de configuración segura.</blockquote><blockquote><span class="mono">POL-08#2</span> — La infraestructura productiva se escanea todos los meses</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.10</span> <b>Eliminación de información</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-07, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-07#5</span> — Los registros de transacciones se conservan 10 años</blockquote><blockquote><span class="mono">POL-07#3</span> — El tratamiento de datos personales cumple la Ley 25.326</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-08</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.12</span> <b>Prevención de fuga de datos</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01, PR.DS-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.13</span> <b>Copias de seguridad</b> <span class="badge b-partial">Parcial</span>
+<span class="small">(Cumple → Parcial)</span></summary>
+  <div class="body">
+    <p>Cubierto por POL-01, POL-04 con evidencia de operación en EVD-02.</p>
+<p class="small"><b>Veredicto limitado por:</b> Compromiso periódico incumplido (COM-04).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-04#3</span> — Cada trimestre se restaura la base de datos transaccional en un entorno aislado para verificar la integridad de los datos y el tiempo de recuperación</blockquote><blockquote><span class="mono">POL-04#1</span> — Las bases de datos de producción se respaldan automáticamente todos los días mediante snapshots cifrados con claves de KMS</blockquote><blockquote><span class="mono">EVD-02#1</span> — Alcance:** base de datos transaccional, snapshot del 17/11/2025</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-11</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.14</span> <b>Redundancia de instalaciones</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-04, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-04#2</span> — La base de datos transaccional opera en modo multi zona con conmutación automática (failover).</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-03</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.15</span> <b>Registro de eventos (logs)</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-08, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-08#4</span> — CloudTrail y los logs de aplicación se centralizan en el SIEM y se retienen 12 meses</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-04</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.16</span> <b>Monitoreo de actividades</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-08, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-08#4</span> — CloudTrail y los logs de aplicación se centralizan en el SIEM y se retienen 12 meses</blockquote><blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">DE.CM-01, DE.CM-03, DE.CM-09</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.17</span> <b>Sincronización de relojes</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-04</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.18</span> <b>Uso de utilidades privilegiadas</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05, PR.PS-05</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.19</span> <b>Instalación de software en producción</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-02, PR.PS-05</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.20</span> <b>Seguridad de redes</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-08, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-08#5</span> — Producción está en una VPC propia con subredes privadas</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-01, DE.CM-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.21</span> <b>Seguridad de servicios de red</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.22</span> <b>Segregación de redes</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-08, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-08#5</span> — Producción está en una VPC propia con subredes privadas</blockquote><blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.23</span> <b>Filtrado web</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.24</span> <b>Uso de criptografía</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-04, POL-07, POL-08, pero no hay evidencia de que se opere.</p>
+<div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-08#6</span> — Los datos en tránsito usan TLS 1.2 o superior</blockquote><blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01, PR.DS-02</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.25</span> <b>Ciclo de desarrollo seguro</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-01, POL-06, pero no hay evidencia de que se opere.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento sin aprobar (POL-06).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-06#1</span> — Todo cambio de código pasa por un pull request con al menos una revisión aprobada antes de fusionarse en la rama principal, que está protegida.</blockquote><blockquote><span class="mono">POL-06#3</span> — Desarrollo, staging y producción están en cuentas de AWS separadas</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-06</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.26</span> <b>Requisitos de seguridad de aplicaciones</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento sin aprobar (POL-06).</p>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-06</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.27</span> <b>Principios de arquitectura segura</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-06</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.28</span> <b>Codificación segura</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-06, pero no hay evidencia de que se opere.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento sin aprobar (POL-06).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-06#2</span> — El pipeline de integración continua ejecuta análisis estático (SAST) y análisis de dependencias</blockquote><blockquote><span class="mono">POL-06#1</span> — Todo cambio de código pasa por un pull request con al menos una revisión aprobada antes de fusionarse en la rama principal, que está protegida.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-06</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.29</span> <b>Pruebas de seguridad</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-06, pero no hay evidencia de que se opere.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento sin aprobar (POL-06).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-06#4</span> — Se realiza un test de penetración externo antes de cada lanzamiento mayor.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-06, ID.RA-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.31</span> <b>Separación de entornos</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-04, POL-06, pero no hay evidencia de que se opere.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento sin aprobar (POL-06).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-06#3</span> — Desarrollo, staging y producción están en cuentas de AWS separadas</blockquote><blockquote><span class="mono">POL-06#4</span> — Se realiza un test de penetración externo antes de cada lanzamiento mayor.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.32</span> <b>Gestión de cambios</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-01, POL-06, pero no hay evidencia de que se opere.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento sin aprobar (POL-06).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-06#1</span> — Todo cambio de código pasa por un pull request con al menos una revisión aprobada antes de fusionarse en la rama principal, que está protegida.</blockquote><blockquote><span class="mono">POL-06#5</span> — Los despliegues a producción requieren la aprobación del líder técnico y quedan registrados en el sistema de tickets.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.RA-07</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.33</span> <b>Información de prueba</b> <span class="badge b-partial">Parcial</span>
+</summary>
+  <div class="body">
+    <p>El control aparece en POL-06, pero no hay evidencia de que se opere.</p>
+<p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento sin aprobar (POL-06).</p><div class="small"><b>Evidencia citada</b></div>
+<blockquote><span class="mono">POL-06#3</span> — Desarrollo, staging y producción están en cuentas de AWS separadas</blockquote><blockquote><span class="mono">POL-06#4</span> — Se realiza un test de penetración externo antes de cada lanzamiento mayor.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01</span></p>
+  </div>
+</details>
+<details>
+  <summary><span class="mono">8.34</span> <b>Protección durante pruebas de auditoría</b> <span class="badge b-not_met">No cumple</span>
+</summary>
+  <div class="body">
+    <p>No se encontró ningún documento que trate este control.</p>
+    <p class="small">NIST CSF 2.0: <span class="mono">—</span></p>
+  </div>
+</details>
+
+<h2>Declaración de aplicabilidad (SoA)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Controles</th><th>Hallazgo</th><th>Estado</th><th>Justificación</th></tr></thead>
+<tbody>
+<tr><td class="mono">5.1</td><td>Políticas de seguridad</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.2</td><td>Roles y responsabilidades de seguridad</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.3</td><td>Separación de funciones incompatibles</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.4</td><td>Compromiso de la dirección</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.5</td><td>Contacto con autoridades</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.6</td><td>Contacto con grupos de interés</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.7</td><td>Inteligencia de amenazas</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.8</td><td>Seguridad en la gestión de proyectos</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.9</td><td>Inventario de activos</td>
+<td><span class="badge b-met">Cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.10</td><td>Uso aceptable de activos</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.11</td><td>Devolución de activos</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.12</td><td>Clasificación de la información</td>
+<td><span class="badge b-met">Cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.13</td><td>Etiquetado de la información</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.14</td><td>Transferencia de información</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.15</td><td>Control de acceso</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.16</td><td>Gestión de identidades</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.17</td><td>Información de autenticación</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.18</td><td>Derechos de acceso</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.19</td><td>Seguridad con proveedores</td>
+<td><span class="badge b-met">Cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.20</td><td>Seguridad en contratos con proveedores</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.21</td><td>Seguridad en la cadena de suministro TIC</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.22</td><td>Seguimiento de servicios de proveedores</td>
+<td><span class="badge b-met">Cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.23</td><td>Seguridad en servicios en la nube</td>
+<td><span class="badge b-met">Cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.24</td><td>Planificación de la gestión de incidentes</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.25</td><td>Evaluación de eventos de seguridad</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.26</td><td>Respuesta a incidentes</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.27</td><td>Aprendizaje de incidentes</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.28</td><td>Recolección de evidencia</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.29</td><td>Seguridad durante interrupciones</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.30</td><td>Preparación TIC para la continuidad</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.31</td><td>Requisitos legales, regulatorios y contractuales</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.32</td><td>Propiedad intelectual</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.33</td><td>Protección de registros</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.34</td><td>Privacidad y datos personales</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.35</td><td>Revisión independiente de la seguridad</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.36</td><td>Cumplimiento de políticas y normas</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">5.37</td><td>Procedimientos operativos documentados</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">6.1</td><td>Verificación de antecedentes</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">6.2</td><td>Condiciones de contratación</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">6.3</td><td>Concientización y capacitación</td>
+<td><span class="badge b-met">Cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">6.4</td><td>Proceso disciplinario</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">6.5</td><td>Responsabilidades tras la desvinculación</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">6.6</td><td>Acuerdos de confidencialidad</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">6.7</td><td>Trabajo remoto</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">6.8</td><td>Reporte de eventos de seguridad</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">7.1</td><td>Perímetros de seguridad física</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">7.2</td><td>Control de ingreso físico</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">7.3</td><td>Seguridad de oficinas e instalaciones</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">7.4</td><td>Monitoreo de seguridad física</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">7.5</td><td>Protección ante amenazas físicas y ambientales</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">7.6</td><td>Trabajo en áreas seguras</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">7.7</td><td>Escritorio y pantalla limpios</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">7.8</td><td>Ubicación y protección de equipos</td>
+<td><span class="badge b-excluded">Excluido (SoA)</span></td>
+<td class="small">Sin centro de datos propio; la ubicación y protección de servidores es responsabilidad del proveedor de nube (ver 5.23).</td></tr>
+<tr><td class="mono">7.9</td><td>Seguridad de activos fuera de las instalaciones</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">7.10</td><td>Medios de almacenamiento</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">7.11</td><td>Servicios de soporte</td>
+<td><span class="badge b-excluded">Excluido (SoA)</span></td>
+<td class="small">Sin centro de datos propio; energía y climatización a cargo del proveedor de nube (ver 5.23).</td></tr>
+<tr><td class="mono">7.12</td><td>Seguridad del cableado</td>
+<td><span class="badge b-excluded">Excluido (SoA)</span></td>
+<td class="small">Sin centro de datos propio; la oficina solo usa Wi-Fi y no aloja servidores.</td></tr>
+<tr><td class="mono">7.13</td><td>Mantenimiento de equipos</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">7.14</td><td>Eliminación o reutilización segura de equipos</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.1</td><td>Dispositivos de usuario</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.2</td><td>Accesos privilegiados</td>
+<td><span class="badge b-met">Cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.3</td><td>Restricción de acceso a la información</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.4</td><td>Acceso al código fuente</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.5</td><td>Autenticación segura</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.6</td><td>Gestión de la capacidad</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.7</td><td>Protección contra malware</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.8</td><td>Gestión de vulnerabilidades técnicas</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.9</td><td>Gestión de la configuración</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.10</td><td>Eliminación de información</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.11</td><td>Enmascaramiento de datos</td>
+<td><span class="badge b-excluded">Excluido (SoA)</span></td>
+<td class="small">⚠ —</td></tr>
+<tr><td class="mono">8.12</td><td>Prevención de fuga de datos</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.13</td><td>Copias de seguridad</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.14</td><td>Redundancia de instalaciones</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.15</td><td>Registro de eventos (logs)</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.16</td><td>Monitoreo de actividades</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.17</td><td>Sincronización de relojes</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.18</td><td>Uso de utilidades privilegiadas</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.19</td><td>Instalación de software en producción</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.20</td><td>Seguridad de redes</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.21</td><td>Seguridad de servicios de red</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.22</td><td>Segregación de redes</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.23</td><td>Filtrado web</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.24</td><td>Uso de criptografía</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.25</td><td>Ciclo de desarrollo seguro</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.26</td><td>Requisitos de seguridad de aplicaciones</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.27</td><td>Principios de arquitectura segura</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.28</td><td>Codificación segura</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.29</td><td>Pruebas de seguridad</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.30</td><td>Desarrollo tercerizado</td>
+<td><span class="badge b-excluded">Excluido (SoA)</span></td>
+<td class="small">Todo el desarrollo es interno; no se contrata desarrollo a terceros.</td></tr>
+<tr><td class="mono">8.31</td><td>Separación de entornos</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.32</td><td>Gestión de cambios</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.33</td><td>Información de prueba</td>
+<td><span class="badge b-partial">Parcial</span></td>
+<td class="small">Aplicable</td></tr>
+<tr><td class="mono">8.34</td><td>Protección durante pruebas de auditoría</td>
+<td><span class="badge b-not_met">No cumple</span></td>
+<td class="small">Aplicable</td></tr>
+</tbody></table></div>
+
+<h2>Método y limitaciones</h2>
+<p class="small">1) Se cargan las políticas y evidencias en Markdown y se dividen en fragmentos. 2) Para cada control se recuperan los fragmentos más relevantes (BM25 + etiquetas del documento). 3) Chequeos deterministas: vencimientos, responsables, borradores, documentos reemplazados, SoA y conciliación de compromisos. 4) Evaluación del control (heurística o con Claude). 5) Un control nunca puede figurar como «cumple» si se apoya en un documento vencido o en borrador, o si tiene un compromiso incumplido. 6) Los hallazgos se agrupan por causa raíz para detectar patrones.</p>
+<footer>Los títulos de los controles de ISO/IEC 27001 son descripciones propias; el texto de la norma pertenece a ISO/IEC. El mapeo a NIST CSF 2.0 es indicativo. · Tranquera 0.1.0</footer>
+</div>
+<script>
+document.querySelectorAll('.filters button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var sev = b.dataset.sev;
+    document.querySelectorAll('.filters button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+    document.querySelectorAll('#register tbody tr[data-sev]').forEach(function (tr) {
+      tr.hidden = !(sev === 'all' || tr.dataset.sev === sev);
+    });
+  });
+});
+</script>
+</body>
+</html>

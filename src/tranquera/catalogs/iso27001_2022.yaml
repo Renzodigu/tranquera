@@ -1,0 +1,114 @@
+# ISO/IEC 27001:2022 — Annex A control catalog (identifiers only).
+#
+# The text of ISO/IEC 27001 is copyrighted by ISO/IEC. This file does NOT reproduce it:
+# it contains the public control identifiers plus short titles and guidance written by
+# the Tranquera authors in their own words. Use the official standard for the real text.
+#
+# Fields
+#   id           Annex A identifier
+#   theme        organizational | people | physical | technological
+#   en / es      short title, own wording
+#   crit         criticality used for severity scoring: high | medium | low
+#   kw           retrieval keywords (Spanish + English, accents not required)
+#   nist         indicative mapping to NIST CSF 2.0 subcategories (author's analysis,
+#                not the official NIST informative reference; see docs/mapping.md)
+framework: iso27001-2022
+name: ISO/IEC 27001:2022 Annex A
+controls:
+  # --- 5. Organizational controls -------------------------------------------------
+  - {id: "5.1", theme: organizational, crit: high, en: "Security policies", es: "Políticas de seguridad", kw: [politica de seguridad, aprobada por la direccion, revision anual, information security policy], nist: [GV.PO-01, GV.PO-02]}
+  - {id: "5.2", theme: organizational, crit: medium, en: "Security roles and responsibilities", es: "Roles y responsabilidades de seguridad", kw: [roles, responsabilidades, CISO, responsable de seguridad, comite de seguridad], nist: [GV.RR-02]}
+  - {id: "5.3", theme: organizational, crit: medium, en: "Separation of conflicting duties", es: "Separación de funciones incompatibles", kw: [segregacion de funciones, separacion de funciones, cuatro ojos, doble aprobacion], nist: [PR.AA-05]}
+  - {id: "5.4", theme: organizational, crit: medium, en: "Management commitment to security", es: "Compromiso de la dirección", kw: [direccion, directorio, compromiso, alta gerencia], nist: [GV.RR-01]}
+  - {id: "5.5", theme: organizational, crit: low, en: "Contact with authorities", es: "Contacto con autoridades", kw: [autoridades, BCRA, AAIP, regulador, notificacion a autoridades], nist: [GV.OC-03, RS.CO-02]}
+  - {id: "5.6", theme: organizational, crit: low, en: "Contact with special interest groups", es: "Contacto con grupos de interés", kw: [grupos de interes, foros, CSIRT, comunidad de seguridad], nist: [ID.RA-02]}
+  - {id: "5.7", theme: organizational, crit: medium, en: "Threat intelligence", es: "Inteligencia de amenazas", kw: [inteligencia de amenazas, threat intelligence, indicadores de compromiso, IOC, fuentes de amenazas], nist: [ID.RA-02, ID.RA-03]}
+  - {id: "5.8", theme: organizational, crit: medium, en: "Security in project management", es: "Seguridad en la gestión de proyectos", kw: [proyectos, gestion de proyectos, requisitos de seguridad del proyecto], nist: [ID.RA-07]}
+  - {id: "5.9", theme: organizational, crit: high, en: "Inventory of assets", es: "Inventario de activos", kw: [inventario de activos, activos, propietario del activo, CMDB], nist: [ID.AM-01, ID.AM-02, ID.AM-05]}
+  - {id: "5.10", theme: organizational, crit: medium, en: "Acceptable use of assets", es: "Uso aceptable de activos", kw: [uso aceptable, uso de equipos, uso permitido], nist: [GV.PO-01]}
+  - {id: "5.11", theme: organizational, crit: medium, en: "Return of assets", es: "Devolución de activos", kw: [devolucion de activos, desvinculacion, entrega de equipos, offboarding], nist: [ID.AM-08]}
+  - {id: "5.12", theme: organizational, crit: high, en: "Information classification", es: "Clasificación de la información", kw: [clasificacion, confidencial, uso interno, publica, restringida], nist: [ID.AM-05, ID.AM-07]}
+  - {id: "5.13", theme: organizational, crit: low, en: "Labelling of information", es: "Etiquetado de la información", kw: [etiquetado, etiqueta, marcado de documentos], nist: [ID.AM-07]}
+  - {id: "5.14", theme: organizational, crit: medium, en: "Information transfer", es: "Transferencia de información", kw: [transferencia, intercambio de informacion, envio de datos, SFTP, correo cifrado], nist: [PR.DS-02]}
+  - {id: "5.15", theme: organizational, crit: high, en: "Access control", es: "Control de acceso", kw: [control de acceso, minimo privilegio, necesidad de saber, access control], nist: [PR.AA-05]}
+  - {id: "5.16", theme: organizational, crit: high, en: "Identity management", es: "Gestión de identidades", kw: [identidades, alta de usuarios, baja de usuarios, cuentas compartidas, identificador unico], nist: [PR.AA-01]}
+  - {id: "5.17", theme: organizational, crit: high, en: "Authentication information", es: "Información de autenticación", kw: [contrasena, clave, credenciales, gestor de contrasenas, password], nist: [PR.AA-01, PR.AA-03]}
+  - {id: "5.18", theme: organizational, crit: high, en: "Access rights", es: "Derechos de acceso", kw: [revision de accesos, derechos de acceso, recertificacion, permisos, access review], nist: [PR.AA-05]}
+  - {id: "5.19", theme: organizational, crit: high, en: "Security in supplier relationships", es: "Seguridad con proveedores", kw: [proveedores, terceros, evaluacion de proveedores, riesgo de terceros], nist: [GV.SC-01, GV.SC-06]}
+  - {id: "5.20", theme: organizational, crit: medium, en: "Security in supplier agreements", es: "Seguridad en contratos con proveedores", kw: [contrato, clausulas de seguridad, acuerdo de nivel de servicio, SLA, acuerdo de confidencialidad con proveedores], nist: [GV.SC-05]}
+  - {id: "5.21", theme: organizational, crit: medium, en: "ICT supply chain security", es: "Seguridad en la cadena de suministro TIC", kw: [cadena de suministro, dependencias, componentes de terceros, software de terceros], nist: [GV.SC-05, GV.SC-07]}
+  - {id: "5.22", theme: organizational, crit: medium, en: "Monitoring of supplier services", es: "Seguimiento de servicios de proveedores", kw: [seguimiento de proveedores, revision de proveedores, informes SOC 2, monitoreo de proveedores], nist: [GV.SC-07]}
+  - {id: "5.23", theme: organizational, crit: high, en: "Security for cloud services", es: "Seguridad en servicios en la nube", kw: [nube, cloud, AWS, proveedor de nube, responsabilidad compartida], nist: [GV.SC-05, GV.SC-07]}
+  - {id: "5.24", theme: organizational, crit: high, en: "Incident management planning", es: "Planificación de la gestión de incidentes", kw: [incidente, plan de respuesta, gestion de incidentes, roles en incidentes], nist: [RS.MA-01]}
+  - {id: "5.25", theme: organizational, crit: medium, en: "Assessment of security events", es: "Evaluación de eventos de seguridad", kw: [evento de seguridad, triage, clasificacion de incidentes, severidad], nist: [DE.AE-02, DE.AE-08]}
+  - {id: "5.26", theme: organizational, crit: high, en: "Response to incidents", es: "Respuesta a incidentes", kw: [respuesta a incidentes, contencion, erradicacion, escalamiento], nist: [RS.MA-01, RS.MI-01, RS.MI-02]}
+  - {id: "5.27", theme: organizational, crit: medium, en: "Learning from incidents", es: "Aprendizaje de incidentes", kw: [lecciones aprendidas, post mortem, causa raiz, mejora], nist: [ID.IM-02, ID.IM-03]}
+  - {id: "5.28", theme: organizational, crit: medium, en: "Collection of evidence", es: "Recolección de evidencia", kw: [evidencia forense, cadena de custodia, preservacion de evidencia], nist: [RS.AN-07]}
+  - {id: "5.29", theme: organizational, crit: high, en: "Security during disruption", es: "Seguridad durante interrupciones", kw: [continuidad del negocio, interrupcion, contingencia, crisis], nist: [ID.IM-04, RC.RP-01]}
+  - {id: "5.30", theme: organizational, crit: high, en: "ICT readiness for business continuity", es: "Preparación TIC para la continuidad", kw: [continuidad, RTO, RPO, recuperacion ante desastres, DRP, plan de continuidad], nist: [ID.IM-04, PR.IR-03, RC.RP-01]}
+  - {id: "5.31", theme: organizational, crit: high, en: "Legal, regulatory and contractual requirements", es: "Requisitos legales, regulatorios y contractuales", kw: [requisitos legales, normativa, regulacion, BCRA, ley 25.326, cumplimiento legal], nist: [GV.OC-03]}
+  - {id: "5.32", theme: organizational, crit: low, en: "Intellectual property rights", es: "Propiedad intelectual", kw: [propiedad intelectual, licencias, software licenciado], nist: [GV.OC-03]}
+  - {id: "5.33", theme: organizational, crit: medium, en: "Protection of records", es: "Protección de registros", kw: [retencion, conservacion de registros, plazo de retencion, se conservan], nist: [PR.DS-01]}
+  - {id: "5.34", theme: organizational, crit: high, en: "Privacy and protection of personal data", es: "Privacidad y datos personales", kw: [datos personales, privacidad, ley 25.326, titular de los datos, AAIP], nist: [GV.OC-03, PR.DS-01]}
+  - {id: "5.35", theme: organizational, crit: medium, en: "Independent review of security", es: "Revisión independiente de la seguridad", kw: [auditoria interna, auditoria externa, revision independiente], nist: [GV.OV-02, ID.IM-02]}
+  - {id: "5.36", theme: organizational, crit: medium, en: "Compliance with policies and standards", es: "Cumplimiento de políticas y normas", kw: [cumplimiento de politicas, verificacion de cumplimiento, excepciones], nist: [ID.IM-02]}
+  - {id: "5.37", theme: organizational, crit: low, en: "Documented operating procedures", es: "Procedimientos operativos documentados", kw: [procedimiento, procedimientos operativos, runbook, instructivo], nist: [GV.PO-01]}
+  # --- 6. People controls ---------------------------------------------------------
+  - {id: "6.1", theme: people, crit: medium, en: "Screening", es: "Verificación de antecedentes", kw: [antecedentes, verificacion de antecedentes, background check, preocupacional], nist: [GV.RR-04]}
+  - {id: "6.2", theme: people, crit: medium, en: "Terms of employment", es: "Condiciones de contratación", kw: [contrato laboral, condiciones de empleo, responsabilidades del empleado], nist: [GV.RR-04]}
+  - {id: "6.3", theme: people, crit: high, en: "Awareness, education and training", es: "Concientización y capacitación", kw: [capacitacion, concientizacion, phishing simulado, formacion, training], nist: [PR.AT-01, PR.AT-02]}
+  - {id: "6.4", theme: people, crit: low, en: "Disciplinary process", es: "Proceso disciplinario", kw: [disciplinario, sanciones, incumplimiento de politicas], nist: [GV.RR-04]}
+  - {id: "6.5", theme: people, crit: medium, en: "Responsibilities after termination or change", es: "Responsabilidades tras la desvinculación", kw: [desvinculacion, cambio de puesto, baja de accesos, egreso], nist: [GV.RR-04, PR.AA-05]}
+  - {id: "6.6", theme: people, crit: medium, en: "Confidentiality agreements", es: "Acuerdos de confidencialidad", kw: [confidencialidad, NDA, acuerdo de confidencialidad], nist: [GV.RR-04]}
+  - {id: "6.7", theme: people, crit: medium, en: "Remote working", es: "Trabajo remoto", kw: [trabajo remoto, teletrabajo, home office, VPN], nist: [PR.IR-01]}
+  - {id: "6.8", theme: people, crit: medium, en: "Security event reporting", es: "Reporte de eventos de seguridad", kw: [reportar, reporte de eventos, canal de reporte, informar incidentes], nist: [DE.AE-06]}
+  # --- 7. Physical controls -------------------------------------------------------
+  - {id: "7.1", theme: physical, crit: low, en: "Physical security perimeters", es: "Perímetros de seguridad física", kw: [perimetro, oficina, instalaciones], nist: [PR.AA-06]}
+  - {id: "7.2", theme: physical, crit: low, en: "Physical entry", es: "Control de ingreso físico", kw: [ingreso a la oficina, tarjeta de acceso, control de visitas, molinete], nist: [PR.AA-06]}
+  - {id: "7.3", theme: physical, crit: low, en: "Securing offices and facilities", es: "Seguridad de oficinas e instalaciones", kw: [oficinas, salas, instalaciones seguras], nist: [PR.AA-06]}
+  - {id: "7.4", theme: physical, crit: low, en: "Physical security monitoring", es: "Monitoreo de seguridad física", kw: [camaras, CCTV, alarma, vigilancia], nist: [DE.CM-02]}
+  - {id: "7.5", theme: physical, crit: low, en: "Protection against physical and environmental threats", es: "Protección ante amenazas físicas y ambientales", kw: [incendio, inundacion, amenazas ambientales], nist: [PR.IR-02]}
+  - {id: "7.6", theme: physical, crit: low, en: "Working in secure areas", es: "Trabajo en áreas seguras", kw: [areas seguras, sala de servidores], nist: [PR.AA-06]}
+  - {id: "7.7", theme: physical, crit: low, en: "Clear desk and clear screen", es: "Escritorio y pantalla limpios", kw: [escritorio limpio, bloqueo de pantalla, pantalla limpia], nist: [PR.DS-01]}
+  - {id: "7.8", theme: physical, crit: low, en: "Equipment siting and protection", es: "Ubicación y protección de equipos", kw: [ubicacion de equipos, proteccion de equipos], nist: [PR.IR-02]}
+  - {id: "7.9", theme: physical, crit: medium, en: "Security of assets off-premises", es: "Seguridad de activos fuera de las instalaciones", kw: [equipos fuera de la oficina, notebooks, portatiles, viajes], nist: [PR.DS-01]}
+  - {id: "7.10", theme: physical, crit: medium, en: "Storage media", es: "Medios de almacenamiento", kw: [medios removibles, USB, discos externos], nist: [PR.DS-01, ID.AM-08]}
+  - {id: "7.11", theme: physical, crit: low, en: "Supporting utilities", es: "Servicios de soporte", kw: [energia, UPS, climatizacion], nist: [PR.IR-02]}
+  - {id: "7.12", theme: physical, crit: low, en: "Cabling security", es: "Seguridad del cableado", kw: [cableado, cables de red], nist: [PR.IR-02]}
+  - {id: "7.13", theme: physical, crit: low, en: "Equipment maintenance", es: "Mantenimiento de equipos", kw: [mantenimiento, servicio tecnico], nist: [ID.AM-08]}
+  - {id: "7.14", theme: physical, crit: medium, en: "Secure disposal or re-use of equipment", es: "Eliminación o reutilización segura de equipos", kw: [borrado seguro, destruccion de discos, reutilizacion de equipos, descarte], nist: [ID.AM-08]}
+  # --- 8. Technological controls ----------------------------------------------------
+  - {id: "8.1", theme: technological, crit: high, en: "User endpoint devices", es: "Dispositivos de usuario", kw: [notebooks, endpoints, dispositivos, MDM, cifrado de disco], nist: [PR.PS-01, PR.DS-01]}
+  - {id: "8.2", theme: technological, crit: high, en: "Privileged access rights", es: "Accesos privilegiados", kw: [privilegiado, administrador, cuentas de administrador, PAM, root], nist: [PR.AA-05]}
+  - {id: "8.3", theme: technological, crit: high, en: "Information access restriction", es: "Restricción de acceso a la información", kw: [restriccion de acceso, roles, RBAC, permisos por rol], nist: [PR.AA-05]}
+  - {id: "8.4", theme: technological, crit: medium, en: "Access to source code", es: "Acceso al código fuente", kw: [codigo fuente, repositorio, GitHub, rama protegida], nist: [PR.AA-05, PR.PS-06]}
+  - {id: "8.5", theme: technological, crit: high, en: "Secure authentication", es: "Autenticación segura", kw: [MFA, doble factor, autenticacion multifactor, SSO, autenticacion], nist: [PR.AA-03]}
+  - {id: "8.6", theme: technological, crit: medium, en: "Capacity management", es: "Gestión de la capacidad", kw: [capacidad, escalado, rendimiento, uso de recursos], nist: [PR.IR-04]}
+  - {id: "8.7", theme: technological, crit: high, en: "Protection against malware", es: "Protección contra malware", kw: [malware, antivirus, EDR, software malicioso], nist: [PR.PS-05, DE.CM-09]}
+  - {id: "8.8", theme: technological, crit: high, en: "Management of technical vulnerabilities", es: "Gestión de vulnerabilidades técnicas", kw: [vulnerabilidades, parches, escaneo de vulnerabilidades, CVE, remediacion], nist: [ID.RA-01, PR.PS-02]}
+  - {id: "8.9", theme: technological, crit: medium, en: "Configuration management", es: "Gestión de la configuración", kw: [configuracion, hardening, linea base, configuracion segura, infraestructura como codigo], nist: [PR.PS-01]}
+  - {id: "8.10", theme: technological, crit: medium, en: "Information deletion", es: "Eliminación de información", kw: [eliminacion de datos, borrado, supresion, plazo de conservacion], nist: [ID.AM-08]}
+  - {id: "8.11", theme: technological, crit: medium, en: "Data masking", es: "Enmascaramiento de datos", kw: [enmascaramiento, anonimizacion, seudonimizacion, datos de prueba], nist: [PR.DS-01]}
+  - {id: "8.12", theme: technological, crit: high, en: "Data leakage prevention", es: "Prevención de fuga de datos", kw: [fuga de datos, DLP, exfiltracion, data leakage], nist: [PR.DS-01, PR.DS-02]}
+  - {id: "8.13", theme: technological, crit: high, en: "Information backup", es: "Copias de seguridad", kw: [respaldo, backup, copia de seguridad, prueba de restauracion, restauracion], nist: [PR.DS-11]}
+  - {id: "8.14", theme: technological, crit: medium, en: "Redundancy of processing facilities", es: "Redundancia de instalaciones", kw: [redundancia, alta disponibilidad, multi zona, failover], nist: [PR.IR-03]}
+  - {id: "8.15", theme: technological, crit: high, en: "Logging", es: "Registro de eventos (logs)", kw: [logs, registros de auditoria, logging, CloudTrail, retencion de logs], nist: [PR.PS-04]}
+  - {id: "8.16", theme: technological, crit: high, en: "Monitoring activities", es: "Monitoreo de actividades", kw: [monitoreo, SIEM, alertas, deteccion, anomalias], nist: [DE.CM-01, DE.CM-03, DE.CM-09]}
+  - {id: "8.17", theme: technological, crit: low, en: "Clock synchronization", es: "Sincronización de relojes", kw: [NTP, sincronizacion de relojes, servidor de tiempo], nist: [PR.PS-04]}
+  - {id: "8.18", theme: technological, crit: medium, en: "Use of privileged utility programs", es: "Uso de utilidades privilegiadas", kw: [utilidades del sistema, herramientas privilegiadas], nist: [PR.AA-05, PR.PS-05]}
+  - {id: "8.19", theme: technological, crit: medium, en: "Software installation on operational systems", es: "Instalación de software en producción", kw: [instalacion de software, software autorizado, lista blanca], nist: [PR.PS-02, PR.PS-05]}
+  - {id: "8.20", theme: technological, crit: high, en: "Network security", es: "Seguridad de redes", kw: [red, firewall, grupos de seguridad, segmentacion], nist: [PR.IR-01, DE.CM-01]}
+  - {id: "8.21", theme: technological, crit: medium, en: "Security of network services", es: "Seguridad de servicios de red", kw: [servicios de red, VPN, DNS, proveedor de conectividad], nist: [PR.IR-01]}
+  - {id: "8.22", theme: technological, crit: medium, en: "Segregation of networks", es: "Segregación de redes", kw: [segregacion de redes, VPC, subredes, segmentacion de red], nist: [PR.IR-01]}
+  - {id: "8.23", theme: technological, crit: low, en: "Web filtering", es: "Filtrado web", kw: [filtrado web, proxy, sitios bloqueados], nist: [PR.IR-01]}
+  - {id: "8.24", theme: technological, crit: high, en: "Use of cryptography", es: "Uso de criptografía", kw: [cifrado, criptografia, TLS, claves, KMS, encryption], nist: [PR.DS-01, PR.DS-02]}
+  - {id: "8.25", theme: technological, crit: high, en: "Secure development life cycle", es: "Ciclo de desarrollo seguro", kw: [desarrollo seguro, SDLC, ciclo de vida del desarrollo], nist: [PR.PS-06]}
+  - {id: "8.26", theme: technological, crit: medium, en: "Application security requirements", es: "Requisitos de seguridad de aplicaciones", kw: [requisitos de seguridad, OWASP, requisitos de seguridad de aplicaciones], nist: [PR.PS-06]}
+  - {id: "8.27", theme: technological, crit: medium, en: "Secure architecture and engineering principles", es: "Principios de arquitectura segura", kw: [arquitectura segura, defensa en profundidad, diseno seguro], nist: [PR.PS-06]}
+  - {id: "8.28", theme: technological, crit: medium, en: "Secure coding", es: "Codificación segura", kw: [codificacion segura, revision de codigo, SAST, analisis estatico], nist: [PR.PS-06]}
+  - {id: "8.29", theme: technological, crit: medium, en: "Security testing in development and acceptance", es: "Pruebas de seguridad", kw: [pruebas de seguridad, pentest, test de penetracion, DAST], nist: [PR.PS-06, ID.RA-01]}
+  - {id: "8.30", theme: technological, crit: medium, en: "Outsourced development", es: "Desarrollo tercerizado", kw: [desarrollo tercerizado, software factory, desarrolladores externos], nist: [GV.SC-05, PR.PS-06]}
+  - {id: "8.31", theme: technological, crit: medium, en: "Separation of development, test and production", es: "Separación de entornos", kw: [entornos, staging, separacion de ambientes, cuentas separadas], nist: [PR.IR-01]}
+  - {id: "8.32", theme: technological, crit: high, en: "Change management", es: "Gestión de cambios", kw: [gestion de cambios, cambios, pull request, aprobacion de cambios, despliegue], nist: [ID.RA-07]}
+  - {id: "8.33", theme: technological, crit: medium, en: "Test information", es: "Información de prueba", kw: [datos de prueba, datos productivos en pruebas, entorno de pruebas], nist: [PR.DS-01]}
+  - {id: "8.34", theme: technological, crit: low, en: "Protection of systems during audit testing", es: "Protección durante pruebas de auditoría", kw: [pruebas de auditoria, auditoria tecnica, ventana de pruebas], nist: []}

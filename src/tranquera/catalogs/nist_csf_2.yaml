@@ -1,0 +1,142 @@
+# NIST Cybersecurity Framework (CSF) 2.0 — functions, categories and subcategories.
+# CSF 2.0 is a U.S. Government work. Descriptions below are short summaries written by
+# the Tranquera authors; see https://www.nist.gov/cyberframework for the official text.
+framework: nist-csf-2.0
+name: NIST CSF 2.0
+functions:
+  GV: {en: Govern, es: Gobernar}
+  ID: {en: Identify, es: Identificar}
+  PR: {en: Protect, es: Proteger}
+  DE: {en: Detect, es: Detectar}
+  RS: {en: Respond, es: Responder}
+  RC: {en: Recover, es: Recuperar}
+categories:
+  GV.OC: {en: Organizational Context, es: Contexto organizacional}
+  GV.RM: {en: Risk Management Strategy, es: Estrategia de gestión de riesgos}
+  GV.RR: {en: Roles, Responsibilities, and Authorities, es: Roles, responsabilidades y autoridad}
+  GV.PO: {en: Policy, es: Política}
+  GV.OV: {en: Oversight, es: Supervisión}
+  GV.SC: {en: Cybersecurity Supply Chain Risk Management, es: Riesgo de la cadena de suministro}
+  ID.AM: {en: Asset Management, es: Gestión de activos}
+  ID.RA: {en: Risk Assessment, es: Evaluación de riesgos}
+  ID.IM: {en: Improvement, es: Mejora}
+  PR.AA: {en: Identity Management, Authentication, and Access Control, es: Identidad, autenticación y control de acceso}
+  PR.AT: {en: Awareness and Training, es: Concientización y capacitación}
+  PR.DS: {en: Data Security, es: Seguridad de los datos}
+  PR.PS: {en: Platform Security, es: Seguridad de plataformas}
+  PR.IR: {en: Technology Infrastructure Resilience, es: Resiliencia de la infraestructura}
+  DE.CM: {en: Continuous Monitoring, es: Monitoreo continuo}
+  DE.AE: {en: Adverse Event Analysis, es: Análisis de eventos adversos}
+  RS.MA: {en: Incident Management, es: Gestión de incidentes}
+  RS.AN: {en: Incident Analysis, es: Análisis de incidentes}
+  RS.CO: {en: Incident Response Reporting and Communication, es: Comunicación de incidentes}
+  RS.MI: {en: Incident Mitigation, es: Mitigación de incidentes}
+  RC.RP: {en: Incident Recovery Plan Execution, es: Ejecución del plan de recuperación}
+  RC.CO: {en: Incident Recovery Communication, es: Comunicación de la recuperación}
+subcategories:
+  GV.OC-01: {en: "Mission is understood and informs risk management", es: "La misión orienta la gestión de riesgos"}
+  GV.OC-02: {en: "Stakeholder needs and expectations are understood", es: "Se conocen las expectativas de las partes interesadas"}
+  GV.OC-03: {en: "Legal, regulatory and contractual requirements are managed", es: "Se gestionan los requisitos legales, regulatorios y contractuales"}
+  GV.OC-04: {en: "Critical objectives and services are understood", es: "Se conocen los servicios y objetivos críticos"}
+  GV.OC-05: {en: "Dependencies the organization relies on are understood", es: "Se conocen las dependencias de la organización"}
+  GV.RM-01: {en: "Risk management objectives are agreed", es: "Objetivos de gestión de riesgos acordados"}
+  GV.RM-02: {en: "Risk appetite and tolerance are set", es: "Apetito y tolerancia al riesgo definidos"}
+  GV.RM-03: {en: "Cyber risk is part of enterprise risk management", es: "El riesgo ciber integra la gestión de riesgos corporativa"}
+  GV.RM-04: {en: "Strategic direction for risk response is set", es: "Dirección estratégica para responder a riesgos"}
+  GV.RM-05: {en: "Lines of communication on risk are established", es: "Canales de comunicación de riesgos establecidos"}
+  GV.RM-06: {en: "A standard method for risk analysis is used", es: "Método estándar de análisis de riesgos"}
+  GV.RM-07: {en: "Strategic opportunities are considered", es: "Se consideran las oportunidades estratégicas"}
+  GV.RR-01: {en: "Leadership is accountable for cyber risk", es: "La dirección rinde cuentas por el riesgo ciber"}
+  GV.RR-02: {en: "Roles and responsibilities are defined and communicated", es: "Roles y responsabilidades definidos y comunicados"}
+  GV.RR-03: {en: "Adequate resources are allocated", es: "Recursos adecuados asignados"}
+  GV.RR-04: {en: "Cybersecurity is part of HR practices", es: "La seguridad forma parte de las prácticas de RR. HH."}
+  GV.PO-01: {en: "Policy is established, communicated and enforced", es: "Política establecida, comunicada y aplicada"}
+  GV.PO-02: {en: "Policy is reviewed and updated", es: "Política revisada y actualizada"}
+  GV.OV-01: {en: "Strategy outcomes are reviewed to adjust direction", es: "Se revisan los resultados de la estrategia"}
+  GV.OV-02: {en: "Strategy is reviewed for coverage of requirements", es: "Se revisa la cobertura de la estrategia"}
+  GV.OV-03: {en: "Risk management performance is evaluated", es: "Se evalúa el desempeño de la gestión de riesgos"}
+  GV.SC-01: {en: "Supply chain risk program is established", es: "Programa de riesgo de proveedores establecido"}
+  GV.SC-02: {en: "Supplier security roles are defined", es: "Roles de seguridad con proveedores definidos"}
+  GV.SC-03: {en: "Supply chain risk is integrated into risk management", es: "Riesgo de proveedores integrado a la gestión de riesgos"}
+  GV.SC-04: {en: "Suppliers are known and prioritized by criticality", es: "Proveedores identificados y priorizados por criticidad"}
+  GV.SC-05: {en: "Security requirements are included in supplier contracts", es: "Requisitos de seguridad en contratos con proveedores"}
+  GV.SC-06: {en: "Due diligence is performed before engaging suppliers", es: "Debida diligencia antes de contratar proveedores"}
+  GV.SC-07: {en: "Supplier risks are monitored over the relationship", es: "Seguimiento del riesgo de proveedores durante la relación"}
+  GV.SC-08: {en: "Suppliers are included in incident plans and exercises", es: "Proveedores incluidos en planes y ejercicios de incidentes"}
+  GV.SC-09: {en: "Supply chain practices are monitored across the lifecycle", es: "Prácticas de cadena de suministro supervisadas"}
+  GV.SC-10: {en: "Supplier plans cover activities after the relationship ends", es: "Planes para el fin de la relación con proveedores"}
+  ID.AM-01: {en: "Hardware inventory is maintained", es: "Inventario de hardware"}
+  ID.AM-02: {en: "Software, services and systems inventory is maintained", es: "Inventario de software, servicios y sistemas"}
+  ID.AM-03: {en: "Authorized network and data flows are documented", es: "Flujos de red y de datos documentados"}
+  ID.AM-04: {en: "Supplier-provided services are inventoried", es: "Inventario de servicios de proveedores"}
+  ID.AM-05: {en: "Assets are prioritized by classification and impact", es: "Activos priorizados por clasificación e impacto"}
+  ID.AM-07: {en: "Data and metadata inventories are maintained", es: "Inventario de datos y metadatos"}
+  ID.AM-08: {en: "Assets are managed through their lifecycle", es: "Activos gestionados durante todo su ciclo de vida"}
+  ID.RA-01: {en: "Asset vulnerabilities are identified and recorded", es: "Vulnerabilidades identificadas y registradas"}
+  ID.RA-02: {en: "Threat intelligence is received from sources", es: "Se recibe inteligencia de amenazas"}
+  ID.RA-03: {en: "Internal and external threats are identified", es: "Amenazas internas y externas identificadas"}
+  ID.RA-04: {en: "Likelihood and impact of threats are identified", es: "Probabilidad e impacto de amenazas identificados"}
+  ID.RA-05: {en: "Risk is determined and prioritized", es: "Riesgos determinados y priorizados"}
+  ID.RA-06: {en: "Risk responses are chosen, tracked and communicated", es: "Respuestas a riesgos elegidas y seguidas"}
+  ID.RA-07: {en: "Changes and exceptions are managed and risk-assessed", es: "Cambios y excepciones gestionados y evaluados"}
+  ID.RA-08: {en: "Vulnerability disclosure processes exist", es: "Proceso de divulgación de vulnerabilidades"}
+  ID.RA-09: {en: "Hardware and software integrity is assessed before use", es: "Integridad de hardware y software verificada"}
+  ID.RA-10: {en: "Critical suppliers are assessed before acquisition", es: "Proveedores críticos evaluados antes de contratar"}
+  ID.IM-01: {en: "Improvements are identified from evaluations", es: "Mejoras identificadas a partir de evaluaciones"}
+  ID.IM-02: {en: "Improvements are identified from tests and exercises", es: "Mejoras identificadas a partir de pruebas y ejercicios"}
+  ID.IM-03: {en: "Improvements are identified from operations", es: "Mejoras identificadas a partir de la operación"}
+  ID.IM-04: {en: "Incident response and other cyber plans are maintained", es: "Planes de respuesta y continuidad mantenidos"}
+  PR.AA-01: {en: "Identities and credentials are managed", es: "Identidades y credenciales gestionadas"}
+  PR.AA-02: {en: "Identities are proofed and bound to credentials", es: "Identidades verificadas y vinculadas a credenciales"}
+  PR.AA-03: {en: "Users, services and hardware are authenticated", es: "Usuarios, servicios y equipos autenticados"}
+  PR.AA-04: {en: "Identity assertions are protected and verified", es: "Aserciones de identidad protegidas"}
+  PR.AA-05: {en: "Access permissions follow least privilege and are reviewed", es: "Permisos con mínimo privilegio y revisados"}
+  PR.AA-06: {en: "Physical access is managed and monitored", es: "Acceso físico gestionado y monitoreado"}
+  PR.AT-01: {en: "Personnel receive awareness and training", es: "Concientización y capacitación del personal"}
+  PR.AT-02: {en: "Specialized roles receive specific training", es: "Capacitación específica para roles especializados"}
+  PR.DS-01: {en: "Data at rest is protected", es: "Datos en reposo protegidos"}
+  PR.DS-02: {en: "Data in transit is protected", es: "Datos en tránsito protegidos"}
+  PR.DS-10: {en: "Data in use is protected", es: "Datos en uso protegidos"}
+  PR.DS-11: {en: "Backups are created, protected, maintained and tested", es: "Copias de seguridad creadas, protegidas y probadas"}
+  PR.PS-01: {en: "Configuration management practices are applied", es: "Gestión de la configuración aplicada"}
+  PR.PS-02: {en: "Software is maintained, replaced and removed by risk", es: "Software mantenido y actualizado según el riesgo"}
+  PR.PS-03: {en: "Hardware is maintained, replaced and removed by risk", es: "Hardware mantenido y reemplazado según el riesgo"}
+  PR.PS-04: {en: "Log records are generated for monitoring", es: "Se generan registros (logs) para el monitoreo"}
+  PR.PS-05: {en: "Unauthorized software installation is prevented", es: "Se impide la instalación de software no autorizado"}
+  PR.PS-06: {en: "Secure software development practices are integrated", es: "Desarrollo seguro integrado"}
+  PR.IR-01: {en: "Networks and environments are protected from unauthorized access", es: "Redes y entornos protegidos contra accesos no autorizados"}
+  PR.IR-02: {en: "Technology assets are protected from environmental threats", es: "Activos protegidos de amenazas ambientales"}
+  PR.IR-03: {en: "Resilience mechanisms are implemented", es: "Mecanismos de resiliencia implementados"}
+  PR.IR-04: {en: "Adequate resource capacity is maintained", es: "Capacidad de recursos adecuada"}
+  DE.CM-01: {en: "Networks and network services are monitored", es: "Redes y servicios de red monitoreados"}
+  DE.CM-02: {en: "The physical environment is monitored", es: "Entorno físico monitoreado"}
+  DE.CM-03: {en: "Personnel activity and technology usage are monitored", es: "Actividad del personal y uso de tecnología monitoreados"}
+  DE.CM-06: {en: "External service provider activities are monitored", es: "Actividad de proveedores externos monitoreada"}
+  DE.CM-09: {en: "Computing hardware, software and data are monitored", es: "Equipos, software y datos monitoreados"}
+  DE.AE-02: {en: "Potentially adverse events are analyzed", es: "Eventos potencialmente adversos analizados"}
+  DE.AE-03: {en: "Information is correlated from multiple sources", es: "Información correlacionada de varias fuentes"}
+  DE.AE-04: {en: "Impact and scope of adverse events are understood", es: "Impacto y alcance de eventos comprendidos"}
+  DE.AE-06: {en: "Information on adverse events is shared with authorized staff", es: "Eventos adversos comunicados al personal autorizado"}
+  DE.AE-07: {en: "Threat intelligence is integrated into analysis", es: "Inteligencia de amenazas integrada al análisis"}
+  DE.AE-08: {en: "Incidents are declared when criteria are met", es: "Se declaran incidentes según criterios definidos"}
+  RS.MA-01: {en: "The incident response plan is executed", es: "Se ejecuta el plan de respuesta a incidentes"}
+  RS.MA-02: {en: "Incident reports are triaged and validated", es: "Reportes de incidentes clasificados y validados"}
+  RS.MA-03: {en: "Incidents are categorized and prioritized", es: "Incidentes categorizados y priorizados"}
+  RS.MA-04: {en: "Incidents are escalated as needed", es: "Incidentes escalados cuando corresponde"}
+  RS.MA-05: {en: "Criteria for initiating recovery are applied", es: "Criterios para iniciar la recuperación"}
+  RS.AN-03: {en: "Analysis establishes what happened and the root cause", es: "Análisis de lo ocurrido y causa raíz"}
+  RS.AN-06: {en: "Investigation actions are recorded with integrity", es: "Acciones de investigación registradas"}
+  RS.AN-07: {en: "Incident data is collected and preserved", es: "Datos del incidente recolectados y preservados"}
+  RS.AN-08: {en: "Incident magnitude is estimated and validated", es: "Magnitud del incidente estimada"}
+  RS.CO-02: {en: "Internal and external stakeholders are notified", es: "Partes interesadas notificadas"}
+  RS.CO-03: {en: "Information is shared with designated stakeholders", es: "Información compartida con partes designadas"}
+  RS.MI-01: {en: "Incidents are contained", es: "Incidentes contenidos"}
+  RS.MI-02: {en: "Incidents are eradicated", es: "Incidentes erradicados"}
+  RC.RP-01: {en: "The recovery portion of the response plan is executed", es: "Se ejecuta la parte de recuperación del plan"}
+  RC.RP-02: {en: "Recovery actions are selected and prioritized", es: "Acciones de recuperación priorizadas"}
+  RC.RP-03: {en: "Integrity of backups is verified before restoring", es: "Integridad de copias verificada antes de restaurar"}
+  RC.RP-04: {en: "Critical functions are considered to set post-incident norms", es: "Funciones críticas consideradas tras el incidente"}
+  RC.RP-05: {en: "Integrity of restored assets is verified", es: "Integridad de activos restaurados verificada"}
+  RC.RP-06: {en: "The end of recovery is declared and documented", es: "Fin de la recuperación declarado y documentado"}
+  RC.CO-03: {en: "Recovery progress is communicated to stakeholders", es: "Avance de la recuperación comunicado"}
+  RC.CO-04: {en: "Public updates on recovery are shared", es: "Comunicación pública sobre la recuperación"}

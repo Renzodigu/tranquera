@@ -1,0 +1,94 @@
+﻿control,title,theme,applicable,justification,status,nist_csf
+5.1,Políticas de seguridad,Organizacionales,yes,,Parcial,GV.PO-01 GV.PO-02
+5.2,Roles y responsabilidades de seguridad,Organizacionales,yes,,Parcial,GV.RR-02
+5.3,Separación de funciones incompatibles,Organizacionales,yes,,No cumple,PR.AA-05
+5.4,Compromiso de la dirección,Organizacionales,yes,,Parcial,GV.RR-01
+5.5,Contacto con autoridades,Organizacionales,yes,,Parcial,GV.OC-03 RS.CO-02
+5.6,Contacto con grupos de interés,Organizacionales,yes,,No cumple,ID.RA-02
+5.7,Inteligencia de amenazas,Organizacionales,yes,,No cumple,ID.RA-02 ID.RA-03
+5.8,Seguridad en la gestión de proyectos,Organizacionales,yes,,No cumple,ID.RA-07
+5.9,Inventario de activos,Organizacionales,yes,,Cumple,ID.AM-01 ID.AM-02 ID.AM-05
+5.10,Uso aceptable de activos,Organizacionales,yes,,No cumple,GV.PO-01
+5.11,Devolución de activos,Organizacionales,yes,,Parcial,ID.AM-08
+5.12,Clasificación de la información,Organizacionales,yes,,Cumple,ID.AM-05 ID.AM-07
+5.13,Etiquetado de la información,Organizacionales,yes,,Parcial,ID.AM-07
+5.14,Transferencia de información,Organizacionales,yes,,Parcial,PR.DS-02
+5.15,Control de acceso,Organizacionales,yes,,Parcial,PR.AA-05
+5.16,Gestión de identidades,Organizacionales,yes,,Parcial,PR.AA-01
+5.17,Información de autenticación,Organizacionales,yes,,Parcial,PR.AA-01 PR.AA-03
+5.18,Derechos de acceso,Organizacionales,yes,,Parcial,PR.AA-05
+5.19,Seguridad con proveedores,Organizacionales,yes,,Cumple,GV.SC-01 GV.SC-06
+5.20,Seguridad en contratos con proveedores,Organizacionales,yes,,Parcial,GV.SC-05
+5.21,Seguridad en la cadena de suministro TIC,Organizacionales,yes,,Parcial,GV.SC-05 GV.SC-07
+5.22,Seguimiento de servicios de proveedores,Organizacionales,yes,,Cumple,GV.SC-07
+5.23,Seguridad en servicios en la nube,Organizacionales,yes,,Cumple,GV.SC-05 GV.SC-07
+5.24,Planificación de la gestión de incidentes,Organizacionales,yes,,Parcial,RS.MA-01
+5.25,Evaluación de eventos de seguridad,Organizacionales,yes,,Parcial,DE.AE-02 DE.AE-08
+5.26,Respuesta a incidentes,Organizacionales,yes,,Parcial,RS.MA-01 RS.MI-01 RS.MI-02
+5.27,Aprendizaje de incidentes,Organizacionales,yes,,Parcial,ID.IM-02 ID.IM-03
+5.28,Recolección de evidencia,Organizacionales,yes,,Parcial,RS.AN-07
+5.29,Seguridad durante interrupciones,Organizacionales,yes,,No cumple,ID.IM-04 RC.RP-01
+5.30,Preparación TIC para la continuidad,Organizacionales,yes,,Parcial,ID.IM-04 PR.IR-03 RC.RP-01
+5.31,"Requisitos legales, regulatorios y contractuales",Organizacionales,yes,,Parcial,GV.OC-03
+5.32,Propiedad intelectual,Organizacionales,yes,,No cumple,GV.OC-03
+5.33,Protección de registros,Organizacionales,yes,,Parcial,PR.DS-01
+5.34,Privacidad y datos personales,Organizacionales,yes,,Parcial,GV.OC-03 PR.DS-01
+5.35,Revisión independiente de la seguridad,Organizacionales,yes,,No cumple,GV.OV-02 ID.IM-02
+5.36,Cumplimiento de políticas y normas,Organizacionales,yes,,Parcial,ID.IM-02
+5.37,Procedimientos operativos documentados,Organizacionales,yes,,No cumple,GV.PO-01
+6.1,Verificación de antecedentes,Personas,yes,,No cumple,GV.RR-04
+6.2,Condiciones de contratación,Personas,yes,,No cumple,GV.RR-04
+6.3,Concientización y capacitación,Personas,yes,,Cumple,PR.AT-01 PR.AT-02
+6.4,Proceso disciplinario,Personas,yes,,Parcial,GV.RR-04
+6.5,Responsabilidades tras la desvinculación,Personas,yes,,Parcial,GV.RR-04 PR.AA-05
+6.6,Acuerdos de confidencialidad,Personas,yes,,Parcial,GV.RR-04
+6.7,Trabajo remoto,Personas,yes,,No cumple,PR.IR-01
+6.8,Reporte de eventos de seguridad,Personas,yes,,Parcial,DE.AE-06
+7.1,Perímetros de seguridad física,Físicos,yes,,No cumple,PR.AA-06
+7.2,Control de ingreso físico,Físicos,yes,,No cumple,PR.AA-06
+7.3,Seguridad de oficinas e instalaciones,Físicos,yes,,No cumple,PR.AA-06
+7.4,Monitoreo de seguridad física,Físicos,yes,,No cumple,DE.CM-02
+7.5,Protección ante amenazas físicas y ambientales,Físicos,yes,,No cumple,PR.IR-02
+7.6,Trabajo en áreas seguras,Físicos,yes,,No cumple,PR.AA-06
+7.7,Escritorio y pantalla limpios,Físicos,yes,,Parcial,PR.DS-01
+7.8,Ubicación y protección de equipos,Físicos,no,Sin centro de datos propio; la ubicación y protección de servidores es responsabilidad del proveedor de nube (ver 5.23).,Excluido (SoA),PR.IR-02
+7.9,Seguridad de activos fuera de las instalaciones,Físicos,yes,,Parcial,PR.DS-01
+7.10,Medios de almacenamiento,Físicos,yes,,No cumple,PR.DS-01 ID.AM-08
+7.11,Servicios de soporte,Físicos,no,Sin centro de datos propio; energía y climatización a cargo del proveedor de nube (ver 5.23).,Excluido (SoA),PR.IR-02
+7.12,Seguridad del cableado,Físicos,no,Sin centro de datos propio; la oficina solo usa Wi-Fi y no aloja servidores.,Excluido (SoA),PR.IR-02
+7.13,Mantenimiento de equipos,Físicos,yes,,No cumple,ID.AM-08
+7.14,Eliminación o reutilización segura de equipos,Físicos,yes,,No cumple,ID.AM-08
+8.1,Dispositivos de usuario,Tecnológicos,yes,,Parcial,PR.PS-01 PR.DS-01
+8.2,Accesos privilegiados,Tecnológicos,yes,,Cumple,PR.AA-05
+8.3,Restricción de acceso a la información,Tecnológicos,yes,,Parcial,PR.AA-05
+8.4,Acceso al código fuente,Tecnológicos,yes,,Parcial,PR.AA-05 PR.PS-06
+8.5,Autenticación segura,Tecnológicos,yes,,Parcial,PR.AA-03
+8.6,Gestión de la capacidad,Tecnológicos,yes,,No cumple,PR.IR-04
+8.7,Protección contra malware,Tecnológicos,yes,,Parcial,PR.PS-05 DE.CM-09
+8.8,Gestión de vulnerabilidades técnicas,Tecnológicos,yes,,Parcial,ID.RA-01 PR.PS-02
+8.9,Gestión de la configuración,Tecnológicos,yes,,Parcial,PR.PS-01
+8.10,Eliminación de información,Tecnológicos,yes,,Parcial,ID.AM-08
+8.11,Enmascaramiento de datos,Tecnológicos,no,,Excluido (SoA),PR.DS-01
+8.12,Prevención de fuga de datos,Tecnológicos,yes,,No cumple,PR.DS-01 PR.DS-02
+8.13,Copias de seguridad,Tecnológicos,yes,,Parcial,PR.DS-11
+8.14,Redundancia de instalaciones,Tecnológicos,yes,,Parcial,PR.IR-03
+8.15,Registro de eventos (logs),Tecnológicos,yes,,Parcial,PR.PS-04
+8.16,Monitoreo de actividades,Tecnológicos,yes,,Parcial,DE.CM-01 DE.CM-03 DE.CM-09
+8.17,Sincronización de relojes,Tecnológicos,yes,,No cumple,PR.PS-04
+8.18,Uso de utilidades privilegiadas,Tecnológicos,yes,,No cumple,PR.AA-05 PR.PS-05
+8.19,Instalación de software en producción,Tecnológicos,yes,,No cumple,PR.PS-02 PR.PS-05
+8.20,Seguridad de redes,Tecnológicos,yes,,Parcial,PR.IR-01 DE.CM-01
+8.21,Seguridad de servicios de red,Tecnológicos,yes,,No cumple,PR.IR-01
+8.22,Segregación de redes,Tecnológicos,yes,,Parcial,PR.IR-01
+8.23,Filtrado web,Tecnológicos,yes,,No cumple,PR.IR-01
+8.24,Uso de criptografía,Tecnológicos,yes,,Parcial,PR.DS-01 PR.DS-02
+8.25,Ciclo de desarrollo seguro,Tecnológicos,yes,,Parcial,PR.PS-06
+8.26,Requisitos de seguridad de aplicaciones,Tecnológicos,yes,,No cumple,PR.PS-06
+8.27,Principios de arquitectura segura,Tecnológicos,yes,,No cumple,PR.PS-06
+8.28,Codificación segura,Tecnológicos,yes,,Parcial,PR.PS-06
+8.29,Pruebas de seguridad,Tecnológicos,yes,,Parcial,PR.PS-06 ID.RA-01
+8.30,Desarrollo tercerizado,Tecnológicos,no,Todo el desarrollo es interno; no se contrata desarrollo a terceros.,Excluido (SoA),GV.SC-05 PR.PS-06
+8.31,Separación de entornos,Tecnológicos,yes,,Parcial,PR.IR-01
+8.32,Gestión de cambios,Tecnológicos,yes,,Parcial,ID.RA-07
+8.33,Información de prueba,Tecnológicos,yes,,Parcial,PR.DS-01
+8.34,Protección durante pruebas de auditoría,Tecnológicos,yes,,No cumple,

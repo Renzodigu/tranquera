@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tranquera"
+version = "0.1.0"
+description = "AI-assisted ISO/IEC 27001:2022 and NIST CSF 2.0 gap analysis with auditable, citation-checked findings."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Renzo Di Guglielmo" }]
+keywords = ["grc", "iso27001", "nist-csf", "compliance", "gap-analysis", "audit", "llm"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Topic :: Security",
+  "Intended Audience :: Information Technology",
+]
+dependencies = ["pyyaml>=6", "jinja2>=3.1"]
+
+[project.optional-dependencies]
+claude = ["anthropic>=0.40"]
+app = ["streamlit>=1.40", "anthropic>=0.40"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+tranquera = "tranquera.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+tranquera = ["catalogs/*.yaml", "templates/*.j2", "demo/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]  # long user-facing strings and prompts

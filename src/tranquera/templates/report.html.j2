@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ L.title }} · {{ r.company }}</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#16202e;--muted:#5b6676;--line:#e2e6ec;--navy:#1d3557;
+--met:#2f855a;--partial:#c48a12;--not_met:#c0392b;--undetermined:#6b46c1;--out:#a0aab8;--excluded:#a0aab8;
+--high:#c0392b;--medium:#c48a12;--low:#4a6fa5}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--card:#161d27;--ink:#e6ebf2;--muted:#9aa6b6;--line:#273242;--navy:#8fb3e8;--out:#4b5666;--excluded:#4b5666}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 16px 64px}
+header{border-bottom:3px solid var(--navy);padding-bottom:16px;margin-bottom:24px}
+h1{font-size:28px;margin:0;color:var(--navy);letter-spacing:-.3px}
+h2{font-size:19px;margin:36px 0 12px;color:var(--navy)}
+.sub{color:var(--muted);margin-top:4px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:12px;font-size:13px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600}
+.badge{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:600;color:#fff;white-space:nowrap}
+.b-met{background:var(--met)}.b-partial{background:var(--partial)}.b-not_met{background:var(--not_met)}
+.b-undetermined{background:var(--undetermined)}.b-excluded,.b-out_of_scope{background:var(--out)}
+.b-high{background:var(--high)}.b-medium{background:var(--medium)}.b-low{background:var(--low)}
+.note{background:var(--card);border-left:4px solid var(--navy);padding:10px 14px;border-radius:6px;font-size:13.5px;color:var(--muted);margin:12px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.kpi .v{font-size:30px;font-weight:700;line-height:1.1}
+.kpi .l{font-size:13px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+.bar-row{display:grid;grid-template-columns:130px 1fr 40px;gap:10px;align-items:center;margin:7px 0;font-size:13.5px}
+.bar{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--line)}
+.bar span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.table-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);background:var(--card);position:sticky;top:0}
+tr:last-child td{border-bottom:none}
+td.small,.small{font-size:12.5px;color:var(--muted)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;white-space:nowrap}
+.pattern{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--high);border-radius:8px;padding:12px 14px;margin:10px 0}
+.pattern.medium{border-left-color:var(--medium)}.pattern.low{border-left-color:var(--low)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px}
+.filters button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:5px 12px;border-radius:999px;cursor:pointer;font:inherit;font-size:13px}
+.filters button[aria-pressed=true]{background:var(--navy);color:var(--bg);border-color:var(--navy)}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin:6px 0}
+summary{cursor:pointer;padding:9px 12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+details .body{padding:0 14px 12px}
+blockquote{margin:6px 0;padding:6px 10px;border-left:3px solid var(--line);color:var(--muted);font-size:13px}
+.ok{color:var(--met);font-weight:600}.ko{color:var(--not_met);font-weight:600}
+footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>{{ L.title }}: {{ r.company }}</h1>
+  <div class="sub">{{ L.subtitle }}{% if r.description %} · {{ r.description }}{% endif %}</div>
+  <div class="meta">
+    <span>{{ L.as_of }}: <b>{{ r.as_of }}</b></span>
+    <span>{{ L.assessor }}: <b>{{ r.assessor }}</b></span>
+    <span>{{ L.generated_by }}: <b>Tranquera {{ version }}</b></span>
+    {% if fictional %}<span><b>{{ L.fictional }}</b></span>{% endif %}
+  </div>
+</header>
+
+<div class="note">{{ L.heuristic_note if r.assessor == 'heuristic' else L.claude_note }}</div>
+
+<h2>{{ L.summary }}</h2>
+<div class="kpis">
+  <div class="kpi"><div class="v">{{ s.score }}%</div><div class="l">{{ L.compliance }} ({{ t('met') }} = 1, {{ t('partial') }} = ½)</div></div>
+  <div class="kpi"><div class="v">{{ s.applicable }}</div><div class="l">{{ L.applicable }} · {{ s.excluded }} {{ L.excluded_n }}</div></div>
+  <div class="kpi"><div class="v" style="color:var(--met)">{{ s.counts.met }}</div><div class="l">{{ t('met') }}</div></div>
+  <div class="kpi"><div class="v" style="color:var(--partial)">{{ s.counts.partial }}</div><div class="l">{{ t('partial') }}</div></div>
+  <div class="kpi"><div class="v" style="color:var(--not_met)">{{ s.counts.not_met }}</div><div class="l">{{ t('not_met') }}{% if s.counts.undetermined %} · {{ s.counts.undetermined }} {{ t('undetermined')|lower }}{% endif %}</div></div>
+  <div class="kpi"><div class="v" style="color:var(--high)">{{ s.high }}</div><div class="l">{{ L.high_findings }} · {{ s.findings }} {{ L.findings|lower }}</div></div>
+</div>
+
+<div class="grid2" style="margin-top:12px">
+  <div class="card">
+    <b>{{ L.by_theme }}</b>
+    {% for th in s.themes %}
+    <div class="bar-row"><span>{{ t(th.key) }}</span>
+      <div class="bar" role="img" aria-label="{{ t(th.key) }}: {{ th.met }} {{ t('met') }}, {{ th.partial }} {{ t('partial') }}, {{ th.not_met }} {{ t('not_met') }}">
+      {% for st in ['met','partial','undetermined','not_met'] %}{% if th[st] %}<span style="width:{{ 100*th[st]/th.total }}%;background:var(--{{ st }})"></span>{% endif %}{% endfor %}
+      </div><span class="small">{{ th.total }}</span></div>
+    {% endfor %}
+    <div class="legend">{% for st in ['met','partial','undetermined','not_met'] %}<span><i style="background:var(--{{ st }})"></i>{{ t(st) }}</span>{% endfor %}</div>
+  </div>
+  <div class="card">
+    <b>{{ L.by_function }}</b>
+    {% for fn in s.functions %}
+    <div class="bar-row"><span>{{ fn.key }} · {{ nist.functions[fn.key][lang] }}</span>
+      <div class="bar">
+      {% for st in ['met','partial','undetermined','not_met','out_of_scope'] %}{% if fn[st] %}<span style="width:{{ 100*fn[st]/fn.total }}%;background:var(--{{ 'out' if st == 'out_of_scope' else st }})"></span>{% endif %}{% endfor %}
+      </div><span class="small">{{ fn.total }}</span></div>
+    {% endfor %}
+    <div class="legend"><span><i style="background:var(--out)"></i>{{ t('out_of_scope') }}</span></div>
+    <div class="small" style="margin-top:6px">{{ L.nist_note }}</div>
+  </div>
+</div>
+
+{% if patterns %}
+<h2>{{ L.patterns }}</h2>
+<p class="small">{{ L.patterns_intro }}</p>
+{% for p in patterns %}
+<div class="pattern {{ p.severity.value }}">
+  <span class="badge b-{{ p.severity.value }}">{{ t(p.severity.value) }}</span>
+  <b>{{ p.id }} · {{ p.title }}</b>
+  <div class="small" style="margin-top:4px">{{ p.detail }}</div>
+</div>
+{% endfor %}
+{% endif %}
+
+{% if r.reconciliation %}
+<h2>{{ L.recon }}</h2>
+<p class="small">{{ L.recon_intro }}</p>
+<div class="table-wrap"><table>
+<thead><tr><th>{{ L.commitment }}</th><th>{{ L.controls }}</th><th>{{ L.frequency }}</th><th>{{ L.expected }}</th><th>{{ L.found }}</th><th>{{ L.missing }}</th><th>{{ L.last }}</th><th>{{ L.result }}</th></tr></thead>
+<tbody>
+{% for ln in r.reconciliation %}
+<tr><td><span class="mono">{{ ln.commitment }}</span> {{ ln.activity }}<div class="small">{{ ln.source }} → {{ ln.evidence }}</div></td>
+<td class="mono">{{ ln.control }}</td><td>{{ t('freq_' ~ ln.frequency) }}</td><td>{{ ln.expected }}</td><td>{{ ln.found }}</td>
+<td class="small">{{ ln.missing|join(', ') or '—' }}</td><td class="mono">{{ ln.last or '—' }}</td>
+<td>{% if ln.ok %}<span class="ok">✓ {{ L.ok }}</span>{% else %}<span class="ko">✗ {{ t('not_met') }}</span>{% endif %}</td></tr>
+{% endfor %}
+</tbody></table></div>
+{% endif %}
+
+<h2>{{ L.register }}</h2>
+<div class="filters" role="group">
+  <button type="button" data-sev="all" aria-pressed="true">{{ L.all }} ({{ register|length }})</button>
+  {% for sev in ['high','medium','low'] %}<button type="button" data-sev="{{ sev }}" aria-pressed="false">{{ t(sev) }} ({{ s.by_severity[sev] or 0 }})</button>{% endfor %}
+</div>
+<div class="table-wrap"><table id="register">
+<thead><tr><th>{{ L.id }}</th><th>{{ L.severity }}</th><th>{{ L.finding }}</th><th>{{ L.controls }}</th><th>{{ L.action }}</th><th>{{ L.owner }}</th><th>{{ L.due }}</th></tr></thead>
+<tbody>
+{% for f in register %}
+<tr data-sev="{{ f.severity.value }}">
+<td class="mono">{{ f.id }}</td>
+<td><span class="badge b-{{ f.severity.value }}">{{ t(f.severity.value) }}</span></td>
+<td><b>{{ f.title }}</b><div class="small">{{ f.detail }}</div><div class="small">{{ t('src_' ~ f.source) }} · {{ t('rc_' ~ f.root_cause) }}</div></td>
+<td class="mono">{{ f.controls|join(' ') }}</td>
+<td><b>{{ t(f.action.value) }}</b><div class="small">{{ f.action_text }}</div></td>
+<td class="small">{{ f.owner or t('unassigned') }}</td>
+<td class="mono">{{ f.due }}</td>
+</tr>
+{% else %}<tr><td colspan="7">{{ L.no_findings }}</td></tr>
+{% endfor %}
+</tbody></table></div>
+
+<h2>{{ L.detail }}</h2>
+{% for c in r.controls if c.final.value != 'excluded' %}
+<details>
+  <summary><span class="mono">{{ c.control.id }}</span> <b>{{ c.control.title(lang) }}</b> <span class="badge b-{{ c.final.value }}">{{ t(c.final.value) }}</span>
+  {% if c.final != c.assessment.verdict %}<span class="small">({{ t(c.assessment.verdict.value) }} → {{ t(c.final.value) }})</span>{% endif %}</summary>
+  <div class="body">
+    <p>{{ c.assessment.rationale }}</p>
+    {% if c.cap_reasons %}<p class="small"><b>{{ L.capped }}:</b> {{ c.cap_reasons|join(' ') }}</p>{% endif %}
+    {% for g in c.assessment.gaps %}<p class="small">• {{ g }}</p>{% endfor %}
+    {% for x in c.assessment.contradictions %}<p class="small">⚠ {{ x }}</p>{% endfor %}
+    {% if c.assessment.citations %}<div class="small"><b>{{ L.citations }}</b></div>
+    {% for q in c.assessment.citations %}<blockquote><span class="mono">{{ q.chunk_id }}</span> — {{ q.quote }}</blockquote>{% endfor %}{% endif %}
+    {% for n in c.assessment.notes %}<p class="small">ℹ {{ n }}</p>{% endfor %}
+    <p class="small">NIST CSF 2.0: <span class="mono">{{ c.control.nist|join(', ') or '—' }}</span></p>
+  </div>
+</details>
+{% endfor %}
+
+<h2>{{ L.soa }}</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>{{ L.controls }}</th><th>{{ L.finding }}</th><th>{{ L.status }}</th><th>{{ L.justification }}</th></tr></thead>
+<tbody>
+{% for c in r.controls %}
+<tr><td class="mono">{{ c.control.id }}</td><td>{{ c.control.title(lang) }}</td>
+<td><span class="badge b-{{ c.final.value }}">{{ t(c.final.value) }}</span></td>
+<td class="small">{% if c.final.value == 'excluded' %}{{ c.exclusion_reason or '⚠ —' }}{% else %}{{ L.applicable_yes }}{% endif %}</td></tr>
+{% endfor %}
+</tbody></table></div>
+
+<h2>{{ L.method }}</h2>
+<p class="small">{{ L.method_body }}</p>
+<footer>{{ L.copyright }} · Tranquera {{ version }}</footer>
+</div>
+<script>
+document.querySelectorAll('.filters button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var sev = b.dataset.sev;
+    document.querySelectorAll('.filters button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+    document.querySelectorAll('#register tbody tr[data-sev]').forEach(function (tr) {
+      tr.hidden = !(sev === 'all' || tr.dataset.sev === sev);
+    });
+  });
+});
+</script>
+</body>
+</html>
