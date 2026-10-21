@@ -9,7 +9,7 @@ actions, owners and due dates, and a Statement of Applicability.
 
 > *Tranquera* is the gate of an Argentine ranch: what gets through and what doesn't.
 
-![CI](https://github.com/OWNER/tranquera/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Renzodigu/tranquera/actions/workflows/ci.yml/badge.svg)
 
 ## Why another compliance tool?
 
@@ -32,7 +32,7 @@ Most "AI compliance" demos ask a model whether a policy is good. An auditor need
 ## Quick start
 
 ```bash
-pip install "tranquera[app] @ git+https://github.com/OWNER/tranquera"
+pip install "tranquera[app] @ git+https://github.com/Renzodigu/tranquera"
 tranquera demo                      # offline, free: fictitious fintech, Spanish report
 tranquera demo --lang en            # English report
 open tranquera-report/report.html
