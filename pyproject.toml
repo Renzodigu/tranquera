@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tranquera"
-version = "0.2.0"
-description = "Deterministic ISO/IEC 27001:2022 and NIST CSF 2.0 gap analysis: policy rules tested against evidence, auditable findings, optional Claude review."
+version = "0.3.0"
+description = "Deterministic ISO/IEC 27001:2022, NIST CSF 2.0 and Ley 25.326 gap analysis: policy rules tested against evidence, measured against expected verdicts, optional Claude review."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Renzo Di Guglielmo" }]
-keywords = ["grc", "iso27001", "nist-csf", "compliance", "gap-analysis", "audit", "llm"]
+keywords = ["grc", "iso27001", "nist-csf", "compliance", "gap-analysis", "audit", "privacy", "ley-25326", "llm"]
 classifiers = [
   "Programming Language :: Python :: 3",
   "Topic :: Security",

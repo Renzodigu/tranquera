@@ -16,7 +16,7 @@ def test_app_runs_demo_analysis():
     at.sidebar.button[0].click().run()
     assert not at.exception
     labels = {m.label: m.value for m in at.metric}
-    assert labels["Aplicables"] == "88"
+    assert labels["Aplicables"] == "94"  # 88 Annex A + 6 Ley 25.326
     assert "Ñandú Pagos" in at.subheader[0].value
 
 

@@ -3,7 +3,7 @@
 Expected layout (see examples/nandu-pagos)::
 
     company/
-      scope.yaml          # company name, as_of date, SoA exclusions
+      scope.yaml          # company name, as_of date, frameworks, SoA exclusions
       **/*.md             # policies, procedures, evidence and records with YAML front matter
 """
 
@@ -16,6 +16,7 @@ from pathlib import Path
 
 import yaml
 
+from .catalog import DEFAULT_FRAMEWORKS, FRAMEWORKS
 from .models import Chunk, Commitment, Document, Rule
 
 _FRONT_MATTER = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.DOTALL)
@@ -40,6 +41,7 @@ class Company:
     as_of: date | None
     root: Path
     exclusions: dict[str, Exclusion] = field(default_factory=dict)
+    frameworks: tuple[str, ...] = DEFAULT_FRAMEWORKS
     documents: list[Document] = field(default_factory=list)
     chunks: list[Chunk] = field(default_factory=list)
 
@@ -172,12 +174,18 @@ def load_company(root: str | Path) -> Company:
         if cid:
             exclusions[cid] = Exclusion(cid, str(item.get("justification") or "").strip())
 
+    frameworks = _as_str_tuple(scope.get("frameworks")) or DEFAULT_FRAMEWORKS
+    unknown = [f for f in frameworks if f not in FRAMEWORKS]
+    if unknown:
+        raise CompanyError(f"Unknown framework {', '.join(unknown)} in scope.yaml (use: {', '.join(FRAMEWORKS)})")
+
     company = Company(
         name=str(scope.get("company") or root.name),
         description=str(scope.get("description") or ""),
         as_of=_as_date(scope.get("as_of")),
         root=root,
         exclusions=exclusions,
+        frameworks=frameworks,
     )
     seen: set[str] = set()
     for path in sorted(root.rglob("*.md")):

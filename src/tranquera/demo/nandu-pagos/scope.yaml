@@ -3,7 +3,7 @@
 company: Ñandú Pagos S.A.
 description: Billetera virtual y procesador de pagos ficticio con sede en Buenos Aires. 100 % en la nube (AWS), 140 empleados.
 as_of: 2026-10-20
-frameworks: [iso27001-2022, nist-csf-2.0]
+frameworks: [iso27001-2022, nist-csf-2.0, ley-25326]
 exclusions:
   - control: "7.8"
     justification: Sin centro de datos propio; la ubicación y protección de servidores es responsabilidad del proveedor de nube (ver 5.23).

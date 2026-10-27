@@ -58,7 +58,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <div class="wrap">
 <header>
   <h1>{{ L.title }}: {{ r.company }}</h1>
-  <div class="sub">{{ L.subtitle }}{% if r.description %} · {{ r.description }}{% endif %}</div>
+  <div class="sub">{{ L.subtitle }}{% if law %} · {{ L.law_subtitle }}{% endif %}{% if r.description %} · {{ r.description }}{% endif %}</div>
   <div class="meta">
     <span>{{ L.as_of }}: <b>{{ r.as_of }}</b></span>
     <span>{{ L.assessor }}: <b>{{ r.assessor }}</b></span>
@@ -180,6 +180,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     {% if c.assessment.citations %}<div class="small"><b>{{ L.citations }}</b></div>
     {% for q in c.assessment.citations %}<blockquote><span class="mono">{{ q.chunk_id }}</span> — {{ q.quote }}</blockquote>{% endfor %}{% endif %}
     {% for n in c.assessment.notes %}<p class="small">ℹ {{ n }}</p>{% endfor %}
+    {% if c.control.refs %}<p class="small">{{ L.law_refs }}: {{ c.control.refs|join(', ') }} · ISO/IEC 27001: <span class="mono">{{ c.control.iso|join(', ') }}</span></p>{% endif %}
     <p class="small">NIST CSF 2.0: <span class="mono">{{ c.control.nist|join(', ') or '—' }}</span></p>
   </div>
 </details>
@@ -189,7 +190,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <div class="table-wrap"><table>
 <thead><tr><th>{{ L.controls }}</th><th>{{ L.finding }}</th><th>{{ L.status }}</th><th>{{ L.justification }}</th></tr></thead>
 <tbody>
-{% for c in r.controls %}
+{% for c in r.controls if c.control.framework == iso %}
 <tr><td class="mono">{{ c.control.id }}</td><td>{{ c.control.title(lang) }}</td>
 <td><span class="badge b-{{ c.final.value }}">{{ t(c.final.value) }}</span></td>
 <td class="small">{% if c.final.value == 'excluded' %}{{ c.exclusion_reason or '⚠ —' }}{% else %}{{ L.applicable_yes }}{% endif %}</td></tr>

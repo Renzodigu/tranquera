@@ -4,8 +4,8 @@ A policy declares in its front matter what its evidence must show; evidence reco
 ordinary Markdown tables (or in a ``metrics`` map). Four kinds of test cover most audit procedures:
 
 * ``threshold`` — a metric reaches a target (training completion >= 95 %).
-* ``deadline``  — every matching row is closed within N days; open rows age until the assessment date
-  (critical vulnerabilities remediated in 7 days).
+* ``deadline``  — every matching row is closed within N days (calendar or business days); open rows age
+  until the assessment date (critical vulnerabilities remediated in 7 days).
 * ``required``  — every matching row has an accepted value in a column (high incidents have a post mortem).
 * ``absent``    — keys from one table must not appear in another (leavers with an active account).
 
@@ -151,6 +151,7 @@ def _threshold(rule: Rule, company: Company, as_of: date, lang: str) -> RuleResu
 def _deadline(rule: Rule, company: Company, as_of: date, lang: str) -> RuleResult:
     doc, spec = _evidence(company, rule.evidence), rule.spec
     max_days = int(spec["max_days"])
+    business = bool(spec.get("business_days"))
     table = find_table(doc, spec, [spec["start"]] + ([spec["end"]] if spec.get("end") else []))
     start_col = _col(table, spec["start"])
     end_col = _col(table, spec["end"]) if spec.get("end") else None
@@ -162,12 +163,24 @@ def _deadline(rule: Rule, company: Company, as_of: date, lang: str) -> RuleResul
             failures.append(t(lang, "r_no_date", key=_key(r, table, spec), column=start_col))
             continue
         end = parse_date(r[end_col]) if end_col else None
-        days = ((end or as_of) - start).days
+        days = _business_days(start, end or as_of) if business else ((end or as_of) - start).days
         if days > max_days:
-            state = t(lang, "r_closed_in", days=days) if end else t(lang, "r_open_for", days=days)
+            suffix = "_business" if business else ""
+            state = t(lang, f"r_closed_in{suffix}" if end else f"r_open_for{suffix}", days=days)
             failures.append(f"{_key(r, table, spec)} ({state})")
-    summary = t(lang, "r_deadline", bad=len(failures), n=len(rows), days=max_days)
+    summary = t(lang, "r_deadline_business" if business else "r_deadline", bad=len(failures), n=len(rows),
+                days=max_days)
     return RuleResult(rule, not failures, len(rows), failures, summary)
+
+
+def _business_days(start: date, end: date) -> int:
+    """Monday-to-Friday days after ``start`` up to ``end``. Public holidays are not counted out."""
+    if end <= start:
+        return 0
+    days = (end - start).days
+    weeks, rest = divmod(days, 7)
+    extra = sum(1 for i in range(1, rest + 1) if (start.weekday() + i) % 7 < 5)
+    return weeks * 5 + extra
 
 
 def _required(rule: Rule, company: Company, as_of: date, lang: str) -> RuleResult:

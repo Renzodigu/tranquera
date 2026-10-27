@@ -141,6 +141,11 @@ def build_user_prompt(control: Control, hits: list[Hit], ctx: Context) -> str:
         "",
         f"CONTROL {control.id} — {control.title_en} / {control.title_es}",
         f"Theme: {control.theme}. Typical topics: {', '.join(control.keywords)}.",
+    ]
+    if control.refs:
+        lines.append(f"This is a legal obligation from Argentina's Ley 25.326 ({', '.join(control.refs)}), "
+                     "assessed with the same verdict scale as an Annex A control.")
+    lines += [
         "",
         "EXCERPTS:",
     ]

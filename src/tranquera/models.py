@@ -56,6 +56,9 @@ class Control:
     title_es: str
     keywords: tuple[str, ...]
     nist: tuple[str, ...]
+    framework: str = "iso27001-2022"
+    refs: tuple[str, ...] = ()  # legal articles, for obligations from a law
+    iso: tuple[str, ...] = ()   # related Annex A controls, for obligations from a law
 
     def title(self, lang: str) -> str:
         return self.title_es if lang == "es" else self.title_en
@@ -173,6 +176,7 @@ class ControlResult:
     final: Verdict
     cap_reasons: list[str] = field(default_factory=list)
     exclusion_reason: str = ""
+    retrieved: list[str] = field(default_factory=list)  # chunk ids the assessor saw
 
 
 @dataclass
@@ -198,6 +202,7 @@ class AnalysisResult:
     documents: list[Document]
     reconciliation: list[dict] = field(default_factory=list)
     rules: list[dict] = field(default_factory=list)
+    frameworks: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         def conv(o):

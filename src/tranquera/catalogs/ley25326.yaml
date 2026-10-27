@@ -1,0 +1,86 @@
+# Ley 25.326 de Protección de los Datos Personales (Argentina) — obligations pack.
+#
+# Opt in from scope.yaml with `frameworks: [iso27001-2022, nist-csf-2.0, ley-25326]`.
+# Articles are cited; titles are summaries written by the Tranquera authors, checked against the
+# official text (infoleg.gob.ar). The law is in force; reform bills are under discussion, so review
+# this file if a new law is passed. This is not legal advice.
+#
+# Fields
+#   id      LPDP-<main article>
+#   crit    criticality used for severity scoring: high | medium | low
+#   en / es short title, own wording
+#   refs    articles and regulations the obligation comes from
+#   iso     related Annex A controls (author's analysis)
+#   kw      retrieval keywords (Spanish + English, accents not required)
+#   nist    indicative NIST CSF 2.0 mapping
+framework: ley-25326
+name: Ley 25.326 (Argentina)
+obligations:
+  # Art. 4: data must be accurate, adequate, relevant and not excessive for the purpose they were
+  # collected for, and destroyed once they are no longer needed for it.
+  - id: LPDP-04
+    crit: medium
+    en: "Data quality: only the data needed, kept only while needed"
+    es: "Calidad de los datos: solo los necesarios y mientras se necesiten"
+    refs: ["art. 4"]
+    iso: ["5.34", "8.10"]
+    kw: [no excesivos, minimizacion de datos, plazo de conservacion, se eliminan o anonimizan, dejan de ser necesarios, data minimization]
+    nist: [GV.OC-03]
+
+  # Arts. 5 and 6: free, express and informed consent (with the legal exceptions), and informing the
+  # data subject of the purpose, recipients, the database and how to exercise their rights.
+  - id: LPDP-05
+    crit: high
+    en: "Consent and information to the data subject"
+    es: "Consentimiento e información al titular"
+    refs: ["art. 5", "art. 6"]
+    iso: ["5.34"]
+    kw: [consentimiento, consentimiento expreso, informar al titular, finalidad del tratamiento, aviso de privacidad, consent]
+    nist: [GV.OC-03]
+
+  # Arts. 9 and 10: technical and organizational measures to protect personal data, and a duty of
+  # confidentiality for everyone who processes them. Res. AAIP 47/2018 lists recommended measures.
+  - id: LPDP-09
+    crit: high
+    en: "Security and confidentiality of personal data"
+    es: "Seguridad y confidencialidad de los datos personales"
+    refs: ["art. 9", "art. 10", "Res. AAIP 47/2018"]
+    iso: ["5.34", "5.15", "8.24"]
+    kw: [seguridad de los datos personales, medidas de seguridad, deber de confidencialidad, confidencialidad de los datos, 47/2018]
+    nist: [GV.OC-03, PR.DS-01]
+
+  # Art. 12: transfers abroad only to countries with adequate protection (Disp. DNPDP 60/2016 and
+  # Res. AAIP 34/2019; the United States is not on the list) or with accepted safeguards: model
+  # contractual clauses (Disp. 60/2016, Res. AAIP 198/2023), binding corporate rules or the data
+  # subject's express consent.
+  - id: LPDP-12
+    crit: high
+    en: "International transfers"
+    es: "Transferencias internacionales"
+    refs: ["art. 12", "Disp. DNPDP 60/2016", "Res. AAIP 198/2023"]
+    iso: ["5.14", "5.34"]
+    kw: [transferencia internacional, proteccion adecuada, nivel adecuado, clausulas contractuales modelo, normas corporativas vinculantes, international transfer]
+    nist: [GV.OC-03]
+
+  # Arts. 14 to 16: access answered within 10 calendar days; rectification, update or deletion
+  # within 5 business days. Deadlines are testable with a `deadline` rule (`business_days: true`).
+  - id: LPDP-14
+    crit: high
+    en: "Data subject rights: access, rectification and deletion"
+    es: "Derechos del titular: acceso, rectificación y supresión"
+    refs: ["art. 14", "art. 15", "art. 16"]
+    iso: ["5.34"]
+    kw: [derecho de acceso, rectificacion, supresion, solicitudes de titulares, 10 dias corridos, 5 dias habiles, data subject requests]
+    nist: [GV.OC-03]
+
+  # Art. 21: databases registered with the control authority (AAIP, Registro Nacional de Bases de
+  # Datos). The article names public files and private ones meant to provide reports; extending it to
+  # other private databases comes from the regulations, so confirm it case by case.
+  - id: LPDP-21
+    crit: medium
+    en: "Registration of databases with the authority"
+    es: "Inscripción de las bases de datos"
+    refs: ["art. 21"]
+    iso: ["5.31", "5.34"]
+    kw: [inscripcion de bases, bases inscriptas, registro nacional de bases de datos, database registration]
+    nist: [GV.OC-03]

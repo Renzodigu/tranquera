@@ -1,4 +1,4 @@
-"""Command line interface: ``tranquera analyze <folder>`` and ``tranquera demo``."""
+"""Command line interface: ``tranquera analyze <folder>``, ``tranquera demo`` and ``tranquera evaluate``."""
 
 from __future__ import annotations
 
@@ -13,6 +13,7 @@ from . import __version__
 from .assessors import DEFAULT_MODEL, ClaudeAssessor, HeuristicAssessor
 from .engine import analyze
 from .ingest import CompanyError
+from .metrics import ExpectedError, compare, load_expected, render_markdown
 from .models import SEVERITY_ORDER, Severity
 from .report import summary, write_reports
 
@@ -43,12 +44,25 @@ def _build_parser() -> argparse.ArgumentParser:
     common(a)
     d = sub.add_parser("demo", help="Run on the bundled fictitious company (Ñandú Pagos S.A.).")
     common(d)
+    e = sub.add_parser("evaluate", help="Measure the analysis against expected verdicts (expected.yaml).")
+    e.add_argument("path", nargs="?", help="Company folder (default: the bundled demo).")
+    e.add_argument("--expected", help="Expected verdicts file (default: <path>/expected.yaml).")
+    e.add_argument("--min-accuracy", type=float, metavar="PCT",
+                   help="Exit with code 1 if verdict accuracy is below this percentage (for CI).")
+    common(e)
     return p
 
 
 def main(argv: list[str] | None = None) -> int:
     args = _build_parser().parse_args(argv)
-    path = demo_path() if args.command == "demo" else Path(args.path)
+    path = Path(args.path) if getattr(args, "path", None) else demo_path()
+    expected = None
+    if args.command == "evaluate":
+        try:
+            expected = load_expected(args.expected or path / "expected.yaml")
+        except ExpectedError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
 
     if args.assessor == "claude":
         if not os.environ.get("ANTHROPIC_API_KEY"):
@@ -72,7 +86,7 @@ def main(argv: list[str] | None = None) -> int:
     if sys.stderr.isatty():
         print(file=sys.stderr)
 
-    files = write_reports(result, args.out, fictional=args.command == "demo")
+    files = write_reports(result, args.out, fictional=path == demo_path())
     s = summary(result)
     print(f"{result.company} · {result.as_of} · assessor={result.assessor}")
     print(f"  controls: {s['applicable']} applicable, {s['excluded']} excluded · score {s['score']}%")
@@ -85,6 +99,17 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  Claude API calls: {assessor.calls}")
     for kind, f in files.items():
         print(f"  {kind:<9} {f}")
+
+    if expected is not None:
+        m = compare(result, expected)
+        out = Path(args.out) / "metrics.md"
+        out.write_text(render_markdown(m, args.lang), encoding="utf-8")
+        recall = f" · retrieval {m['retrieval_recall']:.0%}" if m["retrieval_recall"] is not None else ""
+        print(f"  accuracy {m['accuracy']:.0%} on {m['compared']} controls · gaps detected {m['gap_detection']:.0%}"
+              f" · false met {len(m['false_met'])} · false gaps {len(m['false_gaps'])}{recall}")
+        print(f"  {'metrics':<9} {out}")
+        if args.min_accuracy is not None and 100 * m["accuracy"] < args.min_accuracy:
+            return 1
 
     if args.fail_on:
         limit = SEVERITY_ORDER[Severity(args.fail_on)]

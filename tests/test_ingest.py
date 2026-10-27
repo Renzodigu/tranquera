@@ -7,11 +7,11 @@ from .conftest import write_doc
 
 def test_demo_company_loads(company):
     assert company.name == "Ñandú Pagos S.A."
-    assert len(company.documents) == 19
+    assert len(company.documents) == 21
     assert "8.11" in company.exclusions and company.exclusions["8.11"].justification == ""
     assert company.superseded_ids == {"POL-09"}
     assert len(company.commitments) == 6
-    assert [r.id for r in company.rules] == ["REG-01", "REG-04", "REG-03", "REG-02", "REG-05"]
+    assert [r.id for r in company.rules] == ["REG-01", "REG-04", "REG-03", "REG-02", "REG-05", "REG-06", "REG-07"]
     assert company.doc("EVD-04").metrics == {"completion_rate": 62}
 
 

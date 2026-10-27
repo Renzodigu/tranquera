@@ -8,7 +8,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from .assessors import Assessor, Context, HeuristicAssessor
-from .catalog import iso_controls, nist_catalog
+from .catalog import controls_for, nist_catalog
 from .checks import hygiene_findings, reconciliation, soa_findings
 from .i18n import t
 from .ingest import Company, load_company
@@ -54,7 +54,7 @@ def analyze(
     docs = {d.id: d for d in company.documents}
     superseded = company.superseded_ids
 
-    controls = [c for c in iso_controls() if not only or c.id in set(only)]
+    controls = [c for c in controls_for(company.frameworks) if not only or c.id in set(only)]
 
     # 1) deterministic checks first: their results cap the AI/heuristic verdicts
     recon_lines, recon_findings = reconciliation(company, as_of, lang)
@@ -101,7 +101,7 @@ def analyze(
             reasons.append(t(lang, "cap_rule", rule=rid))
         if reasons:
             final = _cap(final, Verdict.PARTIAL)
-        results.append(ControlResult(control, assessment, final, reasons))
+        results.append(ControlResult(control, assessment, final, reasons, retrieved=[h.chunk.id for h in hits]))
 
     # 3) findings from assessments (only where the assessor itself saw a gap)
     findings = list(deterministic)
@@ -159,7 +159,7 @@ def analyze(
 
     return AnalysisResult(
         company=company.name, description=company.description, as_of=as_of, lang=lang,
-        assessor=getattr(assessor, "name", "custom"), controls=results,
+        assessor=getattr(assessor, "name", "custom"), controls=results, frameworks=list(company.frameworks),
         findings=patterns + findings, nist=_nist_rollup(results, lang), documents=company.documents,
         reconciliation=[{
             "commitment": ln.commitment.id, "control": ln.commitment.control,
@@ -179,6 +179,8 @@ def analyze(
 
 def _control_sort_key(cid: str) -> tuple[int, int]:
     try:
+        if cid.startswith("LPDP-"):
+            return 100, int(cid[5:])  # Ley 25.326 obligations after Annex A
         a, b = cid.split(".")
         return int(a), int(b)
     except ValueError:

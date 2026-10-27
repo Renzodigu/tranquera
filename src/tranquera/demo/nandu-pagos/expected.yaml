@@ -1,0 +1,60 @@
+# Veredictos esperados para Ñandú Pagos (empresa ficticia), al 2026-10-20.
+#
+# Se escribieron leyendo los documentos, antes de correr Tranquera, con el mismo criterio que usa la
+# herramienta: «cumple» = política aprobada y vigente + evidencia de que opera, sin nada que la
+# contradiga; «parcial» = solo diseño, evidencia que contradice a la política, o un documento vencido
+# o en borrador; «no cumple» = ningún documento lo trata.
+#
+# Cubren una muestra de 42 controles: los que tienen problemas plantados, otros sin problemas y
+# algunos donde la evidencia contradice a la política sin que haya una regla que lo diga.
+# evidence: documentos donde está la respuesta (mide la búsqueda por separado del criterio).
+#
+# Uso: tranquera evaluate   (o: tranquera evaluate <carpeta> --expected <archivo>)
+verdicts:
+  # --- organizacionales
+  "5.1":  {verdict: partial, why: "POL-01 aprobada, pero el marco tiene una política vencida (POL-03), una en borrador (POL-06) y una reemplazada todavía publicada (POL-09).", evidence: [POL-01]}
+  "5.2":  {verdict: partial, why: "Roles definidos en POL-01 §3; no hay actas del Comité de Seguridad.", evidence: [POL-01]}
+  "5.5":  {verdict: partial, why: "Solo POL-03 §4, que tiene la revisión vencida.", evidence: [POL-03]}
+  "5.7":  {verdict: not_met, why: "Ningún documento trata inteligencia de amenazas."}
+  "5.9":  {verdict: met, why: "EVD-08 inventaría los activos con responsable y clasificación.", evidence: [EVD-08]}
+  "5.12": {verdict: met, why: "POL-07 §1 define los niveles y EVD-08 los aplica a cada activo.", evidence: [POL-07, EVD-08]}
+  "5.13": {verdict: partial, why: "POL-07 §2 pide etiquetar; no hay evidencia de que se haga.", evidence: [POL-07]}
+  "5.14": {verdict: partial, why: "POL-07 §4 define canales cifrados; no hay evidencia.", evidence: [POL-07]}
+  "5.16": {verdict: partial, why: "POL-02 §2 exige baja en 24 h, pero EVD-10 muestra cuentas de exempleados activas.", evidence: [POL-02, EVD-10]}
+  "5.17": {verdict: partial, why: "POL-02 §3 está bien, pero POL-09 (6 caracteres, rotación cada 30 días) sigue publicada y la contradice.", evidence: [POL-02, POL-09]}
+  "5.18": {verdict: partial, why: "Revisión trimestral hecha una sola vez en 2026; tres exempleados con cuenta activa.", evidence: [POL-02, EVD-01]}
+  "5.19": {verdict: met, why: "POL-05 §2 y revisión de proveedores críticos de marzo 2026 (EVD-06).", evidence: [POL-05, EVD-06]}
+  "5.20": {verdict: partial, why: "POL-05 §3 fija las cláusulas; no hay evidencia de contratos revisados.", evidence: [POL-05]}
+  "5.22": {verdict: met, why: "Revisión anual hecha en marzo 2026 (EVD-06); el proveedor sin informe tiene un plan pedido.", evidence: [POL-05, EVD-06]}
+  "5.23": {verdict: met, why: "POL-05 §4 documenta la responsabilidad compartida y EVD-06 revisa el SOC 2 de AWS.", evidence: [POL-05, EVD-06]}
+  "5.24": {verdict: partial, why: "POL-03 vencida y el último simulacro es de 2024.", evidence: [POL-03, EVD-05]}
+  "5.25": {verdict: partial, why: "Hay registro de incidentes (EVD-07), pero POL-03 está vencida.", evidence: [POL-03, EVD-07]}
+  "5.26": {verdict: partial, why: "POL-03 vencida.", evidence: [POL-03, EVD-07]}
+  "5.27": {verdict: partial, why: "INC-2026-02 (alta) cerrado sin post mortem.", evidence: [POL-03, EVD-07]}
+  "5.29": {verdict: not_met, why: "No hay plan de continuidad ni seguridad durante una disrupción."}
+  "5.30": {verdict: not_met, why: "No hay plan de continuidad TIC; solo RTO/RPO de una base en POL-04.", evidence: [POL-04]}
+  "5.31": {verdict: partial, why: "POL-01 §4 promete un registro de requisitos que no aparece; no se trata la inscripción de bases ni la transferencia a EE. UU.", evidence: [POL-01]}
+  "5.34": {verdict: partial, why: "POL-10 existe, pero hay pedidos de titulares fuera de plazo y la transferencia internacional no está resuelta.", evidence: [POL-10, EVD-11]}
+  # --- personas
+  "6.1":  {verdict: not_met, why: "Ningún documento trata la verificación de antecedentes."}
+  "6.3":  {verdict: partial, why: "Capacitación completada por el 62 %, meta 95 %.", evidence: [POL-01, EVD-04]}
+  "6.5":  {verdict: partial, why: "POL-02 exige baja en 24 h y EVD-09/EVD-10 muestran tres exempleados activos.", evidence: [POL-02, EVD-09]}
+  # --- físicos
+  "7.2":  {verdict: not_met, why: "Ningún documento trata el ingreso a la oficina."}
+  "7.7":  {verdict: partial, why: "Solo bloqueo de pantalla (POL-08 §1); nada sobre escritorio limpio.", evidence: [POL-08]}
+  # --- tecnológicos
+  "8.2":  {verdict: partial, why: "POL-02 §4 está bien, pero EVD-01 encontró 3 cuentas de exempleados activas en la consola de AWS de producción.", evidence: [POL-02, EVD-01]}
+  "8.8":  {verdict: partial, why: "Escaneos de julio y agosto faltantes; dos críticas abiertas fuera del plazo de 7 días.", evidence: [POL-08, EVD-03]}
+  "8.9":  {verdict: partial, why: "POL-08 §3; no hay evidencia de la validación contra la línea base.", evidence: [POL-08]}
+  "8.12": {verdict: not_met, why: "Ningún documento trata la prevención de fuga de datos."}
+  "8.13": {verdict: partial, why: "Prueba de restauración trimestral; la última es de noviembre 2025.", evidence: [POL-04, EVD-02]}
+  "8.16": {verdict: partial, why: "POL-08 §4; no hay evidencia de alertas atendidas.", evidence: [POL-08]}
+  "8.24": {verdict: partial, why: "POL-08 §6; no hay evidencia de la rotación de claves.", evidence: [POL-08]}
+  "8.28": {verdict: partial, why: "POL-06 sigue en borrador.", evidence: [POL-06]}
+  # --- Ley 25.326
+  LPDP-04: {verdict: partial, why: "POL-10 §2 limita los datos y fija la eliminación; no hay evidencia de que se elimine.", evidence: [POL-10]}
+  LPDP-05: {verdict: partial, why: "POL-10 §3 registra el consentimiento; no hay evidencia del registro.", evidence: [POL-10]}
+  LPDP-09: {verdict: partial, why: "POL-10 §5 remite a cifrado y POL-02; no hay evidencia propia.", evidence: [POL-10]}
+  LPDP-12: {verdict: not_met, why: "Datos en AWS us-east-1 y POL-10 §6 admite que no hay garantías. La frase «cláusulas contractuales modelo» está negada (trampa).", evidence: [POL-10]}
+  LPDP-14: {verdict: partial, why: "Plazos fijados, pero SOL-26-03, SOL-26-04 y SOL-26-06 los superan.", evidence: [POL-10, EVD-11]}
+  LPDP-21: {verdict: not_met, why: "Ningún documento menciona la inscripción ante la AAIP; el «registro de bases» de POL-07 es interno."}

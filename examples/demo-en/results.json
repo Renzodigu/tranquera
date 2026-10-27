@@ -21,7 +21,10 @@
         "nist": [
           "GV.PO-01",
           "GV.PO-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.1",
@@ -52,7 +55,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-01#5",
+        "POL-01#1",
+        "POL-01#7",
+        "POL-01#3",
+        "POL-01#6",
+        "POL-06#1",
+        "EVD-04#1",
+        "POL-02#5"
+      ]
     },
     {
       "control": {
@@ -70,7 +83,10 @@
         ],
         "nist": [
           "GV.RR-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.2",
@@ -101,7 +117,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-01#3",
+        "POL-01#6",
+        "POL-05#4",
+        "POL-01#5",
+        "POL-01#7",
+        "POL-03#3",
+        "POL-03#1",
+        "POL-02#1"
+      ]
     },
     {
       "control": {
@@ -118,7 +144,10 @@
         ],
         "nist": [
           "PR.AA-05"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.3",
@@ -136,7 +165,11 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-06#5",
+        "POL-07#1"
+      ]
     },
     {
       "control": {
@@ -153,7 +186,10 @@
         ],
         "nist": [
           "GV.RR-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.4",
@@ -184,7 +220,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-01#1",
+        "POL-01#3",
+        "POL-02#3",
+        "EVD-03#2",
+        "POL-03#3",
+        "POL-08#2",
+        "POL-08#4",
+        "POL-03#2"
+      ]
     },
     {
       "control": {
@@ -203,7 +249,10 @@
         "nist": [
           "GV.OC-03",
           "RS.CO-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.5",
@@ -236,7 +285,17 @@
       "cap_reasons": [
         "Relies on a document past its review date (POL-03)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-03#4",
+        "POL-05#3",
+        "EVD-05#1",
+        "POL-10#2",
+        "POL-03#1",
+        "POL-03#2",
+        "POL-03#3",
+        "POL-03#5"
+      ]
     },
     {
       "control": {
@@ -253,7 +312,10 @@
         ],
         "nist": [
           "ID.RA-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.6",
@@ -271,7 +333,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#5",
+        "EVD-05#1",
+        "POL-03#1",
+        "POL-10#2",
+        "POL-01#3",
+        "POL-03#7",
+        "POL-03#3",
+        "POL-01#5"
+      ]
     },
     {
       "control": {
@@ -290,7 +362,10 @@
         "nist": [
           "ID.RA-02",
           "ID.RA-03"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.7",
@@ -308,7 +383,10 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#3"
+      ]
     },
     {
       "control": {
@@ -324,7 +402,10 @@
         ],
         "nist": [
           "ID.RA-07"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.8",
@@ -342,7 +423,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-01#4",
+        "POL-01#7",
+        "POL-06#5",
+        "POL-03#1",
+        "POL-02#2",
+        "POL-01#3",
+        "POL-08#5",
+        "POL-03#7"
+      ]
     },
     {
       "control": {
@@ -361,7 +452,10 @@
           "ID.AM-01",
           "ID.AM-02",
           "ID.AM-05"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.9",
@@ -392,7 +486,12 @@
       },
       "final": "met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "EVD-08#1",
+        "POL-01#3",
+        "EVD-03#2"
+      ]
     },
     {
       "control": {
@@ -408,7 +507,10 @@
         ],
         "nist": [
           "GV.PO-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.10",
@@ -426,7 +528,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "EVD-08#1",
+        "POL-03#7",
+        "POL-05#4",
+        "POL-07#1",
+        "POL-02#5",
+        "POL-03#1",
+        "POL-04#1",
+        "EVD-04#1"
+      ]
     },
     {
       "control": {
@@ -443,13 +555,22 @@
         ],
         "nist": [
           "ID.AM-08"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.11",
         "verdict": "partial",
-        "rationale": "The control is covered by POL-02, but there is no evidence that it operates.",
+        "rationale": "The control is covered by POL-02, POL-10, but there is no evidence that it operates.",
         "citations": [
+          {
+            "chunk_id": "POL-10#5",
+            "doc_id": "POL-10",
+            "quote": "Las bases de datos con datos personales se cifran en reposo y el acceso se rige por la POL-02",
+            "verified": true
+          },
           {
             "chunk_id": "POL-02#2",
             "doc_id": "POL-02",
@@ -468,7 +589,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-10#5",
+        "POL-02#2",
+        "POL-05#3",
+        "EVD-08#1",
+        "POL-03#7",
+        "POL-05#4",
+        "POL-03#1",
+        "POL-04#1"
+      ]
     },
     {
       "control": {
@@ -487,7 +618,10 @@
         "nist": [
           "ID.AM-05",
           "ID.AM-07"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.12",
@@ -524,7 +658,17 @@
       },
       "final": "met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-07#1",
+        "EVD-08#1",
+        "POL-07#4",
+        "POL-07#2",
+        "POL-01#7",
+        "POL-05#1",
+        "POL-03#2",
+        "POL-02#5"
+      ]
     },
     {
       "control": {
@@ -540,7 +684,10 @@
         ],
         "nist": [
           "ID.AM-07"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.13",
@@ -571,7 +718,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-07#2",
+        "POL-07#1",
+        "POL-07#4",
+        "POL-02#6",
+        "POL-01#2",
+        "POL-02#1",
+        "POL-01#7",
+        "POL-01#1"
+      ]
     },
     {
       "control": {
@@ -589,12 +746,15 @@
         ],
         "nist": [
           "PR.DS-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.14",
         "verdict": "partial",
-        "rationale": "The control is covered by POL-07, but there is no evidence that it operates.",
+        "rationale": "The control is covered by POL-07, POL-10, but there is no evidence that it operates.",
         "citations": [
           {
             "chunk_id": "POL-07#4",
@@ -620,7 +780,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-07#4",
+        "POL-07#1",
+        "POL-07#3",
+        "POL-07#5",
+        "POL-10#6",
+        "EVD-06#1",
+        "POL-08#6",
+        "POL-04#1"
+      ]
     },
     {
       "control": {
@@ -637,7 +807,10 @@
         ],
         "nist": [
           "PR.AA-05"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.15",
@@ -668,7 +841,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#1",
+        "POL-02#5",
+        "POL-02#4",
+        "POL-02#3",
+        "POL-02#2",
+        "POL-01#7",
+        "POL-01#3",
+        "EVD-02#1"
+      ]
     },
     {
       "control": {
@@ -686,7 +869,10 @@
         ],
         "nist": [
           "PR.AA-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.16",
@@ -723,7 +909,17 @@
       },
       "final": "met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#2",
+        "EVD-10#1",
+        "POL-02#3",
+        "POL-02#5",
+        "POL-02#4",
+        "POL-05#4",
+        "EVD-01#1",
+        "POL-03#2"
+      ]
     },
     {
       "control": {
@@ -742,7 +938,10 @@
         "nist": [
           "PR.AA-01",
           "PR.AA-03"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.17",
@@ -773,7 +972,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#3",
+        "POL-09#1",
+        "POL-02#6",
+        "POL-02#1",
+        "POL-07#1",
+        "EVD-04#1",
+        "EVD-07#1",
+        "POL-01#2"
+      ]
     },
     {
       "control": {
@@ -791,7 +1000,10 @@
         ],
         "nist": [
           "PR.AA-05"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.18",
@@ -831,7 +1043,17 @@
         "Periodic commitment missed (COM-02).",
         "Rule not met (REG-04)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#5",
+        "POL-02#1",
+        "EVD-01#1",
+        "POL-02#4",
+        "POL-02#3",
+        "POL-02#2",
+        "POL-10#4",
+        "POL-05#3"
+      ]
     },
     {
       "control": {
@@ -849,7 +1071,10 @@
         "nist": [
           "GV.SC-01",
           "GV.SC-06"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.19",
@@ -886,7 +1111,17 @@
       },
       "final": "met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-05#2",
+        "EVD-06#1",
+        "POL-05#1",
+        "POL-05#5",
+        "POL-05#4",
+        "POL-05#3",
+        "POL-01#7",
+        "POL-01#2"
+      ]
     },
     {
       "control": {
@@ -904,7 +1139,10 @@
         ],
         "nist": [
           "GV.SC-05"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.20",
@@ -935,7 +1173,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-05#3",
+        "POL-05#4",
+        "POL-10#5",
+        "POL-05#2",
+        "POL-05#1",
+        "POL-05#5",
+        "POL-07#1",
+        "EVD-06#1"
+      ]
     },
     {
       "control": {
@@ -953,7 +1201,10 @@
         "nist": [
           "GV.SC-05",
           "GV.SC-07"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.21",
@@ -986,7 +1237,17 @@
       "cap_reasons": [
         "Relies on an unapproved document (POL-06)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-05#2",
+        "POL-06#2",
+        "POL-03#1",
+        "POL-01#3",
+        "POL-08#5",
+        "POL-03#7",
+        "POL-03#3",
+        "POL-01#5"
+      ]
     },
     {
       "control": {
@@ -1003,7 +1264,10 @@
         ],
         "nist": [
           "GV.SC-07"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.22",
@@ -1040,7 +1304,17 @@
       },
       "final": "met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "EVD-06#1",
+        "POL-05#5",
+        "POL-05#2",
+        "POL-05#4",
+        "POL-05#1",
+        "POL-05#3",
+        "POL-08#4",
+        "POL-01#4"
+      ]
     },
     {
       "control": {
@@ -1059,12 +1333,15 @@
         "nist": [
           "GV.SC-05",
           "GV.SC-07"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.23",
         "verdict": "met",
-        "rationale": "Covered by POL-01, POL-05 with operating evidence in EVD-06.",
+        "rationale": "Covered by POL-01, POL-05, POL-10 with operating evidence in EVD-06.",
         "citations": [
           {
             "chunk_id": "POL-05#4",
@@ -1096,7 +1373,17 @@
       },
       "final": "met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-05#4",
+        "EVD-06#1",
+        "POL-05#2",
+        "POL-05#1",
+        "POL-05#5",
+        "POL-05#3",
+        "POL-01#2",
+        "POL-10#6"
+      ]
     },
     {
       "control": {
@@ -1113,7 +1400,10 @@
         ],
         "nist": [
           "RS.MA-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.24",
@@ -1153,7 +1443,17 @@
         "Relies on a document past its review date (POL-03).",
         "Periodic commitment missed (COM-03)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-03#6",
+        "POL-03#3",
+        "EVD-05#1",
+        "POL-03#5",
+        "POL-03#2",
+        "POL-01#7",
+        "POL-06#5",
+        "EVD-06#1"
+      ]
     },
     {
       "control": {
@@ -1171,7 +1471,10 @@
         "nist": [
           "DE.AE-02",
           "DE.AE-08"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.25",
@@ -1210,7 +1513,17 @@
       "cap_reasons": [
         "Relies on a document past its review date (POL-03)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-03#2",
+        "POL-03#3",
+        "POL-03#1",
+        "EVD-07#1",
+        "POL-03#6",
+        "POL-03#7",
+        "POL-01#7",
+        "POL-01#3"
+      ]
     },
     {
       "control": {
@@ -1229,7 +1542,10 @@
           "RS.MA-01",
           "RS.MI-01",
           "RS.MI-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.26",
@@ -1268,7 +1584,17 @@
       "cap_reasons": [
         "Relies on a document past its review date (POL-03)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-03#3",
+        "EVD-05#1",
+        "POL-03#5",
+        "POL-03#2",
+        "EVD-07#1",
+        "POL-05#3",
+        "POL-01#7",
+        "EVD-04#1"
+      ]
     },
     {
       "control": {
@@ -1286,7 +1612,10 @@
         "nist": [
           "ID.IM-02",
           "ID.IM-03"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.27",
@@ -1326,7 +1655,17 @@
         "Relies on a document past its review date (POL-03).",
         "Rule not met (REG-03)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-03#6",
+        "EVD-07#1",
+        "EVD-05#1",
+        "POL-03#3",
+        "POL-03#2",
+        "EVD-06#1",
+        "POL-05#3",
+        "POL-01#7"
+      ]
     },
     {
       "control": {
@@ -1342,7 +1681,10 @@
         ],
         "nist": [
           "RS.AN-07"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.28",
@@ -1375,7 +1717,17 @@
       "cap_reasons": [
         "Relies on a document past its review date (POL-03)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-03#5",
+        "EVD-06#1",
+        "POL-03#1",
+        "POL-03#2",
+        "POL-03#3",
+        "POL-03#4",
+        "POL-03#6",
+        "POL-03#7"
+      ]
     },
     {
       "control": {
@@ -1393,7 +1745,10 @@
         "nist": [
           "ID.IM-04",
           "RC.RP-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.29",
@@ -1411,7 +1766,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-01#5",
+        "POL-03#5",
+        "POL-03#1",
+        "POL-01#3",
+        "POL-08#5",
+        "POL-03#7",
+        "POL-03#3",
+        "EVD-07#1"
+      ]
     },
     {
       "control": {
@@ -1432,7 +1797,10 @@
           "ID.IM-04",
           "PR.IR-03",
           "RC.RP-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.30",
@@ -1457,7 +1825,13 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-04#3",
+        "EVD-02#1",
+        "POL-03#3",
+        "EVD-06#1"
+      ]
     },
     {
       "control": {
@@ -1476,12 +1850,15 @@
         ],
         "nist": [
           "GV.OC-03"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.31",
         "verdict": "partial",
-        "rationale": "The control is covered by POL-01, POL-07, but there is no evidence that it operates.",
+        "rationale": "The control is covered by POL-01, POL-07, POL-10, but there is no evidence that it operates.",
         "citations": [
           {
             "chunk_id": "POL-01#4",
@@ -1490,9 +1867,9 @@
             "verified": true
           },
           {
-            "chunk_id": "POL-07#3",
-            "doc_id": "POL-07",
-            "quote": "El tratamiento de datos personales cumple la Ley 25.326",
+            "chunk_id": "POL-01#6",
+            "doc_id": "POL-01",
+            "quote": "El CISO verifica el cumplimiento de las políticas mediante revisiones periódicas",
             "verified": true
           }
         ],
@@ -1507,7 +1884,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-01#4",
+        "POL-01#6",
+        "POL-07#3",
+        "POL-10#1",
+        "POL-01#3",
+        "POL-10#6",
+        "POL-03#4",
+        "POL-03#7"
+      ]
     },
     {
       "control": {
@@ -1523,7 +1910,10 @@
         ],
         "nist": [
           "GV.OC-03"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.32",
@@ -1541,7 +1931,8 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": []
     },
     {
       "control": {
@@ -1558,7 +1949,10 @@
         ],
         "nist": [
           "PR.DS-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.33",
@@ -1589,7 +1983,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-07#5",
+        "POL-07#3",
+        "POL-10#2",
+        "POL-01#4",
+        "POL-03#4",
+        "POL-10#1",
+        "POL-08#2",
+        "POL-02#5"
+      ]
     },
     {
       "control": {
@@ -1608,12 +2012,15 @@
         "nist": [
           "GV.OC-03",
           "PR.DS-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.34",
         "verdict": "partial",
-        "rationale": "The control is covered by POL-01, POL-03, POL-07, but there is no evidence that it operates.",
+        "rationale": "The control is covered by POL-01, POL-07, POL-10, but there is no evidence that it operates.",
         "citations": [
           {
             "chunk_id": "POL-07#3",
@@ -1622,9 +2029,9 @@
             "verified": true
           },
           {
-            "chunk_id": "POL-01#4",
-            "doc_id": "POL-01",
-            "quote": "La compañía identifica y cumple los requisitos aplicables a un proveedor de servicios de pago, la normativa de protección de datos personales (Ley 25.326) y las obligaciones…",
+            "chunk_id": "POL-10#1",
+            "doc_id": "POL-10",
+            "quote": "Establecer cómo Ñandú Pagos trata los datos personales de clientes, comercios y empleados, en el marco de la Ley 25.326 de Protección de los Datos Personales.",
             "verified": true
           }
         ],
@@ -1639,7 +2046,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-07#3",
+        "POL-10#1",
+        "POL-10#4",
+        "POL-10#3",
+        "POL-10#5",
+        "POL-01#4",
+        "POL-10#6",
+        "POL-10#2"
+      ]
     },
     {
       "control": {
@@ -1656,7 +2073,10 @@
         "nist": [
           "GV.OV-02",
           "ID.IM-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.35",
@@ -1674,7 +2094,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "EVD-06#1",
+        "POL-02#5",
+        "POL-05#3",
+        "POL-03#1",
+        "POL-06#1",
+        "POL-01#3",
+        "POL-01#6",
+        "POL-08#5"
+      ]
     },
     {
       "control": {
@@ -1690,7 +2120,10 @@
         ],
         "nist": [
           "ID.IM-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.36",
@@ -1721,7 +2154,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-01#6",
+        "POL-01#7",
+        "POL-01#3",
+        "POL-01#1",
+        "POL-02#6",
+        "POL-09#1",
+        "POL-10#3",
+        "POL-01#2"
+      ]
     },
     {
       "control": {
@@ -1738,7 +2181,10 @@
         ],
         "nist": [
           "GV.PO-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "5.37",
@@ -1756,7 +2202,10 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-05#4"
+      ]
     },
     {
       "control": {
@@ -1773,7 +2222,10 @@
         ],
         "nist": [
           "GV.RR-04"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "6.1",
@@ -1791,7 +2243,8 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": []
     },
     {
       "control": {
@@ -1807,7 +2260,10 @@
         ],
         "nist": [
           "GV.RR-04"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "6.2",
@@ -1825,7 +2281,14 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-05#3",
+        "POL-05#4",
+        "POL-10#1",
+        "EVD-04#1",
+        "POL-01#3"
+      ]
     },
     {
       "control": {
@@ -1844,7 +2307,10 @@
         "nist": [
           "PR.AT-01",
           "PR.AT-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "6.3",
@@ -1883,7 +2349,17 @@
       "cap_reasons": [
         "Rule not met (REG-01)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-01#5",
+        "EVD-04#1",
+        "EVD-07#1",
+        "POL-01#1",
+        "POL-01#2",
+        "POL-01#3",
+        "POL-01#4",
+        "POL-01#6"
+      ]
     },
     {
       "control": {
@@ -1899,7 +2375,10 @@
         ],
         "nist": [
           "GV.RR-04"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "6.4",
@@ -1930,7 +2409,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-01#6",
+        "POL-01#7",
+        "POL-01#3",
+        "POL-01#1",
+        "POL-02#6",
+        "POL-09#1",
+        "POL-10#3",
+        "POL-01#2"
+      ]
     },
     {
       "control": {
@@ -1948,12 +2437,15 @@
         "nist": [
           "GV.RR-04",
           "PR.AA-05"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "6.5",
         "verdict": "met",
-        "rationale": "Covered by POL-02 with operating evidence in EVD-09.",
+        "rationale": "Covered by POL-02, POL-10 with operating evidence in EVD-09.",
         "citations": [
           {
             "chunk_id": "POL-02#2",
@@ -1985,7 +2477,17 @@
       },
       "final": "met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#2",
+        "EVD-09#1",
+        "POL-02#5",
+        "POL-02#4",
+        "POL-02#1",
+        "POL-02#3",
+        "POL-10#5",
+        "POL-05#4"
+      ]
     },
     {
       "control": {
@@ -2001,23 +2503,26 @@
         ],
         "nist": [
           "GV.RR-04"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "6.6",
         "verdict": "partial",
-        "rationale": "The control is covered by POL-01, POL-05, but there is no evidence that it operates.",
+        "rationale": "The control is covered by POL-01, POL-05, POL-10, but there is no evidence that it operates.",
         "citations": [
+          {
+            "chunk_id": "POL-10#5",
+            "doc_id": "POL-10",
+            "quote": "Las bases de datos con datos personales se cifran en reposo y el acceso se rige por la POL-02",
+            "verified": true
+          },
           {
             "chunk_id": "POL-05#3",
             "doc_id": "POL-05",
             "quote": "Los contratos con proveedores críticos incluyen cláusulas de confidencialidad, notificación de incidentes en 48 horas, derecho de auditoría y devolución o destrucción de datos al…",
-            "verified": true
-          },
-          {
-            "chunk_id": "POL-01#1",
-            "doc_id": "POL-01",
-            "quote": "Ñandú Pagos S.A",
             "verified": true
           }
         ],
@@ -2032,7 +2537,12 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-10#5",
+        "POL-05#3",
+        "POL-01#1"
+      ]
     },
     {
       "control": {
@@ -2049,7 +2559,10 @@
         ],
         "nist": [
           "PR.IR-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "6.7",
@@ -2067,7 +2580,10 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "EVD-07#1"
+      ]
     },
     {
       "control": {
@@ -2084,7 +2600,10 @@
         ],
         "nist": [
           "DE.AE-06"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "6.8",
@@ -2117,7 +2636,17 @@
       "cap_reasons": [
         "Relies on a document past its review date (POL-03)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-03#1",
+        "POL-03#2",
+        "POL-03#3",
+        "POL-03#7",
+        "EVD-04#1",
+        "POL-01#3",
+        "POL-01#7",
+        "EVD-05#1"
+      ]
     },
     {
       "control": {
@@ -2133,7 +2662,10 @@
         ],
         "nist": [
           "PR.AA-06"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.1",
@@ -2151,7 +2683,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#4",
+        "POL-03#1",
+        "POL-01#3",
+        "POL-08#5",
+        "POL-03#7",
+        "POL-03#3",
+        "POL-01#5",
+        "POL-05#2"
+      ]
     },
     {
       "control": {
@@ -2168,7 +2710,10 @@
         ],
         "nist": [
           "PR.AA-06"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.2",
@@ -2186,7 +2731,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-01#7",
+        "POL-07#1",
+        "POL-01#3",
+        "EVD-06#1",
+        "EVD-02#1",
+        "POL-02#5",
+        "POL-02#4",
+        "POL-10#4"
+      ]
     },
     {
       "control": {
@@ -2202,7 +2757,10 @@
         ],
         "nist": [
           "PR.AA-06"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.3",
@@ -2220,7 +2778,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#3",
+        "POL-03#1",
+        "POL-01#3",
+        "POL-08#5",
+        "POL-03#7",
+        "POL-03#3",
+        "POL-01#5",
+        "POL-05#2"
+      ]
     },
     {
       "control": {
@@ -2237,7 +2805,10 @@
         ],
         "nist": [
           "DE.CM-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.4",
@@ -2255,7 +2826,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#4",
+        "POL-02#4",
+        "POL-03#1",
+        "POL-01#3",
+        "POL-08#5",
+        "POL-03#7",
+        "POL-03#3",
+        "POL-01#5"
+      ]
     },
     {
       "control": {
@@ -2271,7 +2852,10 @@
         ],
         "nist": [
           "PR.IR-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.5",
@@ -2289,7 +2873,13 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#4",
+        "POL-03#4",
+        "POL-10#1",
+        "POL-01#4"
+      ]
     },
     {
       "control": {
@@ -2304,7 +2894,10 @@
         ],
         "nist": [
           "PR.AA-06"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.6",
@@ -2322,7 +2915,12 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#3",
+        "EVD-10#1",
+        "EVD-09#1"
+      ]
     },
     {
       "control": {
@@ -2338,7 +2936,10 @@
         ],
         "nist": [
           "PR.DS-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.7",
@@ -2363,7 +2964,11 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#1",
+        "POL-09#1"
+      ]
     },
     {
       "control": {
@@ -2378,7 +2983,10 @@
         ],
         "nist": [
           "PR.IR-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.8",
@@ -2396,7 +3004,8 @@
       },
       "final": "excluded",
       "cap_reasons": [],
-      "exclusion_reason": "Sin centro de datos propio; la ubicación y protección de servidores es responsabilidad del proveedor de nube (ver 5.23)."
+      "exclusion_reason": "Sin centro de datos propio; la ubicación y protección de servidores es responsabilidad del proveedor de nube (ver 5.23).",
+      "retrieved": []
     },
     {
       "control": {
@@ -2413,7 +3022,10 @@
         ],
         "nist": [
           "PR.DS-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.9",
@@ -2438,7 +3050,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "EVD-08#1",
+        "POL-03#1",
+        "POL-08#1",
+        "POL-03#7",
+        "POL-01#3",
+        "EVD-07#1",
+        "POL-05#4",
+        "POL-04#1"
+      ]
     },
     {
       "control": {
@@ -2455,7 +3077,10 @@
         "nist": [
           "PR.DS-01",
           "ID.AM-08"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.10",
@@ -2473,7 +3098,16 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-06#4",
+        "POL-07#4",
+        "POL-08#1",
+        "EVD-07#1",
+        "POL-08#2",
+        "POL-03#2",
+        "EVD-03#1"
+      ]
     },
     {
       "control": {
@@ -2489,7 +3123,10 @@
         ],
         "nist": [
           "PR.IR-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.11",
@@ -2507,7 +3144,8 @@
       },
       "final": "excluded",
       "cap_reasons": [],
-      "exclusion_reason": "Sin centro de datos propio; energía y climatización a cargo del proveedor de nube (ver 5.23)."
+      "exclusion_reason": "Sin centro de datos propio; energía y climatización a cargo del proveedor de nube (ver 5.23).",
+      "retrieved": []
     },
     {
       "control": {
@@ -2522,7 +3160,10 @@
         ],
         "nist": [
           "PR.IR-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.12",
@@ -2540,7 +3181,8 @@
       },
       "final": "excluded",
       "cap_reasons": [],
-      "exclusion_reason": "Sin centro de datos propio; la oficina solo usa Wi-Fi y no aloja servidores."
+      "exclusion_reason": "Sin centro de datos propio; la oficina solo usa Wi-Fi y no aloja servidores.",
+      "retrieved": []
     },
     {
       "control": {
@@ -2555,7 +3197,10 @@
         ],
         "nist": [
           "ID.AM-08"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.13",
@@ -2573,7 +3218,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-05#4",
+        "POL-06#5",
+        "POL-03#7",
+        "POL-03#1",
+        "POL-04#1",
+        "POL-01#4",
+        "EVD-06#1",
+        "EVD-08#1"
+      ]
     },
     {
       "control": {
@@ -2590,7 +3245,10 @@
         ],
         "nist": [
           "ID.AM-08"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "7.14",
@@ -2608,7 +3266,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#3",
+        "EVD-07#1",
+        "POL-05#3",
+        "POL-07#5",
+        "POL-08#1",
+        "POL-09#1",
+        "POL-01#7",
+        "POL-03#7"
+      ]
     },
     {
       "control": {
@@ -2627,7 +3295,10 @@
         "nist": [
           "PR.PS-01",
           "PR.DS-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.1",
@@ -2658,7 +3329,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#1",
+        "EVD-07#1",
+        "POL-08#6",
+        "EVD-08#1",
+        "POL-02#2",
+        "POL-07#4",
+        "EVD-10#1",
+        "POL-04#1"
+      ]
     },
     {
       "control": {
@@ -2676,7 +3357,10 @@
         ],
         "nist": [
           "PR.AA-05"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.2",
@@ -2713,7 +3397,17 @@
       },
       "final": "met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#4",
+        "POL-02#5",
+        "EVD-01#1",
+        "POL-02#2",
+        "POL-02#1",
+        "POL-02#3",
+        "POL-06#3",
+        "POL-05#4"
+      ]
     },
     {
       "control": {
@@ -2730,7 +3424,10 @@
         ],
         "nist": [
           "PR.AA-05"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.3",
@@ -2761,7 +3458,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#1",
+        "POL-02#5",
+        "POL-02#4",
+        "POL-02#3",
+        "POL-02#2",
+        "POL-01#3",
+        "POL-01#2",
+        "POL-01#7"
+      ]
     },
     {
       "control": {
@@ -2779,7 +3486,10 @@
         "nist": [
           "PR.AA-05",
           "PR.PS-06"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.4",
@@ -2806,7 +3516,17 @@
       "cap_reasons": [
         "Relies on an unapproved document (POL-06)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-06#1",
+        "EVD-08#1",
+        "POL-08#3",
+        "POL-02#5",
+        "POL-02#4",
+        "POL-10#4",
+        "POL-05#1",
+        "POL-01#2"
+      ]
     },
     {
       "control": {
@@ -2824,7 +3544,10 @@
         ],
         "nist": [
           "PR.AA-03"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.5",
@@ -2855,7 +3578,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#3",
+        "POL-02#4",
+        "POL-08#3",
+        "EVD-10#1",
+        "EVD-07#1",
+        "POL-02#1",
+        "POL-02#2",
+        "POL-02#5"
+      ]
     },
     {
       "control": {
@@ -2872,7 +3605,10 @@
         ],
         "nist": [
           "PR.IR-04"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.6",
@@ -2890,7 +3626,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#2",
+        "EVD-04#1",
+        "POL-06#5",
+        "POL-01#7",
+        "POL-07#1",
+        "POL-02#5",
+        "POL-01#6",
+        "EVD-08#1"
+      ]
     },
     {
       "control": {
@@ -2908,7 +3654,10 @@
         "nist": [
           "PR.PS-05",
           "DE.CM-09"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.7",
@@ -2939,7 +3688,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#1",
+        "POL-08#3",
+        "POL-03#4",
+        "POL-10#1",
+        "POL-01#4",
+        "POL-08#2",
+        "POL-08#4",
+        "POL-08#5"
+      ]
     },
     {
       "control": {
@@ -2958,7 +3717,10 @@
         "nist": [
           "ID.RA-01",
           "PR.PS-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.8",
@@ -2998,7 +3760,17 @@
         "Periodic commitment missed (COM-06).",
         "Rule not met (REG-02)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#2",
+        "EVD-03#1",
+        "EVD-03#2",
+        "POL-06#5",
+        "POL-01#7",
+        "POL-02#2",
+        "POL-08#1",
+        "POL-08#3"
+      ]
     },
     {
       "control": {
@@ -3016,7 +3788,10 @@
         ],
         "nist": [
           "PR.PS-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.9",
@@ -3047,7 +3822,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#3",
+        "POL-08#2",
+        "POL-05#4",
+        "EVD-08#1",
+        "POL-06#5",
+        "POL-06#1",
+        "POL-01#7",
+        "POL-05#1"
+      ]
     },
     {
       "control": {
@@ -3064,12 +3849,15 @@
         ],
         "nist": [
           "ID.AM-08"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.10",
         "verdict": "partial",
-        "rationale": "The control is covered by POL-07, but there is no evidence that it operates.",
+        "rationale": "The control is covered by POL-07, POL-10, but there is no evidence that it operates.",
         "citations": [
           {
             "chunk_id": "POL-07#5",
@@ -3095,7 +3883,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-07#5",
+        "POL-07#3",
+        "POL-07#1",
+        "POL-07#4",
+        "POL-10#2",
+        "POL-10#4",
+        "EVD-07#1",
+        "EVD-11#1"
+      ]
     },
     {
       "control": {
@@ -3112,7 +3910,10 @@
         ],
         "nist": [
           "PR.DS-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.11",
@@ -3130,7 +3931,8 @@
       },
       "final": "excluded",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": []
     },
     {
       "control": {
@@ -3148,7 +3950,10 @@
         "nist": [
           "PR.DS-01",
           "PR.DS-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.12",
@@ -3166,7 +3971,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-10#2",
+        "POL-07#3",
+        "POL-08#6",
+        "POL-10#1",
+        "POL-10#5",
+        "POL-04#3",
+        "POL-03#4",
+        "POL-04#2"
+      ]
     },
     {
       "control": {
@@ -3184,7 +3999,10 @@
         ],
         "nist": [
           "PR.DS-11"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.13",
@@ -3223,7 +4041,17 @@
       "cap_reasons": [
         "Periodic commitment missed (COM-04)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "EVD-02#1",
+        "POL-04#3",
+        "POL-04#1",
+        "POL-01#7",
+        "POL-06#4",
+        "POL-03#1",
+        "POL-01#3",
+        "POL-08#5"
+      ]
     },
     {
       "control": {
@@ -3240,7 +4068,10 @@
         ],
         "nist": [
           "PR.IR-03"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.14",
@@ -3265,7 +4096,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-04#2",
+        "POL-03#2",
+        "POL-01#1",
+        "EVD-03#2",
+        "POL-03#3",
+        "POL-08#2",
+        "POL-08#4",
+        "POL-03#6"
+      ]
     },
     {
       "control": {
@@ -3283,7 +4124,10 @@
         ],
         "nist": [
           "PR.PS-04"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.15",
@@ -3308,7 +4152,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#4",
+        "POL-07#5",
+        "EVD-07#1",
+        "POL-05#3",
+        "POL-03#2",
+        "POL-03#1",
+        "POL-03#5",
+        "EVD-06#1"
+      ]
     },
     {
       "control": {
@@ -3328,7 +4182,10 @@
           "DE.CM-01",
           "DE.CM-03",
           "DE.CM-09"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.16",
@@ -3359,7 +4216,15 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#4",
+        "POL-08#1",
+        "POL-08#2",
+        "POL-08#3",
+        "POL-08#5",
+        "POL-08#6"
+      ]
     },
     {
       "control": {
@@ -3375,7 +4240,10 @@
         ],
         "nist": [
           "PR.PS-04"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.17",
@@ -3393,7 +4261,11 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-04#3",
+        "POL-02#4"
+      ]
     },
     {
       "control": {
@@ -3409,7 +4281,10 @@
         "nist": [
           "PR.AA-05",
           "PR.PS-05"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.18",
@@ -3427,7 +4302,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-02#5",
+        "EVD-08#1",
+        "POL-07#1",
+        "POL-02#2",
+        "POL-06#5",
+        "POL-01#2",
+        "EVD-04#1",
+        "EVD-01#1"
+      ]
     },
     {
       "control": {
@@ -3444,7 +4329,10 @@
         "nist": [
           "PR.PS-02",
           "PR.PS-05"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.19",
@@ -3462,7 +4350,15 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-06#5",
+        "POL-08#5",
+        "POL-06#3",
+        "POL-02#4",
+        "POL-04#1",
+        "EVD-01#1"
+      ]
     },
     {
       "control": {
@@ -3480,7 +4376,10 @@
         "nist": [
           "PR.IR-01",
           "DE.CM-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.20",
@@ -3505,7 +4404,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#5",
+        "POL-03#1",
+        "POL-01#3",
+        "POL-03#7",
+        "POL-03#3",
+        "POL-01#5",
+        "POL-05#2",
+        "POL-01#7"
+      ]
     },
     {
       "control": {
@@ -3522,7 +4431,10 @@
         ],
         "nist": [
           "PR.IR-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.21",
@@ -3540,7 +4452,17 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "EVD-06#1",
+        "POL-05#4",
+        "POL-01#4",
+        "POL-05#2",
+        "POL-01#7",
+        "POL-03#1",
+        "POL-05#1",
+        "POL-05#5"
+      ]
     },
     {
       "control": {
@@ -3557,7 +4479,10 @@
         ],
         "nist": [
           "PR.IR-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.22",
@@ -3588,7 +4513,15 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#5",
+        "POL-08#1",
+        "POL-08#2",
+        "POL-08#3",
+        "POL-08#4",
+        "POL-08#6"
+      ]
     },
     {
       "control": {
@@ -3604,7 +4537,10 @@
         ],
         "nist": [
           "PR.IR-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.23",
@@ -3622,7 +4558,8 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": []
     },
     {
       "control": {
@@ -3642,7 +4579,10 @@
         "nist": [
           "PR.DS-01",
           "PR.DS-02"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.24",
@@ -3656,9 +4596,9 @@
             "verified": true
           },
           {
-            "chunk_id": "POL-08#1",
-            "doc_id": "POL-08",
-            "quote": "Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.",
+            "chunk_id": "POL-04#1",
+            "doc_id": "POL-04",
+            "quote": "Las bases de datos de producción se respaldan automáticamente todos los días mediante snapshots cifrados con claves de KMS",
             "verified": true
           }
         ],
@@ -3673,7 +4613,17 @@
       },
       "final": "partial",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#6",
+        "POL-04#1",
+        "POL-08#1",
+        "POL-07#4",
+        "EVD-07#1",
+        "POL-07#1",
+        "POL-02#5",
+        "EVD-04#1"
+      ]
     },
     {
       "control": {
@@ -3689,7 +4639,10 @@
         ],
         "nist": [
           "PR.PS-06"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.25",
@@ -3722,7 +4675,16 @@
       "cap_reasons": [
         "Relies on an unapproved document (POL-06)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-06#1",
+        "POL-06#3",
+        "POL-01#7",
+        "POL-09#1",
+        "POL-06#2",
+        "POL-06#4",
+        "POL-06#5"
+      ]
     },
     {
       "control": {
@@ -3738,7 +4700,10 @@
         ],
         "nist": [
           "PR.PS-06"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.26",
@@ -3758,7 +4723,17 @@
       "cap_reasons": [
         "Relies on an unapproved document (POL-06)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-01#4",
+        "EVD-08#1",
+        "POL-08#4",
+        "POL-03#1",
+        "POL-10#3",
+        "POL-01#3",
+        "POL-08#5",
+        "POL-03#7"
+      ]
     },
     {
       "control": {
@@ -3774,7 +4749,10 @@
         ],
         "nist": [
           "PR.PS-06"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.27",
@@ -3792,7 +4770,14 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-08#3",
+        "POL-08#5",
+        "POL-02#1",
+        "POL-09#1",
+        "POL-01#7"
+      ]
     },
     {
       "control": {
@@ -3809,7 +4794,10 @@
         ],
         "nist": [
           "PR.PS-06"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.28",
@@ -3842,7 +4830,17 @@
       "cap_reasons": [
         "Relies on an unapproved document (POL-06)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-06#2",
+        "POL-06#1",
+        "POL-08#3",
+        "POL-02#5",
+        "POL-03#6",
+        "POL-01#6",
+        "EVD-08#1",
+        "EVD-01#1"
+      ]
     },
     {
       "control": {
@@ -3860,7 +4858,10 @@
         "nist": [
           "PR.PS-06",
           "ID.RA-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.29",
@@ -3887,7 +4888,17 @@
       "cap_reasons": [
         "Relies on an unapproved document (POL-06)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-06#4",
+        "EVD-02#1",
+        "POL-03#1",
+        "POL-04#3",
+        "POL-01#3",
+        "POL-08#5",
+        "POL-03#7",
+        "POL-03#3"
+      ]
     },
     {
       "control": {
@@ -3904,7 +4915,10 @@
         "nist": [
           "GV.SC-05",
           "PR.PS-06"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.30",
@@ -3922,7 +4936,8 @@
       },
       "final": "excluded",
       "cap_reasons": [],
-      "exclusion_reason": "Todo el desarrollo es interno; no se contrata desarrollo a terceros."
+      "exclusion_reason": "Todo el desarrollo es interno; no se contrata desarrollo a terceros.",
+      "retrieved": []
     },
     {
       "control": {
@@ -3939,7 +4954,10 @@
         ],
         "nist": [
           "PR.IR-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.31",
@@ -3972,7 +4990,17 @@
       "cap_reasons": [
         "Relies on an unapproved document (POL-06)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-06#3",
+        "POL-06#4",
+        "EVD-02#1",
+        "POL-04#3",
+        "EVD-07#1",
+        "EVD-01#1",
+        "POL-05#4",
+        "POL-02#5"
+      ]
     },
     {
       "control": {
@@ -3990,7 +5018,10 @@
         ],
         "nist": [
           "ID.RA-07"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.32",
@@ -4023,7 +5054,17 @@
       "cap_reasons": [
         "Relies on an unapproved document (POL-06)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-06#1",
+        "POL-06#5",
+        "POL-06#2",
+        "POL-01#1",
+        "POL-01#7",
+        "EVD-11#1",
+        "POL-02#2",
+        "POL-06#3"
+      ]
     },
     {
       "control": {
@@ -4039,7 +5080,10 @@
         ],
         "nist": [
           "PR.DS-01"
-        ]
+        ],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.33",
@@ -4072,7 +5116,17 @@
       "cap_reasons": [
         "Relies on an unapproved document (POL-06)."
       ],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-06#3",
+        "POL-06#4",
+        "POL-04#3",
+        "EVD-02#1",
+        "POL-07#1",
+        "POL-10#3",
+        "EVD-08#1",
+        "POL-01#2"
+      ]
     },
     {
       "control": {
@@ -4086,7 +5140,10 @@
           "auditoria tecnica",
           "ventana de pruebas"
         ],
-        "nist": []
+        "nist": [],
+        "framework": "iso27001-2022",
+        "refs": [],
+        "iso": []
       },
       "assessment": {
         "control_id": "8.34",
@@ -4104,7 +5161,420 @@
       },
       "final": "not_met",
       "cap_reasons": [],
-      "exclusion_reason": ""
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-06#4",
+        "POL-03#4",
+        "POL-03#5",
+        "POL-05#3",
+        "EVD-02#1",
+        "POL-10#1",
+        "POL-01#5",
+        "POL-04#3"
+      ]
+    },
+    {
+      "control": {
+        "id": "LPDP-04",
+        "theme": "privacy",
+        "criticality": "medium",
+        "title_en": "Data quality: only the data needed, kept only while needed",
+        "title_es": "Calidad de los datos: solo los necesarios y mientras se necesiten",
+        "keywords": [
+          "no excesivos",
+          "minimizacion de datos",
+          "plazo de conservacion",
+          "se eliminan o anonimizan",
+          "dejan de ser necesarios",
+          "data minimization"
+        ],
+        "nist": [
+          "GV.OC-03"
+        ],
+        "framework": "ley-25326",
+        "refs": [
+          "art. 4"
+        ],
+        "iso": [
+          "5.34",
+          "8.10"
+        ]
+      },
+      "assessment": {
+        "control_id": "LPDP-04",
+        "verdict": "partial",
+        "rationale": "The control is covered by POL-07, POL-10, but there is no evidence that it operates.",
+        "citations": [
+          {
+            "chunk_id": "POL-10#2",
+            "doc_id": "POL-10",
+            "quote": "Tratamos datos de identificación (nombre, DNI, CUIT/CUIL), de contacto y de las operaciones de la billetera",
+            "verified": true
+          },
+          {
+            "chunk_id": "POL-07#5",
+            "doc_id": "POL-07",
+            "quote": "Los registros de transacciones se conservan 10 años",
+            "verified": true
+          }
+        ],
+        "gaps": [],
+        "contradictions": [],
+        "action": "add",
+        "action_text": "Produce and retain periodic evidence that the control operates.",
+        "assessor": "heuristic",
+        "confidence": "low",
+        "notes": [],
+        "root_cause": "no_operating_evidence"
+      },
+      "final": "partial",
+      "cap_reasons": [],
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-10#2",
+        "POL-07#5",
+        "POL-10#1",
+        "POL-10#5",
+        "POL-10#3",
+        "POL-10#6",
+        "POL-10#4",
+        "POL-02#5"
+      ]
+    },
+    {
+      "control": {
+        "id": "LPDP-05",
+        "theme": "privacy",
+        "criticality": "high",
+        "title_en": "Consent and information to the data subject",
+        "title_es": "Consentimiento e información al titular",
+        "keywords": [
+          "consentimiento",
+          "consentimiento expreso",
+          "informar al titular",
+          "finalidad del tratamiento",
+          "aviso de privacidad",
+          "consent"
+        ],
+        "nist": [
+          "GV.OC-03"
+        ],
+        "framework": "ley-25326",
+        "refs": [
+          "art. 5",
+          "art. 6"
+        ],
+        "iso": [
+          "5.34"
+        ]
+      },
+      "assessment": {
+        "control_id": "LPDP-05",
+        "verdict": "partial",
+        "rationale": "The control is covered by POL-10, but there is no evidence that it operates.",
+        "citations": [
+          {
+            "chunk_id": "POL-10#3",
+            "doc_id": "POL-10",
+            "quote": "Al registrarse en la aplicación, el cliente acepta la política de privacidad, que le informa la finalidad del tratamiento, quiénes pueden recibir sus datos y cómo ejercer sus…",
+            "verified": true
+          },
+          {
+            "chunk_id": "POL-10#4",
+            "doc_id": "POL-10",
+            "quote": "Los titulares pueden pedir acceso, rectificación o supresión de sus datos escribiendo a privacidad@nandupagos.example",
+            "verified": true
+          }
+        ],
+        "gaps": [],
+        "contradictions": [],
+        "action": "add",
+        "action_text": "Produce and retain periodic evidence that the control operates.",
+        "assessor": "heuristic",
+        "confidence": "low",
+        "notes": [],
+        "root_cause": "no_operating_evidence"
+      },
+      "final": "partial",
+      "cap_reasons": [],
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-10#3",
+        "POL-10#4",
+        "POL-10#2",
+        "POL-07#3",
+        "EVD-11#1",
+        "POL-01#2",
+        "POL-02#1",
+        "POL-07#1"
+      ]
+    },
+    {
+      "control": {
+        "id": "LPDP-09",
+        "theme": "privacy",
+        "criticality": "high",
+        "title_en": "Security and confidentiality of personal data",
+        "title_es": "Seguridad y confidencialidad de los datos personales",
+        "keywords": [
+          "seguridad de los datos personales",
+          "medidas de seguridad",
+          "deber de confidencialidad",
+          "confidencialidad de los datos",
+          "47/2018"
+        ],
+        "nist": [
+          "GV.OC-03",
+          "PR.DS-01"
+        ],
+        "framework": "ley-25326",
+        "refs": [
+          "art. 9",
+          "art. 10",
+          "Res. AAIP 47/2018"
+        ],
+        "iso": [
+          "5.34",
+          "5.15",
+          "8.24"
+        ]
+      },
+      "assessment": {
+        "control_id": "LPDP-09",
+        "verdict": "partial",
+        "rationale": "The control is covered by POL-10, but there is no evidence that it operates.",
+        "citations": [
+          {
+            "chunk_id": "POL-10#5",
+            "doc_id": "POL-10",
+            "quote": "Las bases de datos con datos personales se cifran en reposo y el acceso se rige por la POL-02",
+            "verified": true
+          },
+          {
+            "chunk_id": "POL-10#1",
+            "doc_id": "POL-10",
+            "quote": "Establecer cómo Ñandú Pagos trata los datos personales de clientes, comercios y empleados, en el marco de la Ley 25.326 de Protección de los Datos Personales.",
+            "verified": true
+          }
+        ],
+        "gaps": [],
+        "contradictions": [],
+        "action": "add",
+        "action_text": "Produce and retain periodic evidence that the control operates.",
+        "assessor": "heuristic",
+        "confidence": "low",
+        "notes": [],
+        "root_cause": "no_operating_evidence"
+      },
+      "final": "partial",
+      "cap_reasons": [],
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-10#5",
+        "POL-10#1",
+        "POL-10#2",
+        "POL-10#3",
+        "POL-10#6",
+        "POL-10#4",
+        "POL-05#3",
+        "POL-07#3"
+      ]
+    },
+    {
+      "control": {
+        "id": "LPDP-12",
+        "theme": "privacy",
+        "criticality": "high",
+        "title_en": "International transfers",
+        "title_es": "Transferencias internacionales",
+        "keywords": [
+          "transferencia internacional",
+          "proteccion adecuada",
+          "nivel adecuado",
+          "clausulas contractuales modelo",
+          "normas corporativas vinculantes",
+          "international transfer"
+        ],
+        "nist": [
+          "GV.OC-03"
+        ],
+        "framework": "ley-25326",
+        "refs": [
+          "art. 12",
+          "Disp. DNPDP 60/2016",
+          "Res. AAIP 198/2023"
+        ],
+        "iso": [
+          "5.14",
+          "5.34"
+        ]
+      },
+      "assessment": {
+        "control_id": "LPDP-12",
+        "verdict": "partial",
+        "rationale": "The control is covered by POL-10, but there is no evidence that it operates.",
+        "citations": [
+          {
+            "chunk_id": "POL-10#6",
+            "doc_id": "POL-10",
+            "quote": "La plataforma corre en AWS, región us-east-1 (Estados Unidos)",
+            "verified": true
+          }
+        ],
+        "gaps": [],
+        "contradictions": [],
+        "action": "add",
+        "action_text": "Produce and retain periodic evidence that the control operates.",
+        "assessor": "heuristic",
+        "confidence": "low",
+        "notes": [],
+        "root_cause": "no_operating_evidence"
+      },
+      "final": "partial",
+      "cap_reasons": [],
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-10#6",
+        "POL-01#4",
+        "POL-07#1",
+        "POL-08#1",
+        "POL-05#4",
+        "POL-03#4",
+        "POL-05#3",
+        "POL-07#4"
+      ]
+    },
+    {
+      "control": {
+        "id": "LPDP-14",
+        "theme": "privacy",
+        "criticality": "high",
+        "title_en": "Data subject rights: access, rectification and deletion",
+        "title_es": "Derechos del titular: acceso, rectificación y supresión",
+        "keywords": [
+          "derecho de acceso",
+          "rectificacion",
+          "supresion",
+          "solicitudes de titulares",
+          "10 dias corridos",
+          "5 dias habiles",
+          "data subject requests"
+        ],
+        "nist": [
+          "GV.OC-03"
+        ],
+        "framework": "ley-25326",
+        "refs": [
+          "art. 14",
+          "art. 15",
+          "art. 16"
+        ],
+        "iso": [
+          "5.34"
+        ]
+      },
+      "assessment": {
+        "control_id": "LPDP-14",
+        "verdict": "met",
+        "rationale": "Covered by POL-02, POL-07, POL-10 with operating evidence in EVD-11.",
+        "citations": [
+          {
+            "chunk_id": "POL-10#4",
+            "doc_id": "POL-10",
+            "quote": "Los titulares pueden pedir acceso, rectificación o supresión de sus datos escribiendo a privacidad@nandupagos.example",
+            "verified": true
+          },
+          {
+            "chunk_id": "POL-02#5",
+            "doc_id": "POL-02",
+            "quote": "Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre",
+            "verified": true
+          },
+          {
+            "chunk_id": "EVD-11#1",
+            "doc_id": "EVD-11",
+            "quote": "Atención al Cliente carga cada pedido que llega a privacidad@nandupagos.example; Legales registra la fecha de respuesta",
+            "verified": true
+          }
+        ],
+        "gaps": [],
+        "contradictions": [],
+        "action": null,
+        "action_text": "",
+        "assessor": "heuristic",
+        "confidence": "low",
+        "notes": [],
+        "root_cause": ""
+      },
+      "final": "partial",
+      "cap_reasons": [
+        "Rule not met (REG-06).",
+        "Rule not met (REG-07)."
+      ],
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-10#4",
+        "EVD-11#1",
+        "POL-02#5",
+        "POL-07#3",
+        "POL-10#3",
+        "POL-10#5",
+        "POL-03#6",
+        "POL-02#4"
+      ]
+    },
+    {
+      "control": {
+        "id": "LPDP-21",
+        "theme": "privacy",
+        "criticality": "medium",
+        "title_en": "Registration of databases with the authority",
+        "title_es": "Inscripción de las bases de datos",
+        "keywords": [
+          "inscripcion de bases",
+          "bases inscriptas",
+          "registro nacional de bases de datos",
+          "database registration"
+        ],
+        "nist": [
+          "GV.OC-03"
+        ],
+        "framework": "ley-25326",
+        "refs": [
+          "art. 21"
+        ],
+        "iso": [
+          "5.31",
+          "5.34"
+        ]
+      },
+      "assessment": {
+        "control_id": "LPDP-21",
+        "verdict": "not_met",
+        "rationale": "No document addressing this control was found.",
+        "citations": [],
+        "gaps": [],
+        "contradictions": [],
+        "action": "add",
+        "action_text": "Document the control in a policy or procedure and produce evidence that it operates.",
+        "assessor": "heuristic",
+        "confidence": "low",
+        "notes": [],
+        "root_cause": "missing_control"
+      },
+      "final": "not_met",
+      "cap_reasons": [],
+      "exclusion_reason": "",
+      "retrieved": [
+        "POL-07#3",
+        "POL-04#2",
+        "POL-10#5",
+        "POL-07#5",
+        "EVD-08#1",
+        "POL-04#3",
+        "POL-04#1",
+        "POL-01#4"
+      ]
     }
   ],
   "findings": [
@@ -4113,7 +5583,7 @@
       "source": "pattern",
       "root_cause": "missing_control",
       "title": "Systemic pattern: Undocumented control",
-      "detail": "The same root cause appears in 31 findings (TQ-008, TQ-009, TQ-017, TQ-018, TQ-019, TQ-020, TQ-026, TQ-027, TQ-028, TQ-029, TQ-030, TQ-031, TQ-035, TQ-039, TQ-040, TQ-042, TQ-045, TQ-046, TQ-051, TQ-058, TQ-061, TQ-065, TQ-066, TQ-067, TQ-068, TQ-069, TQ-070, TQ-073, TQ-078, TQ-080, TQ-085). It is not an isolated error: it points to a process failure that must be fixed at the source.",
+      "detail": "The same root cause appears in 32 findings (TQ-010, TQ-011, TQ-019, TQ-020, TQ-021, TQ-022, TQ-028, TQ-029, TQ-030, TQ-031, TQ-032, TQ-033, TQ-037, TQ-041, TQ-042, TQ-044, TQ-047, TQ-048, TQ-053, TQ-057, TQ-064, TQ-067, TQ-071, TQ-072, TQ-073, TQ-074, TQ-075, TQ-076, TQ-079, TQ-084, TQ-086, TQ-091). It is not an isolated error: it points to a process failure that must be fixed at the source.",
       "severity": "high",
       "action": "fix",
       "action_text": "Analyze the root cause and fix the process, not just each case.",
@@ -4148,7 +5618,8 @@
         "8.23",
         "8.26",
         "8.27",
-        "8.34"
+        "8.34",
+        "LPDP-21"
       ],
       "documents": [],
       "owner": "",
@@ -4158,9 +5629,42 @@
     {
       "id": "TQ-P02",
       "source": "pattern",
+      "root_cause": "operating_deviation",
+      "title": "Systemic pattern: Control operates outside what the policy requires",
+      "detail": "The same root cause appears in 6 findings (TQ-004, TQ-005, TQ-006, TQ-007, TQ-008, TQ-013). It is not an isolated error: it points to a process failure that must be fixed at the source.",
+      "severity": "high",
+      "action": "fix",
+      "action_text": "Analyze the root cause and fix the process, not just each case.",
+      "controls": [
+        "5.18",
+        "5.27",
+        "6.3",
+        "8.8",
+        "LPDP-14"
+      ],
+      "documents": [
+        "EVD-03",
+        "EVD-04",
+        "EVD-07",
+        "EVD-09",
+        "EVD-10",
+        "EVD-11",
+        "POL-01",
+        "POL-02",
+        "POL-03",
+        "POL-08",
+        "POL-10"
+      ],
+      "owner": "",
+      "due": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "TQ-P03",
+      "source": "pattern",
       "root_cause": "commitment_missed",
       "title": "Systemic pattern: Periodic commitment missed",
-      "detail": "The same root cause appears in 4 findings (TQ-001, TQ-002, TQ-003, TQ-010). It is not an isolated error: it points to a process failure that must be fixed at the source.",
+      "detail": "The same root cause appears in 4 findings (TQ-001, TQ-002, TQ-003, TQ-012). It is not an isolated error: it points to a process failure that must be fixed at the source.",
       "severity": "high",
       "action": "fix",
       "action_text": "Analyze the root cause and fix the process, not just each case.",
@@ -4185,41 +5689,11 @@
       "status": "open"
     },
     {
-      "id": "TQ-P03",
-      "source": "pattern",
-      "root_cause": "operating_deviation",
-      "title": "Systemic pattern: Control operates outside what the policy requires",
-      "detail": "The same root cause appears in 4 findings (TQ-004, TQ-005, TQ-006, TQ-011). It is not an isolated error: it points to a process failure that must be fixed at the source.",
-      "severity": "high",
-      "action": "fix",
-      "action_text": "Analyze the root cause and fix the process, not just each case.",
-      "controls": [
-        "5.18",
-        "5.27",
-        "6.3",
-        "8.8"
-      ],
-      "documents": [
-        "EVD-03",
-        "EVD-04",
-        "EVD-07",
-        "EVD-09",
-        "EVD-10",
-        "POL-01",
-        "POL-02",
-        "POL-03",
-        "POL-08"
-      ],
-      "owner": "",
-      "due": "2026-11-19",
-      "status": "open"
-    },
-    {
       "id": "TQ-P04",
       "source": "pattern",
       "root_cause": "no_operating_evidence",
       "title": "Systemic pattern: Policy without operating evidence",
-      "detail": "The same root cause appears in 41 findings (TQ-016, TQ-021, TQ-022, TQ-023, TQ-024, TQ-025, TQ-032, TQ-033, TQ-034, TQ-036, TQ-037, TQ-038, TQ-041, TQ-043, TQ-044, TQ-047, TQ-048, TQ-049, TQ-050, TQ-052, TQ-053, TQ-054, TQ-055, TQ-056, TQ-057, TQ-059, TQ-060, TQ-062, TQ-063, TQ-064, TQ-071, TQ-072, TQ-074, TQ-075, TQ-076, TQ-077, TQ-079, TQ-081, TQ-082, TQ-083, TQ-084). It is not an isolated error: it points to a process failure that must be fixed at the source.",
+      "detail": "The same root cause appears in 45 findings (TQ-018, TQ-023, TQ-024, TQ-025, TQ-026, TQ-027, TQ-034, TQ-035, TQ-036, TQ-038, TQ-039, TQ-040, TQ-043, TQ-045, TQ-046, TQ-049, TQ-050, TQ-051, TQ-052, TQ-054, TQ-055, TQ-056, TQ-058, TQ-059, TQ-060, TQ-061, TQ-062, TQ-063, TQ-065, TQ-066, TQ-068, TQ-069, TQ-070, TQ-077, TQ-078, TQ-080, TQ-081, TQ-082, TQ-083, TQ-085, TQ-087, TQ-088, TQ-089, TQ-090, TQ-092). It is not an isolated error: it points to a process failure that must be fixed at the source.",
       "severity": "medium",
       "action": "fix",
       "action_text": "Analyze the root cause and fix the process, not just each case.",
@@ -4264,7 +5738,11 @@
         "8.29",
         "8.31",
         "8.32",
-        "8.33"
+        "8.33",
+        "LPDP-04",
+        "LPDP-05",
+        "LPDP-09",
+        "LPDP-12"
       ],
       "documents": [
         "POL-01",
@@ -4274,7 +5752,8 @@
         "POL-05",
         "POL-06",
         "POL-07",
-        "POL-08"
+        "POL-08",
+        "POL-10"
       ],
       "owner": "",
       "due": "2027-01-18",
@@ -4403,6 +5882,46 @@
     },
     {
       "id": "TQ-007",
+      "source": "rule",
+      "root_cause": "operating_deviation",
+      "title": "Rule not met: Pedidos de acceso respondidos en 10 días corridos (Ley 25.326, art. 14)",
+      "detail": "POL-10 sets REG-06. Result: 1 of 3 cases exceed the 10-day deadline. Cases: SOL-26-04 (closed in 18 days).",
+      "severity": "high",
+      "action": "fix",
+      "action_text": "Correct every listed case and review why the process did not catch it in time.",
+      "controls": [
+        "LPDP-14"
+      ],
+      "documents": [
+        "POL-10",
+        "EVD-11"
+      ],
+      "owner": "Carla Medina (Legales y Privacidad)",
+      "due": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "TQ-008",
+      "source": "rule",
+      "root_cause": "operating_deviation",
+      "title": "Rule not met: Rectificación y supresión resueltas en 5 días hábiles (Ley 25.326, art. 16)",
+      "detail": "POL-10 sets REG-07. Result: 2 of 4 cases exceed the 5-business-day deadline. Cases: SOL-26-03 (closed in 9 business days); SOL-26-06 (open for 7 business days).",
+      "severity": "high",
+      "action": "fix",
+      "action_text": "Correct every listed case and review why the process did not catch it in time.",
+      "controls": [
+        "LPDP-14"
+      ],
+      "documents": [
+        "POL-10",
+        "EVD-11"
+      ],
+      "owner": "Carla Medina (Legales y Privacidad)",
+      "due": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "TQ-009",
       "source": "hygiene",
       "root_cause": "document_expired",
       "title": "Review overdue: POL-03 Política de Gestión de Incidentes de Seguridad",
@@ -4427,7 +5946,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-008",
+      "id": "TQ-010",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 5.29 Security during disruption",
@@ -4444,7 +5963,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-009",
+      "id": "TQ-011",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 8.12 Data leakage prevention",
@@ -4461,7 +5980,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-010",
+      "id": "TQ-012",
       "source": "reconciliation",
       "root_cause": "commitment_missed",
       "title": "Commitment missed: Escaneo mensual de vulnerabilidades de la infraestructura productiva",
@@ -4481,7 +6000,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-011",
+      "id": "TQ-013",
       "source": "rule",
       "root_cause": "operating_deviation",
       "title": "Rule not met: Todo incidente de severidad alta o crítica cerrado tiene post mortem",
@@ -4501,7 +6020,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-012",
+      "id": "TQ-014",
       "source": "soa",
       "root_cause": "soa_unjustified",
       "title": "Unjustified SoA exclusion: 8.11",
@@ -4520,7 +6039,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-013",
+      "id": "TQ-015",
       "source": "hygiene",
       "root_cause": "obsolete_document",
       "title": "Superseded document still in force: POL-09 Política de Contraseñas",
@@ -4539,7 +6058,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-014",
+      "id": "TQ-016",
       "source": "hygiene",
       "root_cause": "no_owner",
       "title": "Document without an owner: POL-05 Política de Seguridad con Proveedores",
@@ -4562,7 +6081,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-015",
+      "id": "TQ-017",
       "source": "hygiene",
       "root_cause": "not_approved",
       "title": "Draft document: POL-06 Política de Desarrollo Seguro",
@@ -4588,7 +6107,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-016",
+      "id": "TQ-018",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.1 Security policies",
@@ -4607,7 +6126,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-017",
+      "id": "TQ-019",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 5.3 Separation of conflicting duties",
@@ -4624,7 +6143,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-018",
+      "id": "TQ-020",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 5.7 Threat intelligence",
@@ -4641,7 +6160,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-019",
+      "id": "TQ-021",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 5.8 Security in project management",
@@ -4658,7 +6177,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-020",
+      "id": "TQ-022",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 5.10 Acceptable use of assets",
@@ -4675,7 +6194,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-021",
+      "id": "TQ-023",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.15 Access control",
@@ -4694,7 +6213,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-022",
+      "id": "TQ-024",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.17 Authentication information",
@@ -4713,7 +6232,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-023",
+      "id": "TQ-025",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.30 ICT readiness for business continuity",
@@ -4732,11 +6251,11 @@
       "status": "open"
     },
     {
-      "id": "TQ-024",
+      "id": "TQ-026",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.31 Legal, regulatory and contractual requirements",
-      "detail": "The control is covered by POL-01, POL-07, but there is no evidence that it operates.",
+      "detail": "The control is covered by POL-01, POL-07, POL-10, but there is no evidence that it operates.",
       "severity": "medium",
       "action": "add",
       "action_text": "Produce and retain periodic evidence that the control operates.",
@@ -4744,19 +6263,18 @@
         "5.31"
       ],
       "documents": [
-        "POL-01",
-        "POL-07"
+        "POL-01"
       ],
       "owner": "Lucía Ferreyra (CISO)",
       "due": "2027-01-18",
       "status": "open"
     },
     {
-      "id": "TQ-025",
+      "id": "TQ-027",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.34 Privacy and protection of personal data",
-      "detail": "The control is covered by POL-01, POL-03, POL-07, but there is no evidence that it operates.",
+      "detail": "The control is covered by POL-01, POL-07, POL-10, but there is no evidence that it operates.",
       "severity": "medium",
       "action": "add",
       "action_text": "Produce and retain periodic evidence that the control operates.",
@@ -4764,15 +6282,15 @@
         "5.34"
       ],
       "documents": [
-        "POL-01",
-        "POL-07"
+        "POL-07",
+        "POL-10"
       ],
       "owner": "Carla Medina (Legales y Privacidad)",
       "due": "2027-01-18",
       "status": "open"
     },
     {
-      "id": "TQ-026",
+      "id": "TQ-028",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 5.35 Independent review of security",
@@ -4789,7 +6307,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-027",
+      "id": "TQ-029",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 6.1 Screening",
@@ -4806,7 +6324,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-028",
+      "id": "TQ-030",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 6.2 Terms of employment",
@@ -4823,7 +6341,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-029",
+      "id": "TQ-031",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 6.7 Remote working",
@@ -4840,7 +6358,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-030",
+      "id": "TQ-032",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 7.10 Storage media",
@@ -4857,7 +6375,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-031",
+      "id": "TQ-033",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 7.14 Secure disposal or re-use of equipment",
@@ -4874,7 +6392,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-032",
+      "id": "TQ-034",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.1 User endpoint devices",
@@ -4893,7 +6411,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-033",
+      "id": "TQ-035",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.3 Information access restriction",
@@ -4912,7 +6430,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-034",
+      "id": "TQ-036",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.5 Secure authentication",
@@ -4931,7 +6449,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-035",
+      "id": "TQ-037",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 8.6 Capacity management",
@@ -4948,7 +6466,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-036",
+      "id": "TQ-038",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.7 Protection against malware",
@@ -4967,7 +6485,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-037",
+      "id": "TQ-039",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.15 Logging",
@@ -4986,7 +6504,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-038",
+      "id": "TQ-040",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.16 Monitoring activities",
@@ -5005,7 +6523,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-039",
+      "id": "TQ-041",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 8.18 Use of privileged utility programs",
@@ -5022,7 +6540,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-040",
+      "id": "TQ-042",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 8.19 Software installation on operational systems",
@@ -5039,7 +6557,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-041",
+      "id": "TQ-043",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.20 Network security",
@@ -5058,7 +6576,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-042",
+      "id": "TQ-044",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 8.21 Security of network services",
@@ -5075,7 +6593,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-043",
+      "id": "TQ-045",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.24 Use of cryptography",
@@ -5087,6 +6605,7 @@
         "8.24"
       ],
       "documents": [
+        "POL-04",
         "POL-08"
       ],
       "owner": "Martín Quiroga (Líder de Operaciones de Seguridad)",
@@ -5094,7 +6613,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-044",
+      "id": "TQ-046",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.25 Secure development life cycle",
@@ -5113,7 +6632,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-045",
+      "id": "TQ-047",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 8.26 Application security requirements",
@@ -5130,7 +6649,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-046",
+      "id": "TQ-048",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 8.27 Secure architecture and engineering principles",
@@ -5147,7 +6666,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-047",
+      "id": "TQ-049",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.32 Change management",
@@ -5166,7 +6685,81 @@
       "status": "open"
     },
     {
-      "id": "TQ-048",
+      "id": "TQ-050",
+      "source": "assessment",
+      "root_cause": "no_operating_evidence",
+      "title": "Partial: LPDP-05 Consent and information to the data subject",
+      "detail": "The control is covered by POL-10, but there is no evidence that it operates.",
+      "severity": "medium",
+      "action": "add",
+      "action_text": "Produce and retain periodic evidence that the control operates.",
+      "controls": [
+        "LPDP-05"
+      ],
+      "documents": [
+        "POL-10"
+      ],
+      "owner": "Carla Medina (Legales y Privacidad)",
+      "due": "2027-01-18",
+      "status": "open"
+    },
+    {
+      "id": "TQ-051",
+      "source": "assessment",
+      "root_cause": "no_operating_evidence",
+      "title": "Partial: LPDP-09 Security and confidentiality of personal data",
+      "detail": "The control is covered by POL-10, but there is no evidence that it operates.",
+      "severity": "medium",
+      "action": "add",
+      "action_text": "Produce and retain periodic evidence that the control operates.",
+      "controls": [
+        "LPDP-09"
+      ],
+      "documents": [
+        "POL-10"
+      ],
+      "owner": "Carla Medina (Legales y Privacidad)",
+      "due": "2027-01-18",
+      "status": "open"
+    },
+    {
+      "id": "TQ-052",
+      "source": "assessment",
+      "root_cause": "no_operating_evidence",
+      "title": "Partial: LPDP-12 International transfers",
+      "detail": "The control is covered by POL-10, but there is no evidence that it operates.",
+      "severity": "medium",
+      "action": "add",
+      "action_text": "Produce and retain periodic evidence that the control operates.",
+      "controls": [
+        "LPDP-12"
+      ],
+      "documents": [
+        "POL-10"
+      ],
+      "owner": "Carla Medina (Legales y Privacidad)",
+      "due": "2027-01-18",
+      "status": "open"
+    },
+    {
+      "id": "TQ-053",
+      "source": "assessment",
+      "root_cause": "missing_control",
+      "title": "Not met: LPDP-21 Registration of databases with the authority",
+      "detail": "No document addressing this control was found.",
+      "severity": "medium",
+      "action": "add",
+      "action_text": "Document the control in a policy or procedure and produce evidence that it operates.",
+      "controls": [
+        "LPDP-21"
+      ],
+      "documents": [],
+      "owner": "",
+      "due": "2027-01-18",
+      "status": "open"
+    },
+    {
+      "id": "TQ-054",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.2 Security roles and responsibilities",
@@ -5185,7 +6778,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-049",
+      "id": "TQ-055",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.4 Management commitment to security",
@@ -5204,7 +6797,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-050",
+      "id": "TQ-056",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.5 Contact with authorities",
@@ -5223,7 +6816,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-051",
+      "id": "TQ-057",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 5.6 Contact with special interest groups",
@@ -5240,11 +6833,11 @@
       "status": "open"
     },
     {
-      "id": "TQ-052",
+      "id": "TQ-058",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.11 Return of assets",
-      "detail": "The control is covered by POL-02, but there is no evidence that it operates.",
+      "detail": "The control is covered by POL-02, POL-10, but there is no evidence that it operates.",
       "severity": "low",
       "action": "add",
       "action_text": "Produce and retain periodic evidence that the control operates.",
@@ -5252,14 +6845,15 @@
         "5.11"
       ],
       "documents": [
-        "POL-02"
+        "POL-02",
+        "POL-10"
       ],
-      "owner": "Lucía Ferreyra (CISO)",
+      "owner": "Carla Medina (Legales y Privacidad)",
       "due": "2027-04-18",
       "status": "open"
     },
     {
-      "id": "TQ-053",
+      "id": "TQ-059",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.13 Labelling of information",
@@ -5278,11 +6872,11 @@
       "status": "open"
     },
     {
-      "id": "TQ-054",
+      "id": "TQ-060",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.14 Information transfer",
-      "detail": "The control is covered by POL-07, but there is no evidence that it operates.",
+      "detail": "The control is covered by POL-07, POL-10, but there is no evidence that it operates.",
       "severity": "low",
       "action": "add",
       "action_text": "Produce and retain periodic evidence that the control operates.",
@@ -5297,7 +6891,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-055",
+      "id": "TQ-061",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.20 Security in supplier agreements",
@@ -5316,7 +6910,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-056",
+      "id": "TQ-062",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.21 ICT supply chain security",
@@ -5336,7 +6930,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-057",
+      "id": "TQ-063",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.28 Collection of evidence",
@@ -5355,7 +6949,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-058",
+      "id": "TQ-064",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 5.32 Intellectual property rights",
@@ -5372,7 +6966,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-059",
+      "id": "TQ-065",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.33 Protection of records",
@@ -5391,7 +6985,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-060",
+      "id": "TQ-066",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 5.36 Compliance with policies and standards",
@@ -5410,7 +7004,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-061",
+      "id": "TQ-067",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 5.37 Documented operating procedures",
@@ -5427,7 +7021,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-062",
+      "id": "TQ-068",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 6.4 Disciplinary process",
@@ -5446,11 +7040,11 @@
       "status": "open"
     },
     {
-      "id": "TQ-063",
+      "id": "TQ-069",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 6.6 Confidentiality agreements",
-      "detail": "The control is covered by POL-01, POL-05, but there is no evidence that it operates.",
+      "detail": "The control is covered by POL-01, POL-05, POL-10, but there is no evidence that it operates.",
       "severity": "low",
       "action": "add",
       "action_text": "Produce and retain periodic evidence that the control operates.",
@@ -5458,15 +7052,15 @@
         "6.6"
       ],
       "documents": [
-        "POL-01",
-        "POL-05"
+        "POL-05",
+        "POL-10"
       ],
-      "owner": "Lucía Ferreyra (CISO)",
+      "owner": "Carla Medina (Legales y Privacidad)",
       "due": "2027-04-18",
       "status": "open"
     },
     {
-      "id": "TQ-064",
+      "id": "TQ-070",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 6.8 Security event reporting",
@@ -5485,7 +7079,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-065",
+      "id": "TQ-071",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 7.1 Physical security perimeters",
@@ -5502,7 +7096,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-066",
+      "id": "TQ-072",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 7.2 Physical entry",
@@ -5519,7 +7113,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-067",
+      "id": "TQ-073",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 7.3 Securing offices and facilities",
@@ -5536,7 +7130,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-068",
+      "id": "TQ-074",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 7.4 Physical security monitoring",
@@ -5553,7 +7147,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-069",
+      "id": "TQ-075",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 7.5 Protection against physical and environmental threats",
@@ -5570,7 +7164,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-070",
+      "id": "TQ-076",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 7.6 Working in secure areas",
@@ -5587,7 +7181,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-071",
+      "id": "TQ-077",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 7.7 Clear desk and clear screen",
@@ -5606,7 +7200,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-072",
+      "id": "TQ-078",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 7.9 Security of assets off-premises",
@@ -5625,7 +7219,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-073",
+      "id": "TQ-079",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 7.13 Equipment maintenance",
@@ -5642,7 +7236,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-074",
+      "id": "TQ-080",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.4 Access to source code",
@@ -5661,7 +7255,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-075",
+      "id": "TQ-081",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.9 Configuration management",
@@ -5680,11 +7274,11 @@
       "status": "open"
     },
     {
-      "id": "TQ-076",
+      "id": "TQ-082",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.10 Information deletion",
-      "detail": "The control is covered by POL-07, but there is no evidence that it operates.",
+      "detail": "The control is covered by POL-07, POL-10, but there is no evidence that it operates.",
       "severity": "low",
       "action": "add",
       "action_text": "Produce and retain periodic evidence that the control operates.",
@@ -5699,7 +7293,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-077",
+      "id": "TQ-083",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.14 Redundancy of processing facilities",
@@ -5718,7 +7312,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-078",
+      "id": "TQ-084",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 8.17 Clock synchronization",
@@ -5735,7 +7329,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-079",
+      "id": "TQ-085",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.22 Segregation of networks",
@@ -5754,7 +7348,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-080",
+      "id": "TQ-086",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 8.23 Web filtering",
@@ -5771,7 +7365,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-081",
+      "id": "TQ-087",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.28 Secure coding",
@@ -5790,7 +7384,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-082",
+      "id": "TQ-088",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.29 Security testing in development and acceptance",
@@ -5809,7 +7403,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-083",
+      "id": "TQ-089",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.31 Separation of development, test and production",
@@ -5828,7 +7422,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-084",
+      "id": "TQ-090",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Partial: 8.33 Test information",
@@ -5847,7 +7441,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-085",
+      "id": "TQ-091",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "Not met: 8.34 Protection of systems during audit testing",
@@ -5860,6 +7454,26 @@
       ],
       "documents": [],
       "owner": "",
+      "due": "2027-04-18",
+      "status": "open"
+    },
+    {
+      "id": "TQ-092",
+      "source": "assessment",
+      "root_cause": "no_operating_evidence",
+      "title": "Partial: LPDP-04 Data quality: only the data needed, kept only while needed",
+      "detail": "The control is covered by POL-07, POL-10, but there is no evidence that it operates.",
+      "severity": "low",
+      "action": "add",
+      "action_text": "Produce and retain periodic evidence that the control operates.",
+      "controls": [
+        "LPDP-04"
+      ],
+      "documents": [
+        "POL-07",
+        "POL-10"
+      ],
+      "owner": "Carla Medina (Legales y Privacidad)",
       "due": "2027-04-18",
       "status": "open"
     }
@@ -5891,7 +7505,13 @@
         "5.5",
         "5.31",
         "5.32",
-        "5.34"
+        "5.34",
+        "LPDP-04",
+        "LPDP-05",
+        "LPDP-09",
+        "LPDP-12",
+        "LPDP-14",
+        "LPDP-21"
       ]
     },
     {
@@ -6457,7 +8077,8 @@
         "8.11",
         "8.12",
         "8.24",
-        "8.33"
+        "8.33",
+        "LPDP-09"
       ]
     },
     {
@@ -7120,6 +8741,25 @@
       "metrics": {}
     },
     {
+      "id": "EVD-11",
+      "title": "Registro de solicitudes de titulares de datos 2026",
+      "type": "record",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\evidencias\\EVD-11-solicitudes-titulares-2026.md",
+      "owner": "Carla Medina (Legales y Privacidad)",
+      "version": "",
+      "status": "aprobado",
+      "approved": null,
+      "next_review": null,
+      "controls": [
+        "LPDP-14"
+      ],
+      "supersedes": [],
+      "executions": [],
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
+    },
+    {
       "id": "POL-01",
       "title": "Política de Seguridad de la Información",
       "type": "policy",
@@ -7476,6 +9116,66 @@
       "commitments": [],
       "rules": [],
       "metrics": {}
+    },
+    {
+      "id": "POL-10",
+      "title": "Política de Protección de Datos Personales",
+      "type": "policy",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\politicas\\POL-10-politica-proteccion-datos.md",
+      "owner": "Carla Medina (Legales y Privacidad)",
+      "version": "1.0",
+      "status": "aprobado",
+      "approved": "2026-03-03",
+      "next_review": "2027-03-03",
+      "controls": [
+        "5.34",
+        "LPDP-04",
+        "LPDP-05",
+        "LPDP-09",
+        "LPDP-14"
+      ],
+      "supersedes": [],
+      "executions": [],
+      "commitments": [],
+      "rules": [
+        {
+          "id": "REG-06",
+          "control": "LPDP-14",
+          "check": "deadline",
+          "description": "Pedidos de acceso respondidos en 10 días corridos (Ley 25.326, art. 14)",
+          "evidence": "EVD-11",
+          "source_doc": "POL-10",
+          "spec": {
+            "where": {
+              "Tipo": "Acceso"
+            },
+            "start": "Recibido",
+            "end": "Respondido",
+            "max_days": 10
+          }
+        },
+        {
+          "id": "REG-07",
+          "control": "LPDP-14",
+          "check": "deadline",
+          "description": "Rectificación y supresión resueltas en 5 días hábiles (Ley 25.326, art. 16)",
+          "evidence": "EVD-11",
+          "source_doc": "POL-10",
+          "spec": {
+            "where": {
+              "Tipo": [
+                "Rectificación",
+                "Supresión"
+              ]
+            },
+            "start": "Recibido",
+            "end": "Respondido",
+            "max_days": 5,
+            "business_days": true
+          }
+        }
+      ],
+      "metrics": {}
     }
   ],
   "reconciliation": [
@@ -7652,16 +9352,54 @@
       "failures": [],
       "ok": true,
       "error": ""
+    },
+    {
+      "rule": "REG-06",
+      "control": "LPDP-14",
+      "check": "deadline",
+      "description": "Pedidos de acceso respondidos en 10 días corridos (Ley 25.326, art. 14)",
+      "source": "POL-10",
+      "evidence": "EVD-11",
+      "tested": 3,
+      "failed": 1,
+      "summary": "1 of 3 cases exceed the 10-day deadline",
+      "failures": [
+        "SOL-26-04 (closed in 18 days)"
+      ],
+      "ok": false,
+      "error": ""
+    },
+    {
+      "rule": "REG-07",
+      "control": "LPDP-14",
+      "check": "deadline",
+      "description": "Rectificación y supresión resueltas en 5 días hábiles (Ley 25.326, art. 16)",
+      "source": "POL-10",
+      "evidence": "EVD-11",
+      "tested": 4,
+      "failed": 2,
+      "summary": "2 of 4 cases exceed the 5-business-day deadline",
+      "failures": [
+        "SOL-26-03 (closed in 9 business days)",
+        "SOL-26-06 (open for 7 business days)"
+      ],
+      "ok": false,
+      "error": ""
     }
   ],
+  "frameworks": [
+    "iso27001-2022",
+    "nist-csf-2.0",
+    "ley-25326"
+  ],
   "summary": {
-    "applicable": 88,
+    "applicable": 94,
     "excluded": 5,
     "counts": {
       "met": 8,
-      "partial": 49,
+      "partial": 54,
       "undetermined": 0,
-      "not_met": 31
+      "not_met": 32
     },
     "score": 37,
     "themes": [
@@ -7696,6 +9434,14 @@
         "partial": 21,
         "undetermined": 0,
         "not_met": 10
+      },
+      {
+        "key": "privacy",
+        "total": 6,
+        "met": 0,
+        "partial": 5,
+        "undetermined": 0,
+        "not_met": 1
       }
     ],
     "functions": [
@@ -7754,11 +9500,11 @@
         "out_of_scope": 7
       }
     ],
-    "findings": 85,
-    "high": 9
+    "findings": 92,
+    "high": 11
   },
   "tool": {
     "name": "tranquera",
-    "version": "0.2.0"
+    "version": "0.3.0"
   }
 }

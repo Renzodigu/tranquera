@@ -13,7 +13,7 @@ def test_reports_are_written(company, tmp_path):
     html = files["html"].read_text(encoding="utf-8")
     assert "Ñandú Pagos S.A." in html and "TQ-001" in html and "Datos ficticios" in html
     data = json.loads(files["json"].read_text(encoding="utf-8"))
-    assert data["summary"]["applicable"] == 88 and data["tool"]["name"] == "tranquera"
+    assert data["summary"]["applicable"] == 94 and data["tool"]["name"] == "tranquera"
     raw = files["register"].read_bytes()
     assert raw.startswith(b"\xef\xbb\xbf")  # BOM: accents survive Excel
     header = raw.decode("utf-8-sig").splitlines()[0]
@@ -33,7 +33,7 @@ def test_english_report(company):
 def test_cli_demo(tmp_path, capsys):
     assert main(["demo", "--out", str(tmp_path)]) == 0
     out = capsys.readouterr().out
-    assert "88 applicable" in out and (tmp_path / "report.html").exists()
+    assert "94 applicable" in out and (tmp_path / "report.html").exists()
 
 
 def test_cli_fail_on_high(tmp_path):

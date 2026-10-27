@@ -22,8 +22,8 @@ jobs:
         run: ruff check src tests app
       - name: Test
         run: pytest -q
-      - name: Demo report
-        run: tranquera demo --out demo-report
+      - name: Demo report and accuracy gate
+        run: tranquera evaluate --out demo-report --min-accuracy 85
       - uses: actions/upload-artifact@v4
         if: matrix.python-version == '3.13'
         with:

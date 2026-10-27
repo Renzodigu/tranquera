@@ -9,12 +9,21 @@ Tranquera reads a folder that contains a `scope.yaml` file and any number of Mar
 company: Ñandú Pagos S.A.
 description: One line about the organization (sent to Claude as context).
 as_of: 2026-10-20          # optional; default for --as-of
+frameworks: [iso27001-2022, nist-csf-2.0, ley-25326]   # optional; ley-25326 is opt-in
 exclusions:                # Annex A controls out of scope
   - control: "7.11"
     justification: No own data center; utilities are the cloud provider's responsibility.
 ```
 
 An exclusion without a justification is reported as a finding.
+
+`frameworks` defaults to `[iso27001-2022, nist-csf-2.0]`. Adding `ley-25326` also assesses six
+obligations of Argentina's personal data protection law (`LPDP-04` data quality, `LPDP-05`
+consent, `LPDP-09` security and confidentiality, `LPDP-12` international transfers, `LPDP-14` data
+subject rights, `LPDP-21` database registration). They go through the same retrieval, assessment,
+verdict caps and findings as Annex A controls, so documents, commitments and rules can target them by
+id (`controls: ["LPDP-14"]`). They are listed with their articles in the report but are not part of
+the Statement of Applicability. Catalog: `src/tranquera/catalogs/ley25326.yaml`.
 
 ## Policies and procedures
 
@@ -28,7 +37,7 @@ version: "2.1"
 status: aprobado            # aprobado/approved | borrador/draft | obsoleto/obsolete
 approved: 2026-03-10
 next_review: 2027-03-10
-controls: ["5.15", "5.18"]  # optional hint: Annex A controls this document covers
+controls: ["5.15", "5.18"]  # optional hint: controls (Annex A or LPDP-xx) this document covers
 supersedes: [POL-09]        # optional: documents this one replaces
 commitments:                # optional: periodic activities the policy promises
   - id: COM-02
@@ -94,6 +103,7 @@ rules:
     start: Detectada
     end: Remediada                 # optional; an empty cell means open, aged until the assessment date
     max_days: 7
+    business_days: false           # optional; true counts Monday to Friday only (holidays are not excluded)
 
   - id: REG-03                     # required: rows must have an accepted value
     control: "5.27"
@@ -117,3 +127,23 @@ rules:
 
 A failed rule caps its control at *partial* and produces a finding with root cause *control operates
 outside what the policy requires*, listing up to six failing rows.
+
+## Expected verdicts (`expected.yaml`)
+
+`tranquera evaluate <folder>` runs the analysis and compares its final verdicts with an
+`expected.yaml` in the same folder (or `--expected <file>`): the verdict an auditor would give for a
+sample of controls, written from the documents and before running the tool.
+
+```yaml
+verdicts:
+  "8.2":  {verdict: partial, why: "EVD-01 found leavers' accounts active in the AWS console", evidence: [POL-02, EVD-01]}
+  "5.7":  {verdict: not_met, why: "No document addresses threat intelligence"}
+  LPDP-21: {verdict: not_met, why: "No registration with the AAIP"}
+```
+
+`verdict` is `met`, `partial` or `not_met`. `evidence` is optional: the documents that hold the
+answer. `metrics.md` reports verdict accuracy, the share of real gaps detected, false *met* (a real
+gap reported as met, the worst error in GRC), controls flagged with a gap that are actually met,
+whether retrieval brought the expected documents to the assessor, and every difference.
+`--min-accuracy 90` exits with code 1 below that accuracy, so a change to the catalog or the
+assessor that makes results worse fails CI.
