@@ -130,6 +130,21 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 </tbody></table></div>
 {% endif %}
 
+{% if r.rules %}
+<h2>{{ L.rules }}</h2>
+<p class="small">{{ L.rules_intro }}</p>
+<div class="table-wrap"><table>
+<thead><tr><th>{{ L.rule }}</th><th>{{ L.controls }}</th><th>{{ L.tested }}</th><th>{{ L.failed }}</th><th>{{ L.cases }}</th><th>{{ L.result }}</th></tr></thead>
+<tbody>
+{% for ru in r.rules %}
+<tr><td><span class="mono">{{ ru.rule }}</span> {{ ru.description }}<div class="small">{{ ru.source }} → {{ ru.evidence }}</div></td>
+<td class="mono">{{ ru.control }}</td><td>{{ ru.tested }}</td><td>{{ ru.failed }}</td>
+<td class="small">{{ ru.summary }}{% if ru.failures and not ru.error and ru.check != 'threshold' %}<br>{{ ru.failures[:6]|join('; ') }}{% endif %}</td>
+<td>{% if ru.ok %}<span class="ok">✓ {{ t('met') }}</span>{% else %}<span class="ko">✗ {{ t('not_met') }}</span>{% endif %}</td></tr>
+{% endfor %}
+</tbody></table></div>
+{% endif %}
+
 <h2>{{ L.register }}</h2>
 <div class="filters" role="group">
   <button type="button" data-sev="all" aria-pressed="true">{{ L.all }} ({{ register|length }})</button>

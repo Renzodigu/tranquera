@@ -23,12 +23,12 @@ UI = {
         "tagline": "Análisis de brechas ISO/IEC 27001:2022 y NIST CSF 2.0 con hallazgos auditables.",
         "source": "Documentos", "demo": "Empresa ficticia de demo (Ñandú Pagos S.A.)", "upload": "Subir un .zip propio",
         "zip_help": "Carpeta con scope.yaml y documentos Markdown con front matter (ver la demo).",
-        "assessor": "Evaluador", "heuristic": "Heurístico (gratis, sin conexión)", "claude": "Claude (análisis semántico)",
+        "assessor": "Evaluador", "heuristic": "Determinista (sin IA, sin conexión)", "claude": "Claude (opcional, segunda opinión)",
         "key": "Clave de API de Anthropic", "key_help": "Se usa solo en esta sesión y no se guarda.",
         "lang": "Idioma del informe", "as_of": "Fecha de corte", "run": "Analizar",
         "need_zip": "Subí un .zip para continuar.", "need_key": "Ingresá una clave de API para usar Claude.",
         "running": "Evaluando controles…", "score": "Cumplimiento", "applicable": "Aplicables",
-        "high": "Hallazgos altos", "tab_findings": "Hallazgos", "tab_recon": "Conciliación",
+        "high": "Hallazgos altos", "tab_findings": "Hallazgos", "tab_recon": "Conciliación", "tab_rules": "Reglas",
         "tab_controls": "Controles", "tab_nist": "NIST CSF 2.0", "severity": "Severidad",
         "download": "Descargar", "fictional": "Todos los datos de la demo son ficticios.",
         "bad_zip": "El .zip contiene rutas inválidas.",
@@ -37,12 +37,12 @@ UI = {
         "tagline": "ISO/IEC 27001:2022 and NIST CSF 2.0 gap analysis with auditable findings.",
         "source": "Documents", "demo": "Fictitious demo company (Ñandú Pagos S.A.)", "upload": "Upload your own .zip",
         "zip_help": "Folder with scope.yaml and Markdown documents with front matter (see the demo).",
-        "assessor": "Assessor", "heuristic": "Heuristic (free, offline)", "claude": "Claude (semantic review)",
+        "assessor": "Assessor", "heuristic": "Deterministic (no AI, offline)", "claude": "Claude (optional second opinion)",
         "key": "Anthropic API key", "key_help": "Used only for this session and never stored.",
         "lang": "Report language", "as_of": "Assessment date", "run": "Analyze",
         "need_zip": "Upload a .zip to continue.", "need_key": "Enter an API key to use Claude.",
         "running": "Assessing controls…", "score": "Compliance", "applicable": "Applicable",
-        "high": "High findings", "tab_findings": "Findings", "tab_recon": "Reconciliation",
+        "high": "High findings", "tab_findings": "Findings", "tab_recon": "Reconciliation", "tab_rules": "Rules",
         "tab_controls": "Controls", "tab_nist": "NIST CSF 2.0", "severity": "Severity",
         "download": "Download", "fictional": "All demo data is fictitious.",
         "bad_zip": "The .zip contains invalid paths.",
@@ -129,7 +129,8 @@ d2.download_button(f"{U['download']} CSV", render_register_csv(result).encode("u
 d3.download_button(f"{U['download']} JSON", render_json(result), "results.json", "application/json",
                    use_container_width=True)
 
-tab_f, tab_r, tab_c, tab_n = st.tabs([U["tab_findings"], U["tab_recon"], U["tab_controls"], U["tab_nist"]])
+tab_f, tab_r, tab_u, tab_c, tab_n = st.tabs([U["tab_findings"], U["tab_recon"], U["tab_rules"], U["tab_controls"],
+                                             U["tab_nist"]])
 with tab_f:
     sevs = [t(lang, x) for x in ("high", "medium", "low")]
     chosen = st.multiselect(U["severity"], sevs, default=sevs)
@@ -139,6 +140,10 @@ with tab_f:
 with tab_r:
     st.dataframe([{**ln, "missing": ", ".join(ln["missing"]), "ok": "✓" if ln["ok"] else "✗"}
                   for ln in result.reconciliation], use_container_width=True, hide_index=True)
+with tab_u:
+    st.dataframe([{**ru, "failures": "; ".join(ru["failures"]), "ok": "✓" if ru["ok"] else "✗"}
+                  for ru in result.rules], use_container_width=True, hide_index=True,
+                 column_order=["rule", "control", "description", "tested", "failed", "summary", "failures", "ok"])
 with tab_c:
     for c in result.controls:
         with st.expander(f"{c.control.id} · {c.control.title(lang)} — {t(lang, c.final.value)}"):

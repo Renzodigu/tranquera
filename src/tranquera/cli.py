@@ -22,13 +22,13 @@ def demo_path() -> Path:
 
 
 def _build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="tranquera", description="AI-assisted ISO 27001 / NIST CSF 2.0 gap analysis.")
+    p = argparse.ArgumentParser(prog="tranquera", description="Deterministic ISO 27001 / NIST CSF 2.0 gap analysis (Claude optional).")
     p.add_argument("--version", action="version", version=f"tranquera {__version__}")
     sub = p.add_subparsers(dest="command", required=True)
 
     def common(sp):
         sp.add_argument("--assessor", choices=["heuristic", "claude"], default="heuristic",
-                        help="heuristic: offline and free (default). claude: semantic review, needs ANTHROPIC_API_KEY.")
+                        help="heuristic: deterministic, offline and free (default). claude: optional semantic review, needs ANTHROPIC_API_KEY.")
         sp.add_argument("--model", default=DEFAULT_MODEL, help=f"Claude model (default: {DEFAULT_MODEL}).")
         sp.add_argument("--lang", choices=["es", "en"], default="es", help="Report language (default: es).")
         sp.add_argument("--as-of", type=date.fromisoformat, help="Assessment date YYYY-MM-DD (default: scope.yaml or today).")

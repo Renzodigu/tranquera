@@ -26,9 +26,10 @@ from .models import (
     lower,
 )
 from .retrieval import Retriever
+from .rules import rule_findings
 
 DUE_DAYS = {Severity.HIGH: 30, Severity.MEDIUM: 90, Severity.LOW: 180}
-SOURCE_ORDER = {"pattern": 0, "reconciliation": 1, "soa": 2, "hygiene": 3, "assessment": 4}
+SOURCE_ORDER = {"pattern": 0, "reconciliation": 1, "rule": 2, "soa": 3, "hygiene": 4, "assessment": 5}
 PATTERN_THRESHOLD = 3
 
 
@@ -57,11 +58,17 @@ def analyze(
 
     # 1) deterministic checks first: their results cap the AI/heuristic verdicts
     recon_lines, recon_findings = reconciliation(company, as_of, lang)
-    deterministic = hygiene_findings(company, as_of, lang) + soa_findings(company, lang) + recon_findings
+    rule_results, rule_breaches = rule_findings(company, as_of, lang)
+    deterministic = (hygiene_findings(company, as_of, lang) + soa_findings(company, lang) + recon_findings
+                     + rule_breaches)
     missed_by_control: dict[str, list[str]] = defaultdict(list)
     for line in recon_lines:
         if not line.ok:
             missed_by_control[line.commitment.control].append(line.commitment.id)
+    broken_by_control: dict[str, list[str]] = defaultdict(list)
+    for res in rule_results:
+        if not res.ok and not res.error:
+            broken_by_control[res.rule.control].append(res.rule.id)
 
     # 2) per-control assessment
     results: list[ControlResult] = []
@@ -90,6 +97,8 @@ def analyze(
                 reasons.append(t(lang, "cap_expired", doc=doc_id))
         for cid in missed_by_control.get(control.id, []):
             reasons.append(t(lang, "cap_missed", commitment=cid))
+        for rid in broken_by_control.get(control.id, []):
+            reasons.append(t(lang, "cap_rule", rule=rid))
         if reasons:
             final = _cap(final, Verdict.PARTIAL)
         results.append(ControlResult(control, assessment, final, reasons))
@@ -159,6 +168,12 @@ def analyze(
             "expected": ln.expected, "found": ln.found, "missing": ln.missing_periods,
             "last": ln.last, "ok": ln.ok,
         } for ln in recon_lines],
+        rules=[{
+            "rule": res.rule.id, "control": res.rule.control, "check": res.rule.check,
+            "description": res.rule.description, "source": res.rule.source_doc, "evidence": res.rule.evidence,
+            "tested": res.tested, "failed": len(res.failures), "summary": res.summary,
+            "failures": res.failures, "ok": res.ok, "error": res.error,
+        } for res in rule_results],
     )
 
 

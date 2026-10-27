@@ -15,6 +15,18 @@ commitments:
     activity: Revisión trimestral de los derechos de acceso a sistemas críticos
     frequency: quarterly
     evidence: EVD-01
+rules:
+  - id: REG-04
+    control: "5.18"
+    description: Las cuentas de personas desvinculadas se dan de baja dentro de las 24 horas
+    check: absent
+    evidence: EVD-09
+    column: Usuario
+    date: Fecha de baja
+    grace_days: 1
+    against: EVD-10
+    against_column: Usuario
+    against_where: {Estado: Activa}
 ---
 # Política de Control de Acceso
 

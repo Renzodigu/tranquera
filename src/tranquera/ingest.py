@@ -16,7 +16,7 @@ from pathlib import Path
 
 import yaml
 
-from .models import Chunk, Commitment, Document
+from .models import Chunk, Commitment, Document, Rule
 
 _FRONT_MATTER = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 _HEADING = re.compile(r"^(#{1,3})\s+(.*)$", re.MULTILINE)
@@ -49,6 +49,10 @@ class Company:
     @property
     def commitments(self) -> list[Commitment]:
         return [c for d in self.documents for c in d.commitments]
+
+    @property
+    def rules(self) -> list[Rule]:
+        return [r for d in self.documents for r in d.rules]
 
     @property
     def superseded_ids(self) -> set[str]:
@@ -89,6 +93,18 @@ def parse_document(path: Path, text: str | None = None) -> Document:
         )
         for i, c in enumerate(meta.get("commitments") or [])
     )
+    rules = tuple(
+        Rule(
+            id=str(r.get("id", f"{doc_id}-R{i + 1}")),
+            control=str(r["control"]),
+            check=str(r.get("check", "")).lower(),
+            description=str(r.get("description", "")),
+            evidence=str(r["evidence"]) if r.get("evidence") else None,
+            source_doc=doc_id,
+            spec={k: v for k, v in r.items() if k not in ("id", "control", "check", "description", "evidence")},
+        )
+        for i, r in enumerate(meta.get("rules") or [])
+    )
     return Document(
         id=doc_id,
         title=str(meta.get("title") or path.stem),
@@ -104,6 +120,8 @@ def parse_document(path: Path, text: str | None = None) -> Document:
         supersedes=_as_str_tuple(meta.get("supersedes")),
         executions=tuple(sorted(d for d in (_as_date(x) for x in meta.get("executions") or []) if d)),
         commitments=commitments,
+        rules=rules,
+        metrics={str(k): v for k, v in (meta.get("metrics") or {}).items()},
     )
 
 

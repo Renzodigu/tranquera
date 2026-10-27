@@ -29,7 +29,7 @@ def test_expired_and_draft_documents_cap_verdicts(company):
 
 def test_clean_control_stays_met(company):
     r = {c.control.id: c for c in _result(company).controls}
-    assert r["6.3"].final == Verdict.MET  # policy + training record, commitment reconciled
+    assert r["5.9"].final == Verdict.MET  # asset inventory: policy + record, nothing broken
 
 
 def test_missing_topics_are_not_met(company):
@@ -67,7 +67,8 @@ def test_nist_rollup(company):
     assert by["PR.DS-11"].status == "partial"         # backups: restore tests missed
     assert by["ID.RA-02"].status == "not_met"         # threat intelligence missing
     assert by["GV.RM-01"].status == "out_of_scope"    # clause-level, not Annex A
-    assert by["PR.AT-01"].status == "met"
+    assert by["PR.AT-01"].status == "partial"         # training below its 95 % target
+    assert by["ID.AM-01"].status == "met"
 
 
 def test_subset_and_english(company):

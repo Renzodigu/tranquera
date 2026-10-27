@@ -14,6 +14,25 @@ commitments:
     activity: Escaneo mensual de vulnerabilidades de la infraestructura productiva
     frequency: monthly
     evidence: EVD-03
+rules:
+  - id: REG-02
+    control: "8.8"
+    description: Vulnerabilidades críticas remediadas en 7 días
+    check: deadline
+    evidence: EVD-03
+    where: {Severidad: Crítica}
+    start: Detectada
+    end: Remediada
+    max_days: 7
+  - id: REG-05
+    control: "8.8"
+    description: Vulnerabilidades altas remediadas en 30 días
+    check: deadline
+    evidence: EVD-03
+    where: {Severidad: Alta}
+    start: Detectada
+    end: Remediada
+    max_days: 30
 ---
 # Estándar de Operaciones de Seguridad
 

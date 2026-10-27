@@ -690,8 +690,8 @@
       },
       "assessment": {
         "control_id": "5.16",
-        "verdict": "partial",
-        "rationale": "El control aparece en POL-02, pero no hay evidencia de que se opere.",
+        "verdict": "met",
+        "rationale": "Cubierto por POL-02 con evidencia de operación en EVD-10.",
         "citations": [
           {
             "chunk_id": "POL-02#2",
@@ -704,18 +704,24 @@
             "doc_id": "POL-02",
             "quote": "Se usa inicio de sesión único (SSO) con autenticación multifactor (MFA) obligatoria para todo el personal y para todos los accesos a la consola de AWS",
             "verified": true
+          },
+          {
+            "chunk_id": "EVD-10#1",
+            "doc_id": "EVD-10",
+            "quote": "Extracto con las cuentas de las áreas que tuvieron bajas en el último año",
+            "verified": true
           }
         ],
         "gaps": [],
         "contradictions": [],
-        "action": "add",
-        "action_text": "Generar y conservar evidencia periódica de la operación del control.",
+        "action": null,
+        "action_text": "",
         "assessor": "heuristic",
         "confidence": "low",
         "notes": [],
-        "root_cause": "no_operating_evidence"
+        "root_cause": ""
       },
-      "final": "partial",
+      "final": "met",
       "cap_reasons": [],
       "exclusion_reason": ""
     },
@@ -822,7 +828,8 @@
       },
       "final": "partial",
       "cap_reasons": [
-        "Compromiso periódico incumplido (COM-02)."
+        "Compromiso periódico incumplido (COM-02).",
+        "Regla incumplida (REG-04)."
       ],
       "exclusion_reason": ""
     },
@@ -1316,7 +1323,8 @@
       },
       "final": "partial",
       "cap_reasons": [
-        "Se apoya en un documento con revisión vencida (POL-03)."
+        "Se apoya en un documento con revisión vencida (POL-03).",
+        "Regla incumplida (REG-03)."
       ],
       "exclusion_reason": ""
     },
@@ -1482,9 +1490,9 @@
             "verified": true
           },
           {
-            "chunk_id": "POL-01#6",
-            "doc_id": "POL-01",
-            "quote": "El CISO verifica el cumplimiento de las políticas mediante revisiones periódicas",
+            "chunk_id": "POL-07#3",
+            "doc_id": "POL-07",
+            "quote": "El tratamiento de datos personales cumple la Ley 25.326",
             "verified": true
           }
         ],
@@ -1871,8 +1879,10 @@
         "notes": [],
         "root_cause": ""
       },
-      "final": "met",
-      "cap_reasons": [],
+      "final": "partial",
+      "cap_reasons": [
+        "Regla incumplida (REG-01)."
+      ],
       "exclusion_reason": ""
     },
     {
@@ -1942,8 +1952,8 @@
       },
       "assessment": {
         "control_id": "6.5",
-        "verdict": "partial",
-        "rationale": "El control aparece en POL-02, pero no hay evidencia de que se opere.",
+        "verdict": "met",
+        "rationale": "Cubierto por POL-02 con evidencia de operación en EVD-09.",
         "citations": [
           {
             "chunk_id": "POL-02#2",
@@ -1956,18 +1966,24 @@
             "doc_id": "POL-02",
             "quote": "Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre",
             "verified": true
+          },
+          {
+            "chunk_id": "EVD-09#1",
+            "doc_id": "EVD-09",
+            "quote": "Recursos Humanos informa cada baja a Sistemas el mismo día por ticket",
+            "verified": true
           }
         ],
         "gaps": [],
         "contradictions": [],
-        "action": "add",
-        "action_text": "Generar y conservar evidencia periódica de la operación del control.",
+        "action": null,
+        "action_text": "",
         "assessor": "heuristic",
         "confidence": "low",
         "notes": [],
-        "root_cause": "no_operating_evidence"
+        "root_cause": ""
       },
-      "final": "partial",
+      "final": "met",
       "cap_reasons": [],
       "exclusion_reason": ""
     },
@@ -2979,7 +2995,8 @@
       },
       "final": "partial",
       "cap_reasons": [
-        "Compromiso periódico incumplido (COM-06)."
+        "Compromiso periódico incumplido (COM-06).",
+        "Regla incumplida (REG-02)."
       ],
       "exclusion_reason": ""
     },
@@ -4096,7 +4113,7 @@
       "source": "pattern",
       "root_cause": "missing_control",
       "title": "Patrón sistémico: Control sin documentar",
-      "detail": "La misma causa aparece en 31 hallazgos (TQ-005, TQ-006, TQ-013, TQ-014, TQ-015, TQ-016, TQ-023, TQ-024, TQ-025, TQ-026, TQ-027, TQ-028, TQ-032, TQ-036, TQ-037, TQ-039, TQ-042, TQ-043, TQ-048, TQ-055, TQ-058, TQ-063, TQ-064, TQ-065, TQ-066, TQ-067, TQ-068, TQ-071, TQ-076, TQ-078, TQ-083). No es un error aislado: indica una falla del proceso que hay que corregir en origen.",
+      "detail": "La misma causa aparece en 31 hallazgos (TQ-008, TQ-009, TQ-017, TQ-018, TQ-019, TQ-020, TQ-026, TQ-027, TQ-028, TQ-029, TQ-030, TQ-031, TQ-035, TQ-039, TQ-040, TQ-042, TQ-045, TQ-046, TQ-051, TQ-058, TQ-061, TQ-065, TQ-066, TQ-067, TQ-068, TQ-069, TQ-070, TQ-073, TQ-078, TQ-080, TQ-085). No es un error aislado: indica una falla del proceso que hay que corregir en origen.",
       "severity": "high",
       "action": "fix",
       "action_text": "Analizar la causa raíz y corregir el proceso, no solo cada caso.",
@@ -4143,7 +4160,7 @@
       "source": "pattern",
       "root_cause": "commitment_missed",
       "title": "Patrón sistémico: Compromiso periódico incumplido",
-      "detail": "La misma causa aparece en 4 hallazgos (TQ-001, TQ-002, TQ-003, TQ-007). No es un error aislado: indica una falla del proceso que hay que corregir en origen.",
+      "detail": "La misma causa aparece en 4 hallazgos (TQ-001, TQ-002, TQ-003, TQ-010). No es un error aislado: indica una falla del proceso que hay que corregir en origen.",
       "severity": "high",
       "action": "fix",
       "action_text": "Analizar la causa raíz y corregir el proceso, no solo cada caso.",
@@ -4170,9 +4187,39 @@
     {
       "id": "TQ-P03",
       "source": "pattern",
+      "root_cause": "operating_deviation",
+      "title": "Patrón sistémico: El control opera fuera de lo que exige la política",
+      "detail": "La misma causa aparece en 4 hallazgos (TQ-004, TQ-005, TQ-006, TQ-011). No es un error aislado: indica una falla del proceso que hay que corregir en origen.",
+      "severity": "high",
+      "action": "fix",
+      "action_text": "Analizar la causa raíz y corregir el proceso, no solo cada caso.",
+      "controls": [
+        "5.18",
+        "5.27",
+        "6.3",
+        "8.8"
+      ],
+      "documents": [
+        "EVD-03",
+        "EVD-04",
+        "EVD-07",
+        "EVD-09",
+        "EVD-10",
+        "POL-01",
+        "POL-02",
+        "POL-03",
+        "POL-08"
+      ],
+      "owner": "",
+      "due": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "TQ-P04",
+      "source": "pattern",
       "root_cause": "no_operating_evidence",
       "title": "Patrón sistémico: Política sin evidencia de operación",
-      "detail": "La misma causa aparece en 43 hallazgos (TQ-012, TQ-017, TQ-018, TQ-019, TQ-020, TQ-021, TQ-022, TQ-029, TQ-030, TQ-031, TQ-033, TQ-034, TQ-035, TQ-038, TQ-040, TQ-041, TQ-044, TQ-045, TQ-046, TQ-047, TQ-049, TQ-050, TQ-051, TQ-052, TQ-053, TQ-054, TQ-056, TQ-057, TQ-059, TQ-060, TQ-061, TQ-062, TQ-069, TQ-070, TQ-072, TQ-073, TQ-074, TQ-075, TQ-077, TQ-079, TQ-080, TQ-081, TQ-082). No es un error aislado: indica una falla del proceso que hay que corregir en origen.",
+      "detail": "La misma causa aparece en 41 hallazgos (TQ-016, TQ-021, TQ-022, TQ-023, TQ-024, TQ-025, TQ-032, TQ-033, TQ-034, TQ-036, TQ-037, TQ-038, TQ-041, TQ-043, TQ-044, TQ-047, TQ-048, TQ-049, TQ-050, TQ-052, TQ-053, TQ-054, TQ-055, TQ-056, TQ-057, TQ-059, TQ-060, TQ-062, TQ-063, TQ-064, TQ-071, TQ-072, TQ-074, TQ-075, TQ-076, TQ-077, TQ-079, TQ-081, TQ-082, TQ-083, TQ-084). No es un error aislado: indica una falla del proceso que hay que corregir en origen.",
       "severity": "medium",
       "action": "fix",
       "action_text": "Analizar la causa raíz y corregir el proceso, no solo cada caso.",
@@ -4185,7 +4232,6 @@
         "5.13",
         "5.14",
         "5.15",
-        "5.16",
         "5.17",
         "5.20",
         "5.21",
@@ -4196,7 +4242,6 @@
         "5.34",
         "5.36",
         "6.4",
-        "6.5",
         "6.6",
         "6.8",
         "7.7",
@@ -4297,6 +4342,67 @@
     },
     {
       "id": "TQ-004",
+      "source": "rule",
+      "root_cause": "operating_deviation",
+      "title": "Regla incumplida: Las cuentas de personas desvinculadas se dan de baja dentro de las 24 horas",
+      "detail": "POL-02 establece REG-04. Resultado: 3 de 5 registros de EVD-09 siguen presentes en EVD-10. Casos: mrojas (EVD-10); jcabral (EVD-10); pvillalba (EVD-10).",
+      "severity": "high",
+      "action": "fix",
+      "action_text": "Corregir cada caso listado y revisar por qué el proceso no lo detectó a tiempo.",
+      "controls": [
+        "5.18"
+      ],
+      "documents": [
+        "POL-02",
+        "EVD-09",
+        "EVD-10"
+      ],
+      "owner": "Lucía Ferreyra (CISO)",
+      "due": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "TQ-005",
+      "source": "rule",
+      "root_cause": "operating_deviation",
+      "title": "Regla incumplida: Al menos el 95 % del personal completa la capacitación anual",
+      "detail": "POL-01 establece REG-01. Resultado: completion_rate = 62 (meta >= 95). Casos: completion_rate = 62 (meta >= 95).",
+      "severity": "high",
+      "action": "fix",
+      "action_text": "Corregir cada caso listado y revisar por qué el proceso no lo detectó a tiempo.",
+      "controls": [
+        "6.3"
+      ],
+      "documents": [
+        "POL-01",
+        "EVD-04"
+      ],
+      "owner": "Lucía Ferreyra (CISO)",
+      "due": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "TQ-006",
+      "source": "rule",
+      "root_cause": "operating_deviation",
+      "title": "Regla incumplida: Vulnerabilidades críticas remediadas en 7 días",
+      "detail": "POL-08 establece REG-02. Resultado: 2 de 3 casos superan el plazo de 7 días. Casos: VULN-26-017 (abierto hace 41 días); VULN-26-018 (abierto hace 41 días).",
+      "severity": "high",
+      "action": "fix",
+      "action_text": "Corregir cada caso listado y revisar por qué el proceso no lo detectó a tiempo.",
+      "controls": [
+        "8.8"
+      ],
+      "documents": [
+        "POL-08",
+        "EVD-03"
+      ],
+      "owner": "Martín Quiroga (Líder de Operaciones de Seguridad)",
+      "due": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "TQ-007",
       "source": "hygiene",
       "root_cause": "document_expired",
       "title": "Revisión vencida: POL-03 Política de Gestión de Incidentes de Seguridad",
@@ -4321,7 +4427,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-005",
+      "id": "TQ-008",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 5.29 Seguridad durante interrupciones",
@@ -4338,7 +4444,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-006",
+      "id": "TQ-009",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 8.12 Prevención de fuga de datos",
@@ -4355,7 +4461,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-007",
+      "id": "TQ-010",
       "source": "reconciliation",
       "root_cause": "commitment_missed",
       "title": "Compromiso incumplido: Escaneo mensual de vulnerabilidades de la infraestructura productiva",
@@ -4375,7 +4481,27 @@
       "status": "open"
     },
     {
-      "id": "TQ-008",
+      "id": "TQ-011",
+      "source": "rule",
+      "root_cause": "operating_deviation",
+      "title": "Regla incumplida: Todo incidente de severidad alta o crítica cerrado tiene post mortem",
+      "detail": "POL-03 establece REG-03. Resultado: 1 de 1 casos sin «Post mortem». Casos: INC-2026-02 (Post mortem: No).",
+      "severity": "medium",
+      "action": "fix",
+      "action_text": "Corregir cada caso listado y revisar por qué el proceso no lo detectó a tiempo.",
+      "controls": [
+        "5.27"
+      ],
+      "documents": [
+        "POL-03",
+        "EVD-07"
+      ],
+      "owner": "Martín Quiroga (Líder de Operaciones de Seguridad)",
+      "due": "2027-01-18",
+      "status": "open"
+    },
+    {
+      "id": "TQ-012",
       "source": "soa",
       "root_cause": "soa_unjustified",
       "title": "Exclusión sin justificar en la SoA: 8.11",
@@ -4394,7 +4520,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-009",
+      "id": "TQ-013",
       "source": "hygiene",
       "root_cause": "obsolete_document",
       "title": "Documento reemplazado sigue vigente: POL-09 Política de Contraseñas",
@@ -4413,7 +4539,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-010",
+      "id": "TQ-014",
       "source": "hygiene",
       "root_cause": "no_owner",
       "title": "Documento sin responsable: POL-05 Política de Seguridad con Proveedores",
@@ -4436,7 +4562,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-011",
+      "id": "TQ-015",
       "source": "hygiene",
       "root_cause": "not_approved",
       "title": "Documento en borrador: POL-06 Política de Desarrollo Seguro",
@@ -4462,7 +4588,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-012",
+      "id": "TQ-016",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.1 Políticas de seguridad",
@@ -4481,7 +4607,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-013",
+      "id": "TQ-017",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 5.3 Separación de funciones incompatibles",
@@ -4498,7 +4624,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-014",
+      "id": "TQ-018",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 5.7 Inteligencia de amenazas",
@@ -4515,7 +4641,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-015",
+      "id": "TQ-019",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 5.8 Seguridad en la gestión de proyectos",
@@ -4532,7 +4658,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-016",
+      "id": "TQ-020",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 5.10 Uso aceptable de activos",
@@ -4549,7 +4675,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-017",
+      "id": "TQ-021",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.15 Control de acceso",
@@ -4568,26 +4694,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-018",
-      "source": "assessment",
-      "root_cause": "no_operating_evidence",
-      "title": "Parcial: 5.16 Gestión de identidades",
-      "detail": "El control aparece en POL-02, pero no hay evidencia de que se opere.",
-      "severity": "medium",
-      "action": "add",
-      "action_text": "Generar y conservar evidencia periódica de la operación del control.",
-      "controls": [
-        "5.16"
-      ],
-      "documents": [
-        "POL-02"
-      ],
-      "owner": "Lucía Ferreyra (CISO)",
-      "due": "2027-01-18",
-      "status": "open"
-    },
-    {
-      "id": "TQ-019",
+      "id": "TQ-022",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.17 Información de autenticación",
@@ -4606,7 +4713,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-020",
+      "id": "TQ-023",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.30 Preparación TIC para la continuidad",
@@ -4625,7 +4732,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-021",
+      "id": "TQ-024",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.31 Requisitos legales, regulatorios y contractuales",
@@ -4637,14 +4744,15 @@
         "5.31"
       ],
       "documents": [
-        "POL-01"
+        "POL-01",
+        "POL-07"
       ],
       "owner": "Lucía Ferreyra (CISO)",
       "due": "2027-01-18",
       "status": "open"
     },
     {
-      "id": "TQ-022",
+      "id": "TQ-025",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.34 Privacidad y datos personales",
@@ -4664,7 +4772,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-023",
+      "id": "TQ-026",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 5.35 Revisión independiente de la seguridad",
@@ -4681,7 +4789,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-024",
+      "id": "TQ-027",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 6.1 Verificación de antecedentes",
@@ -4698,7 +4806,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-025",
+      "id": "TQ-028",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 6.2 Condiciones de contratación",
@@ -4715,7 +4823,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-026",
+      "id": "TQ-029",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 6.7 Trabajo remoto",
@@ -4732,7 +4840,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-027",
+      "id": "TQ-030",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 7.10 Medios de almacenamiento",
@@ -4749,7 +4857,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-028",
+      "id": "TQ-031",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 7.14 Eliminación o reutilización segura de equipos",
@@ -4766,7 +4874,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-029",
+      "id": "TQ-032",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.1 Dispositivos de usuario",
@@ -4785,7 +4893,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-030",
+      "id": "TQ-033",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.3 Restricción de acceso a la información",
@@ -4804,7 +4912,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-031",
+      "id": "TQ-034",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.5 Autenticación segura",
@@ -4823,7 +4931,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-032",
+      "id": "TQ-035",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 8.6 Gestión de la capacidad",
@@ -4840,7 +4948,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-033",
+      "id": "TQ-036",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.7 Protección contra malware",
@@ -4859,7 +4967,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-034",
+      "id": "TQ-037",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.15 Registro de eventos (logs)",
@@ -4878,7 +4986,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-035",
+      "id": "TQ-038",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.16 Monitoreo de actividades",
@@ -4897,7 +5005,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-036",
+      "id": "TQ-039",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 8.18 Uso de utilidades privilegiadas",
@@ -4914,7 +5022,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-037",
+      "id": "TQ-040",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 8.19 Instalación de software en producción",
@@ -4931,7 +5039,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-038",
+      "id": "TQ-041",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.20 Seguridad de redes",
@@ -4950,7 +5058,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-039",
+      "id": "TQ-042",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 8.21 Seguridad de servicios de red",
@@ -4967,7 +5075,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-040",
+      "id": "TQ-043",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.24 Uso de criptografía",
@@ -4986,7 +5094,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-041",
+      "id": "TQ-044",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.25 Ciclo de desarrollo seguro",
@@ -5005,7 +5113,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-042",
+      "id": "TQ-045",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 8.26 Requisitos de seguridad de aplicaciones",
@@ -5022,7 +5130,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-043",
+      "id": "TQ-046",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 8.27 Principios de arquitectura segura",
@@ -5039,7 +5147,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-044",
+      "id": "TQ-047",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.32 Gestión de cambios",
@@ -5058,7 +5166,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-045",
+      "id": "TQ-048",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.2 Roles y responsabilidades de seguridad",
@@ -5077,7 +5185,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-046",
+      "id": "TQ-049",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.4 Compromiso de la dirección",
@@ -5096,7 +5204,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-047",
+      "id": "TQ-050",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.5 Contacto con autoridades",
@@ -5115,7 +5223,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-048",
+      "id": "TQ-051",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 5.6 Contacto con grupos de interés",
@@ -5132,7 +5240,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-049",
+      "id": "TQ-052",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.11 Devolución de activos",
@@ -5151,7 +5259,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-050",
+      "id": "TQ-053",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.13 Etiquetado de la información",
@@ -5170,7 +5278,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-051",
+      "id": "TQ-054",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.14 Transferencia de información",
@@ -5189,7 +5297,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-052",
+      "id": "TQ-055",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.20 Seguridad en contratos con proveedores",
@@ -5208,7 +5316,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-053",
+      "id": "TQ-056",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.21 Seguridad en la cadena de suministro TIC",
@@ -5228,7 +5336,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-054",
+      "id": "TQ-057",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.28 Recolección de evidencia",
@@ -5247,7 +5355,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-055",
+      "id": "TQ-058",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 5.32 Propiedad intelectual",
@@ -5264,7 +5372,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-056",
+      "id": "TQ-059",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.33 Protección de registros",
@@ -5283,7 +5391,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-057",
+      "id": "TQ-060",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 5.36 Cumplimiento de políticas y normas",
@@ -5302,7 +5410,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-058",
+      "id": "TQ-061",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 5.37 Procedimientos operativos documentados",
@@ -5319,7 +5427,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-059",
+      "id": "TQ-062",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 6.4 Proceso disciplinario",
@@ -5338,26 +5446,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-060",
-      "source": "assessment",
-      "root_cause": "no_operating_evidence",
-      "title": "Parcial: 6.5 Responsabilidades tras la desvinculación",
-      "detail": "El control aparece en POL-02, pero no hay evidencia de que se opere.",
-      "severity": "low",
-      "action": "add",
-      "action_text": "Generar y conservar evidencia periódica de la operación del control.",
-      "controls": [
-        "6.5"
-      ],
-      "documents": [
-        "POL-02"
-      ],
-      "owner": "Lucía Ferreyra (CISO)",
-      "due": "2027-04-18",
-      "status": "open"
-    },
-    {
-      "id": "TQ-061",
+      "id": "TQ-063",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 6.6 Acuerdos de confidencialidad",
@@ -5377,7 +5466,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-062",
+      "id": "TQ-064",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 6.8 Reporte de eventos de seguridad",
@@ -5396,7 +5485,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-063",
+      "id": "TQ-065",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 7.1 Perímetros de seguridad física",
@@ -5413,7 +5502,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-064",
+      "id": "TQ-066",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 7.2 Control de ingreso físico",
@@ -5430,7 +5519,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-065",
+      "id": "TQ-067",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 7.3 Seguridad de oficinas e instalaciones",
@@ -5447,7 +5536,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-066",
+      "id": "TQ-068",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 7.4 Monitoreo de seguridad física",
@@ -5464,7 +5553,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-067",
+      "id": "TQ-069",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 7.5 Protección ante amenazas físicas y ambientales",
@@ -5481,7 +5570,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-068",
+      "id": "TQ-070",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 7.6 Trabajo en áreas seguras",
@@ -5498,7 +5587,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-069",
+      "id": "TQ-071",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 7.7 Escritorio y pantalla limpios",
@@ -5517,7 +5606,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-070",
+      "id": "TQ-072",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 7.9 Seguridad de activos fuera de las instalaciones",
@@ -5536,7 +5625,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-071",
+      "id": "TQ-073",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 7.13 Mantenimiento de equipos",
@@ -5553,7 +5642,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-072",
+      "id": "TQ-074",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.4 Acceso al código fuente",
@@ -5572,7 +5661,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-073",
+      "id": "TQ-075",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.9 Gestión de la configuración",
@@ -5591,7 +5680,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-074",
+      "id": "TQ-076",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.10 Eliminación de información",
@@ -5610,7 +5699,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-075",
+      "id": "TQ-077",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.14 Redundancia de instalaciones",
@@ -5629,7 +5718,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-076",
+      "id": "TQ-078",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 8.17 Sincronización de relojes",
@@ -5646,7 +5735,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-077",
+      "id": "TQ-079",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.22 Segregación de redes",
@@ -5665,7 +5754,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-078",
+      "id": "TQ-080",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 8.23 Filtrado web",
@@ -5682,7 +5771,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-079",
+      "id": "TQ-081",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.28 Codificación segura",
@@ -5701,7 +5790,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-080",
+      "id": "TQ-082",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.29 Pruebas de seguridad",
@@ -5720,7 +5809,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-081",
+      "id": "TQ-083",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.31 Separación de entornos",
@@ -5739,7 +5828,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-082",
+      "id": "TQ-084",
       "source": "assessment",
       "root_cause": "no_operating_evidence",
       "title": "Parcial: 8.33 Información de prueba",
@@ -5758,7 +5847,7 @@
       "status": "open"
     },
     {
-      "id": "TQ-083",
+      "id": "TQ-085",
       "source": "assessment",
       "root_cause": "missing_control",
       "title": "No cumple: 8.34 Protección durante pruebas de auditoría",
@@ -6337,7 +6426,7 @@
       "function": "PR",
       "category": "PR.AT",
       "title": "Concientización y capacitación del personal",
-      "status": "met",
+      "status": "partial",
       "iso_controls": [
         "6.3"
       ]
@@ -6347,7 +6436,7 @@
       "function": "PR",
       "category": "PR.AT",
       "title": "Capacitación específica para roles especializados",
-      "status": "met",
+      "status": "partial",
       "iso_controls": [
         "6.3"
       ]
@@ -6811,7 +6900,7 @@
       "id": "EVD-01",
       "title": "Registro de revisión de accesos a sistemas críticos",
       "type": "evidence",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/evidencias/EVD-01-revision-accesos.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\evidencias\\EVD-01-revision-accesos.md",
       "owner": "Lucía Ferreyra (CISO)",
       "version": "",
       "status": "aprobado",
@@ -6825,13 +6914,15 @@
       "executions": [
         "2026-02-12"
       ],
-      "commitments": []
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
     },
     {
       "id": "EVD-02",
       "title": "Informe de prueba de restauración de base de datos",
       "type": "evidence",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/evidencias/EVD-02-prueba-restauracion.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\evidencias\\EVD-02-prueba-restauracion.md",
       "owner": "Diego Albornoz (CTO)",
       "version": "",
       "status": "aprobado",
@@ -6844,13 +6935,15 @@
       "executions": [
         "2025-11-18"
       ],
-      "commitments": []
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
     },
     {
       "id": "EVD-03",
       "title": "Registro de escaneos de vulnerabilidades",
       "type": "evidence",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/evidencias/EVD-03-escaneos-vulnerabilidades.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\evidencias\\EVD-03-escaneos-vulnerabilidades.md",
       "owner": "Martín Quiroga (Líder de Operaciones de Seguridad)",
       "version": "",
       "status": "aprobado",
@@ -6873,13 +6966,15 @@
         "2026-09-09",
         "2026-10-07"
       ],
-      "commitments": []
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
     },
     {
       "id": "EVD-04",
       "title": "Acta de capacitación anual de seguridad 2026",
       "type": "evidence",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/evidencias/EVD-04-capacitacion-2026.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\evidencias\\EVD-04-capacitacion-2026.md",
       "owner": "Recursos Humanos",
       "version": "",
       "status": "aprobado",
@@ -6892,13 +6987,17 @@
       "executions": [
         "2026-04-22"
       ],
-      "commitments": []
+      "commitments": [],
+      "rules": [],
+      "metrics": {
+        "completion_rate": 62
+      }
     },
     {
       "id": "EVD-05",
       "title": "Informe de simulacro de respuesta a incidentes",
       "type": "evidence",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/evidencias/EVD-05-simulacro-incidentes.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\evidencias\\EVD-05-simulacro-incidentes.md",
       "owner": "Martín Quiroga (Líder de Operaciones de Seguridad)",
       "version": "",
       "status": "aprobado",
@@ -6912,13 +7011,15 @@
       "executions": [
         "2024-09-10"
       ],
-      "commitments": []
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
     },
     {
       "id": "EVD-06",
       "title": "Revisión anual de proveedores críticos 2026",
       "type": "evidence",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/evidencias/EVD-06-revision-proveedores-2026.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\evidencias\\EVD-06-revision-proveedores-2026.md",
       "owner": "Compras",
       "version": "",
       "status": "aprobado",
@@ -6933,13 +7034,15 @@
       "executions": [
         "2026-03-09"
       ],
-      "commitments": []
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
     },
     {
       "id": "EVD-07",
       "title": "Registro de incidentes de seguridad 2026",
       "type": "record",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/evidencias/EVD-07-registro-incidentes-2026.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\evidencias\\EVD-07-registro-incidentes-2026.md",
       "owner": "Martín Quiroga (Líder de Operaciones de Seguridad)",
       "version": "",
       "status": "aprobado",
@@ -6952,13 +7055,15 @@
       ],
       "supersedes": [],
       "executions": [],
-      "commitments": []
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
     },
     {
       "id": "EVD-08",
       "title": "Inventario de activos de información",
       "type": "record",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/evidencias/EVD-08-inventario-activos.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\evidencias\\EVD-08-inventario-activos.md",
       "owner": "Diego Albornoz (CTO)",
       "version": "",
       "status": "aprobado",
@@ -6970,13 +7075,55 @@
       ],
       "supersedes": [],
       "executions": [],
-      "commitments": []
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
+    },
+    {
+      "id": "EVD-09",
+      "title": "Registro de bajas de personal",
+      "type": "record",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\evidencias\\EVD-09-bajas-personal-2026.md",
+      "owner": "Recursos Humanos",
+      "version": "",
+      "status": "aprobado",
+      "approved": null,
+      "next_review": null,
+      "controls": [
+        "6.5",
+        "5.18"
+      ],
+      "supersedes": [],
+      "executions": [],
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
+    },
+    {
+      "id": "EVD-10",
+      "title": "Exportación de usuarios del proveedor de identidad (SSO)",
+      "type": "record",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\evidencias\\EVD-10-usuarios-identidad.md",
+      "owner": "Sistemas",
+      "version": "",
+      "status": "aprobado",
+      "approved": null,
+      "next_review": null,
+      "controls": [
+        "5.16",
+        "5.18"
+      ],
+      "supersedes": [],
+      "executions": [],
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
     },
     {
       "id": "POL-01",
       "title": "Política de Seguridad de la Información",
       "type": "policy",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/politicas/POL-01-politica-seguridad-informacion.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\politicas\\POL-01-politica-seguridad-informacion.md",
       "owner": "Lucía Ferreyra (CISO)",
       "version": "3.0",
       "status": "aprobado",
@@ -7002,13 +7149,28 @@
           "evidence": "EVD-04",
           "source_doc": "POL-01"
         }
-      ]
+      ],
+      "rules": [
+        {
+          "id": "REG-01",
+          "control": "6.3",
+          "check": "threshold",
+          "description": "Al menos el 95 % del personal completa la capacitación anual",
+          "evidence": "EVD-04",
+          "source_doc": "POL-01",
+          "spec": {
+            "metric": "completion_rate",
+            "min": 95
+          }
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "POL-02",
       "title": "Política de Control de Acceso",
       "type": "policy",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/politicas/POL-02-politica-control-acceso.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\politicas\\POL-02-politica-control-acceso.md",
       "owner": "Lucía Ferreyra (CISO)",
       "version": "2.1",
       "status": "aprobado",
@@ -7037,13 +7199,34 @@
           "evidence": "EVD-01",
           "source_doc": "POL-02"
         }
-      ]
+      ],
+      "rules": [
+        {
+          "id": "REG-04",
+          "control": "5.18",
+          "check": "absent",
+          "description": "Las cuentas de personas desvinculadas se dan de baja dentro de las 24 horas",
+          "evidence": "EVD-09",
+          "source_doc": "POL-02",
+          "spec": {
+            "column": "Usuario",
+            "date": "Fecha de baja",
+            "grace_days": 1,
+            "against": "EVD-10",
+            "against_column": "Usuario",
+            "against_where": {
+              "Estado": "Activa"
+            }
+          }
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "POL-03",
       "title": "Política de Gestión de Incidentes de Seguridad",
       "type": "policy",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/politicas/POL-03-politica-gestion-incidentes.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\politicas\\POL-03-politica-gestion-incidentes.md",
       "owner": "Martín Quiroga (Líder de Operaciones de Seguridad)",
       "version": "1.2",
       "status": "aprobado",
@@ -7069,13 +7252,37 @@
           "evidence": "EVD-05",
           "source_doc": "POL-03"
         }
-      ]
+      ],
+      "rules": [
+        {
+          "id": "REG-03",
+          "control": "5.27",
+          "check": "required",
+          "description": "Todo incidente de severidad alta o crítica cerrado tiene post mortem",
+          "evidence": "EVD-07",
+          "source_doc": "POL-03",
+          "spec": {
+            "where": {
+              "Severidad": [
+                "Alta",
+                "Crítica"
+              ],
+              "Estado": "Cerrado"
+            },
+            "column": "Post mortem",
+            "expect": [
+              "Sí"
+            ]
+          }
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "POL-04",
       "title": "Política de Respaldos y Recuperación",
       "type": "policy",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/politicas/POL-04-politica-respaldos.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\politicas\\POL-04-politica-respaldos.md",
       "owner": "Diego Albornoz (CTO)",
       "version": "2.0",
       "status": "aprobado",
@@ -7096,13 +7303,15 @@
           "evidence": "EVD-02",
           "source_doc": "POL-04"
         }
-      ]
+      ],
+      "rules": [],
+      "metrics": {}
     },
     {
       "id": "POL-05",
       "title": "Política de Seguridad con Proveedores",
       "type": "policy",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/politicas/POL-05-politica-proveedores.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\politicas\\POL-05-politica-proveedores.md",
       "owner": "",
       "version": "1.0",
       "status": "aprobado",
@@ -7126,13 +7335,15 @@
           "evidence": "EVD-06",
           "source_doc": "POL-05"
         }
-      ]
+      ],
+      "rules": [],
+      "metrics": {}
     },
     {
       "id": "POL-06",
       "title": "Política de Desarrollo Seguro",
       "type": "policy",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/politicas/POL-06-politica-desarrollo-seguro.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\politicas\\POL-06-politica-desarrollo-seguro.md",
       "owner": "Diego Albornoz (CTO)",
       "version": "0.3",
       "status": "borrador",
@@ -7150,13 +7361,15 @@
       ],
       "supersedes": [],
       "executions": [],
-      "commitments": []
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
     },
     {
       "id": "POL-07",
       "title": "Política de Clasificación y Tratamiento de la Información",
       "type": "policy",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/politicas/POL-07-politica-clasificacion-informacion.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\politicas\\POL-07-politica-clasificacion-informacion.md",
       "owner": "Carla Medina (Legales y Privacidad)",
       "version": "1.1",
       "status": "aprobado",
@@ -7172,13 +7385,15 @@
       ],
       "supersedes": [],
       "executions": [],
-      "commitments": []
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
     },
     {
       "id": "POL-08",
       "title": "Estándar de Operaciones de Seguridad",
       "type": "procedure",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/politicas/POL-08-estandar-operaciones-seguridad.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\politicas\\POL-08-estandar-operaciones-seguridad.md",
       "owner": "Martín Quiroga (Líder de Operaciones de Seguridad)",
       "version": "1.4",
       "status": "aprobado",
@@ -7206,13 +7421,48 @@
           "evidence": "EVD-03",
           "source_doc": "POL-08"
         }
-      ]
+      ],
+      "rules": [
+        {
+          "id": "REG-02",
+          "control": "8.8",
+          "check": "deadline",
+          "description": "Vulnerabilidades críticas remediadas en 7 días",
+          "evidence": "EVD-03",
+          "source_doc": "POL-08",
+          "spec": {
+            "where": {
+              "Severidad": "Crítica"
+            },
+            "start": "Detectada",
+            "end": "Remediada",
+            "max_days": 7
+          }
+        },
+        {
+          "id": "REG-05",
+          "control": "8.8",
+          "check": "deadline",
+          "description": "Vulnerabilidades altas remediadas en 30 días",
+          "evidence": "EVD-03",
+          "source_doc": "POL-08",
+          "spec": {
+            "where": {
+              "Severidad": "Alta"
+            },
+            "start": "Detectada",
+            "end": "Remediada",
+            "max_days": 30
+          }
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "POL-09",
       "title": "Política de Contraseñas",
       "type": "policy",
-      "path": "/home/claude/tranquera/src/tranquera/demo/nandu-pagos/politicas/POL-09-politica-contrasenas-2019.md",
+      "path": "C:\\Users\\renod\\Desktop\\Documentos\\portfolio\\tranquera\\src\\tranquera\\demo\\nandu-pagos\\politicas\\POL-09-politica-contrasenas-2019.md",
       "owner": "Sistemas",
       "version": "1.0",
       "status": "aprobado",
@@ -7223,7 +7473,9 @@
       ],
       "supersedes": [],
       "executions": [],
-      "commitments": []
+      "commitments": [],
+      "rules": [],
+      "metrics": {}
     }
   ],
   "reconciliation": [
@@ -7319,22 +7571,105 @@
       "ok": false
     }
   ],
+  "rules": [
+    {
+      "rule": "REG-01",
+      "control": "6.3",
+      "check": "threshold",
+      "description": "Al menos el 95 % del personal completa la capacitación anual",
+      "source": "POL-01",
+      "evidence": "EVD-04",
+      "tested": 1,
+      "failed": 1,
+      "summary": "completion_rate = 62 (meta >= 95)",
+      "failures": [
+        "completion_rate = 62 (meta >= 95)"
+      ],
+      "ok": false,
+      "error": ""
+    },
+    {
+      "rule": "REG-04",
+      "control": "5.18",
+      "check": "absent",
+      "description": "Las cuentas de personas desvinculadas se dan de baja dentro de las 24 horas",
+      "source": "POL-02",
+      "evidence": "EVD-09",
+      "tested": 5,
+      "failed": 3,
+      "summary": "3 de 5 registros de EVD-09 siguen presentes en EVD-10",
+      "failures": [
+        "mrojas (EVD-10)",
+        "jcabral (EVD-10)",
+        "pvillalba (EVD-10)"
+      ],
+      "ok": false,
+      "error": ""
+    },
+    {
+      "rule": "REG-03",
+      "control": "5.27",
+      "check": "required",
+      "description": "Todo incidente de severidad alta o crítica cerrado tiene post mortem",
+      "source": "POL-03",
+      "evidence": "EVD-07",
+      "tested": 1,
+      "failed": 1,
+      "summary": "1 de 1 casos sin «Post mortem»",
+      "failures": [
+        "INC-2026-02 (Post mortem: No)"
+      ],
+      "ok": false,
+      "error": ""
+    },
+    {
+      "rule": "REG-02",
+      "control": "8.8",
+      "check": "deadline",
+      "description": "Vulnerabilidades críticas remediadas en 7 días",
+      "source": "POL-08",
+      "evidence": "EVD-03",
+      "tested": 3,
+      "failed": 2,
+      "summary": "2 de 3 casos superan el plazo de 7 días",
+      "failures": [
+        "VULN-26-017 (abierto hace 41 días)",
+        "VULN-26-018 (abierto hace 41 días)"
+      ],
+      "ok": false,
+      "error": ""
+    },
+    {
+      "rule": "REG-05",
+      "control": "8.8",
+      "check": "deadline",
+      "description": "Vulnerabilidades altas remediadas en 30 días",
+      "source": "POL-08",
+      "evidence": "EVD-03",
+      "tested": 4,
+      "failed": 0,
+      "summary": "0 de 4 casos superan el plazo de 30 días",
+      "failures": [],
+      "ok": true,
+      "error": ""
+    }
+  ],
   "summary": {
     "applicable": 88,
     "excluded": 5,
     "counts": {
-      "met": 7,
-      "partial": 50,
+      "met": 8,
+      "partial": 49,
       "undetermined": 0,
       "not_met": 31
     },
-    "score": 36,
+    "score": 37,
     "themes": [
       {
         "key": "organizational",
         "total": 37,
-        "met": 5,
-        "partial": 23,
+        "met": 6,
+        "partial": 22,
         "undetermined": 0,
         "not_met": 9
       },
@@ -7385,8 +7720,8 @@
       {
         "key": "PR",
         "total": 22,
-        "met": 2,
-        "partial": 13,
+        "met": 0,
+        "partial": 15,
         "undetermined": 0,
         "not_met": 3,
         "out_of_scope": 4
@@ -7419,11 +7754,11 @@
         "out_of_scope": 7
       }
     ],
-    "findings": 83,
-    "high": 6
+    "findings": 85,
+    "high": 9
   },
   "tool": {
     "name": "tranquera",
-    "version": "0.1.0"
+    "version": "0.2.0"
   }
 }

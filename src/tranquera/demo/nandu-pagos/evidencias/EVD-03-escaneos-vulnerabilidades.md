@@ -22,4 +22,16 @@ executions: [2025-10-08, 2025-11-05, 2025-12-03, 2026-01-07, 2026-02-04, 2026-03
 | Sep 2026 | 2026-09-09 | 2 | 6 | 15 | 2 críticas abiertas desde el escaneo de septiembre (más de 30 días). |
 | Oct 2026 | 2026-10-07 | 2 | 6 | 16 | Las 2 críticas siguen abiertas. |
 
+## Vulnerabilidades críticas y altas de 2026
+
+| ID | Severidad | Activo | Detectada | Remediada |
+| --- | --- | --- | --- | --- |
+| VULN-26-001 | Crítica | API de pagos | 2026-01-07 | 2026-01-12 |
+| VULN-26-004 | Alta | Backoffice de pagos | 2026-02-04 | 2026-02-25 |
+| VULN-26-009 | Alta | Base de datos transaccional | 2026-04-08 | 2026-04-30 |
+| VULN-26-012 | Alta | App de billetera | 2026-06-03 | 2026-06-24 |
+| VULN-26-017 | Crítica | Balanceador de carga público | 2026-09-09 | |
+| VULN-26-018 | Crítica | Imagen base de contenedores | 2026-09-09 | |
+| VULN-26-021 | Alta | Backoffice de pagos | 2026-10-07 | |
+
 Nota: en julio y agosto de 2026 no se ejecutó el escaneo por la migración del escáner.

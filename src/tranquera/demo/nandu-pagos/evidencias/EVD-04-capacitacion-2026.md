@@ -5,6 +5,8 @@ type: evidence
 owner: Recursos Humanos
 controls: ["6.3"]
 executions: [2026-04-22]
+metrics:
+  completion_rate: 62   # 87 de 140
 ---
 # Capacitación anual de concientización en seguridad — 2026
 

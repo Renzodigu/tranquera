@@ -14,6 +14,15 @@ commitments:
     activity: Simulacro anual de respuesta a incidentes (ejercicio de mesa)
     frequency: annual
     evidence: EVD-05
+rules:
+  - id: REG-03
+    control: "5.27"
+    description: Todo incidente de severidad alta o crítica cerrado tiene post mortem
+    check: required
+    evidence: EVD-07
+    where: {Severidad: [Alta, Crítica], Estado: Cerrado}
+    column: Post mortem
+    expect: [Sí]
 ---
 # Política de Gestión de Incidentes de Seguridad
 

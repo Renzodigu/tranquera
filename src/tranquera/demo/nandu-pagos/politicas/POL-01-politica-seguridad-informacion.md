@@ -14,6 +14,14 @@ commitments:
     activity: Capacitación anual de concientización en seguridad para todo el personal
     frequency: annual
     evidence: EVD-04
+rules:
+  - id: REG-01
+    control: "6.3"
+    description: Al menos el 95 % del personal completa la capacitación anual
+    check: threshold
+    evidence: EVD-04
+    metric: completion_rate
+    min: 95
 ---
 # Política de Seguridad de la Información
 
@@ -34,7 +42,7 @@ Aplica a todo el personal, contratistas y proveedores con acceso a información 
 La compañía identifica y cumple los requisitos aplicables a un proveedor de servicios de pago, la normativa de protección de datos personales (Ley 25.326) y las obligaciones contractuales con clientes y entidades financieras. Legales mantiene un registro de requisitos que se revisa semestralmente.
 
 ## 5. Concientización y capacitación
-Todo el personal realiza una capacitación anual de concientización en seguridad. Los ingresantes la completan durante su primer mes.
+Todo el personal realiza una capacitación anual de concientización en seguridad. La meta es que al menos el 95 % la complete cada año. Los ingresantes la completan durante su primer mes.
 
 ## 6. Cumplimiento y sanciones
 El CISO verifica el cumplimiento de las políticas mediante revisiones periódicas. Los incumplimientos se tratan según el proceso disciplinario definido por Recursos Humanos. Las excepciones deben aprobarse por escrito y tienen un plazo máximo de seis meses.

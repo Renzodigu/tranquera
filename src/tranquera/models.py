@@ -73,6 +73,22 @@ class Commitment:
     source_doc: str
 
 
+@dataclass(frozen=True)
+class Rule:
+    """A testable requirement a policy sets on its evidence (target, deadline, mandatory record...).
+
+    ``spec`` keeps the check-specific keys from the front matter (``where``, ``column``, ``max_days``...).
+    """
+
+    id: str
+    control: str
+    check: str  # threshold | deadline | required | absent
+    description: str
+    evidence: str | None
+    source_doc: str
+    spec: dict = field(default_factory=dict, compare=False, hash=False)
+
+
 @dataclass
 class Document:
     id: str
@@ -89,6 +105,8 @@ class Document:
     supersedes: tuple[str, ...] = ()
     executions: tuple[date, ...] = ()
     commitments: tuple[Commitment, ...] = ()
+    rules: tuple[Rule, ...] = ()
+    metrics: dict = field(default_factory=dict)
 
     @property
     def is_policy_like(self) -> bool:
@@ -179,6 +197,7 @@ class AnalysisResult:
     nist: list[NistResult]
     documents: list[Document]
     reconciliation: list[dict] = field(default_factory=list)
+    rules: list[dict] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         def conv(o):
