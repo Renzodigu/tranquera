@@ -67,8 +67,17 @@ def parse_tables(markdown: str) -> list[Table]:
             tables.append(Table(heading, columns, rows))
         block.clear()
 
+    fence = ""
     for line in markdown.splitlines():
         stripped = line.strip()
+        # A table quoted inside a code block is an example, not evidence.
+        if stripped.startswith(("```", "~~~")):
+            flush()
+            marker = stripped[:3]
+            fence = "" if fence == marker else (fence or marker)
+            continue
+        if fence:
+            continue
         if stripped.startswith("|"):
             block.append(stripped)
             continue

@@ -7,7 +7,7 @@ logic as reconciling an internal plan against the documents a client actually re
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, timedelta
 
 from .catalog import control_index
@@ -93,6 +93,8 @@ class ReconciliationLine:
     missing_periods: list[str]
     last: date | None
     evidence_exists: bool
+    # One cell per period judged, oldest first: {"label": ..., "done": bool}. Drawn as a timeline in the report.
+    periods: list[dict] = field(default_factory=list)
 
     @property
     def ok(self) -> bool:
@@ -124,13 +126,15 @@ def reconcile_commitment(c: Commitment, company: Company, as_of: date, lang: str
         missing = [_period_label(p, months, lang) for p in periods if p not in done]
         found = sum(1 for p in periods if p in done)
         expected = len(periods)
+        cells = [{"label": _period_label(p, months, lang), "done": p in done} for p in periods]
     else:  # annual: rolling twelve months
         window_start = as_of - timedelta(days=365)
         found = sum(1 for d in executions if d > window_start)
         expected = 1
         missing = [] if found else [f"{window_start.isoformat()} → {as_of.isoformat()}"]
         found = min(found, 1)
-    return ReconciliationLine(c, expected, found, missing, last, evidence is not None)
+        cells = [{"label": f"{window_start.isoformat()} → {as_of.isoformat()}", "done": bool(found)}]
+    return ReconciliationLine(c, expected, found, missing, last, evidence is not None, cells)
 
 
 def reconciliation(company: Company, as_of: date, lang: str) -> tuple[list[ReconciliationLine], list[Finding]]:

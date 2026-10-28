@@ -47,3 +47,24 @@ def test_cli_claude_requires_key(tmp_path, monkeypatch):
 
 def test_cli_bad_folder(tmp_path):
     assert main(["analyze", str(tmp_path / "missing"), "--out", str(tmp_path)]) == 2
+
+
+def test_control_map_has_one_cell_per_control(company):
+    r = analyze(company, as_of=AS_OF)
+    html = render_html(r)
+    for c in r.controls:
+        if c.final.value == "excluded":
+            assert f'<span class="excluded" title="{c.control.id} ·' in html
+        else:  # every coloured cell jumps to an existing detail block
+            assert f'href="#c-{c.control.id}"' in html and f'<details id="c-{c.control.id}">' in html
+
+
+def test_reconciliation_timeline_matches_missing_periods(company):
+    r = analyze(company, as_of=AS_OF)
+    for ln in r.reconciliation:
+        assert ln["periods"], ln["commitment"]
+        assert sum(p["done"] for p in ln["periods"]) == ln["found"]
+        if ln["frequency"] != "annual":
+            assert [p["label"] for p in ln["periods"] if not p["done"]] == ln["missing"]
+    html = render_html(r)
+    assert html.count('<div class="tl"') == len(r.reconciliation)

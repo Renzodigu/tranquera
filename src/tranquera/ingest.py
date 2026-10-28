@@ -28,6 +28,29 @@ class CompanyError(ValueError):
     pass
 
 
+class _Loader(yaml.SafeLoader):
+    """SafeLoader that keeps decimals as text: control ids like 5.10 or 8.20 must not become 5.1 or 8.2."""
+
+
+_Loader.yaml_implicit_resolvers = {
+    first: [(tag, regexp) for tag, regexp in resolvers if tag != "tag:yaml.org,2002:float"]
+    for first, resolvers in yaml.SafeLoader.yaml_implicit_resolvers.items()
+}
+
+
+def load_yaml(text: str, source: str | Path):
+    """Parse company YAML (scope, front matter, expected verdicts) and name the file on errors."""
+    try:
+        return yaml.load(text, Loader=_Loader)  # noqa: S506 - _Loader is a SafeLoader
+    except (yaml.YAMLError, ValueError) as exc:  # ValueError: impossible dates such as 2027-02-30
+        raise CompanyError(f"Invalid YAML in {source}: {exc}") from exc
+
+
+def read_text(path: Path) -> str:
+    # utf-8-sig: editors on Windows often save a BOM, which would hide the front matter
+    return path.read_text(encoding="utf-8-sig")
+
+
 @dataclass
 class Exclusion:
     control: str
@@ -69,6 +92,24 @@ def _as_date(value) -> date | None:
     return date.fromisoformat(str(value))
 
 
+def _scope_date(value, source: Path) -> date | None:
+    try:
+        return _as_date(value)
+    except ValueError as exc:
+        raise CompanyError(f"{source}: invalid as_of date ({exc})") from exc
+
+
+FREQUENCIES = ("monthly", "quarterly", "semiannual", "annual")
+
+
+def _frequency(value) -> str:
+    freq = str(value).strip().lower()
+    if freq not in FREQUENCIES:
+        # A typo ("quaterly") must not silently become a laxer annual check.
+        raise ValueError(f"unknown frequency '{value}' (use one of: {', '.join(FREQUENCIES)})")
+    return freq
+
+
 def _as_str_tuple(value) -> tuple[str, ...]:
     if not value:
         return ()
@@ -78,10 +119,19 @@ def _as_str_tuple(value) -> tuple[str, ...]:
 
 
 def parse_document(path: Path, text: str | None = None) -> Document:
-    text = path.read_text(encoding="utf-8") if text is None else text
+    text = read_text(path) if text is None else text.lstrip("﻿")
     m = _FRONT_MATTER.match(text)
-    meta: dict = yaml.safe_load(m.group(1)) if m else {}
+    meta = load_yaml(m.group(1), path) if m else {}
     meta = meta or {}
+    if not isinstance(meta, dict):
+        raise CompanyError(f"{path}: the front matter must be a YAML mapping")
+    try:
+        return _build_document(path, text, m, meta)
+    except (KeyError, TypeError, ValueError) as exc:
+        raise CompanyError(f"{path}: invalid front matter ({exc})") from exc
+
+
+def _build_document(path: Path, text: str, m: re.Match | None, meta: dict) -> Document:
     body = text[m.end():] if m else text
     doc_id = str(meta.get("id") or path.stem)
     commitments = tuple(
@@ -89,7 +139,7 @@ def parse_document(path: Path, text: str | None = None) -> Document:
             id=str(c.get("id", f"{doc_id}-C{i + 1}")),
             control=str(c["control"]),
             activity=str(c.get("activity", "")),
-            frequency=str(c.get("frequency", "annual")).lower(),
+            frequency=_frequency(c.get("frequency", "annual")),
             evidence=str(c["evidence"]) if c.get("evidence") else None,
             source_doc=doc_id,
         )
@@ -165,8 +215,10 @@ def load_company(root: str | Path) -> Company:
     if not root.is_dir():
         raise CompanyError(f"Not a folder: {root}")
     scope_path = root / "scope.yaml"
-    scope = yaml.safe_load(scope_path.read_text(encoding="utf-8")) if scope_path.exists() else {}
+    scope = load_yaml(read_text(scope_path), scope_path) if scope_path.exists() else {}
     scope = scope or {}
+    if not isinstance(scope, dict):
+        raise CompanyError(f"{scope_path}: expected a YAML mapping")
 
     exclusions: dict[str, Exclusion] = {}
     for item in scope.get("exclusions") or []:
@@ -182,7 +234,7 @@ def load_company(root: str | Path) -> Company:
     company = Company(
         name=str(scope.get("company") or root.name),
         description=str(scope.get("description") or ""),
-        as_of=_as_date(scope.get("as_of")),
+        as_of=_scope_date(scope.get("as_of"), scope_path),
         root=root,
         exclusions=exclusions,
         frameworks=frameworks,

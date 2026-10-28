@@ -54,6 +54,10 @@ def _build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    for stream in (sys.stdout, sys.stderr):
+        # Redirected output on Windows uses cp1252: a company name with an emoji must not crash the run.
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(errors="replace")
     args = _build_parser().parse_args(argv)
     path = Path(args.path) if getattr(args, "path", None) else demo_path()
     expected = None

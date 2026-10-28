@@ -166,7 +166,7 @@ def analyze(
             "activity": ln.commitment.activity, "frequency": ln.commitment.frequency,
             "source": ln.commitment.source_doc, "evidence": ln.commitment.evidence,
             "expected": ln.expected, "found": ln.found, "missing": ln.missing_periods,
-            "last": ln.last, "ok": ln.ok,
+            "last": ln.last, "ok": ln.ok, "periods": ln.periods,
         } for ln in recon_lines],
         rules=[{
             "rule": res.rule.id, "control": res.rule.control, "check": res.rule.check,

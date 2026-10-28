@@ -138,7 +138,8 @@ with tab_f:
     st.dataframe(rows, use_container_width=True, hide_index=True,
                  column_order=["id", "severity", "title", "controls", "action", "action_text", "owner", "due"])
 with tab_r:
-    st.dataframe([{**ln, "missing": ", ".join(ln["missing"]), "ok": "✓" if ln["ok"] else "✗"}
+    st.dataframe([{**ln, "missing": ", ".join(ln["missing"]), "ok": "✓" if ln["ok"] else "✗",
+                   "periods": "".join("✓" if p["done"] else "✗" for p in ln["periods"])}
                   for ln in result.reconciliation], use_container_width=True, hide_index=True)
 with tab_u:
     st.dataframe([{**ru, "failures": "; ".join(ru["failures"]), "ok": "✓" if ru["ok"] else "✗"}

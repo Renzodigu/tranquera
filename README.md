@@ -12,6 +12,8 @@ actions, owners and due dates, and a Statement of Applicability.
 
 ![CI](https://github.com/Renzodigu/tranquera/actions/workflows/ci.yml/badge.svg)
 
+![Executive summary of the HTML report for the fictitious demo company: 37 % compliance, 8 controls met, 54 partial, 32 not met, with coverage bars by Annex A theme and by NIST CSF 2.0 function](docs/img/report-summary.png)
+
 ## Why another compliance tool?
 
 Most "AI compliance" demos ask a model whether a policy is good. An auditor needs something else:
@@ -93,7 +95,14 @@ pack enabled. Problems were planted on purpose to check what the tool catches. D
 | Accuracy against expected verdicts | 88 % on 42 controls, 3 false *met* |
 
 Sample reports: [`examples/demo-es`](examples/demo-es) and [`examples/demo-en`](examples/demo-en)
-(HTML report, findings register CSV, SoA CSV, JSON).
+(HTML report, findings register CSV, SoA CSV, JSON). Besides the KPIs and coverage bars, the
+HTML report has a **control map**, one cell per Annex A control (and per Ley 25.326 obligation)
+coloured by its final verdict and linked to its detail, and a **timeline** for each reconciled
+commitment, one cell per period, so the missed quarters stand out at a glance.
+
+![Control map: one cell per Annex A control grouped by theme, plus the six Ley 25.326 obligations, coloured by verdict; excluded controls are hatched](docs/img/control-map.png)
+
+![Reconciliation table with a timeline per commitment: the quarterly access review shows three red quarters out of four, the monthly scan two red months out of twelve](docs/img/reconciliation-timeline.png)
 
 | Planted problem | Caught by | Result |
 | --- | --- | --- |

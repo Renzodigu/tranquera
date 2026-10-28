@@ -15,9 +15,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import yaml
-
 from .i18n import t
+from .ingest import CompanyError, load_yaml, read_text
 from .models import AnalysisResult, Verdict
 from .report import LABELS
 
@@ -33,7 +32,10 @@ def load_expected(path: str | Path) -> dict[str, dict]:
     path = Path(path)
     if not path.is_file():
         raise ExpectedError(f"Expected-verdicts file not found: {path}")
-    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    try:
+        data = load_yaml(read_text(path), path) or {}
+    except CompanyError as exc:
+        raise ExpectedError(str(exc)) from exc
     out = {}
     for cid, item in (data.get("verdicts") or {}).items():
         verdict = str(item.get("verdict", "")).lower()

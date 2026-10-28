@@ -9190,7 +9190,13 @@
       "found": 1,
       "missing": [],
       "last": "2026-04-22",
-      "ok": true
+      "ok": true,
+      "periods": [
+        {
+          "label": "2025-10-20 → 2026-10-20",
+          "done": true
+        }
+      ]
     },
     {
       "commitment": "COM-02",
@@ -9207,7 +9213,25 @@
         "Q3 2026"
       ],
       "last": "2026-02-12",
-      "ok": false
+      "ok": false,
+      "periods": [
+        {
+          "label": "Q4 2025",
+          "done": false
+        },
+        {
+          "label": "Q1 2026",
+          "done": true
+        },
+        {
+          "label": "Q2 2026",
+          "done": false
+        },
+        {
+          "label": "Q3 2026",
+          "done": false
+        }
+      ]
     },
     {
       "commitment": "COM-03",
@@ -9222,7 +9246,13 @@
         "2025-10-20 → 2026-10-20"
       ],
       "last": "2024-09-10",
-      "ok": false
+      "ok": false,
+      "periods": [
+        {
+          "label": "2025-10-20 → 2026-10-20",
+          "done": false
+        }
+      ]
     },
     {
       "commitment": "COM-04",
@@ -9239,7 +9269,25 @@
         "Q3 2026"
       ],
       "last": "2025-11-18",
-      "ok": false
+      "ok": false,
+      "periods": [
+        {
+          "label": "Q4 2025",
+          "done": true
+        },
+        {
+          "label": "Q1 2026",
+          "done": false
+        },
+        {
+          "label": "Q2 2026",
+          "done": false
+        },
+        {
+          "label": "Q3 2026",
+          "done": false
+        }
+      ]
     },
     {
       "commitment": "COM-05",
@@ -9252,7 +9300,13 @@
       "found": 1,
       "missing": [],
       "last": "2026-03-09",
-      "ok": true
+      "ok": true,
+      "periods": [
+        {
+          "label": "2025-10-20 → 2026-10-20",
+          "done": true
+        }
+      ]
     },
     {
       "commitment": "COM-06",
@@ -9268,7 +9322,57 @@
         "Aug 2026"
       ],
       "last": "2026-10-07",
-      "ok": false
+      "ok": false,
+      "periods": [
+        {
+          "label": "Oct 2025",
+          "done": true
+        },
+        {
+          "label": "Nov 2025",
+          "done": true
+        },
+        {
+          "label": "Dec 2025",
+          "done": true
+        },
+        {
+          "label": "Jan 2026",
+          "done": true
+        },
+        {
+          "label": "Feb 2026",
+          "done": true
+        },
+        {
+          "label": "Mar 2026",
+          "done": true
+        },
+        {
+          "label": "Apr 2026",
+          "done": true
+        },
+        {
+          "label": "May 2026",
+          "done": true
+        },
+        {
+          "label": "Jun 2026",
+          "done": true
+        },
+        {
+          "label": "Jul 2026",
+          "done": false
+        },
+        {
+          "label": "Aug 2026",
+          "done": false
+        },
+        {
+          "label": "Sep 2026",
+          "done": true
+        }
+      ]
     }
   ],
   "rules": [

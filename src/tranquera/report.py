@@ -8,7 +8,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from jinja2 import Environment, PackageLoader, select_autoescape
+from jinja2 import Environment, PackageLoader
 
 from . import __version__
 from .catalog import ISO, LEY_25326, THEMES, nist_catalog
@@ -55,6 +55,10 @@ LABELS = {
         "copyright": "Los títulos de los controles de ISO/IEC 27001 son descripciones propias; el texto de la norma pertenece a ISO/IEC. El mapeo a NIST CSF 2.0 es indicativo.",
         "fictional": "Datos ficticios para demostración.",
         "no_findings": "Sin hallazgos.", "excluded_n": "excluidos en la SoA",
+        "map": "Mapa de controles",
+        "map_intro": "Cada casilla es un control, con el color de su veredicto final. Pasá el mouse por encima para ver el título y hacé clic para ir al detalle.",
+        "done": "Ejecutado", "not_done": "Sin ejecución", "periods": "Períodos",
+        "timeline_note": "Cada casilla es un período, del más viejo al más reciente. El período en curso no se juzga todavía.",
     },
     "en": {
         "title": "Security gap analysis",
@@ -95,6 +99,10 @@ LABELS = {
         "copyright": "ISO/IEC 27001 control titles are the authors' own descriptions; the standard's text belongs to ISO/IEC. The NIST CSF 2.0 mapping is indicative.",
         "fictional": "Fictitious data for demonstration.",
         "no_findings": "No findings.", "excluded_n": "excluded in the SoA",
+        "map": "Control map",
+        "map_intro": "Each cell is a control, coloured by its final verdict. Hover for the title and click to jump to the detail.",
+        "done": "Executed", "not_done": "Not executed", "periods": "Periods",
+        "timeline_note": "Each cell is a period, oldest first. The current period is not judged yet.",
     },
 }
 
@@ -102,7 +110,9 @@ STATUS_ORDER = ["met", "partial", "undetermined", "not_met"]
 
 
 def _env() -> Environment:
-    env = Environment(loader=PackageLoader("tranquera", "templates"), autoescape=select_autoescape(["html"]),
+    # The template is report.html.j2: select_autoescape(["html"]) would not match the .j2 extension and
+    # document titles, owners or findings could inject markup into the report. Always escape.
+    env = Environment(loader=PackageLoader("tranquera", "templates"), autoescape=True,
                       trim_blocks=True, lstrip_blocks=True)
     return env
 
@@ -141,6 +151,7 @@ def render_html(result: AnalysisResult, fictional: bool = False) -> str:
     return _env().get_template("report.html.j2").render(
         r=result, s=summary(result), L=LABELS[lang], lang=lang, t=lambda k, **kw: t(lang, k, **kw),
         nist=nist, version=__version__, fictional=fictional, law=LEY_25326 in result.frameworks, iso=ISO,
+        heatmap=[(th, cs) for th in THEMES if (cs := [c for c in result.controls if c.control.theme == th])],
         patterns=[f for f in result.findings if f.source == "pattern"],
         register=[f for f in result.findings if f.source != "pattern"],
     )
@@ -165,11 +176,21 @@ def register_rows(result: AnalysisResult) -> list[dict]:
     return rows
 
 
+_FORMULA_START = ("=", "+", "-", "@", "\t", "\r")
+
+
+def csv_safe(value):
+    """Neutralize spreadsheet formulas: a cell like =HYPERLINK(...) taken from a document would run in Excel."""
+    if isinstance(value, str) and value.startswith(_FORMULA_START):
+        return "'" + value
+    return value
+
+
 def _csv(rows: list[dict], columns: list[str]) -> str:
     buf = io.StringIO()
     writer = csv.DictWriter(buf, fieldnames=columns, extrasaction="ignore")
     writer.writeheader()
-    writer.writerows(rows)
+    writer.writerows({k: csv_safe(v) for k, v in row.items()} for row in rows)
     return buf.getvalue()
 
 
@@ -206,6 +227,10 @@ def write_reports(result: AnalysisResult, out_dir: str | Path, fictional: bool =
         "json": (out / "results.json", render_json(result)),
     }
     for path, content in files.values():
-        # utf-8-sig so the CSVs open with the right accents in Excel
-        path.write_text(content, encoding="utf-8-sig" if path.suffix == ".csv" else "utf-8")
+        # utf-8-sig so the CSVs open with the right accents in Excel; newline="" because the csv module
+        # already ends rows with \r\n, and Windows text mode would turn them into \r\r\n (a blank row each)
+        if path.suffix == ".csv":
+            path.write_text(content, encoding="utf-8-sig", newline="")
+        else:
+            path.write_text(content, encoding="utf-8")
     return {k: v[0] for k, v in files.items()}

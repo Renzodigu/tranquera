@@ -51,6 +51,18 @@ summary{cursor:pointer;padding:9px 12px;display:flex;gap:10px;align-items:center
 details .body{padding:0 14px 12px}
 blockquote{margin:6px 0;padding:6px 10px;border-left:3px solid var(--line);color:var(--muted);font-size:13px}
 .ok{color:var(--met);font-weight:600}.ko{color:var(--not_met);font-weight:600}
+.hm-row{display:grid;grid-template-columns:130px 1fr;gap:10px;align-items:start;margin:8px 0}
+.hm-row>span{font-size:13.5px;padding-top:5px}
+.hm{display:flex;flex-wrap:wrap;gap:4px}
+.hm a,.hm span{display:flex;align-items:center;justify-content:center;min-width:48px;padding:0 6px;height:30px;border-radius:5px;color:#fff;text-decoration:none;font:600 11.5px ui-monospace,SFMono-Regular,Menlo,monospace}
+.hm a:hover,.hm a:focus{outline:2px solid var(--ink);outline-offset:1px}
+.hm .excluded{background:repeating-linear-gradient(45deg,var(--out),var(--out) 4px,transparent 4px,transparent 8px);color:var(--ink);border:1px solid var(--out)}
+.tl{display:flex;gap:2px;min-width:150px}
+.tl span{flex:1;height:18px;border-radius:3px;background:var(--met)}
+.tl span.miss{background:var(--not_met)}
+.tl-ends{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:var(--muted);margin-top:2px}
+details:target{outline:2px solid var(--navy)}
+@media (max-width:640px){.hm-row{grid-template-columns:1fr}}
 footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
 </style>
 </head>
@@ -103,6 +115,17 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
   </div>
 </div>
 
+<h2>{{ L.map }}</h2>
+<p class="small">{{ L.map_intro }}</p>
+<div class="card">
+{% for th, cs in heatmap %}
+<div class="hm-row"><span>{{ t(th) }}</span><div class="hm">
+{% for c in cs %}{% if c.final.value == 'excluded' %}<span class="excluded" title="{{ c.control.id }} · {{ c.control.title(lang) }} · {{ t('excluded') }}">{{ c.control.id }}</span>{% else %}<a href="#c-{{ c.control.id }}" style="background:var(--{{ c.final.value }})" title="{{ c.control.id }} · {{ c.control.title(lang) }} · {{ t(c.final.value) }}">{{ c.control.id }}</a>{% endif %}{% endfor %}
+</div></div>
+{% endfor %}
+<div class="legend">{% for st in ['met','partial','undetermined','not_met'] %}<span><i style="background:var(--{{ st }})"></i>{{ t(st) }}</span>{% endfor %}<span><i style="background:repeating-linear-gradient(45deg,var(--out),var(--out) 2px,transparent 2px,transparent 4px);border:1px solid var(--out)"></i>{{ t('excluded') }}</span></div>
+</div>
+
 {% if patterns %}
 <h2>{{ L.patterns }}</h2>
 <p class="small">{{ L.patterns_intro }}</p>
@@ -117,14 +140,16 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 
 {% if r.reconciliation %}
 <h2>{{ L.recon }}</h2>
-<p class="small">{{ L.recon_intro }}</p>
+<p class="small">{{ L.recon_intro }} {{ L.timeline_note }}</p>
 <div class="table-wrap"><table>
-<thead><tr><th>{{ L.commitment }}</th><th>{{ L.controls }}</th><th>{{ L.frequency }}</th><th>{{ L.expected }}</th><th>{{ L.found }}</th><th>{{ L.missing }}</th><th>{{ L.last }}</th><th>{{ L.result }}</th></tr></thead>
+<thead><tr><th>{{ L.commitment }}</th><th>{{ L.controls }}</th><th>{{ L.frequency }}</th><th>{{ L.expected }}</th><th>{{ L.found }}</th><th>{{ L.periods }}</th><th>{{ L.last }}</th><th>{{ L.result }}</th></tr></thead>
 <tbody>
 {% for ln in r.reconciliation %}
 <tr><td><span class="mono">{{ ln.commitment }}</span> {{ ln.activity }}<div class="small">{{ ln.source }} → {{ ln.evidence }}</div></td>
 <td class="mono">{{ ln.control }}</td><td>{{ t('freq_' ~ ln.frequency) }}</td><td>{{ ln.expected }}</td><td>{{ ln.found }}</td>
-<td class="small">{{ ln.missing|join(', ') or '—' }}</td><td class="mono">{{ ln.last or '—' }}</td>
+<td class="small">{% if ln.periods %}<div class="tl" role="img" aria-label="{{ L.missing }}: {{ ln.missing|join(', ') or '—' }}">{% for p in ln.periods %}<span{% if not p.done %} class="miss"{% endif %} title="{{ p.label }} · {{ L.done if p.done else L.not_done }}"></span>{% endfor %}</div>
+<div class="tl-ends">{% if ln.periods|length > 1 %}<span>{{ ln.periods[0].label }}</span>{% endif %}<span>{{ ln.periods[-1].label }}</span></div>{% endif %}
+{% if ln.missing and ln.periods|length != 1 %}<div>{{ L.missing }}: {{ ln.missing|join(', ') }}</div>{% endif %}</td><td class="mono">{{ ln.last or '—' }}</td>
 <td>{% if ln.ok %}<span class="ok">✓ {{ L.ok }}</span>{% else %}<span class="ko">✗ {{ t('not_met') }}</span>{% endif %}</td></tr>
 {% endfor %}
 </tbody></table></div>
@@ -169,7 +194,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 
 <h2>{{ L.detail }}</h2>
 {% for c in r.controls if c.final.value != 'excluded' %}
-<details>
+<details id="c-{{ c.control.id }}">
   <summary><span class="mono">{{ c.control.id }}</span> <b>{{ c.control.title(lang) }}</b> <span class="badge b-{{ c.final.value }}">{{ t(c.final.value) }}</span>
   {% if c.final != c.assessment.verdict %}<span class="small">({{ t(c.assessment.verdict.value) }} → {{ t(c.final.value) }})</span>{% endif %}</summary>
   <div class="body">
@@ -202,6 +227,12 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <footer>{{ L.copyright }} · Tranquera {{ version }}</footer>
 </div>
 <script>
+function openTarget() {
+  var d = location.hash && document.getElementById(location.hash.slice(1));
+  if (d && d.tagName === 'DETAILS') { d.open = true; }
+}
+window.addEventListener('hashchange', openTarget);
+openTarget();
 document.querySelectorAll('.filters button').forEach(function (b) {
   b.addEventListener('click', function () {
     var sev = b.dataset.sev;

@@ -51,6 +51,18 @@ summary{cursor:pointer;padding:9px 12px;display:flex;gap:10px;align-items:center
 details .body{padding:0 14px 12px}
 blockquote{margin:6px 0;padding:6px 10px;border-left:3px solid var(--line);color:var(--muted);font-size:13px}
 .ok{color:var(--met);font-weight:600}.ko{color:var(--not_met);font-weight:600}
+.hm-row{display:grid;grid-template-columns:130px 1fr;gap:10px;align-items:start;margin:8px 0}
+.hm-row>span{font-size:13.5px;padding-top:5px}
+.hm{display:flex;flex-wrap:wrap;gap:4px}
+.hm a,.hm span{display:flex;align-items:center;justify-content:center;min-width:48px;padding:0 6px;height:30px;border-radius:5px;color:#fff;text-decoration:none;font:600 11.5px ui-monospace,SFMono-Regular,Menlo,monospace}
+.hm a:hover,.hm a:focus{outline:2px solid var(--ink);outline-offset:1px}
+.hm .excluded{background:repeating-linear-gradient(45deg,var(--out),var(--out) 4px,transparent 4px,transparent 8px);color:var(--ink);border:1px solid var(--out)}
+.tl{display:flex;gap:2px;min-width:150px}
+.tl span{flex:1;height:18px;border-radius:3px;background:var(--met)}
+.tl span.miss{background:var(--not_met)}
+.tl-ends{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:var(--muted);margin-top:2px}
+details:target{outline:2px solid var(--navy)}
+@media (max-width:640px){.hm-row{grid-template-columns:1fr}}
 footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
 </style>
 </head>
@@ -123,6 +135,22 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
   </div>
 </div>
 
+<h2>Mapa de controles</h2>
+<p class="small">Cada casilla es un control, con el color de su veredicto final. Pasá el mouse por encima para ver el título y hacé clic para ir al detalle.</p>
+<div class="card">
+<div class="hm-row"><span>Organizacionales</span><div class="hm">
+<a href="#c-5.1" style="background:var(--partial)" title="5.1 · Políticas de seguridad · Parcial">5.1</a><a href="#c-5.2" style="background:var(--partial)" title="5.2 · Roles y responsabilidades de seguridad · Parcial">5.2</a><a href="#c-5.3" style="background:var(--not_met)" title="5.3 · Separación de funciones incompatibles · No cumple">5.3</a><a href="#c-5.4" style="background:var(--partial)" title="5.4 · Compromiso de la dirección · Parcial">5.4</a><a href="#c-5.5" style="background:var(--partial)" title="5.5 · Contacto con autoridades · Parcial">5.5</a><a href="#c-5.6" style="background:var(--not_met)" title="5.6 · Contacto con grupos de interés · No cumple">5.6</a><a href="#c-5.7" style="background:var(--not_met)" title="5.7 · Inteligencia de amenazas · No cumple">5.7</a><a href="#c-5.8" style="background:var(--not_met)" title="5.8 · Seguridad en la gestión de proyectos · No cumple">5.8</a><a href="#c-5.9" style="background:var(--met)" title="5.9 · Inventario de activos · Cumple">5.9</a><a href="#c-5.10" style="background:var(--not_met)" title="5.10 · Uso aceptable de activos · No cumple">5.10</a><a href="#c-5.11" style="background:var(--partial)" title="5.11 · Devolución de activos · Parcial">5.11</a><a href="#c-5.12" style="background:var(--met)" title="5.12 · Clasificación de la información · Cumple">5.12</a><a href="#c-5.13" style="background:var(--partial)" title="5.13 · Etiquetado de la información · Parcial">5.13</a><a href="#c-5.14" style="background:var(--partial)" title="5.14 · Transferencia de información · Parcial">5.14</a><a href="#c-5.15" style="background:var(--partial)" title="5.15 · Control de acceso · Parcial">5.15</a><a href="#c-5.16" style="background:var(--met)" title="5.16 · Gestión de identidades · Cumple">5.16</a><a href="#c-5.17" style="background:var(--partial)" title="5.17 · Información de autenticación · Parcial">5.17</a><a href="#c-5.18" style="background:var(--partial)" title="5.18 · Derechos de acceso · Parcial">5.18</a><a href="#c-5.19" style="background:var(--met)" title="5.19 · Seguridad con proveedores · Cumple">5.19</a><a href="#c-5.20" style="background:var(--partial)" title="5.20 · Seguridad en contratos con proveedores · Parcial">5.20</a><a href="#c-5.21" style="background:var(--partial)" title="5.21 · Seguridad en la cadena de suministro TIC · Parcial">5.21</a><a href="#c-5.22" style="background:var(--met)" title="5.22 · Seguimiento de servicios de proveedores · Cumple">5.22</a><a href="#c-5.23" style="background:var(--met)" title="5.23 · Seguridad en servicios en la nube · Cumple">5.23</a><a href="#c-5.24" style="background:var(--partial)" title="5.24 · Planificación de la gestión de incidentes · Parcial">5.24</a><a href="#c-5.25" style="background:var(--partial)" title="5.25 · Evaluación de eventos de seguridad · Parcial">5.25</a><a href="#c-5.26" style="background:var(--partial)" title="5.26 · Respuesta a incidentes · Parcial">5.26</a><a href="#c-5.27" style="background:var(--partial)" title="5.27 · Aprendizaje de incidentes · Parcial">5.27</a><a href="#c-5.28" style="background:var(--partial)" title="5.28 · Recolección de evidencia · Parcial">5.28</a><a href="#c-5.29" style="background:var(--not_met)" title="5.29 · Seguridad durante interrupciones · No cumple">5.29</a><a href="#c-5.30" style="background:var(--partial)" title="5.30 · Preparación TIC para la continuidad · Parcial">5.30</a><a href="#c-5.31" style="background:var(--partial)" title="5.31 · Requisitos legales, regulatorios y contractuales · Parcial">5.31</a><a href="#c-5.32" style="background:var(--not_met)" title="5.32 · Propiedad intelectual · No cumple">5.32</a><a href="#c-5.33" style="background:var(--partial)" title="5.33 · Protección de registros · Parcial">5.33</a><a href="#c-5.34" style="background:var(--partial)" title="5.34 · Privacidad y datos personales · Parcial">5.34</a><a href="#c-5.35" style="background:var(--not_met)" title="5.35 · Revisión independiente de la seguridad · No cumple">5.35</a><a href="#c-5.36" style="background:var(--partial)" title="5.36 · Cumplimiento de políticas y normas · Parcial">5.36</a><a href="#c-5.37" style="background:var(--not_met)" title="5.37 · Procedimientos operativos documentados · No cumple">5.37</a></div></div>
+<div class="hm-row"><span>Personas</span><div class="hm">
+<a href="#c-6.1" style="background:var(--not_met)" title="6.1 · Verificación de antecedentes · No cumple">6.1</a><a href="#c-6.2" style="background:var(--not_met)" title="6.2 · Condiciones de contratación · No cumple">6.2</a><a href="#c-6.3" style="background:var(--partial)" title="6.3 · Concientización y capacitación · Parcial">6.3</a><a href="#c-6.4" style="background:var(--partial)" title="6.4 · Proceso disciplinario · Parcial">6.4</a><a href="#c-6.5" style="background:var(--met)" title="6.5 · Responsabilidades tras la desvinculación · Cumple">6.5</a><a href="#c-6.6" style="background:var(--partial)" title="6.6 · Acuerdos de confidencialidad · Parcial">6.6</a><a href="#c-6.7" style="background:var(--not_met)" title="6.7 · Trabajo remoto · No cumple">6.7</a><a href="#c-6.8" style="background:var(--partial)" title="6.8 · Reporte de eventos de seguridad · Parcial">6.8</a></div></div>
+<div class="hm-row"><span>Físicos</span><div class="hm">
+<a href="#c-7.1" style="background:var(--not_met)" title="7.1 · Perímetros de seguridad física · No cumple">7.1</a><a href="#c-7.2" style="background:var(--not_met)" title="7.2 · Control de ingreso físico · No cumple">7.2</a><a href="#c-7.3" style="background:var(--not_met)" title="7.3 · Seguridad de oficinas e instalaciones · No cumple">7.3</a><a href="#c-7.4" style="background:var(--not_met)" title="7.4 · Monitoreo de seguridad física · No cumple">7.4</a><a href="#c-7.5" style="background:var(--not_met)" title="7.5 · Protección ante amenazas físicas y ambientales · No cumple">7.5</a><a href="#c-7.6" style="background:var(--not_met)" title="7.6 · Trabajo en áreas seguras · No cumple">7.6</a><a href="#c-7.7" style="background:var(--partial)" title="7.7 · Escritorio y pantalla limpios · Parcial">7.7</a><span class="excluded" title="7.8 · Ubicación y protección de equipos · Excluido (SoA)">7.8</span><a href="#c-7.9" style="background:var(--partial)" title="7.9 · Seguridad de activos fuera de las instalaciones · Parcial">7.9</a><a href="#c-7.10" style="background:var(--not_met)" title="7.10 · Medios de almacenamiento · No cumple">7.10</a><span class="excluded" title="7.11 · Servicios de soporte · Excluido (SoA)">7.11</span><span class="excluded" title="7.12 · Seguridad del cableado · Excluido (SoA)">7.12</span><a href="#c-7.13" style="background:var(--not_met)" title="7.13 · Mantenimiento de equipos · No cumple">7.13</a><a href="#c-7.14" style="background:var(--not_met)" title="7.14 · Eliminación o reutilización segura de equipos · No cumple">7.14</a></div></div>
+<div class="hm-row"><span>Tecnológicos</span><div class="hm">
+<a href="#c-8.1" style="background:var(--partial)" title="8.1 · Dispositivos de usuario · Parcial">8.1</a><a href="#c-8.2" style="background:var(--met)" title="8.2 · Accesos privilegiados · Cumple">8.2</a><a href="#c-8.3" style="background:var(--partial)" title="8.3 · Restricción de acceso a la información · Parcial">8.3</a><a href="#c-8.4" style="background:var(--partial)" title="8.4 · Acceso al código fuente · Parcial">8.4</a><a href="#c-8.5" style="background:var(--partial)" title="8.5 · Autenticación segura · Parcial">8.5</a><a href="#c-8.6" style="background:var(--not_met)" title="8.6 · Gestión de la capacidad · No cumple">8.6</a><a href="#c-8.7" style="background:var(--partial)" title="8.7 · Protección contra malware · Parcial">8.7</a><a href="#c-8.8" style="background:var(--partial)" title="8.8 · Gestión de vulnerabilidades técnicas · Parcial">8.8</a><a href="#c-8.9" style="background:var(--partial)" title="8.9 · Gestión de la configuración · Parcial">8.9</a><a href="#c-8.10" style="background:var(--partial)" title="8.10 · Eliminación de información · Parcial">8.10</a><span class="excluded" title="8.11 · Enmascaramiento de datos · Excluido (SoA)">8.11</span><a href="#c-8.12" style="background:var(--not_met)" title="8.12 · Prevención de fuga de datos · No cumple">8.12</a><a href="#c-8.13" style="background:var(--partial)" title="8.13 · Copias de seguridad · Parcial">8.13</a><a href="#c-8.14" style="background:var(--partial)" title="8.14 · Redundancia de instalaciones · Parcial">8.14</a><a href="#c-8.15" style="background:var(--partial)" title="8.15 · Registro de eventos (logs) · Parcial">8.15</a><a href="#c-8.16" style="background:var(--partial)" title="8.16 · Monitoreo de actividades · Parcial">8.16</a><a href="#c-8.17" style="background:var(--not_met)" title="8.17 · Sincronización de relojes · No cumple">8.17</a><a href="#c-8.18" style="background:var(--not_met)" title="8.18 · Uso de utilidades privilegiadas · No cumple">8.18</a><a href="#c-8.19" style="background:var(--not_met)" title="8.19 · Instalación de software en producción · No cumple">8.19</a><a href="#c-8.20" style="background:var(--partial)" title="8.20 · Seguridad de redes · Parcial">8.20</a><a href="#c-8.21" style="background:var(--not_met)" title="8.21 · Seguridad de servicios de red · No cumple">8.21</a><a href="#c-8.22" style="background:var(--partial)" title="8.22 · Segregación de redes · Parcial">8.22</a><a href="#c-8.23" style="background:var(--not_met)" title="8.23 · Filtrado web · No cumple">8.23</a><a href="#c-8.24" style="background:var(--partial)" title="8.24 · Uso de criptografía · Parcial">8.24</a><a href="#c-8.25" style="background:var(--partial)" title="8.25 · Ciclo de desarrollo seguro · Parcial">8.25</a><a href="#c-8.26" style="background:var(--not_met)" title="8.26 · Requisitos de seguridad de aplicaciones · No cumple">8.26</a><a href="#c-8.27" style="background:var(--not_met)" title="8.27 · Principios de arquitectura segura · No cumple">8.27</a><a href="#c-8.28" style="background:var(--partial)" title="8.28 · Codificación segura · Parcial">8.28</a><a href="#c-8.29" style="background:var(--partial)" title="8.29 · Pruebas de seguridad · Parcial">8.29</a><span class="excluded" title="8.30 · Desarrollo tercerizado · Excluido (SoA)">8.30</span><a href="#c-8.31" style="background:var(--partial)" title="8.31 · Separación de entornos · Parcial">8.31</a><a href="#c-8.32" style="background:var(--partial)" title="8.32 · Gestión de cambios · Parcial">8.32</a><a href="#c-8.33" style="background:var(--partial)" title="8.33 · Información de prueba · Parcial">8.33</a><a href="#c-8.34" style="background:var(--not_met)" title="8.34 · Protección durante pruebas de auditoría · No cumple">8.34</a></div></div>
+<div class="hm-row"><span>Ley 25.326</span><div class="hm">
+<a href="#c-LPDP-04" style="background:var(--partial)" title="LPDP-04 · Calidad de los datos: solo los necesarios y mientras se necesiten · Parcial">LPDP-04</a><a href="#c-LPDP-05" style="background:var(--partial)" title="LPDP-05 · Consentimiento e información al titular · Parcial">LPDP-05</a><a href="#c-LPDP-09" style="background:var(--partial)" title="LPDP-09 · Seguridad y confidencialidad de los datos personales · Parcial">LPDP-09</a><a href="#c-LPDP-12" style="background:var(--partial)" title="LPDP-12 · Transferencias internacionales · Parcial">LPDP-12</a><a href="#c-LPDP-14" style="background:var(--partial)" title="LPDP-14 · Derechos del titular: acceso, rectificación y supresión · Parcial">LPDP-14</a><a href="#c-LPDP-21" style="background:var(--not_met)" title="LPDP-21 · Inscripción de las bases de datos · No cumple">LPDP-21</a></div></div>
+<div class="legend"><span><i style="background:var(--met)"></i>Cumple</span><span><i style="background:var(--partial)"></i>Parcial</span><span><i style="background:var(--undetermined)"></i>Requiere revisión</span><span><i style="background:var(--not_met)"></i>No cumple</span><span><i style="background:repeating-linear-gradient(45deg,var(--out),var(--out) 2px,transparent 2px,transparent 4px);border:1px solid var(--out)"></i>Excluido (SoA)</span></div>
+</div>
+
 <h2>Patrones sistémicos</h2>
 <p class="small">Causas que se repiten en tres o más hallazgos. Corregir el proceso resuelve varios hallazgos a la vez.</p>
 <div class="pattern high">
@@ -147,33 +175,39 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 </div>
 
 <h2>Conciliación: compromisos de las políticas contra la evidencia</h2>
-<p class="small">Cada actividad periódica que promete una política se concilia período por período con su registro de evidencia.</p>
+<p class="small">Cada actividad periódica que promete una política se concilia período por período con su registro de evidencia. Cada casilla es un período, del más viejo al más reciente. El período en curso no se juzga todavía.</p>
 <div class="table-wrap"><table>
-<thead><tr><th>Compromiso</th><th>Controles</th><th>Frecuencia</th><th>Esperadas</th><th>Registradas</th><th>Períodos sin ejecución</th><th>Última</th><th>Resultado</th></tr></thead>
+<thead><tr><th>Compromiso</th><th>Controles</th><th>Frecuencia</th><th>Esperadas</th><th>Registradas</th><th>Períodos</th><th>Última</th><th>Resultado</th></tr></thead>
 <tbody>
 <tr><td><span class="mono">COM-01</span> Capacitación anual de concientización en seguridad para todo el personal<div class="small">POL-01 → EVD-04</div></td>
 <td class="mono">6.3</td><td>anual</td><td>1</td><td>1</td>
-<td class="small">—</td><td class="mono">2026-04-22</td>
+<td class="small"><div class="tl" role="img" aria-label="Períodos sin ejecución: —"><span title="2025-10-20 → 2026-10-20 · Ejecutado"></span></div>
+<div class="tl-ends"><span>2025-10-20 → 2026-10-20</span></div></td><td class="mono">2026-04-22</td>
 <td><span class="ok">✓ Conciliado</span></td></tr>
 <tr><td><span class="mono">COM-02</span> Revisión trimestral de los derechos de acceso a sistemas críticos<div class="small">POL-02 → EVD-01</div></td>
 <td class="mono">5.18</td><td>trimestral</td><td>4</td><td>1</td>
-<td class="small">T4 2025, T2 2026, T3 2026</td><td class="mono">2026-02-12</td>
+<td class="small"><div class="tl" role="img" aria-label="Períodos sin ejecución: T4 2025, T2 2026, T3 2026"><span class="miss" title="T4 2025 · Sin ejecución"></span><span title="T1 2026 · Ejecutado"></span><span class="miss" title="T2 2026 · Sin ejecución"></span><span class="miss" title="T3 2026 · Sin ejecución"></span></div>
+<div class="tl-ends"><span>T4 2025</span><span>T3 2026</span></div><div>Períodos sin ejecución: T4 2025, T2 2026, T3 2026</div></td><td class="mono">2026-02-12</td>
 <td><span class="ko">✗ No cumple</span></td></tr>
 <tr><td><span class="mono">COM-03</span> Simulacro anual de respuesta a incidentes (ejercicio de mesa)<div class="small">POL-03 → EVD-05</div></td>
 <td class="mono">5.24</td><td>anual</td><td>1</td><td>0</td>
-<td class="small">2025-10-20 → 2026-10-20</td><td class="mono">2024-09-10</td>
+<td class="small"><div class="tl" role="img" aria-label="Períodos sin ejecución: 2025-10-20 → 2026-10-20"><span class="miss" title="2025-10-20 → 2026-10-20 · Sin ejecución"></span></div>
+<div class="tl-ends"><span>2025-10-20 → 2026-10-20</span></div></td><td class="mono">2024-09-10</td>
 <td><span class="ko">✗ No cumple</span></td></tr>
 <tr><td><span class="mono">COM-04</span> Prueba trimestral de restauración de la base de datos transaccional<div class="small">POL-04 → EVD-02</div></td>
 <td class="mono">8.13</td><td>trimestral</td><td>4</td><td>1</td>
-<td class="small">T1 2026, T2 2026, T3 2026</td><td class="mono">2025-11-18</td>
+<td class="small"><div class="tl" role="img" aria-label="Períodos sin ejecución: T1 2026, T2 2026, T3 2026"><span title="T4 2025 · Ejecutado"></span><span class="miss" title="T1 2026 · Sin ejecución"></span><span class="miss" title="T2 2026 · Sin ejecución"></span><span class="miss" title="T3 2026 · Sin ejecución"></span></div>
+<div class="tl-ends"><span>T4 2025</span><span>T3 2026</span></div><div>Períodos sin ejecución: T1 2026, T2 2026, T3 2026</div></td><td class="mono">2025-11-18</td>
 <td><span class="ko">✗ No cumple</span></td></tr>
 <tr><td><span class="mono">COM-05</span> Revisión anual de seguridad de proveedores críticos<div class="small">POL-05 → EVD-06</div></td>
 <td class="mono">5.22</td><td>anual</td><td>1</td><td>1</td>
-<td class="small">—</td><td class="mono">2026-03-09</td>
+<td class="small"><div class="tl" role="img" aria-label="Períodos sin ejecución: —"><span title="2025-10-20 → 2026-10-20 · Ejecutado"></span></div>
+<div class="tl-ends"><span>2025-10-20 → 2026-10-20</span></div></td><td class="mono">2026-03-09</td>
 <td><span class="ok">✓ Conciliado</span></td></tr>
 <tr><td><span class="mono">COM-06</span> Escaneo mensual de vulnerabilidades de la infraestructura productiva<div class="small">POL-08 → EVD-03</div></td>
 <td class="mono">8.8</td><td>mensual</td><td>12</td><td>10</td>
-<td class="small">jul 2026, ago 2026</td><td class="mono">2026-10-07</td>
+<td class="small"><div class="tl" role="img" aria-label="Períodos sin ejecución: jul 2026, ago 2026"><span title="oct 2025 · Ejecutado"></span><span title="nov 2025 · Ejecutado"></span><span title="dic 2025 · Ejecutado"></span><span title="ene 2026 · Ejecutado"></span><span title="feb 2026 · Ejecutado"></span><span title="mar 2026 · Ejecutado"></span><span title="abr 2026 · Ejecutado"></span><span title="may 2026 · Ejecutado"></span><span title="jun 2026 · Ejecutado"></span><span class="miss" title="jul 2026 · Sin ejecución"></span><span class="miss" title="ago 2026 · Sin ejecución"></span><span title="sep 2026 · Ejecutado"></span></div>
+<div class="tl-ends"><span>oct 2025</span><span>sep 2026</span></div><div>Períodos sin ejecución: jul 2026, ago 2026</div></td><td class="mono">2026-10-07</td>
 <td><span class="ko">✗ No cumple</span></td></tr>
 </tbody></table></div>
 
@@ -184,7 +218,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <tbody>
 <tr><td><span class="mono">REG-01</span> Al menos el 95 % del personal completa la capacitación anual<div class="small">POL-01 → EVD-04</div></td>
 <td class="mono">6.3</td><td>1</td><td>1</td>
-<td class="small">completion_rate = 62 (meta >= 95)</td>
+<td class="small">completion_rate = 62 (meta &gt;= 95)</td>
 <td><span class="ko">✗ No cumple</span></td></tr>
 <tr><td><span class="mono">REG-04</span> Las cuentas de personas desvinculadas se dan de baja dentro de las 24 horas<div class="small">POL-02 → EVD-09</div></td>
 <td class="mono">5.18</td><td>5</td><td>3</td>
@@ -258,7 +292,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <tr data-sev="high">
 <td class="mono">TQ-005</td>
 <td><span class="badge b-high">Alta</span></td>
-<td><b>Regla incumplida: Al menos el 95 % del personal completa la capacitación anual</b><div class="small">POL-01 establece REG-01. Resultado: completion_rate = 62 (meta >= 95). Casos: completion_rate = 62 (meta >= 95).</div><div class="small">Prueba de regla sobre evidencia · El control opera fuera de lo que exige la política</div></td>
+<td><b>Regla incumplida: Al menos el 95 % del personal completa la capacitación anual</b><div class="small">POL-01 establece REG-01. Resultado: completion_rate = 62 (meta &gt;= 95). Casos: completion_rate = 62 (meta &gt;= 95).</div><div class="small">Prueba de regla sobre evidencia · El control opera fuera de lo que exige la política</div></td>
 <td class="mono">6.3</td>
 <td><b>Corregir</b><div class="small">Corregir cada caso listado y revisar por qué el proceso no lo detectó a tiempo.</div></td>
 <td class="small">Lucía Ferreyra (CISO)</td>
@@ -1050,7 +1084,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 </tbody></table></div>
 
 <h2>Detalle por control</h2>
-<details>
+<details id="c-5.1">
   <summary><span class="mono">5.1</span> <b>Políticas de seguridad</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1059,7 +1093,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-01#5</span> — Todo el personal realiza una capacitación anual de concientización en seguridad</blockquote><blockquote><span class="mono">POL-01#1</span> — Ñandú Pagos S.A</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.PO-01, GV.PO-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.2">
   <summary><span class="mono">5.2</span> <b>Roles y responsabilidades de seguridad</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1068,7 +1102,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-01#3</span> — Directorio:** aprueba esta política y asigna los recursos para el programa de seguridad</blockquote><blockquote><span class="mono">POL-01#6</span> — El CISO verifica el cumplimiento de las políticas mediante revisiones periódicas</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.3">
   <summary><span class="mono">5.3</span> <b>Separación de funciones incompatibles</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1076,7 +1110,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.4">
   <summary><span class="mono">5.4</span> <b>Compromiso de la dirección</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1085,7 +1119,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-01#1</span> — Ñandú Pagos S.A</blockquote><blockquote><span class="mono">POL-01#3</span> — Directorio:** aprueba esta política y asigna los recursos para el programa de seguridad</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.5">
   <summary><span class="mono">5.5</span> <b>Contacto con autoridades</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1094,7 +1128,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-03#4</span> — Legales evalúa la obligación de notificar a reguladores, a la autoridad de protección de datos y a los clientes afectados.</blockquote><blockquote><span class="mono">POL-03#1</span> — Cualquier persona que detecte un evento de seguridad lo reporta en el canal #seguridad o por correo a seguridad@nandupagos.example</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03, RS.CO-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.6">
   <summary><span class="mono">5.6</span> <b>Contacto con grupos de interés</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1102,7 +1136,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">ID.RA-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.7">
   <summary><span class="mono">5.7</span> <b>Inteligencia de amenazas</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1110,7 +1144,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">ID.RA-02, ID.RA-03</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.8">
   <summary><span class="mono">5.8</span> <b>Seguridad en la gestión de proyectos</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1118,7 +1152,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">ID.RA-07</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.9">
   <summary><span class="mono">5.9</span> <b>Inventario de activos</b> <span class="badge b-met">Cumple</span>
 </summary>
   <div class="body">
@@ -1127,7 +1161,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-01#3</span> — Directorio:** aprueba esta política y asigna los recursos para el programa de seguridad</blockquote><blockquote><span class="mono">EVD-08#1</span> — Activo | Tipo | Responsable | Clasificación  Base de datos transaccional | Base de datos | Plataforma | Restringida Backoffice de pagos | Aplicación | Operaciones | Confidencial…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-01, ID.AM-02, ID.AM-05</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.10">
   <summary><span class="mono">5.10</span> <b>Uso aceptable de activos</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1135,7 +1169,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">GV.PO-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.11">
   <summary><span class="mono">5.11</span> <b>Devolución de activos</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1144,7 +1178,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-10#5</span> — Las bases de datos con datos personales se cifran en reposo y el acceso se rige por la POL-02</blockquote><blockquote><span class="mono">POL-02#2</span> — Cada persona tiene un identificador único; no se permiten cuentas compartidas</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-08</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.12">
   <summary><span class="mono">5.12</span> <b>Clasificación de la información</b> <span class="badge b-met">Cumple</span>
 </summary>
   <div class="body">
@@ -1153,7 +1187,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-07#1</span> — La información se clasifica en cuatro niveles: pública, uso interno, confidencial y restringida</blockquote><blockquote><span class="mono">POL-07#4</span> — La información confidencial o restringida solo se envía por canales cifrados (SFTP o enlaces con caducidad del almacenamiento corporativo)</blockquote><blockquote><span class="mono">EVD-08#1</span> — Activo | Tipo | Responsable | Clasificación  Base de datos transaccional | Base de datos | Plataforma | Restringida Backoffice de pagos | Aplicación | Operaciones | Confidencial…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-05, ID.AM-07</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.13">
   <summary><span class="mono">5.13</span> <b>Etiquetado de la información</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1162,7 +1196,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-07#2</span> — Los documentos confidenciales y restringidos llevan la clasificación en el encabezado.</blockquote><blockquote><span class="mono">POL-07#1</span> — La información se clasifica en cuatro niveles: pública, uso interno, confidencial y restringida</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-07</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.14">
   <summary><span class="mono">5.14</span> <b>Transferencia de información</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1171,7 +1205,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-07#4</span> — La información confidencial o restringida solo se envía por canales cifrados (SFTP o enlaces con caducidad del almacenamiento corporativo)</blockquote><blockquote><span class="mono">POL-07#1</span> — La información se clasifica en cuatro niveles: pública, uso interno, confidencial y restringida</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.15">
   <summary><span class="mono">5.15</span> <b>Control de acceso</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1180,7 +1214,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-02#1</span> — El acceso a la información se otorga según el mínimo privilegio y la necesidad de saber</blockquote><blockquote><span class="mono">POL-02#5</span> — Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.16">
   <summary><span class="mono">5.16</span> <b>Gestión de identidades</b> <span class="badge b-met">Cumple</span>
 </summary>
   <div class="body">
@@ -1189,7 +1223,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-02#2</span> — Cada persona tiene un identificador único; no se permiten cuentas compartidas</blockquote><blockquote><span class="mono">POL-02#3</span> — Se usa inicio de sesión único (SSO) con autenticación multifactor (MFA) obligatoria para todo el personal y para todos los accesos a la consola de AWS</blockquote><blockquote><span class="mono">EVD-10#1</span> — Extracto con las cuentas de las áreas que tuvieron bajas en el último año</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.17">
   <summary><span class="mono">5.17</span> <b>Información de autenticación</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1198,7 +1232,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-02#3</span> — Se usa inicio de sesión único (SSO) con autenticación multifactor (MFA) obligatoria para todo el personal y para todos los accesos a la consola de AWS</blockquote><blockquote><span class="mono">POL-02#6</span> — Esta política reemplaza a la Política de Contraseñas de 2019 (POL-09).</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-01, PR.AA-03</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.18">
   <summary><span class="mono">5.18</span> <b>Derechos de acceso</b> <span class="badge b-partial">Parcial</span>
 <span class="small">(Cumple → Parcial)</span></summary>
   <div class="body">
@@ -1207,7 +1241,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-02#5</span> — Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre</blockquote><blockquote><span class="mono">POL-02#1</span> — El acceso a la información se otorga según el mínimo privilegio y la necesidad de saber</blockquote><blockquote><span class="mono">EVD-01#1</span> — Fecha | Sistema | Revisor | Cuentas revisadas | Observaciones  2026-02-12 | Consola AWS (producción) | D</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.19">
   <summary><span class="mono">5.19</span> <b>Seguridad con proveedores</b> <span class="badge b-met">Cumple</span>
 </summary>
   <div class="body">
@@ -1216,7 +1250,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-05#2</span> — Antes de contratar un proveedor crítico se completa un cuestionario de seguridad y se solicita su informe SOC 2 tipo II o certificación ISO 27001 vigente.</blockquote><blockquote><span class="mono">POL-05#1</span> — Los proveedores se clasifican como críticos, importantes o estándar según el acceso a datos de clientes y su impacto en la operación.</blockquote><blockquote><span class="mono">EVD-06#1</span> — Proveedor (ficticio) | Servicio | Evidencia revisada | Resultado  AWS | Infraestructura en la nube | Informe SOC 2 tipo II 2025 | Sin observaciones Tarjetera Andina S.A</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.SC-01, GV.SC-06</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.20">
   <summary><span class="mono">5.20</span> <b>Seguridad en contratos con proveedores</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1225,7 +1259,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-05#3</span> — Los contratos con proveedores críticos incluyen cláusulas de confidencialidad, notificación de incidentes en 48 horas, derecho de auditoría y devolución o destrucción de datos al…</blockquote><blockquote><span class="mono">POL-05#4</span> — AWS es el proveedor de nube principal</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.SC-05</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.21">
   <summary><span class="mono">5.21</span> <b>Seguridad en la cadena de suministro TIC</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1234,7 +1268,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-05#2</span> — Antes de contratar un proveedor crítico se completa un cuestionario de seguridad y se solicita su informe SOC 2 tipo II o certificación ISO 27001 vigente.</blockquote><blockquote><span class="mono">POL-06#2</span> — El pipeline de integración continua ejecuta análisis estático (SAST) y análisis de dependencias</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.SC-05, GV.SC-07</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.22">
   <summary><span class="mono">5.22</span> <b>Seguimiento de servicios de proveedores</b> <span class="badge b-met">Cumple</span>
 </summary>
   <div class="body">
@@ -1243,7 +1277,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-05#5</span> — Los proveedores críticos se revisan una vez por año.</blockquote><blockquote><span class="mono">POL-05#2</span> — Antes de contratar un proveedor crítico se completa un cuestionario de seguridad y se solicita su informe SOC 2 tipo II o certificación ISO 27001 vigente.</blockquote><blockquote><span class="mono">EVD-06#1</span> — Proveedor (ficticio) | Servicio | Evidencia revisada | Resultado  AWS | Infraestructura en la nube | Informe SOC 2 tipo II 2025 | Sin observaciones Tarjetera Andina S.A</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.SC-07</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.23">
   <summary><span class="mono">5.23</span> <b>Seguridad en servicios en la nube</b> <span class="badge b-met">Cumple</span>
 </summary>
   <div class="body">
@@ -1252,7 +1286,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-05#4</span> — AWS es el proveedor de nube principal</blockquote><blockquote><span class="mono">POL-05#2</span> — Antes de contratar un proveedor crítico se completa un cuestionario de seguridad y se solicita su informe SOC 2 tipo II o certificación ISO 27001 vigente.</blockquote><blockquote><span class="mono">EVD-06#1</span> — Proveedor (ficticio) | Servicio | Evidencia revisada | Resultado  AWS | Infraestructura en la nube | Informe SOC 2 tipo II 2025 | Sin observaciones Tarjetera Andina S.A</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.SC-05, GV.SC-07</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.24">
   <summary><span class="mono">5.24</span> <b>Planificación de la gestión de incidentes</b> <span class="badge b-partial">Parcial</span>
 <span class="small">(Cumple → Parcial)</span></summary>
   <div class="body">
@@ -1261,7 +1295,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-03#6</span> — Cada incidente de severidad alta o crítica termina con un análisis post mortem dentro de los 10 días hábiles, con causa raíz y acciones de mejora.</blockquote><blockquote><span class="mono">POL-03#3</span> — El líder de Operaciones de Seguridad coordina la contención, erradicación y recuperación</blockquote><blockquote><span class="mono">EVD-05#1</span> — Ejercicio de mesa con escenario de ransomware en el backoffice</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">RS.MA-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.25">
   <summary><span class="mono">5.25</span> <b>Evaluación de eventos de seguridad</b> <span class="badge b-partial">Parcial</span>
 <span class="small">(Cumple → Parcial)</span></summary>
   <div class="body">
@@ -1270,7 +1304,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-03#2</span> — Los eventos se evalúan y, si corresponde, se declaran incidentes con severidad baja, media, alta o crítica según el impacto en clientes, datos personales y disponibilidad de la…</blockquote><blockquote><span class="mono">POL-03#3</span> — El líder de Operaciones de Seguridad coordina la contención, erradicación y recuperación</blockquote><blockquote><span class="mono">EVD-07#1</span> — ID | Fecha | Severidad | Descripción | Estado | Post mortem  INC-2026-01 | 2026-01-18 | Media | Campaña de phishing dirigida a Atención al Cliente; 2 credenciales comprometidas,…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">DE.AE-02, DE.AE-08</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.26">
   <summary><span class="mono">5.26</span> <b>Respuesta a incidentes</b> <span class="badge b-partial">Parcial</span>
 <span class="small">(Cumple → Parcial)</span></summary>
   <div class="body">
@@ -1279,7 +1313,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-03#3</span> — El líder de Operaciones de Seguridad coordina la contención, erradicación y recuperación</blockquote><blockquote><span class="mono">POL-03#5</span> — Durante la respuesta se preservan los registros y la evidencia relevante, documentando quién accedió a ella.</blockquote><blockquote><span class="mono">EVD-05#1</span> — Ejercicio de mesa con escenario de ransomware en el backoffice</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">RS.MA-01, RS.MI-01, RS.MI-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.27">
   <summary><span class="mono">5.27</span> <b>Aprendizaje de incidentes</b> <span class="badge b-partial">Parcial</span>
 <span class="small">(Cumple → Parcial)</span></summary>
   <div class="body">
@@ -1288,7 +1322,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-03#6</span> — Cada incidente de severidad alta o crítica termina con un análisis post mortem dentro de los 10 días hábiles, con causa raíz y acciones de mejora.</blockquote><blockquote><span class="mono">POL-03#3</span> — El líder de Operaciones de Seguridad coordina la contención, erradicación y recuperación</blockquote><blockquote><span class="mono">EVD-07#1</span> — ID | Fecha | Severidad | Descripción | Estado | Post mortem  INC-2026-01 | 2026-01-18 | Media | Campaña de phishing dirigida a Atención al Cliente; 2 credenciales comprometidas,…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.IM-02, ID.IM-03</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.28">
   <summary><span class="mono">5.28</span> <b>Recolección de evidencia</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1297,7 +1331,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-03#5</span> — Durante la respuesta se preservan los registros y la evidencia relevante, documentando quién accedió a ella.</blockquote><blockquote><span class="mono">POL-03#1</span> — Cualquier persona que detecte un evento de seguridad lo reporta en el canal #seguridad o por correo a seguridad@nandupagos.example</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">RS.AN-07</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.29">
   <summary><span class="mono">5.29</span> <b>Seguridad durante interrupciones</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1305,7 +1339,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">ID.IM-04, RC.RP-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.30">
   <summary><span class="mono">5.30</span> <b>Preparación TIC para la continuidad</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1314,7 +1348,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-04#3</span> — Cada trimestre se restaura la base de datos transaccional en un entorno aislado para verificar la integridad de los datos y el tiempo de recuperación</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.IM-04, PR.IR-03, RC.RP-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.31">
   <summary><span class="mono">5.31</span> <b>Requisitos legales, regulatorios y contractuales</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1323,7 +1357,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-01#4</span> — La compañía identifica y cumple los requisitos aplicables a un proveedor de servicios de pago, la normativa de protección de datos personales (Ley 25.326) y las obligaciones…</blockquote><blockquote><span class="mono">POL-01#6</span> — El CISO verifica el cumplimiento de las políticas mediante revisiones periódicas</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.32">
   <summary><span class="mono">5.32</span> <b>Propiedad intelectual</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1331,7 +1365,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.33">
   <summary><span class="mono">5.33</span> <b>Protección de registros</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1340,7 +1374,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-07#5</span> — Los registros de transacciones se conservan 10 años</blockquote><blockquote><span class="mono">POL-07#3</span> — El tratamiento de datos personales cumple la Ley 25.326</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.34">
   <summary><span class="mono">5.34</span> <b>Privacidad y datos personales</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1349,7 +1383,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-07#3</span> — El tratamiento de datos personales cumple la Ley 25.326</blockquote><blockquote><span class="mono">POL-10#1</span> — Establecer cómo Ñandú Pagos trata los datos personales de clientes, comercios y empleados, en el marco de la Ley 25.326 de Protección de los Datos Personales.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03, PR.DS-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.35">
   <summary><span class="mono">5.35</span> <b>Revisión independiente de la seguridad</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1357,7 +1391,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">GV.OV-02, ID.IM-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.36">
   <summary><span class="mono">5.36</span> <b>Cumplimiento de políticas y normas</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1366,7 +1400,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-01#6</span> — El CISO verifica el cumplimiento de las políticas mediante revisiones periódicas</blockquote><blockquote><span class="mono">POL-01#7</span> — Esta política se complementa con las políticas específicas de control de acceso, gestión de incidentes, respaldos, proveedores, desarrollo seguro, clasificación de la información…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.IM-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-5.37">
   <summary><span class="mono">5.37</span> <b>Procedimientos operativos documentados</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1374,7 +1408,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">GV.PO-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-6.1">
   <summary><span class="mono">6.1</span> <b>Verificación de antecedentes</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1382,7 +1416,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-04</span></p>
   </div>
 </details>
-<details>
+<details id="c-6.2">
   <summary><span class="mono">6.2</span> <b>Condiciones de contratación</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1390,7 +1424,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-04</span></p>
   </div>
 </details>
-<details>
+<details id="c-6.3">
   <summary><span class="mono">6.3</span> <b>Concientización y capacitación</b> <span class="badge b-partial">Parcial</span>
 <span class="small">(Cumple → Parcial)</span></summary>
   <div class="body">
@@ -1399,7 +1433,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-01#5</span> — Todo el personal realiza una capacitación anual de concientización en seguridad</blockquote><blockquote><span class="mono">POL-01#1</span> — Ñandú Pagos S.A</blockquote><blockquote><span class="mono">EVD-04#1</span> — Fecha:** 22/04/2026 (sesión virtual de 90 minutos, con grabación disponible)</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AT-01, PR.AT-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-6.4">
   <summary><span class="mono">6.4</span> <b>Proceso disciplinario</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1408,7 +1442,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-01#6</span> — El CISO verifica el cumplimiento de las políticas mediante revisiones periódicas</blockquote><blockquote><span class="mono">POL-01#7</span> — Esta política se complementa con las políticas específicas de control de acceso, gestión de incidentes, respaldos, proveedores, desarrollo seguro, clasificación de la información…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-04</span></p>
   </div>
 </details>
-<details>
+<details id="c-6.5">
   <summary><span class="mono">6.5</span> <b>Responsabilidades tras la desvinculación</b> <span class="badge b-met">Cumple</span>
 </summary>
   <div class="body">
@@ -1417,7 +1451,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-02#2</span> — Cada persona tiene un identificador único; no se permiten cuentas compartidas</blockquote><blockquote><span class="mono">POL-02#5</span> — Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre</blockquote><blockquote><span class="mono">EVD-09#1</span> — Recursos Humanos informa cada baja a Sistemas el mismo día por ticket</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-04, PR.AA-05</span></p>
   </div>
 </details>
-<details>
+<details id="c-6.6">
   <summary><span class="mono">6.6</span> <b>Acuerdos de confidencialidad</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1426,7 +1460,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-10#5</span> — Las bases de datos con datos personales se cifran en reposo y el acceso se rige por la POL-02</blockquote><blockquote><span class="mono">POL-05#3</span> — Los contratos con proveedores críticos incluyen cláusulas de confidencialidad, notificación de incidentes en 48 horas, derecho de auditoría y devolución o destrucción de datos al…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">GV.RR-04</span></p>
   </div>
 </details>
-<details>
+<details id="c-6.7">
   <summary><span class="mono">6.7</span> <b>Trabajo remoto</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1434,7 +1468,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-6.8">
   <summary><span class="mono">6.8</span> <b>Reporte de eventos de seguridad</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1443,7 +1477,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-03#1</span> — Cualquier persona que detecte un evento de seguridad lo reporta en el canal #seguridad o por correo a seguridad@nandupagos.example</blockquote><blockquote><span class="mono">POL-03#2</span> — Los eventos se evalúan y, si corresponde, se declaran incidentes con severidad baja, media, alta o crítica según el impacto en clientes, datos personales y disponibilidad de la…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">DE.AE-06</span></p>
   </div>
 </details>
-<details>
+<details id="c-7.1">
   <summary><span class="mono">7.1</span> <b>Perímetros de seguridad física</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1451,7 +1485,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-06</span></p>
   </div>
 </details>
-<details>
+<details id="c-7.2">
   <summary><span class="mono">7.2</span> <b>Control de ingreso físico</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1459,7 +1493,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-06</span></p>
   </div>
 </details>
-<details>
+<details id="c-7.3">
   <summary><span class="mono">7.3</span> <b>Seguridad de oficinas e instalaciones</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1467,7 +1501,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-06</span></p>
   </div>
 </details>
-<details>
+<details id="c-7.4">
   <summary><span class="mono">7.4</span> <b>Monitoreo de seguridad física</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1475,7 +1509,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">DE.CM-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-7.5">
   <summary><span class="mono">7.5</span> <b>Protección ante amenazas físicas y ambientales</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1483,7 +1517,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-7.6">
   <summary><span class="mono">7.6</span> <b>Trabajo en áreas seguras</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1491,7 +1525,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-06</span></p>
   </div>
 </details>
-<details>
+<details id="c-7.7">
   <summary><span class="mono">7.7</span> <b>Escritorio y pantalla limpios</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1500,7 +1534,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-7.9">
   <summary><span class="mono">7.9</span> <b>Seguridad de activos fuera de las instalaciones</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1509,7 +1543,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-7.10">
   <summary><span class="mono">7.10</span> <b>Medios de almacenamiento</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1517,7 +1551,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01, ID.AM-08</span></p>
   </div>
 </details>
-<details>
+<details id="c-7.13">
   <summary><span class="mono">7.13</span> <b>Mantenimiento de equipos</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1525,7 +1559,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-08</span></p>
   </div>
 </details>
-<details>
+<details id="c-7.14">
   <summary><span class="mono">7.14</span> <b>Eliminación o reutilización segura de equipos</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1533,7 +1567,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-08</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.1">
   <summary><span class="mono">8.1</span> <b>Dispositivos de usuario</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1542,7 +1576,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote><blockquote><span class="mono">POL-08#6</span> — Los datos en tránsito usan TLS 1.2 o superior</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-01, PR.DS-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.2">
   <summary><span class="mono">8.2</span> <b>Accesos privilegiados</b> <span class="badge b-met">Cumple</span>
 </summary>
   <div class="body">
@@ -1551,7 +1585,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-02#4</span> — Las cuentas de administrador son nominales, se usan solo para tareas administrativas y requieren MFA con llave física</blockquote><blockquote><span class="mono">POL-02#5</span> — Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre</blockquote><blockquote><span class="mono">EVD-01#1</span> — Fecha | Sistema | Revisor | Cuentas revisadas | Observaciones  2026-02-12 | Consola AWS (producción) | D</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.3">
   <summary><span class="mono">8.3</span> <b>Restricción de acceso a la información</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1560,7 +1594,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-02#1</span> — El acceso a la información se otorga según el mínimo privilegio y la necesidad de saber</blockquote><blockquote><span class="mono">POL-02#5</span> — Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.4">
   <summary><span class="mono">8.4</span> <b>Acceso al código fuente</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1569,7 +1603,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-06#1</span> — Todo cambio de código pasa por un pull request con al menos una revisión aprobada antes de fusionarse en la rama principal, que está protegida.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05, PR.PS-06</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.5">
   <summary><span class="mono">8.5</span> <b>Autenticación segura</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1578,7 +1612,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-02#3</span> — Se usa inicio de sesión único (SSO) con autenticación multifactor (MFA) obligatoria para todo el personal y para todos los accesos a la consola de AWS</blockquote><blockquote><span class="mono">POL-02#4</span> — Las cuentas de administrador son nominales, se usan solo para tareas administrativas y requieren MFA con llave física</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-03</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.6">
   <summary><span class="mono">8.6</span> <b>Gestión de la capacidad</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1586,7 +1620,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-04</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.7">
   <summary><span class="mono">8.7</span> <b>Protección contra malware</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1595,7 +1629,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote><blockquote><span class="mono">POL-08#3</span> — La infraestructura se define como código (Terraform) y se valida contra una línea base de configuración segura.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-05, DE.CM-09</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.8">
   <summary><span class="mono">8.8</span> <b>Gestión de vulnerabilidades técnicas</b> <span class="badge b-partial">Parcial</span>
 <span class="small">(Cumple → Parcial)</span></summary>
   <div class="body">
@@ -1604,7 +1638,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-08#2</span> — La infraestructura productiva se escanea todos los meses</blockquote><blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote><blockquote><span class="mono">EVD-03#1</span> — Mes | Fecha | Críticas | Altas | Medias | Observaciones  Oct 2025 | 2025-10-08 | 0 | 5 | 13 Nov 2025 | 2025-11-05 | 0 | 4 | 12 Dic 2025 | 2025-12-03 | 0 | 3 | 10 Ene 2026 |…</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.RA-01, PR.PS-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.9">
   <summary><span class="mono">8.9</span> <b>Gestión de la configuración</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1613,7 +1647,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-08#3</span> — La infraestructura se define como código (Terraform) y se valida contra una línea base de configuración segura.</blockquote><blockquote><span class="mono">POL-08#2</span> — La infraestructura productiva se escanea todos los meses</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.10">
   <summary><span class="mono">8.10</span> <b>Eliminación de información</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1622,7 +1656,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-07#5</span> — Los registros de transacciones se conservan 10 años</blockquote><blockquote><span class="mono">POL-07#3</span> — El tratamiento de datos personales cumple la Ley 25.326</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.AM-08</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.12">
   <summary><span class="mono">8.12</span> <b>Prevención de fuga de datos</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1630,7 +1664,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01, PR.DS-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.13">
   <summary><span class="mono">8.13</span> <b>Copias de seguridad</b> <span class="badge b-partial">Parcial</span>
 <span class="small">(Cumple → Parcial)</span></summary>
   <div class="body">
@@ -1639,7 +1673,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-04#3</span> — Cada trimestre se restaura la base de datos transaccional en un entorno aislado para verificar la integridad de los datos y el tiempo de recuperación</blockquote><blockquote><span class="mono">POL-04#1</span> — Las bases de datos de producción se respaldan automáticamente todos los días mediante snapshots cifrados con claves de KMS</blockquote><blockquote><span class="mono">EVD-02#1</span> — Alcance:** base de datos transaccional, snapshot del 17/11/2025</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-11</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.14">
   <summary><span class="mono">8.14</span> <b>Redundancia de instalaciones</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1648,7 +1682,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-04#2</span> — La base de datos transaccional opera en modo multi zona con conmutación automática (failover).</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-03</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.15">
   <summary><span class="mono">8.15</span> <b>Registro de eventos (logs)</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1657,7 +1691,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-08#4</span> — CloudTrail y los logs de aplicación se centralizan en el SIEM y se retienen 12 meses</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-04</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.16">
   <summary><span class="mono">8.16</span> <b>Monitoreo de actividades</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1666,7 +1700,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-08#4</span> — CloudTrail y los logs de aplicación se centralizan en el SIEM y se retienen 12 meses</blockquote><blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">DE.CM-01, DE.CM-03, DE.CM-09</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.17">
   <summary><span class="mono">8.17</span> <b>Sincronización de relojes</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1674,7 +1708,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-04</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.18">
   <summary><span class="mono">8.18</span> <b>Uso de utilidades privilegiadas</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1682,7 +1716,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.AA-05, PR.PS-05</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.19">
   <summary><span class="mono">8.19</span> <b>Instalación de software en producción</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1690,7 +1724,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-02, PR.PS-05</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.20">
   <summary><span class="mono">8.20</span> <b>Seguridad de redes</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1699,7 +1733,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-08#5</span> — Producción está en una VPC propia con subredes privadas</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-01, DE.CM-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.21">
   <summary><span class="mono">8.21</span> <b>Seguridad de servicios de red</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1707,7 +1741,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.22">
   <summary><span class="mono">8.22</span> <b>Segregación de redes</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1716,7 +1750,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-08#5</span> — Producción está en una VPC propia con subredes privadas</blockquote><blockquote><span class="mono">POL-08#1</span> — Las notebooks corporativas se gestionan con MDM, tienen el disco cifrado, bloqueo de pantalla a los 5 minutos y EDR instalado.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.23">
   <summary><span class="mono">8.23</span> <b>Filtrado web</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1724,7 +1758,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.24">
   <summary><span class="mono">8.24</span> <b>Uso de criptografía</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1733,7 +1767,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-08#6</span> — Los datos en tránsito usan TLS 1.2 o superior</blockquote><blockquote><span class="mono">POL-04#1</span> — Las bases de datos de producción se respaldan automáticamente todos los días mediante snapshots cifrados con claves de KMS</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01, PR.DS-02</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.25">
   <summary><span class="mono">8.25</span> <b>Ciclo de desarrollo seguro</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1742,7 +1776,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-06#1</span> — Todo cambio de código pasa por un pull request con al menos una revisión aprobada antes de fusionarse en la rama principal, que está protegida.</blockquote><blockquote><span class="mono">POL-06#3</span> — Desarrollo, staging y producción están en cuentas de AWS separadas</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-06</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.26">
   <summary><span class="mono">8.26</span> <b>Requisitos de seguridad de aplicaciones</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1750,7 +1784,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <p class="small"><b>Veredicto limitado por:</b> Se apoya en un documento sin aprobar (POL-06).</p>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-06</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.27">
   <summary><span class="mono">8.27</span> <b>Principios de arquitectura segura</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1758,7 +1792,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-06</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.28">
   <summary><span class="mono">8.28</span> <b>Codificación segura</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1767,7 +1801,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-06#2</span> — El pipeline de integración continua ejecuta análisis estático (SAST) y análisis de dependencias</blockquote><blockquote><span class="mono">POL-06#1</span> — Todo cambio de código pasa por un pull request con al menos una revisión aprobada antes de fusionarse en la rama principal, que está protegida.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-06</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.29">
   <summary><span class="mono">8.29</span> <b>Pruebas de seguridad</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1776,7 +1810,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-06#4</span> — Se realiza un test de penetración externo antes de cada lanzamiento mayor.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.PS-06, ID.RA-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.31">
   <summary><span class="mono">8.31</span> <b>Separación de entornos</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1785,7 +1819,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-06#3</span> — Desarrollo, staging y producción están en cuentas de AWS separadas</blockquote><blockquote><span class="mono">POL-06#4</span> — Se realiza un test de penetración externo antes de cada lanzamiento mayor.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.IR-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.32">
   <summary><span class="mono">8.32</span> <b>Gestión de cambios</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1794,7 +1828,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-06#1</span> — Todo cambio de código pasa por un pull request con al menos una revisión aprobada antes de fusionarse en la rama principal, que está protegida.</blockquote><blockquote><span class="mono">POL-06#5</span> — Los despliegues a producción requieren la aprobación del líder técnico y quedan registrados en el sistema de tickets.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">ID.RA-07</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.33">
   <summary><span class="mono">8.33</span> <b>Información de prueba</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1803,7 +1837,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-06#3</span> — Desarrollo, staging y producción están en cuentas de AWS separadas</blockquote><blockquote><span class="mono">POL-06#4</span> — Se realiza un test de penetración externo antes de cada lanzamiento mayor.</blockquote>    <p class="small">NIST CSF 2.0: <span class="mono">PR.DS-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-8.34">
   <summary><span class="mono">8.34</span> <b>Protección durante pruebas de auditoría</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -1811,7 +1845,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
     <p class="small">NIST CSF 2.0: <span class="mono">—</span></p>
   </div>
 </details>
-<details>
+<details id="c-LPDP-04">
   <summary><span class="mono">LPDP-04</span> <b>Calidad de los datos: solo los necesarios y mientras se necesiten</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1820,7 +1854,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-10#2</span> — Tratamos datos de identificación (nombre, DNI, CUIT/CUIL), de contacto y de las operaciones de la billetera</blockquote><blockquote><span class="mono">POL-07#5</span> — Los registros de transacciones se conservan 10 años</blockquote><p class="small">Ley 25.326: art. 4 · ISO/IEC 27001: <span class="mono">5.34, 8.10</span></p>    <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03</span></p>
   </div>
 </details>
-<details>
+<details id="c-LPDP-05">
   <summary><span class="mono">LPDP-05</span> <b>Consentimiento e información al titular</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1829,7 +1863,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-10#3</span> — Al registrarse en la aplicación, el cliente acepta la política de privacidad, que le informa la finalidad del tratamiento, quiénes pueden recibir sus datos y cómo ejercer sus…</blockquote><blockquote><span class="mono">POL-10#4</span> — Los titulares pueden pedir acceso, rectificación o supresión de sus datos escribiendo a privacidad@nandupagos.example</blockquote><p class="small">Ley 25.326: art. 5, art. 6 · ISO/IEC 27001: <span class="mono">5.34</span></p>    <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03</span></p>
   </div>
 </details>
-<details>
+<details id="c-LPDP-09">
   <summary><span class="mono">LPDP-09</span> <b>Seguridad y confidencialidad de los datos personales</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1838,7 +1872,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-10#5</span> — Las bases de datos con datos personales se cifran en reposo y el acceso se rige por la POL-02</blockquote><blockquote><span class="mono">POL-10#1</span> — Establecer cómo Ñandú Pagos trata los datos personales de clientes, comercios y empleados, en el marco de la Ley 25.326 de Protección de los Datos Personales.</blockquote><p class="small">Ley 25.326: art. 9, art. 10, Res. AAIP 47/2018 · ISO/IEC 27001: <span class="mono">5.34, 5.15, 8.24</span></p>    <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03, PR.DS-01</span></p>
   </div>
 </details>
-<details>
+<details id="c-LPDP-12">
   <summary><span class="mono">LPDP-12</span> <b>Transferencias internacionales</b> <span class="badge b-partial">Parcial</span>
 </summary>
   <div class="body">
@@ -1847,7 +1881,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-10#6</span> — La plataforma corre en AWS, región us-east-1 (Estados Unidos)</blockquote><p class="small">Ley 25.326: art. 12, Disp. DNPDP 60/2016, Res. AAIP 198/2023 · ISO/IEC 27001: <span class="mono">5.14, 5.34</span></p>    <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03</span></p>
   </div>
 </details>
-<details>
+<details id="c-LPDP-14">
   <summary><span class="mono">LPDP-14</span> <b>Derechos del titular: acceso, rectificación y supresión</b> <span class="badge b-partial">Parcial</span>
 <span class="small">(Cumple → Parcial)</span></summary>
   <div class="body">
@@ -1856,7 +1890,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <blockquote><span class="mono">POL-10#4</span> — Los titulares pueden pedir acceso, rectificación o supresión de sus datos escribiendo a privacidad@nandupagos.example</blockquote><blockquote><span class="mono">POL-02#5</span> — Los responsables de los sistemas críticos revisan los derechos de acceso cada trimestre</blockquote><blockquote><span class="mono">EVD-11#1</span> — Atención al Cliente carga cada pedido que llega a privacidad@nandupagos.example; Legales registra la fecha de respuesta</blockquote><p class="small">Ley 25.326: art. 14, art. 15, art. 16 · ISO/IEC 27001: <span class="mono">5.34</span></p>    <p class="small">NIST CSF 2.0: <span class="mono">GV.OC-03</span></p>
   </div>
 </details>
-<details>
+<details id="c-LPDP-21">
   <summary><span class="mono">LPDP-21</span> <b>Inscripción de las bases de datos</b> <span class="badge b-not_met">No cumple</span>
 </summary>
   <div class="body">
@@ -2155,6 +2189,12 @@ footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid 
 <footer>Los títulos de los controles de ISO/IEC 27001 son descripciones propias; el texto de la norma pertenece a ISO/IEC. El mapeo a NIST CSF 2.0 es indicativo. · Tranquera 0.3.0</footer>
 </div>
 <script>
+function openTarget() {
+  var d = location.hash && document.getElementById(location.hash.slice(1));
+  if (d && d.tagName === 'DETAILS') { d.open = true; }
+}
+window.addEventListener('hashchange', openTarget);
+openTarget();
 document.querySelectorAll('.filters button').forEach(function (b) {
   b.addEventListener('click', function () {
     var sev = b.dataset.sev;

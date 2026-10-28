@@ -1,94 +1,94 @@
-﻿control,title,theme,applicable,justification,status,nist_csf
-5.1,Security policies,Organizational,yes,,Partial,GV.PO-01 GV.PO-02
-5.2,Security roles and responsibilities,Organizational,yes,,Partial,GV.RR-02
-5.3,Separation of conflicting duties,Organizational,yes,,Not met,PR.AA-05
-5.4,Management commitment to security,Organizational,yes,,Partial,GV.RR-01
-5.5,Contact with authorities,Organizational,yes,,Partial,GV.OC-03 RS.CO-02
-5.6,Contact with special interest groups,Organizational,yes,,Not met,ID.RA-02
-5.7,Threat intelligence,Organizational,yes,,Not met,ID.RA-02 ID.RA-03
-5.8,Security in project management,Organizational,yes,,Not met,ID.RA-07
-5.9,Inventory of assets,Organizational,yes,,Met,ID.AM-01 ID.AM-02 ID.AM-05
-5.10,Acceptable use of assets,Organizational,yes,,Not met,GV.PO-01
-5.11,Return of assets,Organizational,yes,,Partial,ID.AM-08
-5.12,Information classification,Organizational,yes,,Met,ID.AM-05 ID.AM-07
-5.13,Labelling of information,Organizational,yes,,Partial,ID.AM-07
-5.14,Information transfer,Organizational,yes,,Partial,PR.DS-02
-5.15,Access control,Organizational,yes,,Partial,PR.AA-05
-5.16,Identity management,Organizational,yes,,Met,PR.AA-01
-5.17,Authentication information,Organizational,yes,,Partial,PR.AA-01 PR.AA-03
-5.18,Access rights,Organizational,yes,,Partial,PR.AA-05
-5.19,Security in supplier relationships,Organizational,yes,,Met,GV.SC-01 GV.SC-06
-5.20,Security in supplier agreements,Organizational,yes,,Partial,GV.SC-05
-5.21,ICT supply chain security,Organizational,yes,,Partial,GV.SC-05 GV.SC-07
-5.22,Monitoring of supplier services,Organizational,yes,,Met,GV.SC-07
-5.23,Security for cloud services,Organizational,yes,,Met,GV.SC-05 GV.SC-07
-5.24,Incident management planning,Organizational,yes,,Partial,RS.MA-01
-5.25,Assessment of security events,Organizational,yes,,Partial,DE.AE-02 DE.AE-08
-5.26,Response to incidents,Organizational,yes,,Partial,RS.MA-01 RS.MI-01 RS.MI-02
-5.27,Learning from incidents,Organizational,yes,,Partial,ID.IM-02 ID.IM-03
-5.28,Collection of evidence,Organizational,yes,,Partial,RS.AN-07
-5.29,Security during disruption,Organizational,yes,,Not met,ID.IM-04 RC.RP-01
-5.30,ICT readiness for business continuity,Organizational,yes,,Partial,ID.IM-04 PR.IR-03 RC.RP-01
-5.31,"Legal, regulatory and contractual requirements",Organizational,yes,,Partial,GV.OC-03
-5.32,Intellectual property rights,Organizational,yes,,Not met,GV.OC-03
-5.33,Protection of records,Organizational,yes,,Partial,PR.DS-01
-5.34,Privacy and protection of personal data,Organizational,yes,,Partial,GV.OC-03 PR.DS-01
-5.35,Independent review of security,Organizational,yes,,Not met,GV.OV-02 ID.IM-02
-5.36,Compliance with policies and standards,Organizational,yes,,Partial,ID.IM-02
-5.37,Documented operating procedures,Organizational,yes,,Not met,GV.PO-01
-6.1,Screening,People,yes,,Not met,GV.RR-04
-6.2,Terms of employment,People,yes,,Not met,GV.RR-04
-6.3,"Awareness, education and training",People,yes,,Partial,PR.AT-01 PR.AT-02
-6.4,Disciplinary process,People,yes,,Partial,GV.RR-04
-6.5,Responsibilities after termination or change,People,yes,,Met,GV.RR-04 PR.AA-05
-6.6,Confidentiality agreements,People,yes,,Partial,GV.RR-04
-6.7,Remote working,People,yes,,Not met,PR.IR-01
-6.8,Security event reporting,People,yes,,Partial,DE.AE-06
-7.1,Physical security perimeters,Physical,yes,,Not met,PR.AA-06
-7.2,Physical entry,Physical,yes,,Not met,PR.AA-06
-7.3,Securing offices and facilities,Physical,yes,,Not met,PR.AA-06
-7.4,Physical security monitoring,Physical,yes,,Not met,DE.CM-02
-7.5,Protection against physical and environmental threats,Physical,yes,,Not met,PR.IR-02
-7.6,Working in secure areas,Physical,yes,,Not met,PR.AA-06
-7.7,Clear desk and clear screen,Physical,yes,,Partial,PR.DS-01
-7.8,Equipment siting and protection,Physical,no,Sin centro de datos propio; la ubicación y protección de servidores es responsabilidad del proveedor de nube (ver 5.23).,Excluded (SoA),PR.IR-02
-7.9,Security of assets off-premises,Physical,yes,,Partial,PR.DS-01
-7.10,Storage media,Physical,yes,,Not met,PR.DS-01 ID.AM-08
-7.11,Supporting utilities,Physical,no,Sin centro de datos propio; energía y climatización a cargo del proveedor de nube (ver 5.23).,Excluded (SoA),PR.IR-02
-7.12,Cabling security,Physical,no,Sin centro de datos propio; la oficina solo usa Wi-Fi y no aloja servidores.,Excluded (SoA),PR.IR-02
-7.13,Equipment maintenance,Physical,yes,,Not met,ID.AM-08
-7.14,Secure disposal or re-use of equipment,Physical,yes,,Not met,ID.AM-08
-8.1,User endpoint devices,Technological,yes,,Partial,PR.PS-01 PR.DS-01
-8.2,Privileged access rights,Technological,yes,,Met,PR.AA-05
-8.3,Information access restriction,Technological,yes,,Partial,PR.AA-05
-8.4,Access to source code,Technological,yes,,Partial,PR.AA-05 PR.PS-06
-8.5,Secure authentication,Technological,yes,,Partial,PR.AA-03
-8.6,Capacity management,Technological,yes,,Not met,PR.IR-04
-8.7,Protection against malware,Technological,yes,,Partial,PR.PS-05 DE.CM-09
-8.8,Management of technical vulnerabilities,Technological,yes,,Partial,ID.RA-01 PR.PS-02
-8.9,Configuration management,Technological,yes,,Partial,PR.PS-01
-8.10,Information deletion,Technological,yes,,Partial,ID.AM-08
-8.11,Data masking,Technological,no,,Excluded (SoA),PR.DS-01
-8.12,Data leakage prevention,Technological,yes,,Not met,PR.DS-01 PR.DS-02
-8.13,Information backup,Technological,yes,,Partial,PR.DS-11
-8.14,Redundancy of processing facilities,Technological,yes,,Partial,PR.IR-03
-8.15,Logging,Technological,yes,,Partial,PR.PS-04
-8.16,Monitoring activities,Technological,yes,,Partial,DE.CM-01 DE.CM-03 DE.CM-09
-8.17,Clock synchronization,Technological,yes,,Not met,PR.PS-04
-8.18,Use of privileged utility programs,Technological,yes,,Not met,PR.AA-05 PR.PS-05
-8.19,Software installation on operational systems,Technological,yes,,Not met,PR.PS-02 PR.PS-05
-8.20,Network security,Technological,yes,,Partial,PR.IR-01 DE.CM-01
-8.21,Security of network services,Technological,yes,,Not met,PR.IR-01
-8.22,Segregation of networks,Technological,yes,,Partial,PR.IR-01
-8.23,Web filtering,Technological,yes,,Not met,PR.IR-01
-8.24,Use of cryptography,Technological,yes,,Partial,PR.DS-01 PR.DS-02
-8.25,Secure development life cycle,Technological,yes,,Partial,PR.PS-06
-8.26,Application security requirements,Technological,yes,,Not met,PR.PS-06
-8.27,Secure architecture and engineering principles,Technological,yes,,Not met,PR.PS-06
-8.28,Secure coding,Technological,yes,,Partial,PR.PS-06
-8.29,Security testing in development and acceptance,Technological,yes,,Partial,PR.PS-06 ID.RA-01
-8.30,Outsourced development,Technological,no,Todo el desarrollo es interno; no se contrata desarrollo a terceros.,Excluded (SoA),GV.SC-05 PR.PS-06
-8.31,"Separation of development, test and production",Technological,yes,,Partial,PR.IR-01
-8.32,Change management,Technological,yes,,Partial,ID.RA-07
-8.33,Test information,Technological,yes,,Partial,PR.DS-01
-8.34,Protection of systems during audit testing,Technological,yes,,Not met,
+﻿control,title,theme,applicable,justification,status,nist_csf
+5.1,Security policies,Organizational,yes,,Partial,GV.PO-01 GV.PO-02
+5.2,Security roles and responsibilities,Organizational,yes,,Partial,GV.RR-02
+5.3,Separation of conflicting duties,Organizational,yes,,Not met,PR.AA-05
+5.4,Management commitment to security,Organizational,yes,,Partial,GV.RR-01
+5.5,Contact with authorities,Organizational,yes,,Partial,GV.OC-03 RS.CO-02
+5.6,Contact with special interest groups,Organizational,yes,,Not met,ID.RA-02
+5.7,Threat intelligence,Organizational,yes,,Not met,ID.RA-02 ID.RA-03
+5.8,Security in project management,Organizational,yes,,Not met,ID.RA-07
+5.9,Inventory of assets,Organizational,yes,,Met,ID.AM-01 ID.AM-02 ID.AM-05
+5.10,Acceptable use of assets,Organizational,yes,,Not met,GV.PO-01
+5.11,Return of assets,Organizational,yes,,Partial,ID.AM-08
+5.12,Information classification,Organizational,yes,,Met,ID.AM-05 ID.AM-07
+5.13,Labelling of information,Organizational,yes,,Partial,ID.AM-07
+5.14,Information transfer,Organizational,yes,,Partial,PR.DS-02
+5.15,Access control,Organizational,yes,,Partial,PR.AA-05
+5.16,Identity management,Organizational,yes,,Met,PR.AA-01
+5.17,Authentication information,Organizational,yes,,Partial,PR.AA-01 PR.AA-03
+5.18,Access rights,Organizational,yes,,Partial,PR.AA-05
+5.19,Security in supplier relationships,Organizational,yes,,Met,GV.SC-01 GV.SC-06
+5.20,Security in supplier agreements,Organizational,yes,,Partial,GV.SC-05
+5.21,ICT supply chain security,Organizational,yes,,Partial,GV.SC-05 GV.SC-07
+5.22,Monitoring of supplier services,Organizational,yes,,Met,GV.SC-07
+5.23,Security for cloud services,Organizational,yes,,Met,GV.SC-05 GV.SC-07
+5.24,Incident management planning,Organizational,yes,,Partial,RS.MA-01
+5.25,Assessment of security events,Organizational,yes,,Partial,DE.AE-02 DE.AE-08
+5.26,Response to incidents,Organizational,yes,,Partial,RS.MA-01 RS.MI-01 RS.MI-02
+5.27,Learning from incidents,Organizational,yes,,Partial,ID.IM-02 ID.IM-03
+5.28,Collection of evidence,Organizational,yes,,Partial,RS.AN-07
+5.29,Security during disruption,Organizational,yes,,Not met,ID.IM-04 RC.RP-01
+5.30,ICT readiness for business continuity,Organizational,yes,,Partial,ID.IM-04 PR.IR-03 RC.RP-01
+5.31,"Legal, regulatory and contractual requirements",Organizational,yes,,Partial,GV.OC-03
+5.32,Intellectual property rights,Organizational,yes,,Not met,GV.OC-03
+5.33,Protection of records,Organizational,yes,,Partial,PR.DS-01
+5.34,Privacy and protection of personal data,Organizational,yes,,Partial,GV.OC-03 PR.DS-01
+5.35,Independent review of security,Organizational,yes,,Not met,GV.OV-02 ID.IM-02
+5.36,Compliance with policies and standards,Organizational,yes,,Partial,ID.IM-02
+5.37,Documented operating procedures,Organizational,yes,,Not met,GV.PO-01
+6.1,Screening,People,yes,,Not met,GV.RR-04
+6.2,Terms of employment,People,yes,,Not met,GV.RR-04
+6.3,"Awareness, education and training",People,yes,,Partial,PR.AT-01 PR.AT-02
+6.4,Disciplinary process,People,yes,,Partial,GV.RR-04
+6.5,Responsibilities after termination or change,People,yes,,Met,GV.RR-04 PR.AA-05
+6.6,Confidentiality agreements,People,yes,,Partial,GV.RR-04
+6.7,Remote working,People,yes,,Not met,PR.IR-01
+6.8,Security event reporting,People,yes,,Partial,DE.AE-06
+7.1,Physical security perimeters,Physical,yes,,Not met,PR.AA-06
+7.2,Physical entry,Physical,yes,,Not met,PR.AA-06
+7.3,Securing offices and facilities,Physical,yes,,Not met,PR.AA-06
+7.4,Physical security monitoring,Physical,yes,,Not met,DE.CM-02
+7.5,Protection against physical and environmental threats,Physical,yes,,Not met,PR.IR-02
+7.6,Working in secure areas,Physical,yes,,Not met,PR.AA-06
+7.7,Clear desk and clear screen,Physical,yes,,Partial,PR.DS-01
+7.8,Equipment siting and protection,Physical,no,Sin centro de datos propio; la ubicación y protección de servidores es responsabilidad del proveedor de nube (ver 5.23).,Excluded (SoA),PR.IR-02
+7.9,Security of assets off-premises,Physical,yes,,Partial,PR.DS-01
+7.10,Storage media,Physical,yes,,Not met,PR.DS-01 ID.AM-08
+7.11,Supporting utilities,Physical,no,Sin centro de datos propio; energía y climatización a cargo del proveedor de nube (ver 5.23).,Excluded (SoA),PR.IR-02
+7.12,Cabling security,Physical,no,Sin centro de datos propio; la oficina solo usa Wi-Fi y no aloja servidores.,Excluded (SoA),PR.IR-02
+7.13,Equipment maintenance,Physical,yes,,Not met,ID.AM-08
+7.14,Secure disposal or re-use of equipment,Physical,yes,,Not met,ID.AM-08
+8.1,User endpoint devices,Technological,yes,,Partial,PR.PS-01 PR.DS-01
+8.2,Privileged access rights,Technological,yes,,Met,PR.AA-05
+8.3,Information access restriction,Technological,yes,,Partial,PR.AA-05
+8.4,Access to source code,Technological,yes,,Partial,PR.AA-05 PR.PS-06
+8.5,Secure authentication,Technological,yes,,Partial,PR.AA-03
+8.6,Capacity management,Technological,yes,,Not met,PR.IR-04
+8.7,Protection against malware,Technological,yes,,Partial,PR.PS-05 DE.CM-09
+8.8,Management of technical vulnerabilities,Technological,yes,,Partial,ID.RA-01 PR.PS-02
+8.9,Configuration management,Technological,yes,,Partial,PR.PS-01
+8.10,Information deletion,Technological,yes,,Partial,ID.AM-08
+8.11,Data masking,Technological,no,,Excluded (SoA),PR.DS-01
+8.12,Data leakage prevention,Technological,yes,,Not met,PR.DS-01 PR.DS-02
+8.13,Information backup,Technological,yes,,Partial,PR.DS-11
+8.14,Redundancy of processing facilities,Technological,yes,,Partial,PR.IR-03
+8.15,Logging,Technological,yes,,Partial,PR.PS-04
+8.16,Monitoring activities,Technological,yes,,Partial,DE.CM-01 DE.CM-03 DE.CM-09
+8.17,Clock synchronization,Technological,yes,,Not met,PR.PS-04
+8.18,Use of privileged utility programs,Technological,yes,,Not met,PR.AA-05 PR.PS-05
+8.19,Software installation on operational systems,Technological,yes,,Not met,PR.PS-02 PR.PS-05
+8.20,Network security,Technological,yes,,Partial,PR.IR-01 DE.CM-01
+8.21,Security of network services,Technological,yes,,Not met,PR.IR-01
+8.22,Segregation of networks,Technological,yes,,Partial,PR.IR-01
+8.23,Web filtering,Technological,yes,,Not met,PR.IR-01
+8.24,Use of cryptography,Technological,yes,,Partial,PR.DS-01 PR.DS-02
+8.25,Secure development life cycle,Technological,yes,,Partial,PR.PS-06
+8.26,Application security requirements,Technological,yes,,Not met,PR.PS-06
+8.27,Secure architecture and engineering principles,Technological,yes,,Not met,PR.PS-06
+8.28,Secure coding,Technological,yes,,Partial,PR.PS-06
+8.29,Security testing in development and acceptance,Technological,yes,,Partial,PR.PS-06 ID.RA-01
+8.30,Outsourced development,Technological,no,Todo el desarrollo es interno; no se contrata desarrollo a terceros.,Excluded (SoA),GV.SC-05 PR.PS-06
+8.31,"Separation of development, test and production",Technological,yes,,Partial,PR.IR-01
+8.32,Change management,Technological,yes,,Partial,ID.RA-07
+8.33,Test information,Technological,yes,,Partial,PR.DS-01
+8.34,Protection of systems during audit testing,Technological,yes,,Not met,
